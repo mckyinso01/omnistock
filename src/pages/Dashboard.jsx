@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { entities } from "@/lib/db";
 import LowStockWidget from "@/components/dashboard/LowStockWidget";
+import LowStockBanner from "@/components/dashboard/LowStockBanner";
 import { useStockNotifications } from "@/hooks/useStockNotifications";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -113,6 +114,9 @@ export default function Dashboard() {
 
   return (
     <div className="p-4 md:p-6 space-y-6">
+      {/* Low Stock Banner */}
+      <LowStockBanner products={products} />
+
       {/* KPI Cards */}
       <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
         <KPICard
