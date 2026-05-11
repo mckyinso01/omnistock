@@ -1,0 +1,63 @@
+{
+  "name": "User",
+  "type": "object",
+  "properties": {
+    "role": {
+      "type": "string",
+      "enum": [
+        "admin",
+        "user"
+      ],
+      "default": "user"
+    },
+    "current_plan": {
+      "type": "string",
+      "enum": [
+        "free",
+        "basic_trial",
+        "pro_trial",
+        "basic",
+        "pro"
+      ],
+      "default": "free",
+      "description": "Active plan of the user"
+    },
+    "trial_end_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the current active trial/plan expires"
+    },
+    "paused_plan": {
+      "type": "string",
+      "description": "The plan that is currently paused (e.g. basic_trial)"
+    },
+    "paused_trial_end_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the paused trial would have expired"
+    },
+    "referral_code": {
+      "type": "string",
+      "description": "Unique referral code for this user"
+    },
+    "referred_by": {
+      "type": "string",
+      "description": "Referral code used during registration"
+    },
+    "referral_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Number of installs from this user's referral link"
+    },
+    "basic_sub_referral_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Number of referred users who subscribed to Basic"
+    },
+    "loyalty_bonus_awarded": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the 1-month Pro loyalty bonus has been awarded"
+    }
+  }
+}
