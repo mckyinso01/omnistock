@@ -1,0 +1,54 @@
+{
+  "name": "StockAdjustment",
+  "type": "object",
+  "properties": {
+    "product_id": {
+      "type": "string"
+    },
+    "product_name": {
+      "type": "string"
+    },
+    "adjustment_type": {
+      "type": "string",
+      "enum": [
+        "add",
+        "subtract",
+        "set"
+      ],
+      "description": "Type of adjustment"
+    },
+    "quantity_before": {
+      "type": "number"
+    },
+    "quantity_change": {
+      "type": "number"
+    },
+    "quantity_after": {
+      "type": "number"
+    },
+    "reason": {
+      "type": "string",
+      "enum": [
+        "restock",
+        "damaged",
+        "expired",
+        "lost",
+        "theft",
+        "correction",
+        "returned",
+        "other"
+      ],
+      "default": "restock"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "adjusted_by": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "product_id",
+    "adjustment_type"
+  ]
+}

@@ -10,6 +10,7 @@ import {
   AlertTriangle,
   ArrowRight,
   PhilippinePeso,
+  Users,
 } from "lucide-react";
 import {
   AreaChart,
@@ -26,6 +27,7 @@ export default function Dashboard() {
   const [products, setProducts] = useState([]);
   const [transactions, setTransactions] = useState([]);
   const [alerts, setAlerts] = useState([]);
+  const [customers, setCustomers] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -34,14 +36,16 @@ export default function Dashboard() {
 
   const loadData = async () => {
     setLoading(true);
-    const [p, t, a] = await Promise.all([
+    const [p, t, a, c] = await Promise.all([
       base44.entities.Product.list("-created_date", 200),
       base44.entities.Transaction.list("-created_date", 100),
       base44.entities.StockAlert.filter({ status: "active" }),
+      base44.entities.Customer.list("-created_date", 200),
     ]);
     setProducts(p);
     setTransactions(t);
     setAlerts(a);
+    setCustomers(c);
     setLoading(false);
   };
 
@@ -106,7 +110,7 @@ export default function Dashboard() {
   return (
     <div className="p-4 md:p-6 space-y-6">
       {/* KPI Cards */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
         <KPICard
           title="Today's Sales"
           value={`₱${todaySales.toLocaleString("en-PH", { minimumFractionDigits: 2 })}`}
@@ -135,6 +139,13 @@ export default function Dashboard() {
           color="from-orange-500 to-red-500"
           sub={`${lowStockCount} low stock`}
           urgent={alerts.length > 0}
+        />
+        <KPICard
+          title="Customers"
+          value={customers.length}
+          icon={<Users className="w-5 h-5" />}
+          color="from-pink-500 to-rose-600"
+          sub={`${customers.filter(c => (c.loyalty_points || 0) >= 500).length} loyalty members`}
         />
       </div>
 

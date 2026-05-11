@@ -19,6 +19,9 @@ import Categories from './pages/Categories';
 import Suppliers from './pages/Suppliers';
 import Recipes from './pages/Recipes';
 import Alerts from './pages/Alerts';
+import Customers from './pages/Customers';
+import PurchaseOrders from './pages/PurchaseOrders';
+import StockAdjustments from './pages/StockAdjustments';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -55,6 +58,9 @@ const AuthenticatedApp = () => {
         <Route path="/suppliers" element={<Suppliers />} />
         <Route path="/recipes" element={<Recipes />} />
         <Route path="/alerts" element={<Alerts />} />
+        <Route path="/customers" element={<Customers />} />
+        <Route path="/purchase-orders" element={<PurchaseOrders />} />
+        <Route path="/stock-adjustments" element={<StockAdjustments />} />
       </Route>
       <Route path="*" element={<PageNotFound />} />
     </Routes>

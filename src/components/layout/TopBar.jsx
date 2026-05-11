@@ -11,6 +11,9 @@ const pageTitles = {
   "/suppliers": "Suppliers",
   "/recipes": "Recipes",
   "/alerts": "Stock Alerts",
+  "/customers": "Customers",
+  "/purchase-orders": "Purchase Orders",
+  "/stock-adjustments": "Stock Adjustments",
 };
 
 export default function TopBar({ onMenuClick, alertCount = 0 }) {

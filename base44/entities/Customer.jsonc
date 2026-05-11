@@ -1,0 +1,57 @@
+{
+  "name": "Customer",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Customer full name"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Phone number"
+    },
+    "email": {
+      "type": "string",
+      "description": "Email address"
+    },
+    "address": {
+      "type": "string",
+      "description": "Address"
+    },
+    "birthday": {
+      "type": "string",
+      "format": "date",
+      "description": "Birthday for loyalty perks"
+    },
+    "loyalty_points": {
+      "type": "number",
+      "default": 0,
+      "description": "Accumulated loyalty points"
+    },
+    "total_spent": {
+      "type": "number",
+      "default": 0,
+      "description": "Total amount spent"
+    },
+    "visit_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Number of transactions"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Notes about customer"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "inactive"
+      ],
+      "default": "active"
+    }
+  },
+  "required": [
+    "name"
+  ]
+}
