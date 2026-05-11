@@ -7,8 +7,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { Plus, Truck, X, Trash2, Package, CheckCircle2, Clock, ChevronDown, ChevronUp } from "lucide-react";
+import { Plus, Truck, X, Trash2, Package, CheckCircle2, Clock, ChevronDown, ChevronUp, Mail, Loader2 } from "lucide-react";
 import { format } from "date-fns";
+import { sendWeeklyPOReports } from "@/lib/weeklyPOReport";
 
 const STATUS_COLORS = {
   draft: "bg-slate-100 text-slate-600",
@@ -27,6 +28,8 @@ export default function PurchaseOrders() {
   const [expanded, setExpanded] = useState(null);
   const [form, setForm] = useState({ supplier_id: "", supplier_name: "", expected_date: "", notes: "", items: [] });
   const [saving, setSaving] = useState(false);
+  const [sendingReport, setSendingReport] = useState(false);
+  const [reportResult, setReportResult] = useState(null);
 
   useEffect(() => { loadData(); }, []);
 
@@ -103,11 +106,39 @@ export default function PurchaseOrders() {
 
   return (
     <div className="p-4 md:p-6 space-y-6">
-      <div className="flex justify-end">
+      <div className="flex flex-wrap gap-2 justify-end">
+        <Button
+          variant="outline"
+          onClick={async () => {
+            setSendingReport(true);
+            setReportResult(null);
+            const result = await sendWeeklyPOReports();
+            setReportResult(result);
+            setSendingReport(false);
+          }}
+          disabled={sendingReport}
+          className="gap-2 text-blue-600 border-blue-200 hover:bg-blue-50"
+        >
+          {sendingReport ? <Loader2 className="w-4 h-4 animate-spin" /> : <Mail className="w-4 h-4" />}
+          {sendingReport ? "Sending..." : "Email Weekly PO Report"}
+        </Button>
         <Button onClick={() => setShowForm(true)} className="bg-emerald-600 hover:bg-emerald-700 text-white gap-2">
           <Plus className="w-4 h-4" /> New Purchase Order
         </Button>
       </div>
+
+      {reportResult && (
+        <div className={`rounded-xl p-3 text-sm ${reportResult.sent > 0 ? "bg-blue-50 text-blue-800" : "bg-slate-50 text-slate-600"}`}>
+          {reportResult.sent > 0
+            ? `✅ Sent PO reports to ${reportResult.sent} supplier(s).`
+            : `ℹ️ ${reportResult.message || "No emails sent."}`}
+          {reportResult.results?.filter(r => r.status === "skipped").length > 0 && (
+            <p className="text-xs mt-1 text-orange-600">
+              ⚠️ Skipped: {reportResult.results.filter(r => r.status === "skipped").map(r => r.supplier).join(", ")} — no email on file.
+            </p>
+          )}
+        </div>
+      )}
 
       {/* Form */}
       {showForm && (

@@ -8,7 +8,8 @@ import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
   PieChart, Pie, Cell, LineChart, Line, ReferenceLine,
 } from "recharts";
-import { format, subDays, startOfMonth, addDays } from "date-fns";
+import { format, subDays, startOfMonth, addDays, subMonths } from "date-fns";
+import { runMonthlyAnalysis } from "@/lib/monthlyAnalysis";
 
 const COLORS = ["#10b981", "#3b82f6", "#8b5cf6", "#f59e0b", "#ef4444", "#06b6d4"];
 
@@ -16,6 +17,10 @@ export default function Analytics() {
   const [transactions, setTransactions] = useState([]);
   const [period, setPeriod] = useState("7days");
   const [loading, setLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState("overview");
+  const [monthlyReport, setMonthlyReport] = useState(null);
+  const [runningAnalysis, setRunningAnalysis] = useState(false);
+  const [analysisMonth, setAnalysisMonth] = useState(format(new Date(), "yyyy-MM"));
 
   useEffect(() => { loadData(); }, []);
 
@@ -129,10 +134,125 @@ export default function Analytics() {
     a.click();
   };
 
+  const handleRunAnalysis = async () => {
+    setRunningAnalysis(true);
+    const [year, month] = analysisMonth.split("-").map(Number);
+    const report = await runMonthlyAnalysis(new Date(year, month - 1, 1));
+    setMonthlyReport(report);
+    setRunningAnalysis(false);
+  };
+
   if (loading) return <div className="p-6 text-slate-400">Loading analytics...</div>;
 
   return (
     <div className="p-4 md:p-6 space-y-6">
+      {/* Tab switcher */}
+      <div className="flex gap-2 border-b border-slate-200 pb-0">
+        {["overview", "monthly"].map(tab => (
+          <button key={tab} onClick={() => setActiveTab(tab)}
+            className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${activeTab === tab
+              ? "border-emerald-500 text-emerald-700"
+              : "border-transparent text-slate-500 hover:text-slate-700"}`}>
+            {tab === "overview" ? "Overview" : "Monthly Analysis"}
+          </button>
+        ))}
+      </div>
+
+      {activeTab === "monthly" && (
+        <div className="space-y-6">
+          <div className="flex flex-wrap items-end gap-3">
+            <div className="space-y-1">
+              <label className="text-xs text-slate-500 font-medium">Select Month</label>
+              <input type="month" value={analysisMonth} onChange={e => setAnalysisMonth(e.target.value)}
+                className="h-9 rounded-md border border-input px-3 py-1 text-sm shadow-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring" />
+            </div>
+            <Button onClick={handleRunAnalysis} disabled={runningAnalysis} className="bg-emerald-600 hover:bg-emerald-700 text-white gap-2">
+              {runningAnalysis ? <><BarChart3 className="w-4 h-4 animate-pulse" /> Analyzing...</> : <><BarChart3 className="w-4 h-4" /> Run Analysis</>}
+            </Button>
+          </div>
+
+          {monthlyReport && (
+            <div className="space-y-6">
+              <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+                {[
+                  { label: "Month", value: monthlyReport.month },
+                  { label: "Transactions", value: monthlyReport.total_transactions },
+                  { label: "Total Revenue", value: `₱${monthlyReport.total_revenue.toLocaleString("en-PH", { minimumFractionDigits: 2 })}` },
+                ].map(k => (
+                  <Card key={k.label} className="border-0 shadow-sm">
+                    <CardContent className="p-4">
+                      <p className="text-xs text-slate-500 uppercase tracking-wide">{k.label}</p>
+                      <p className="text-xl font-bold text-slate-800 mt-1">{k.value}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+
+              {/* By Category */}
+              <Card className="border-0 shadow-sm">
+                <CardHeader className="pb-2">
+                  <CardTitle className="text-base font-semibold flex items-center gap-2">
+                    <BarChart3 className="w-4 h-4 text-blue-500" /> Sales by Category
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  {monthlyReport.by_category.length === 0 ? (
+                    <p className="text-sm text-slate-400 py-4 text-center">No category data</p>
+                  ) : (
+                    <div className="space-y-2">
+                      {monthlyReport.by_category.map(cat => (
+                        <div key={cat.category} className="flex items-center gap-3 py-2 border-b border-slate-50 last:border-0">
+                          <div className="flex-1 min-w-0">
+                            <p className="text-sm font-medium text-slate-800">{cat.category}</p>
+                            <p className="text-xs text-slate-400">{cat.qty_sold} units sold · {cat.margin_pct}% margin</p>
+                          </div>
+                          <div className="text-right shrink-0">
+                            <p className="text-sm font-bold text-emerald-600">₱{cat.revenue.toLocaleString()}</p>
+                            <p className="text-xs text-slate-400">profit: ₱{cat.gross_profit.toLocaleString()}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+
+              {/* By Recipe */}
+              <Card className="border-0 shadow-sm">
+                <CardHeader className="pb-2">
+                  <CardTitle className="text-base font-semibold flex items-center gap-2">
+                    <ShoppingBag className="w-4 h-4 text-violet-500" /> Sales by Recipe
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  {monthlyReport.by_recipe.length === 0 ? (
+                    <p className="text-sm text-slate-400 py-4 text-center">No recipe data — link products to recipes to track this.</p>
+                  ) : (
+                    <div className="space-y-2">
+                      {monthlyReport.by_recipe.map(r => (
+                        <div key={r.recipe} className="flex items-center gap-3 py-2 border-b border-slate-50 last:border-0">
+                          <div className="flex-1 min-w-0">
+                            <p className="text-sm font-medium text-slate-800">{r.recipe}</p>
+                            <p className="text-xs text-slate-400">{r.qty_sold} sold · ~{r.estimated_batches} batches · {r.margin_pct}% margin</p>
+                          </div>
+                          <div className="text-right shrink-0">
+                            <p className="text-sm font-bold text-violet-600">₱{r.revenue.toLocaleString()}</p>
+                            <p className="text-xs text-slate-400">profit: ₱{r.gross_profit.toLocaleString()}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+            </div>
+          )}
+        </div>
+      )}
+
+      {activeTab !== "overview" && null}
+      {activeTab === "overview" && <>
+
       {/* Controls */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <Select value={period} onValueChange={setPeriod}>
@@ -299,6 +419,7 @@ export default function Analytics() {
           </CardContent>
         </Card>
       </div>
+      </>}
     </div>
   );
 }

@@ -9,6 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Textarea } from "@/components/ui/textarea";
 import { Plus, ArrowUp, ArrowDown, RefreshCw, Package, X } from "lucide-react";
 import { format } from "date-fns";
+import { trackPriceChangesFromAdjustment } from "@/lib/priceChangeTracker";
 
 const REASONS = ["restock", "damaged", "expired", "lost", "theft", "correction", "returned", "other"];
 const REASON_COLORS = {
@@ -76,6 +77,19 @@ export default function StockAdjustments() {
         notes: form.notes,
       }),
     ]);
+
+    // Track cost price changes if product has a cost recorded
+    if (prod.cost) {
+      await trackPriceChangesFromAdjustment({
+        productId: form.product_id,
+        oldCost: prod.cost,
+        newCost: prod.cost, // cost unchanged by adjustment, but logs the event
+        oldPrice: prod.price,
+        newPrice: prod.price,
+        adjustedBy: "Stock Adjustment",
+        reason: `${form.reason} — ${form.notes || "qty adjusted"}`,
+      });
+    }
 
     setSaving(false);
     setShowForm(false);

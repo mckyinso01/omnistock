@@ -12,6 +12,7 @@ import {
 import ReceiptModal from "@/components/pos/ReceiptModal";
 import RefundModal from "@/components/pos/RefundModal";
 import BarcodeScanner from "@/components/shared/BarcodeScanner";
+import { trackPriceChangesFromTransaction } from "@/lib/priceChangeTracker";
 
 const PAYMENT_METHODS = [
   { value: "cash", label: "Cash", icon: Banknote },
@@ -154,6 +155,9 @@ export default function POS() {
         visit_count: (selectedCustomer.visit_count || 0) + 1,
       });
     }
+
+    // Track price changes silently
+    trackPriceChangesFromTransaction(txn, selectedCustomer?.name ? `POS - ${selectedCustomer.name}` : "POS");
 
     setLastTransaction({ ...txn, items: cart, total, change: Math.max(0, change), paymentMethod, customerName: selectedCustomer?.name });
     setCart([]); setAmountTendered(""); setPaymentRef(""); setSelectedCustomer(null);
