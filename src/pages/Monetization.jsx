@@ -74,7 +74,7 @@ const addons = [
     icon: MessageSquare,
     title: "SMS Marketing",
     desc: "Send promotions, birthday greetings, and reminders to your customers automatically.",
-    price: "₱199/mo",
+    price: 199,
     color: "text-violet-500",
     bg: "bg-violet-50",
   },
@@ -82,7 +82,7 @@ const addons = [
     icon: FileText,
     title: "Automated Sales Reports",
     desc: "Get weekly/monthly PDF reports sent directly to your email with full analytics.",
-    price: "₱149/mo",
+    price: 149,
     color: "text-blue-500",
     bg: "bg-blue-50",
   },
@@ -90,7 +90,7 @@ const addons = [
     icon: Star,
     title: "Featured Supplier",
     desc: "Your supplier listing appears at the top when shop owners search for products.",
-    price: "₱499/mo",
+    price: 499,
     color: "text-amber-500",
     bg: "bg-amber-50",
   },
@@ -98,7 +98,7 @@ const addons = [
     icon: BarChart2,
     title: "Deep Insights Report",
     desc: "AI-powered inventory forecasting, slow-movers detection, and profit maximization tips.",
-    price: "₱299/mo",
+    price: 299,
     color: "text-emerald-500",
     bg: "bg-emerald-50",
   },
@@ -205,7 +205,12 @@ export default function Monetization() {
                     <p className="text-xs text-slate-500 mt-1">{addon.desc}</p>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-sm font-bold text-slate-700">{addon.price}</span>
+                    <div>
+                      <span className="text-sm font-bold text-slate-700">
+                        ₱{billing === "yearly" ? Math.round(addon.price * 0.8).toLocaleString() : addon.price.toLocaleString()}
+                      </span>
+                      <span className="text-xs text-slate-400">/mo</span>
+                    </div>
                     <Button size="sm" variant="outline" className="text-xs h-7">Add</Button>
                   </div>
                 </CardContent>
