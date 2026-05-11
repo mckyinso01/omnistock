@@ -1,0 +1,54 @@
+{
+  "name": "StockAlert",
+  "type": "object",
+  "properties": {
+    "product_id": {
+      "type": "string",
+      "description": "Linked product ID"
+    },
+    "product_name": {
+      "type": "string",
+      "description": "Product name for quick reference"
+    },
+    "alert_type": {
+      "type": "string",
+      "enum": [
+        "low_stock",
+        "out_of_stock",
+        "expiring_soon",
+        "expired"
+      ],
+      "description": "Type of alert"
+    },
+    "current_quantity": {
+      "type": "number",
+      "description": "Current stock quantity at time of alert"
+    },
+    "threshold": {
+      "type": "number",
+      "description": "Threshold that triggered the alert"
+    },
+    "expiry_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Expiry date if applicable"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "resolved",
+        "dismissed"
+      ],
+      "default": "active"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Alert notes"
+    }
+  },
+  "required": [
+    "product_id",
+    "alert_type"
+  ]
+}

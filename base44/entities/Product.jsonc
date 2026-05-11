@@ -6,13 +6,37 @@
       "type": "string",
       "description": "Product name"
     },
+    "sku": {
+      "type": "string",
+      "description": "Stock Keeping Unit code"
+    },
+    "barcode": {
+      "type": "string",
+      "description": "Barcode number"
+    },
     "description": {
       "type": "string",
       "description": "Product description"
     },
+    "category_id": {
+      "type": "string",
+      "description": "Linked category ID"
+    },
     "category": {
       "type": "string",
-      "description": "Product category"
+      "description": "Category name (for display)"
+    },
+    "supplier_id": {
+      "type": "string",
+      "description": "Linked supplier ID"
+    },
+    "supplier_name": {
+      "type": "string",
+      "description": "Supplier name (for display)"
+    },
+    "photo_url": {
+      "type": "string",
+      "description": "Product photo URL"
     },
     "price": {
       "type": "number",
@@ -36,6 +60,18 @@
       "type": "number",
       "description": "Alert when stock falls below this level",
       "default": 10
+    },
+    "expiry_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Product expiry date (if applicable)"
+    },
+    "tags": {
+      "type": "array",
+      "description": "Product tags for filtering",
+      "items": {
+        "type": "string"
+      }
     },
     "status": {
       "type": "string",

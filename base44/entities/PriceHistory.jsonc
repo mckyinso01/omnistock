@@ -1,0 +1,42 @@
+{
+  "name": "PriceHistory",
+  "type": "object",
+  "properties": {
+    "product_id": {
+      "type": "string",
+      "description": "Linked product ID"
+    },
+    "product_name": {
+      "type": "string",
+      "description": "Product name"
+    },
+    "old_price": {
+      "type": "number",
+      "description": "Previous selling price"
+    },
+    "new_price": {
+      "type": "number",
+      "description": "New selling price"
+    },
+    "old_cost": {
+      "type": "number",
+      "description": "Previous cost price"
+    },
+    "new_cost": {
+      "type": "number",
+      "description": "New cost price"
+    },
+    "changed_by": {
+      "type": "string",
+      "description": "User who made the change"
+    },
+    "reason": {
+      "type": "string",
+      "description": "Reason for price change"
+    }
+  },
+  "required": [
+    "product_id",
+    "new_price"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "Category",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Category name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Category description"
+    },
+    "color": {
+      "type": "string",
+      "description": "Color code for UI display",
+      "default": "#6366f1"
+    },
+    "icon": {
+      "type": "string",
+      "description": "Icon name for display"
+    }
+  },
+  "required": [
+    "name"
+  ]
+}
