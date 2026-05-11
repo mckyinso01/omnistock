@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { base44 } from "@/api/base44Client";
+import { entities } from "@/lib/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
@@ -37,10 +37,10 @@ export default function Dashboard() {
   const loadData = async () => {
     setLoading(true);
     const [p, t, a, c] = await Promise.all([
-      base44.entities.Product.list("-created_date", 200),
-      base44.entities.Transaction.list("-created_date", 100),
-      base44.entities.StockAlert.filter({ status: "active" }),
-      base44.entities.Customer.list("-created_date", 200),
+      entities.Product.list("-created_date", 200),
+      entities.Transaction.list("-created_date", 100),
+      entities.StockAlert.filter({ status: "active" }),
+      entities.Customer.list("-created_date", 200),
     ]);
     setProducts(p);
     setTransactions(t);

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { base44 } from "@/api/base44Client";
+import { entities } from "@/lib/db";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -36,8 +36,8 @@ export default function StockAdjustments() {
   const loadData = async () => {
     setLoading(true);
     const [a, p] = await Promise.all([
-      base44.entities.StockAdjustment.list("-created_date", 200),
-      base44.entities.Product.filter({ status: "active" }),
+      entities.StockAdjustment.list("-created_date", 200),
+      entities.Product.filter({ status: "active" }),
     ]);
     setAdjustments(a);
     setProducts(p);
@@ -64,8 +64,8 @@ export default function StockAdjustments() {
     else if (form.adjustment_type === "set") after = form.quantity_change;
 
     await Promise.all([
-      base44.entities.Product.update(form.product_id, { quantity: after }),
-      base44.entities.StockAdjustment.create({
+      entities.Product.update(form.product_id, { quantity: after }),
+      entities.StockAdjustment.create({
         product_id: form.product_id,
         product_name: prod.name,
         adjustment_type: form.adjustment_type,

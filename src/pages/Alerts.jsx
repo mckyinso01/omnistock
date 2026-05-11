@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { base44 } from "@/api/base44Client";
+import { entities } from "@/lib/db";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
@@ -17,8 +17,8 @@ export default function Alerts() {
   const loadData = async () => {
     setLoading(true);
     const [a, p] = await Promise.all([
-      base44.entities.StockAlert.list("-created_date", 200),
-      base44.entities.Product.filter({ status: "active" }),
+      entities.StockAlert.list("-created_date", 200),
+      entities.Product.filter({ status: "active" }),
     ]);
     setAlerts(a);
     setProducts(p);
@@ -52,9 +52,9 @@ export default function Alerts() {
 
     // Clear old active alerts and create new ones
     const activeAlerts = alerts.filter(a => a.status === "active");
-    await Promise.all(activeAlerts.map(a => base44.entities.StockAlert.update(a.id, { status: "resolved" })));
+    await Promise.all(activeAlerts.map(a => entities.StockAlert.update(a.id, { status: "resolved" })));
     if (newAlerts.length > 0) {
-      await base44.entities.StockAlert.bulkCreate(newAlerts);
+      await entities.StockAlert.bulkCreate(newAlerts);
     }
 
     setRefreshing(false);
@@ -62,12 +62,12 @@ export default function Alerts() {
   };
 
   const dismissAlert = async (id) => {
-    await base44.entities.StockAlert.update(id, { status: "dismissed" });
+    await entities.StockAlert.update(id, { status: "dismissed" });
     loadData();
   };
 
   const resolveAlert = async (id) => {
-    await base44.entities.StockAlert.update(id, { status: "resolved" });
+    await entities.StockAlert.update(id, { status: "resolved" });
     loadData();
   };
 

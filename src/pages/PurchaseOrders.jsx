@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { base44 } from "@/api/base44Client";
+import { entities } from "@/lib/db";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -33,9 +33,9 @@ export default function PurchaseOrders() {
   const loadData = async () => {
     setLoading(true);
     const [o, s, p] = await Promise.all([
-      base44.entities.PurchaseOrder.list("-created_date", 200),
-      base44.entities.Supplier.filter({ status: "active" }),
-      base44.entities.Product.filter({ status: "active" }),
+      entities.PurchaseOrder.list("-created_date", 200),
+      entities.Supplier.filter({ status: "active" }),
+      entities.Product.filter({ status: "active" }),
     ]);
     setOrders(o);
     setSuppliers(s);
@@ -78,7 +78,7 @@ export default function PurchaseOrders() {
     setSaving(true);
     const total = form.items.reduce((s, i) => s + (i.subtotal || 0), 0);
     const poNum = `PO-${Date.now()}`;
-    await base44.entities.PurchaseOrder.create({ ...form, po_number: poNum, total_amount: total, status: "draft" });
+    await entities.PurchaseOrder.create({ ...form, po_number: poNum, total_amount: total, status: "draft" });
     setSaving(false);
     setShowForm(false);
     setForm({ supplier_id: "", supplier_name: "", expected_date: "", notes: "", items: [] });
@@ -86,14 +86,14 @@ export default function PurchaseOrders() {
   };
 
   const updateStatus = async (id, status) => {
-    await base44.entities.PurchaseOrder.update(id, { status });
+    await entities.PurchaseOrder.update(id, { status });
     if (status === "received") {
       const order = orders.find(o => o.id === id);
       if (order?.items) {
         await Promise.all(order.items.map(async (item) => {
           const prod = products.find(p => p.id === item.product_id);
           if (prod) {
-            await base44.entities.Product.update(item.product_id, { quantity: (prod.quantity || 0) + (item.quantity_ordered || 0) });
+            await entities.Product.update(item.product_id, { quantity: (prod.quantity || 0) + (item.quantity_ordered || 0) });
           }
         }));
       }

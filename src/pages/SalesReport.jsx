@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { entities } from "@/lib/db";
 import { base44 } from "@/api/base44Client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -29,8 +30,8 @@ export default function SalesReport() {
   const loadData = async () => {
     setLoading(true);
     const [t, p] = await Promise.all([
-      base44.entities.Transaction.list("-created_date", 1000),
-      base44.entities.Product.list("name", 300),
+      entities.Transaction.list("-created_date", 1000),
+      entities.Product.list("name", 300),
     ]);
     setTransactions(t.filter(x => x.status === "completed" && x.type === "sale"));
     setProducts(p);

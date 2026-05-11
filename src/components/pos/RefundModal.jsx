@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { base44 } from "@/api/base44Client";
+import { entities } from "@/lib/db";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -18,7 +18,7 @@ export default function RefundModal({ onClose }) {
   const [done, setDone] = useState(false);
 
   useEffect(() => {
-    base44.entities.Transaction.filter({ status: "completed", type: "sale" }).then(t => {
+    entities.Transaction.filter({ status: "completed", type: "sale" }).then(t => {
       setTransactions(t.sort((a, b) => new Date(b.created_date) - new Date(a.created_date)));
       setLoading(false);
     });
@@ -36,7 +36,7 @@ export default function RefundModal({ onClose }) {
 
     const refundTotal = itemsToRefund.reduce((s, i) => s + i.refund_qty * i.unit_price, 0);
 
-    await base44.entities.Transaction.create({
+    await entities.Transaction.create({
       transaction_number: `REF-${Date.now()}`,
       type: "refund",
       items: itemsToRefund.map(i => ({
@@ -51,11 +51,11 @@ export default function RefundModal({ onClose }) {
     });
 
     // Restock
-    const products = await base44.entities.Product.list();
+    const products = await entities.Product.list();
     await Promise.all(itemsToRefund.map(item => {
       const prod = products.find(p => p.id === item.product_id);
       if (!prod) return Promise.resolve();
-      return base44.entities.Product.update(item.product_id, { quantity: (prod.quantity || 0) + item.refund_qty });
+      return entities.Product.update(item.product_id, { quantity: (prod.quantity || 0) + item.refund_qty });
     }));
 
     setProcessing(false);

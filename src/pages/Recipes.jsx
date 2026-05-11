@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { base44 } from "@/api/base44Client";
+import { entities } from "@/lib/db";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -26,8 +26,8 @@ export default function Recipes() {
   const loadData = async () => {
     setLoading(true);
     const [r, p] = await Promise.all([
-      base44.entities.Recipe.list("-created_date", 100),
-      base44.entities.Product.list("-created_date", 200),
+      entities.Recipe.list("-created_date", 100),
+      entities.Product.list("-created_date", 200),
     ]);
     setRecipes(r);
     setProducts(p);
@@ -36,7 +36,7 @@ export default function Recipes() {
 
   const handleDelete = async (id) => {
     if (!confirm("Delete this recipe?")) return;
-    await base44.entities.Recipe.delete(id);
+    await entities.Recipe.delete(id);
     loadData();
   };
 

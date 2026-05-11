@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { base44 } from "@/api/base44Client";
+import { entities } from "@/lib/db";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -30,9 +30,9 @@ export default function Inventory() {
   const loadData = async () => {
     setLoading(true);
     const [p, c, s] = await Promise.all([
-      base44.entities.Product.list("-created_date", 300),
-      base44.entities.Category.list("name", 100),
-      base44.entities.Supplier.list("name", 100),
+      entities.Product.list("-created_date", 300),
+      entities.Category.list("name", 100),
+      entities.Supplier.list("name", 100),
     ]);
     setProducts(p);
     setCategories(c);
@@ -54,7 +54,7 @@ export default function Inventory() {
 
   const handleDelete = async (id) => {
     if (!confirm("Delete this product?")) return;
-    await base44.entities.Product.delete(id);
+    await entities.Product.delete(id);
     loadData();
   };
 

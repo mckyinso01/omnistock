@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { base44 } from "@/api/base44Client";
+import { entities } from "@/lib/db";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -24,7 +24,7 @@ export default function Categories() {
 
   const loadData = async () => {
     setLoading(true);
-    const c = await base44.entities.Category.list("name", 100);
+    const c = await entities.Category.list("name", 100);
     setCategories(c);
     setLoading(false);
   };
@@ -45,9 +45,9 @@ export default function Categories() {
     if (!form.name.trim()) return alert("Name is required.");
     setSaving(true);
     if (editingId) {
-      await base44.entities.Category.update(editingId, form);
+      await entities.Category.update(editingId, form);
     } else {
-      await base44.entities.Category.create(form);
+      await entities.Category.create(form);
     }
     setSaving(false);
     setShowForm(false);
@@ -56,7 +56,7 @@ export default function Categories() {
 
   const handleDelete = async (id) => {
     if (!confirm("Delete this category?")) return;
-    await base44.entities.Category.delete(id);
+    await entities.Category.delete(id);
     loadData();
   };
 

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { base44 } from "@/api/base44Client";
+import { entities } from "@/lib/db";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -21,7 +21,7 @@ export default function Suppliers() {
 
   const loadData = async () => {
     setLoading(true);
-    const s = await base44.entities.Supplier.list("name", 200);
+    const s = await entities.Supplier.list("name", 200);
     setSuppliers(s);
     setLoading(false);
   };
@@ -42,9 +42,9 @@ export default function Suppliers() {
     if (!form.name.trim()) return alert("Supplier name is required.");
     setSaving(true);
     if (editingId) {
-      await base44.entities.Supplier.update(editingId, form);
+      await entities.Supplier.update(editingId, form);
     } else {
-      await base44.entities.Supplier.create(form);
+      await entities.Supplier.create(form);
     }
     setSaving(false);
     setShowForm(false);
@@ -53,7 +53,7 @@ export default function Suppliers() {
 
   const handleDelete = async (id) => {
     if (!confirm("Delete this supplier?")) return;
-    await base44.entities.Supplier.delete(id);
+    await entities.Supplier.delete(id);
     loadData();
   };
 

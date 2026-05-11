@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Outlet } from "react-router-dom";
-import { base44 } from "@/api/base44Client";
+import { entities } from "@/lib/db";
 import Sidebar from "./Sidebar";
 import TopBar from "./TopBar";
 
@@ -13,7 +13,7 @@ export default function AppLayout() {
   }, []);
 
   const loadAlerts = async () => {
-    const alerts = await base44.entities.StockAlert.filter({ status: "active" });
+    const alerts = await entities.StockAlert.filter({ status: "active" });
     setAlertCount(alerts.length);
   };
 

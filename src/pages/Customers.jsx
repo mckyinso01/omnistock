@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { base44 } from "@/api/base44Client";
+import { entities } from "@/lib/db";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -21,7 +21,7 @@ export default function Customers() {
 
   const loadData = async () => {
     setLoading(true);
-    const c = await base44.entities.Customer.list("-total_spent", 300);
+    const c = await entities.Customer.list("-total_spent", 300);
     setCustomers(c);
     setLoading(false);
   };
@@ -42,9 +42,9 @@ export default function Customers() {
     if (!form.name.trim()) return alert("Customer name is required.");
     setSaving(true);
     if (editingId) {
-      await base44.entities.Customer.update(editingId, form);
+      await entities.Customer.update(editingId, form);
     } else {
-      await base44.entities.Customer.create({ ...form, loyalty_points: 0, total_spent: 0, visit_count: 0, status: "active" });
+      await entities.Customer.create({ ...form, loyalty_points: 0, total_spent: 0, visit_count: 0, status: "active" });
     }
     setSaving(false);
     setShowForm(false);
@@ -53,7 +53,7 @@ export default function Customers() {
 
   const handleDelete = async (id) => {
     if (!confirm("Delete this customer?")) return;
-    await base44.entities.Customer.delete(id);
+    await entities.Customer.delete(id);
     loadData();
   };
 

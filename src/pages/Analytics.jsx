@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { base44 } from "@/api/base44Client";
+import { entities } from "@/lib/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -21,7 +21,7 @@ export default function Analytics() {
 
   const loadData = async () => {
     setLoading(true);
-    const t = await base44.entities.Transaction.list("-created_date", 500);
+    const t = await entities.Transaction.list("-created_date", 500);
     setTransactions(t.filter((x) => x.status === "completed" && x.type === "sale"));
     setLoading(false);
   };

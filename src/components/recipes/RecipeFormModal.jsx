@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { base44 } from "@/api/base44Client";
+import { entities } from "@/lib/db";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -75,9 +75,9 @@ export default function RecipeFormModal({ recipe, products, onSave, onClose }) {
     setSaving(true);
     const data = { ...form, yield_quantity: Number(form.yield_quantity) };
     if (recipe?.id) {
-      await base44.entities.Recipe.update(recipe.id, data);
+      await entities.Recipe.update(recipe.id, data);
     } else {
-      await base44.entities.Recipe.create(data);
+      await entities.Recipe.create(data);
     }
     setSaving(false);
     onSave();

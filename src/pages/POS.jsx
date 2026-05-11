@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { base44 } from "@/api/base44Client";
+import { entities } from "@/lib/db";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -58,9 +58,9 @@ export default function POS() {
   const loadData = async () => {
     setLoading(true);
     const [p, c, cats] = await Promise.all([
-      base44.entities.Product.filter({ status: "active" }),
-      base44.entities.Customer.filter({ status: "active" }),
-      base44.entities.Category.list("name", 50),
+      entities.Product.filter({ status: "active" }),
+      entities.Customer.filter({ status: "active" }),
+      entities.Category.list("name", 50),
     ]);
     setProducts(p.filter((x) => (x.quantity || 0) > 0));
     setCustomers(c);
@@ -122,7 +122,7 @@ export default function POS() {
 
     setProcessing(true);
     const txnNumber = `TXN-${Date.now()}`;
-    const txn = await base44.entities.Transaction.create({
+    const txn = await entities.Transaction.create({
       transaction_number: txnNumber, type: "sale",
       items: cart.map(({ product_id, product_name, quantity, unit_price, unit_cost, subtotal, discount }) => ({
         product_id, product_name, quantity, unit_price, unit_cost, subtotal, discount,
@@ -142,13 +142,13 @@ export default function POS() {
     await Promise.all(cart.map((item) => {
       const prod = products.find((p) => p.id === item.product_id);
       if (!prod) return Promise.resolve();
-      return base44.entities.Product.update(item.product_id, { quantity: Math.max(0, (prod.quantity || 0) - item.quantity) });
+      return entities.Product.update(item.product_id, { quantity: Math.max(0, (prod.quantity || 0) - item.quantity) });
     }));
 
     // Update customer loyalty
     if (selectedCustomer) {
       const pts = Math.floor(total / 10); // 1 point per ₱10
-      await base44.entities.Customer.update(selectedCustomer.id, {
+      await entities.Customer.update(selectedCustomer.id, {
         loyalty_points: (selectedCustomer.loyalty_points || 0) + pts,
         total_spent: (selectedCustomer.total_spent || 0) + total,
         visit_count: (selectedCustomer.visit_count || 0) + 1,

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { base44 } from "@/api/base44Client";
+import { entities } from "@/lib/db";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -63,9 +64,9 @@ export default function ProductFormModal({ product, categories, suppliers, onSav
       low_stock_threshold: Number(form.low_stock_threshold),
     };
     if (product?.id) {
-      await base44.entities.Product.update(product.id, data);
+      await entities.Product.update(product.id, data);
     } else {
-      await base44.entities.Product.create(data);
+      await entities.Product.create(data);
     }
     setSaving(false);
     onSave();

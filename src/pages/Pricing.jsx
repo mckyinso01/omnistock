@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { base44 } from "@/api/base44Client";
+import { entities } from "@/lib/db";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
@@ -20,8 +20,8 @@ export default function Pricing() {
   const loadData = async () => {
     setLoading(true);
     const [p, h] = await Promise.all([
-      base44.entities.Product.filter({ status: "active" }),
-      base44.entities.PriceHistory.list("-created_date", 50),
+      entities.Product.filter({ status: "active" }),
+      entities.PriceHistory.list("-created_date", 50),
     ]);
     setProducts(p);
     setHistory(h);
@@ -60,7 +60,7 @@ export default function Pricing() {
 
     // Save price history
     if (e.price !== product.price || e.cost !== product.cost) {
-      await base44.entities.PriceHistory.create({
+      await entities.PriceHistory.create({
         product_id: product.id,
         product_name: product.name,
         old_price: product.price,
@@ -71,7 +71,7 @@ export default function Pricing() {
       });
     }
 
-    await base44.entities.Product.update(product.id, { price: e.price, cost: e.cost });
+    await entities.Product.update(product.id, { price: e.price, cost: e.cost });
     setEdits(prev => { const n = { ...prev }; delete n[product.id]; return n; });
     setSaving(false);
     loadData();
