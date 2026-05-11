@@ -1,0 +1,53 @@
+{
+  "name": "Product",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Product name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Product description"
+    },
+    "category": {
+      "type": "string",
+      "description": "Product category"
+    },
+    "price": {
+      "type": "number",
+      "description": "Selling price"
+    },
+    "cost": {
+      "type": "number",
+      "description": "Cost price"
+    },
+    "quantity": {
+      "type": "number",
+      "description": "Current stock quantity",
+      "default": 0
+    },
+    "unit": {
+      "type": "string",
+      "description": "Unit of measurement (e.g., ml, g, kg, pcs)",
+      "default": "pcs"
+    },
+    "low_stock_threshold": {
+      "type": "number",
+      "description": "Alert when stock falls below this level",
+      "default": 10
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "inactive"
+      ],
+      "default": "active",
+      "description": "Product status"
+    }
+  },
+  "required": [
+    "name"
+  ]
+}
