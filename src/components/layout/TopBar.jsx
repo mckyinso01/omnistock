@@ -1,5 +1,5 @@
-import { Menu, Bell } from "lucide-react";
-import { useLocation } from "react-router-dom";
+import { Menu, Bell, ChevronLeft } from "lucide-react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const pageTitles = {
   "/": "Dashboard",
@@ -14,18 +14,45 @@ const pageTitles = {
   "/customers": "Customers",
   "/purchase-orders": "Purchase Orders",
   "/stock-adjustments": "Stock Adjustments",
+  "/sales-report": "Sales Report",
+  "/monetization": "Plans & Pricing",
+  "/settings": "Settings",
 };
 
 export default function TopBar({ onMenuClick, alertCount = 0 }) {
   const location = useLocation();
+  const navigate = useNavigate();
   const title = pageTitles[location.pathname] || "StockMate";
+  const isRoot = location.pathname === "/";
 
   return (
-    <header className="bg-white border-b border-slate-200 px-4 py-3 flex items-center justify-between sticky top-0 z-10">
-      <div className="flex items-center gap-3">
+    <header
+      className="bg-white border-b border-slate-200 px-4 py-3 flex items-center justify-between sticky top-0 z-10 select-none"
+      style={{ paddingTop: "calc(env(safe-area-inset-top) + 12px)" }}
+    >
+      <div className="flex items-center gap-2">
+        {/* Back button on mobile for non-root routes */}
+        {!isRoot && (
+          <button
+            onClick={() => navigate(-1)}
+            className="lg:hidden p-2 rounded-lg hover:bg-slate-100 text-slate-600 -ml-1"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+        )}
+        {/* Hamburger only on root on mobile */}
+        {isRoot && (
+          <button
+            onClick={onMenuClick}
+            className="lg:hidden p-2 rounded-lg hover:bg-slate-100 text-slate-600 -ml-1"
+          >
+            <Menu className="w-5 h-5" />
+          </button>
+        )}
+        {/* Always show hamburger on desktop */}
         <button
           onClick={onMenuClick}
-          className="lg:hidden p-2 rounded-lg hover:bg-slate-100 text-slate-600"
+          className="hidden lg:block p-2 rounded-lg hover:bg-slate-100 text-slate-600 -ml-1"
         >
           <Menu className="w-5 h-5" />
         </button>

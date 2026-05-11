@@ -1,5 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { entities } from "@/lib/db";
+import { usePullToRefresh } from "@/hooks/usePullToRefresh";
+import PullToRefreshIndicator from "@/components/shared/PullToRefreshIndicator";
 import LowStockWidget from "@/components/dashboard/LowStockWidget";
 import LowStockBanner from "@/components/dashboard/LowStockBanner";
 import { useStockNotifications } from "@/hooks/useStockNotifications";
@@ -27,13 +29,15 @@ import {
 import { format, subDays } from "date-fns";
 
 export default function Dashboard() {
-  useStockNotifications(); // auto-check every 5 minutes + browser push notifications
+  useStockNotifications();
 
   const [products, setProducts] = useState([]);
   const [transactions, setTransactions] = useState([]);
   const [alerts, setAlerts] = useState([]);
   const [customers, setCustomers] = useState([]);
   const [loading, setLoading] = useState(true);
+  const scrollRef = useRef(null);
+  const { pulling, pullDistance, refreshing, threshold } = usePullToRefresh(loadData, scrollRef);
 
   useEffect(() => {
     loadData();
@@ -113,7 +117,8 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="p-4 md:p-6 space-y-6">
+    <div ref={scrollRef} className="p-4 md:p-6 space-y-6 overflow-y-auto h-full">
+      <PullToRefreshIndicator pulling={pulling} pullDistance={pullDistance} refreshing={refreshing} threshold={threshold} />
       {/* Low Stock Banner */}
       <LowStockBanner products={products} />
 

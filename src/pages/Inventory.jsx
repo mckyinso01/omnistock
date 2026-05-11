@@ -1,4 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import { usePullToRefresh } from "@/hooks/usePullToRefresh";
+import PullToRefreshIndicator from "@/components/shared/PullToRefreshIndicator";
 import { entities } from "@/lib/db";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -22,6 +24,9 @@ export default function Inventory() {
   const [editingProduct, setEditingProduct] = useState(null);
   const [showScanner, setShowScanner] = useState(false);
   const [scannedProduct, setScannedProduct] = useState(null);
+
+  const scrollRef = useRef(null);
+  const { pulling, pullDistance, refreshing, threshold } = usePullToRefresh(loadData, scrollRef);
 
   useEffect(() => {
     loadData();
@@ -79,7 +84,8 @@ export default function Inventory() {
   ).length;
 
   return (
-    <div className="min-h-screen">
+    <div ref={scrollRef} className="min-h-screen overflow-y-auto">
+      <PullToRefreshIndicator pulling={pulling} pullDistance={pullDistance} refreshing={refreshing} threshold={threshold} />
       {/* Header */}
       <div className="bg-white border-b border-slate-200 px-4 md:px-6 py-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">

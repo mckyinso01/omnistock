@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Safe area & overscroll */
+body {
+  overscroll-behavior-y: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Disable text selection on interactive UI elements */
+button, a, nav, [role="tab"], [role="button"] {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
