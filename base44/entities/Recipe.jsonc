@@ -1,0 +1,70 @@
+{
+  "name": "Recipe",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Recipe name (e.g., Taho Drink, Burger Meal)"
+    },
+    "product_id": {
+      "type": "string",
+      "description": "The finished product this recipe produces (linked to Product entity)"
+    },
+    "product_name": {
+      "type": "string",
+      "description": "Name of the finished product"
+    },
+    "description": {
+      "type": "string",
+      "description": "Recipe description or instructions"
+    },
+    "yield_quantity": {
+      "type": "number",
+      "description": "How many servings/units this recipe produces per batch"
+    },
+    "yield_unit": {
+      "type": "string",
+      "description": "Unit of yield (e.g., cups, servings, pieces)"
+    },
+    "ingredients": {
+      "type": "array",
+      "description": "List of ingredients with quantities",
+      "items": {
+        "type": "object",
+        "properties": {
+          "product_id": {
+            "type": "string",
+            "description": "Product ID of the ingredient"
+          },
+          "product_name": {
+            "type": "string",
+            "description": "Name of the ingredient"
+          },
+          "quantity_per_batch": {
+            "type": "number",
+            "description": "Amount of this ingredient needed per batch"
+          },
+          "unit": {
+            "type": "string",
+            "description": "Unit of measurement (ml, g, kg, pcs, etc.)"
+          }
+        }
+      }
+    },
+    "notes": {
+      "type": "string",
+      "description": "Additional notes or instructions"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "inactive"
+      ],
+      "default": "active"
+    }
+  },
+  "required": [
+    "name"
+  ]
+}
