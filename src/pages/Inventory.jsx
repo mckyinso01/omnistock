@@ -26,11 +26,6 @@ export default function Inventory() {
   const [scannedProduct, setScannedProduct] = useState(null);
 
   const scrollRef = useRef(null);
-  const { pulling, pullDistance, refreshing, threshold } = usePullToRefresh(loadData, scrollRef);
-
-  useEffect(() => {
-    loadData();
-  }, []);
 
   const loadData = async () => {
     setLoading(true);
@@ -44,6 +39,12 @@ export default function Inventory() {
     setSuppliers(s);
     setLoading(false);
   };
+
+  const { pulling, pullDistance, refreshing, threshold } = usePullToRefresh(loadData, scrollRef);
+
+  useEffect(() => {
+    loadData();
+  }, []);
 
   const handleBarcodeDetected = (barcode) => {
     const found = products.find(
