@@ -5,9 +5,10 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Plus, Search, Package, AlertTriangle, Filter } from "lucide-react";
+import { Plus, Search, Package, AlertTriangle, Filter, ScanLine } from "lucide-react";
 import ProductFormModal from "@/components/inventory/ProductFormModal";
 import ProductCard from "@/components/inventory/ProductCard";
+import BarcodeScanner from "@/components/shared/BarcodeScanner";
 
 export default function Inventory() {
   const [products, setProducts] = useState([]);
@@ -19,6 +20,8 @@ export default function Inventory() {
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
   const [editingProduct, setEditingProduct] = useState(null);
+  const [showScanner, setShowScanner] = useState(false);
+  const [scannedProduct, setScannedProduct] = useState(null);
 
   useEffect(() => {
     loadData();
@@ -35,6 +38,18 @@ export default function Inventory() {
     setCategories(c);
     setSuppliers(s);
     setLoading(false);
+  };
+
+  const handleBarcodeDetected = (barcode) => {
+    const found = products.find(
+      (p) => p.barcode === barcode || p.sku === barcode
+    );
+    if (found) {
+      setScannedProduct(found);
+      setSearch(found.barcode || found.sku || found.name);
+    } else {
+      alert(`No product found for barcode: ${barcode}`);
+    }
   };
 
   const handleDelete = async (id) => {
@@ -78,13 +93,23 @@ export default function Inventory() {
               )}
             </h2>
           </div>
-          <Button
-            onClick={() => { setEditingProduct(null); setShowForm(true); }}
-            className="bg-emerald-600 hover:bg-emerald-700 text-white gap-2"
-          >
-            <Plus className="w-4 h-4" />
-            Add Product
-          </Button>
+          <div className="flex gap-2">
+            <Button
+              variant="outline"
+              onClick={() => setShowScanner(true)}
+              className="gap-2 text-emerald-600 border-emerald-200 hover:bg-emerald-50"
+            >
+              <ScanLine className="w-4 h-4" />
+              Scan
+            </Button>
+            <Button
+              onClick={() => { setEditingProduct(null); setShowForm(true); }}
+              className="bg-emerald-600 hover:bg-emerald-700 text-white gap-2"
+            >
+              <Plus className="w-4 h-4" />
+              Add Product
+            </Button>
+          </div>
         </div>
       </div>
 
@@ -151,6 +176,12 @@ export default function Inventory() {
         )}
       </div>
 
+      {showScanner && (
+        <BarcodeScanner
+          onDetected={handleBarcodeDetected}
+          onClose={() => setShowScanner(false)}
+        />
+      )}
       {showForm && (
         <ProductFormModal
           product={editingProduct}

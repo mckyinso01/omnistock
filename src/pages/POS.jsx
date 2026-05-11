@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import ReceiptModal from "@/components/pos/ReceiptModal";
 import RefundModal from "@/components/pos/RefundModal";
+import BarcodeScanner from "@/components/shared/BarcodeScanner";
 
 const PAYMENT_METHODS = [
   { value: "cash", label: "Cash", icon: Banknote },
@@ -48,6 +49,7 @@ export default function POS() {
   const [showRefund, setShowRefund] = useState(false);
   const [activeCategory, setActiveCategory] = useState("all");
   const [categories, setCategories] = useState([]);
+  const [showScanner, setShowScanner] = useState(false);
   // Split payment
   const [splitPayments, setSplitPayments] = useState([{ method: "cash", amount: "" }]);
 
@@ -161,6 +163,17 @@ export default function POS() {
     setProcessing(false);
   };
 
+  const handleBarcodeDetected = (barcode) => {
+    const product = products.find(
+      (p) => p.barcode === barcode || p.sku === barcode
+    );
+    if (product) {
+      addToCart(product);
+    } else {
+      alert(`No product found for barcode: ${barcode}`);
+    }
+  };
+
   const filteredProducts = products.filter((p) => {
     const matchSearch = p.name?.toLowerCase().includes(search.toLowerCase()) ||
       p.sku?.toLowerCase().includes(search.toLowerCase()) ||
@@ -227,10 +240,13 @@ export default function POS() {
           )}
         </div>
 
-        {/* Refund button */}
-        <div className="p-3 border-t border-slate-100 bg-white">
-          <Button variant="outline" onClick={() => setShowRefund(true)} className="gap-2 text-orange-600 border-orange-200 hover:bg-orange-50 w-full sm:w-auto">
+        {/* Refund + Scan buttons */}
+        <div className="p-3 border-t border-slate-100 bg-white flex gap-2 flex-wrap">
+          <Button variant="outline" onClick={() => setShowRefund(true)} className="gap-2 text-orange-600 border-orange-200 hover:bg-orange-50">
             <RotateCcw className="w-4 h-4" /> Process Refund
+          </Button>
+          <Button variant="outline" onClick={() => setShowScanner(true)} className="gap-2 text-emerald-600 border-emerald-200 hover:bg-emerald-50">
+            <Search className="w-4 h-4" /> Scan Barcode
           </Button>
         </div>
       </div>
@@ -428,6 +444,12 @@ export default function POS() {
         </div>
       </div>
 
+      {showScanner && (
+        <BarcodeScanner
+          onDetected={handleBarcodeDetected}
+          onClose={() => setShowScanner(false)}
+        />
+      )}
       {lastTransaction && (
         <ReceiptModal transaction={lastTransaction} onClose={() => setLastTransaction(null)} />
       )}
