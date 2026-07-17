@@ -27,6 +27,7 @@ import SalesReport from './pages/SalesReport';
 import Monetization from './pages/Monetization';
 import Settings from './pages/Settings';
 import Automations from './pages/Automations';
+import Landing from './pages/Landing';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -80,6 +81,7 @@ const AuthenticatedApp = () => {
         <Route path="/settings" element={<Settings />} />
         <Route path="/automations" element={<Automations />} />
       </Route>
+      <Route path="/landing" element={<Landing />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
