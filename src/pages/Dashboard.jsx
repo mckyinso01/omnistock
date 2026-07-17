@@ -37,11 +37,6 @@ export default function Dashboard() {
   const [customers, setCustomers] = useState([]);
   const [loading, setLoading] = useState(true);
   const scrollRef = useRef(null);
-  const { pulling, pullDistance, refreshing, threshold } = usePullToRefresh(loadData, scrollRef);
-
-  useEffect(() => {
-    loadData();
-  }, []);
 
   const loadData = async () => {
     setLoading(true);
@@ -57,6 +52,12 @@ export default function Dashboard() {
     setCustomers(c);
     setLoading(false);
   };
+
+  const { pulling, pullDistance, refreshing, threshold } = usePullToRefresh(loadData, scrollRef);
+
+  useEffect(() => {
+    loadData();
+  }, []);
 
   const todaySales = transactions
     .filter(
