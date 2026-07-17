@@ -9,30 +9,30 @@ import {
 } from "lucide-react";
 
 const tools = [
-  { icon: Boxes, title: "Inventory Management", desc: "Subaybayan ang stock, cost, at presyo ng bawat produkto. Bulk-edit gamit ang CSV, barcode scan, at AI catalogue uploader." },
-  { icon: ShoppingCart, title: "Point of Sale", desc: "Mabilis na checkout gamit ang cash, GCash, Maya, card, o split payment. Auto-deduct sa stock at loyalty points." },
-  { icon: BarChart3, title: "Sales Analytics", desc: "Real-time na kita ng revenue, profit margin, top products, at 7-day trend para sa matalinong desisyon." },
-  { icon: ScanLine, title: "AI Catalogue Scanner", desc: "I-cam ang handwritten catalogue at ililipat ng AI papuntang digital — may confidence review bago i-save." },
-  { icon: Truck, title: "Purchase Orders", desc: "Bumuo ng PO sa suppliers, subaybayan ang deliveries, at i-reconcile ang natanggap na stock." },
-  { icon: Users, title: "Customer CRM", desc: "Itago ang customers, loyalty points, at purchase history para sa repeat business." },
-  { icon: Calculator, title: "Pricing & Margins", desc: "Bulk markup at margin-based na pag-set ng presyo at cost. Auto-audit trail ng price changes." },
-  { icon: Package, title: "Recipes & Yield", desc: "Subaybayan ang recipe ingredients, yield cost, at profitability ng bawat finished product." },
+  { icon: Boxes, title: "Inventory Management", desc: "Track stock, cost, and price for every product. Bulk-edit via CSV, barcode scan, and AI catalogue uploader." },
+  { icon: ShoppingCart, title: "Point of Sale", desc: "Fast checkout with cash, GCash, Maya, card, or split payment. Auto-deducts stock and rewards loyalty points." },
+  { icon: BarChart3, title: "Sales Analytics", desc: "Real-time revenue, profit margin, top products, and 7-day trends for smarter decisions." },
+  { icon: ScanLine, title: "AI Catalogue Scanner", desc: "Snap your handwritten catalogue and AI digitizes it — with a confidence review before saving." },
+  { icon: Truck, title: "Purchase Orders", desc: "Create POs to suppliers, track deliveries, and reconcile received stock." },
+  { icon: Users, title: "Customer CRM", desc: "Store customers, loyalty points, and purchase history for repeat business." },
+  { icon: Calculator, title: "Pricing & Margins", desc: "Bulk markup and margin-based price and cost updates. Auto-audit trail of every change." },
+  { icon: Package, title: "Recipes & Yield", desc: "Track recipe ingredients, yield cost, and profitability for each finished product." },
 ];
 
 const specs = [
-  { icon: Smartphone, title: "Mobile-first", desc: "Gumagana nang maayos sa phone, tablet, at desktop. Safe-area support para sa notch." },
-  { icon: CloudOff, title: "Offline-ready", desc: "Tumatakbo kahit walang internet; auto-sync sa cloud kapag nag-online ulit." },
-  { icon: FileSpreadsheet, title: "Google Sheets sync", desc: "Auto-push ng bawat sale bilang row sa iyong spreadsheet — araw-araw, weekly, o monthly." },
-  { icon: Mail, title: "Email reports", desc: "Awtomatikong ipadala ang sales, cost, at low-stock reports sa inbox mo." },
-  { icon: CreditCard, title: "Stripe billing", desc: "Secure subscriptions para sa Basic at Pro tiers." },
-  { icon: ShieldCheck, title: "User-level security", desc: "Tanging authorized users lang ang makakita at makakapag-edit ng data." },
+  { icon: Smartphone, title: "Mobile-first", desc: "Runs smoothly on phone, tablet, and desktop. Safe-area support for notched displays." },
+  { icon: CloudOff, title: "Offline-ready", desc: "Works even offline; auto-syncs to the cloud once you reconnect." },
+  { icon: FileSpreadsheet, title: "Google Sheets sync", desc: "Auto-pushes each sale as a row to your spreadsheet — daily, weekly, or monthly." },
+  { icon: Mail, title: "Email reports", desc: "Automatically sends sales, cost, and low-stock reports to your inbox." },
+  { icon: CreditCard, title: "Stripe billing", desc: "Secure subscriptions for Basic and Pro tiers." },
+  { icon: ShieldCheck, title: "User-level security", desc: "Only authorized users can view and edit data." },
 ];
 
 const benefits = [
-  { icon: Clock, title: "I-save ang oras", desc: "Bawas oras sa manual encoding at stock counting — gamitin mo para sa paglago ng negosyo." },
-  { icon: TrendingUp, title: "Tumaas ang kita", desc: "Makita agad kung aling produkto ang kumikita at kung anong kailangan ibenta." },
-  { icon: Bell, title: "Hindi maubusan", desc: "Auto-alert kapag bababa na ang stock — para sapat lagi ang available na produkto." },
-  { icon: FileSpreadsheet, title: "Data backup", desc: "Bawat sale ay naka-log sa Google Sheets at naka-email report — walang nawawalang data." },
+  { icon: Clock, title: "Save time", desc: "Less time on manual encoding and stock counting — re-invest it into growth." },
+  { icon: TrendingUp, title: "Boost revenue", desc: "Instantly see which products earn and what deserves a push." },
+  { icon: Bell, title: "Never run out", desc: "Auto-alert when stock runs low — so you always have enough product on hand." },
+  { icon: FileSpreadsheet, title: "Data backup", desc: "Every sale is logged to Google Sheets and emailed — no lost data." },
 ];
 
 export default function Landing() {
@@ -50,7 +50,7 @@ export default function Landing() {
           <div className="flex items-center gap-3">
             <Link to="/" className="text-sm text-slate-300 hover:text-white hidden sm:block">Dashboard</Link>
             <Button asChild size="sm" className="bg-emerald-500 hover:bg-emerald-600 text-white">
-              <Link to="/inventory">Buksan <ArrowRight className="w-4 h-4" /></Link>
+              <Link to="/inventory">Open app <ArrowRight className="w-4 h-4" /></Link>
             </Button>
           </div>
         </div>
@@ -61,21 +61,21 @@ export default function Landing() {
         <div className="absolute inset-0 bg-gradient-to-b from-emerald-500/10 via-transparent to-transparent" />
         <div className="max-w-4xl mx-auto px-4 text-center relative">
           <Badge className="bg-emerald-500/15 text-emerald-300 border-emerald-500/30 mb-6 hover:bg-emerald-500/20">
-            🇵🇭 Gawa para sa Pinoy na negosyo
+            🇵🇭 Built for Filipino businesses
           </Badge>
           <h1 className="text-4xl sm:text-6xl font-bold leading-tight mb-5">
-            Imbentaryo, POS, at Analytics<br />
-            sa <span className="bg-gradient-to-r from-emerald-300 to-emerald-500 bg-clip-text text-transparent">iisang app</span>.
+            Inventory, POS, & Analytics<br />
+            in <span className="bg-gradient-to-r from-emerald-300 to-emerald-500 bg-clip-text text-transparent">one app</span>.
           </h1>
           <p className="text-slate-300 text-lg sm:text-xl mb-8 max-w-2xl mx-auto">
-            Pamahalaan ang stock, presyo, at benta gamit ang AI catalogue scanner, Google Sheets auto-sync, at awtomatikong email reports. Lahat sa smartphone o desktop.
+            Manage stock, pricing, and sales with an AI catalogue scanner, Google Sheets auto-sync, and automated email reports — all on smartphone or desktop.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Button asChild size="lg" className="bg-emerald-500 hover:bg-emerald-600 text-white gap-2">
-              <Link to="/inventory"><ShoppingCart className="w-5 h-5" /> Simulan ang benta</Link>
+              <Link to="/inventory"><ShoppingCart className="w-5 h-5" /> Start selling</Link>
             </Button>
             <Button asChild size="lg" variant="outline" className="bg-transparent border-white/20 text-white hover:bg-white/10">
-              <Link to="/">Tingnan ang dashboard</Link>
+              <Link to="/">View dashboard</Link>
             </Button>
           </div>
         </div>
@@ -85,8 +85,8 @@ export default function Landing() {
       <section className="py-16 border-t border-white/10">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-2">Mga Kasamang Tools</h2>
-            <p className="text-slate-400">Lahat ng kailangan mo para sa smooth na operations — nasa loob na.</p>
+            <h2 className="text-3xl font-bold mb-2">Included Tools</h2>
+            <p className="text-slate-400">Everything you need for smooth operations — right inside.</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {tools.map((t) => {
@@ -112,7 +112,7 @@ export default function Landing() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-2">Tech Specs</h2>
-            <p className="text-slate-400">Binitawan mo sa modernong negosyo.</p>
+            <p className="text-slate-400">Built for the modern business.</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {specs.map((s) => {
@@ -137,8 +137,8 @@ export default function Landing() {
       <section className="py-16">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-2">Ano ang maitutulong sa negosyo mo?</h2>
-            <p className="text-slate-400">Hindi lang gamit — solusyon para sa tunay na problema ng negosyo.</p>
+            <h2 className="text-3xl font-bold mb-2">What it does for your business</h2>
+            <p className="text-slate-400">More than a tool — a solution to real business problems.</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {benefits.map((b) => {
@@ -160,17 +160,17 @@ export default function Landing() {
       {/* CTA */}
       <section className="py-16">
         <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Handa nang bilisan ang negosyo?</h2>
-          <p className="text-slate-300 mb-6">Buksan ang OmniStock at simulan na ang benta ngayon.</p>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Ready to speed up your business?</h2>
+          <p className="text-slate-300 mb-6">Open OmniStock and start selling today.</p>
           <Button asChild size="lg" className="bg-emerald-500 hover:bg-emerald-600 text-white gap-2">
-            <Link to="/inventory"><ArrowRight className="w-5 h-5" /> Buksan ang app</Link>
+            <Link to="/inventory"><ArrowRight className="w-5 h-5" /> Open the app</Link>
           </Button>
         </div>
       </section>
 
       {/* Footer */}
       <footer className="border-t border-white/10 py-6 text-center text-sm text-slate-500">
-        OmniStock · Imbentaryo at POS para sa negosyong Pinoy.
+        OmniStock · Inventory & POS for Filipino businesses.
       </footer>
     </div>
   );
