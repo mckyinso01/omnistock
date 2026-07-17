@@ -13,6 +13,8 @@ import {
 } from "lucide-react";
 import { format, subDays, startOfMonth, endOfMonth, startOfWeek, endOfWeek } from "date-fns";
 import jsPDF from "jspdf";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import TopProductsAnalytics from "@/components/sales/TopProductsAnalytics";
 
 export default function SalesReport() {
   const [transactions, setTransactions] = useState([]);
@@ -74,15 +76,17 @@ export default function SalesReport() {
   const productSales = {};
   periodTxns.forEach(t => {
     (t.items || []).forEach(item => {
-      if (!productSales[item.product_name]) productSales[item.product_name] = { qty: 0, revenue: 0 };
+      if (!productSales[item.product_name]) productSales[item.product_name] = { qty: 0, revenue: 0, cost: 0 };
       productSales[item.product_name].qty += item.quantity || 0;
       productSales[item.product_name].revenue += item.subtotal || 0;
+      productSales[item.product_name].cost += (item.unit_cost || 0) * (item.quantity || 0);
     });
   });
   const topProducts = Object.entries(productSales)
-    .map(([name, data]) => ({ name, ...data }))
+    .map(([name, data]) => ({ name, ...data, profit: data.revenue - data.cost }))
     .sort((a, b) => b.revenue - a.revenue)
     .slice(0, 10);
+  const itemsSold = periodTxns.reduce((s, t) => s + (t.items || []).reduce((q, it) => q + (it.quantity || 0), 0), 0);
 
   const lowStockItems = products.filter(p => p.status === "active" && (p.quantity || 0) <= (p.low_stock_threshold || 10));
 
@@ -239,6 +243,13 @@ Report generated on ${format(new Date(), "MMMM d, yyyy hh:mm a")}
           </SelectContent>
         </Select>
       </div>
+
+      <Tabs defaultValue="overview" className="space-y-6">
+        <TabsList>
+          <TabsTrigger value="overview"><FileText className="w-4 h-4 inline mr-1" />Overview</TabsTrigger>
+          <TabsTrigger value="analytics"><TrendingUp className="w-4 h-4 inline mr-1" />Top Products</TabsTrigger>
+        </TabsList>
+        <TabsContent value="overview" className="space-y-6">
 
       {/* KPI Summary */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
@@ -410,6 +421,16 @@ Report generated on ${format(new Date(), "MMMM d, yyyy hh:mm a")}
           </div>
         </CardContent>
       </Card>
+        </TabsContent>
+        <TabsContent value="analytics" className="space-y-6">
+          <TopProductsAnalytics
+            topProducts={topProducts}
+            totalRevenue={totalRevenue}
+            totalOrders={totalOrders}
+            itemsSold={itemsSold}
+          />
+        </TabsContent>
+      </Tabs>
     </div>
   );
 }
