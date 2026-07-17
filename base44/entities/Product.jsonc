@@ -38,6 +38,10 @@
       "type": "string",
       "description": "Product photo URL"
     },
+    "source_image_url": {
+      "type": "string",
+      "description": "URL of the original catalogue image this product was extracted from (AI scan source)"
+    },
     "price": {
       "type": "number",
       "description": "Selling price"

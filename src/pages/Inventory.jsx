@@ -7,8 +7,9 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Plus, Search, Package, AlertTriangle, Filter, ScanLine, Download, Upload } from "lucide-react";
+import { Plus, Search, Package, AlertTriangle, Filter, ScanLine, Download, Upload, ScanText } from "lucide-react";
 import ProductFormModal from "@/components/inventory/ProductFormModal";
+import CatalogueUploaderModal from "@/components/inventory/CatalogueUploaderModal";
 import ProductCard from "@/components/inventory/ProductCard";
 import BarcodeScanner from "@/components/shared/BarcodeScanner";
 import { exportProductsToCsv, downloadCsv, parseProductsCsv, csvRowsToProducts } from "@/lib/csv";
@@ -25,6 +26,7 @@ export default function Inventory() {
   const [editingProduct, setEditingProduct] = useState(null);
   const [showScanner, setShowScanner] = useState(false);
   const [scannedProduct, setScannedProduct] = useState(null);
+  const [showCatalogue, setShowCatalogue] = useState(false);
 
   const scrollRef = useRef(null);
 
@@ -68,6 +70,12 @@ export default function Inventory() {
   const handleSave = () => {
     setShowForm(false);
     setEditingProduct(null);
+    loadData();
+  };
+
+  const handleCatalogueImport = async (records) => {
+    await entities.Product.bulkCreate(records);
+    alert(`Imported ${records.length} product(s) from catalogue scan.`);
     loadData();
   };
 
@@ -170,6 +178,15 @@ export default function Inventory() {
               Scan
             </Button>
             <Button
+              variant="outline"
+              onClick={() => setShowCatalogue(true)}
+              className="gap-2 text-purple-600 border-purple-200 hover:bg-purple-50"
+              title="Scan a paper catalogue with AI"
+            >
+              <ScanText className="w-4 h-4" />
+              Catalogue
+            </Button>
+            <Button
               onClick={() => { setEditingProduct(null); setShowForm(true); }}
               className="bg-emerald-600 hover:bg-emerald-700 text-white gap-2"
             >
@@ -256,6 +273,12 @@ export default function Inventory() {
           suppliers={suppliers}
           onSave={handleSave}
           onClose={() => { setShowForm(false); setEditingProduct(null); }}
+        />
+      )}
+      {showCatalogue && (
+        <CatalogueUploaderModal
+          onImported={handleCatalogueImport}
+          onClose={() => setShowCatalogue(false)}
         />
       )}
     </div>
