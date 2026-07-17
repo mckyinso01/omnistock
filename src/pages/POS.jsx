@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { entities } from "@/lib/db";
+import { base44 } from "@/api/base44Client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -138,6 +139,27 @@ export default function POS() {
       customer_name: selectedCustomer?.name || null,
       status: "completed",
     });
+
+    // Mirror the completed sale to the cloud sandbox so the server-side
+    // Google Sheets sync can read it. Best-effort only — POS must remain
+    // usable offline, so we never block checkout on this call failing.
+    try {
+      await base44.entities.Transaction.create({
+        transaction_number: txn.transaction_number,
+        type: txn.type,
+        items: txn.items,
+        subtotal: txn.subtotal,
+        discount_amount: txn.discount_amount,
+        tax_amount: txn.tax_amount,
+        total_amount: txn.total_amount,
+        amount_tendered: txn.amount_tendered,
+        change_amount: txn.change_amount,
+        payment_method: txn.payment_method,
+        payment_details: txn.payment_details,
+        customer_name: txn.customer_name,
+        status: "completed",
+      });
+    } catch (e) { /* best-effort: ignore cloud mirror failure */ }
 
     // Deduct stock
     await Promise.all(cart.map((item) => {

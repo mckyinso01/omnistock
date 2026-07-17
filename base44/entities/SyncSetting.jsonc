@@ -8,23 +8,28 @@
     },
     "sheet_tab_name": {
       "type": "string",
-      "description": "Sheet tab name to append rows to",
-      "default": "Transaction Summaries"
+      "description": "Sheet tab name to append per-sale rows to",
+      "default": "Transactions"
     },
     "daily_enabled": {
       "type": "boolean",
       "default": false,
-      "description": "Append a row covering the previous day each night"
+      "description": "Run the per-sale sync automatically at 11 PM Manila time each night"
     },
     "weekly_enabled": {
       "type": "boolean",
       "default": false,
-      "description": "Append a row covering the last 7 days each Monday night"
+      "description": "Run the per-sale sync automatically every Monday at 11 PM Manila time"
     },
     "monthly_enabled": {
       "type": "boolean",
       "default": false,
-      "description": "Append a row covering the last month on the 1st of each month"
+      "description": "Run the per-sale sync automatically on the 1st of each month at 11 PM Manila time"
+    },
+    "last_synced_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO timestamp of the most recent completed sync run, used to dedupe so old sales are never re-appended"
     }
   },
   "required": [

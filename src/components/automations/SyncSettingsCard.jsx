@@ -24,10 +24,11 @@ export default function SyncSettingsCard() {
     } else {
       setSetting({
         spreadsheet_id: "",
-        sheet_tab_name: "Transaction Summaries",
+        sheet_tab_name: "Transactions",
         daily_enabled: false,
         weekly_enabled: false,
         monthly_enabled: false,
+        last_synced_at: null,
       });
     }
     setLoading(false);
@@ -50,23 +51,22 @@ export default function SyncSettingsCard() {
     setSaving(false);
   };
 
-  const testSync = async (freq) => {
-    setTesting(freq);
+  const syncNow = async () => {
+    setTesting("now");
     setMsg(null);
     try {
-      const res = await base44.functions.invoke("syncToSheets", { frequency: freq });
+      const res = await base44.functions.invoke("syncToSheets", { frequency: "now" });
       const data = res.data || res;
       if (data?.error) {
         setMsg({ type: "error", text: data.error });
+      } else if ((data?.appended ?? 0) === 0) {
+        setMsg({ type: "success", text: "Up to date — no new sales to push." });
       } else {
-        const r = (data?.results || [])[0] || {};
-        const summary = r.error
-          ? `${freq}: ${r.error}`
-          : `${freq}: stored ${r.transactions ?? 0} txns, ₱${(r.total_sales ?? 0).toFixed(2)} sales, ₱${(r.gross_profit ?? 0).toFixed(2)} profit`;
-        setMsg({ type: r.error ? "error" : "success", text: summary });
+        setMsg({ type: "success", text: `Synced ${data.appended} new sale(s) to your sheet.` });
       }
+      await load();
     } catch (e) {
-      setMsg({ type: "error", text: e.message || "Test failed." });
+      setMsg({ type: "error", text: e.message || "Sync failed." });
     }
     setTesting(null);
   };
@@ -74,9 +74,9 @@ export default function SyncSettingsCard() {
   if (loading) return <p className="text-slate-400 text-sm">Loading sync settings...</p>;
 
   const frequencies = [
-    { key: "daily_enabled", label: "Daily — covers previous day, runs at 11 PM Manila" },
-    { key: "weekly_enabled", label: "Weekly — covers last 7 days, runs Monday 11 PM" },
-    { key: "monthly_enabled", label: "Monthly — covers last month, runs on 1st at 11 PM" },
+    { key: "daily_enabled", label: "Daily — run every night at 11 PM Manila time" },
+    { key: "weekly_enabled", label: "Weekly — run every Monday at 11 PM" },
+    { key: "monthly_enabled", label: "Monthly — run on the 1st at 11 PM" },
   ];
 
   return (
@@ -88,6 +88,9 @@ export default function SyncSettingsCard() {
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
+        <p className="text-xs text-slate-600 bg-emerald-50 rounded-lg p-2.5 leading-relaxed">
+          Each completed sale is pushed to your Google Sheet as its own row — Date, Transaction #, Items, Total, Profit, Payment method, and more. Set your sheet and schedule below.
+        </p>
         <div className="space-y-1.5">
           <Label>Spreadsheet URL or ID</Label>
           <Input
@@ -107,7 +110,7 @@ export default function SyncSettingsCard() {
           <p className="text-xs text-slate-400">If the tab doesn't exist, we'll create it.</p>
         </div>
         <div className="space-y-2.5 py-2 border-y border-slate-100">
-          <p className="text-sm font-medium text-slate-600">Frequencies to sync automatically:</p>
+          <p className="text-sm font-medium text-slate-600">Run the per-sale sync automatically:</p>
           {frequencies.map(r => (
             <div key={r.key} className="flex items-center justify-between">
               <span className="text-sm text-slate-600">{r.label}</span>
@@ -123,12 +126,10 @@ export default function SyncSettingsCard() {
             {saving ? "Saving..." : (<><Save className="w-4 h-4" /> Save</>)}
           </Button>
           <div className="flex gap-2">
-            {["daily", "weekly", "monthly"].map(f => (
-              <Button key={f} variant="outline" onClick={() => testSync(f)} disabled={!!testing} className="gap-2 text-sm capitalize">
-                {testing === f ? <Loader2 className="w-3 h-3 animate-spin" /> : <Send className="w-3 h-3" />}
-                Test {f}
-              </Button>
-            ))}
+            <Button variant="outline" onClick={syncNow} disabled={!!testing} className="gap-2 text-sm bg-emerald-50 text-emerald-700 border-emerald-200 hover:bg-emerald-100">
+              {testing === "now" ? <Loader2 className="w-3 h-3 animate-spin" /> : <Send className="w-3 h-3" />}
+              Sync Now
+            </Button>
           </div>
         </div>
         {msg && (
@@ -136,6 +137,12 @@ export default function SyncSettingsCard() {
             {msg.type === "success" ? <CheckCircle2 className="w-4 h-4 mt-0.5 shrink-0" /> : <AlertCircle className="w-4 h-4 mt-0.5 shrink-0" />}
             <span>{msg.text}</span>
           </div>
+        )}
+        {setting?.last_synced_at && !msg && (
+          <p className="text-xs text-slate-400 flex items-center gap-1 pl-0.5">
+            <CheckCircle2 className="w-3 h-3 text-emerald-400" />
+            Last synced {new Date(setting.last_synced_at).toLocaleString("en-PH", { dateStyle: "medium", timeStyle: "short" })}.
+          </p>
         )}
       </CardContent>
     </Card>

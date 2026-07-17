@@ -11,7 +11,7 @@ export default function Automations() {
         </div>
         <div>
           <h1 className="text-xl font-bold text-slate-800">Automations</h1>
-          <p className="text-sm text-slate-500">Sync transaction summaries to Google Sheets and schedule recurring email reports.</p>
+          <p className="text-sm text-slate-500">Push every completed sale to Google Sheets and schedule recurring email reports.</p>
         </div>
       </div>
       <SyncSettingsCard />
