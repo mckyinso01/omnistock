@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import {
   LayoutDashboard, Package, ShoppingCart, BarChart2, Tag, Truck,
   ChefHat, Bell, Users, ClipboardList, Sliders, DollarSign, X,
-  FileText, Crown, Settings
+  FileText, Crown, Settings, Zap
 } from "lucide-react";
 
 const navGroups = [
@@ -38,6 +38,12 @@ const navGroups = [
     label: "Monetization",
     items: [
       { path: "/monetization", label: "Plans & Pricing", icon: Crown },
+    ],
+  },
+  {
+    label: "Automation",
+    items: [
+      { path: "/automations", label: "Reports & Sync", icon: Zap },
     ],
   },
   {

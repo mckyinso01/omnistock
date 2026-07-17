@@ -1,0 +1,33 @@
+{
+  "name": "SyncSetting",
+  "type": "object",
+  "properties": {
+    "spreadsheet_id": {
+      "type": "string",
+      "description": "Google Sheets spreadsheet ID or full URL"
+    },
+    "sheet_tab_name": {
+      "type": "string",
+      "description": "Sheet tab name to append rows to",
+      "default": "Transaction Summaries"
+    },
+    "daily_enabled": {
+      "type": "boolean",
+      "default": false,
+      "description": "Append a row covering the previous day each night"
+    },
+    "weekly_enabled": {
+      "type": "boolean",
+      "default": false,
+      "description": "Append a row covering the last 7 days each Monday night"
+    },
+    "monthly_enabled": {
+      "type": "boolean",
+      "default": false,
+      "description": "Append a row covering the last month on the 1st of each month"
+    }
+  },
+  "required": [
+    "spreadsheet_id"
+  ]
+}

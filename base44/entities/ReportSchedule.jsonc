@@ -1,0 +1,50 @@
+{
+  "name": "ReportSchedule",
+  "type": "object",
+  "properties": {
+    "label": {
+      "type": "string",
+      "description": "Friendly name for the schedule"
+    },
+    "report_type": {
+      "type": "string",
+      "enum": [
+        "sales",
+        "cost_expenses",
+        "low_stock"
+      ],
+      "description": "Report content type"
+    },
+    "frequency": {
+      "type": "string",
+      "enum": [
+        "daily",
+        "weekly",
+        "monthly"
+      ],
+      "description": "How often the report is sent"
+    },
+    "day_of_week": {
+      "type": "number",
+      "description": "Day of week (0=Sunday) for weekly schedules"
+    },
+    "day_of_month": {
+      "type": "number",
+      "description": "Day of month (1-28) for monthly schedules"
+    },
+    "recipient_email": {
+      "type": "string",
+      "description": "Email address to send the report to"
+    },
+    "active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether the schedule is active"
+    }
+  },
+  "required": [
+    "report_type",
+    "frequency",
+    "recipient_email"
+  ]
+}

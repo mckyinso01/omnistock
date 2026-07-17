@@ -1,0 +1,45 @@
+{
+  "description": "Runs each morning at 8 AM Manila time and sends any scheduled email reports due today (daily every day, weekly on the configured weekday, monthly on the configured day-of-month).",
+  "trigger": {
+    "condition": null,
+    "config": {
+      "trigger_type": "scheduled",
+      "events": [],
+      "schedule_mode": "recurring",
+      "cron_expression": "0 8 * * *",
+      "one_time_date": null,
+      "timezone": "Asia/Manila",
+      "interval_value": null,
+      "interval_unit": null,
+      "interval_anchor": null,
+      "ends_type": "never",
+      "ends_on_date": null,
+      "ends_after_count": null
+    }
+  },
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "daily_report_dispatch",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "dispatch_reports": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "sendScheduledReports",
+            "args": {}
+          },
+          "then": "end",
+          "x-base44": {
+            "title": "Send scheduled email reports",
+            "description": "Dispatch reports due today"
+          }
+        }
+      }
+    ]
+  },
+  "name": "Daily Email Report Dispatch"
+}

@@ -1,0 +1,45 @@
+{
+  "description": "Runs each night at 11 PM Manila time to append transaction summary rows to Google Sheets for daily/weekly/monthly periods (whichever are due today per the user's sync settings).",
+  "trigger": {
+    "condition": null,
+    "config": {
+      "trigger_type": "scheduled",
+      "events": [],
+      "schedule_mode": "recurring",
+      "cron_expression": "0 23 * * *",
+      "one_time_date": null,
+      "timezone": "Asia/Manila",
+      "interval_value": null,
+      "interval_unit": null,
+      "interval_anchor": null,
+      "ends_type": "never",
+      "ends_on_date": null,
+      "ends_after_count": null
+    }
+  },
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "daily_sheets_sync",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "sync_sheets": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "syncToSheets",
+            "args": {}
+          },
+          "then": "end",
+          "x-base44": {
+            "title": "Sync sheets",
+            "description": "Append due summary rows"
+          }
+        }
+      }
+    ]
+  },
+  "name": "Daily Google Sheets Sync"
+}
