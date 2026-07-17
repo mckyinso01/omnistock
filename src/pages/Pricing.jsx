@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Search, TrendingUp, Save, History } from "lucide-react";
+import { Search, TrendingUp, Save, History, Layers, CheckSquare, Square } from "lucide-react";
 
 export default function Pricing() {
   const [products, setProducts] = useState([]);
@@ -14,6 +14,9 @@ export default function Pricing() {
   const [edits, setEdits] = useState({});
   const [saving, setSaving] = useState(false);
   const [targetMargin, setTargetMargin] = useState(30);
+  const [selectedIds, setSelectedIds] = useState(new Set());
+  const [bulkMarkup, setBulkMarkup] = useState(10);
+  const [bulkSaving, setBulkSaving] = useState(false);
 
   useEffect(() => { loadData(); }, []);
 
@@ -86,6 +89,61 @@ export default function Pricing() {
     setEdits(newEdits);
   };
 
+  const toggleSelect = (id) => {
+    setSelectedIds(prev => {
+      const n = new Set(prev);
+      if (n.has(id)) n.delete(id);
+      else n.add(id);
+      return n;
+    });
+  };
+
+  const toggleSelectAll = () => {
+    if (filtered.length > 0 && filtered.every(p => selectedIds.has(p.id)) && selectedIds.size > 0) {
+      setSelectedIds(new Set());
+    } else {
+      setSelectedIds(new Set(filtered.map(p => p.id)));
+    }
+  };
+
+  const applyBulkMarkup = () => {
+    const newEdits = { ...edits };
+    selectedIds.forEach(id => {
+      const product = products.find(p => p.id === id);
+      if (!product) return;
+      const currentCost = newEdits[id]?.cost ?? product.cost ?? 0;
+      const currentPrice = newEdits[id]?.price ?? product.price ?? 0;
+      const newPrice = parseFloat((currentPrice * (1 + (bulkMarkup || 0) / 100)).toFixed(2));
+      newEdits[id] = { price: newPrice, cost: currentCost };
+    });
+    setEdits(newEdits);
+  };
+
+  const saveAllSelected = async () => {
+    setBulkSaving(true);
+    for (const id of Array.from(selectedIds)) {
+      const e = edits[id];
+      const product = products.find(p => p.id === id);
+      if (!e || !product) continue;
+      if (e.price !== product.price || e.cost !== product.cost) {
+        await entities.PriceHistory.create({
+          product_id: product.id,
+          product_name: product.name,
+          old_price: product.price,
+          new_price: e.price,
+          old_cost: product.cost,
+          new_cost: e.cost,
+          reason: `Bulk markup (${bulkMarkup}%)`,
+        });
+        await entities.Product.update(product.id, { price: e.price, cost: e.cost });
+      }
+    }
+    setBulkSaving(false);
+    setEdits({});
+    setSelectedIds(new Set());
+    loadData();
+  };
+
   const filtered = products.filter(p =>
     p.name?.toLowerCase().includes(search.toLowerCase())
   );
@@ -128,6 +186,61 @@ export default function Pricing() {
         </CardContent>
       </Card>
 
+      {/* Bulk Markup Tool */}
+      <Card className={`border-0 shadow-sm ${selectedIds.size > 0 ? "bg-amber-50 ring-2 ring-amber-200" : "bg-slate-50"}`}>
+        <CardContent className="p-4">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 rounded-xl bg-amber-500 flex items-center justify-center">
+                <Layers className="w-5 h-5 text-white" />
+              </div>
+              <div>
+                <p className="font-semibold text-slate-800">Bulk Markup Tool</p>
+                <p className="text-xs text-slate-500">
+                  {selectedIds.size > 0
+                    ? `${selectedIds.size} product(s) selected — apply a % markup to selected items.`
+                    : "Tick rows below to select products, then apply a percentage markup to all prices at once."}
+                </p>
+              </div>
+            </div>
+            <div className="flex items-center gap-2 sm:ml-auto flex-wrap">
+              <div className="flex items-center gap-2">
+                <span className="text-sm font-medium text-slate-700">Markup:</span>
+                <Input
+                  type="number"
+                  value={bulkMarkup}
+                  onChange={e => setBulkMarkup(parseFloat(e.target.value) || 0)}
+                  className="w-20 text-center"
+                />
+                <span className="text-sm text-slate-500">%</span>
+              </div>
+              <Button
+                onClick={applyBulkMarkup}
+                disabled={selectedIds.size === 0}
+                className="bg-amber-500 hover:bg-amber-600 text-white text-sm"
+              >
+                Apply Markup
+              </Button>
+              <Button
+                onClick={saveAllSelected}
+                disabled={selectedIds.size === 0 || bulkSaving}
+                className="bg-emerald-600 hover:bg-emerald-700 text-white text-sm gap-2"
+              >
+                {bulkSaving ? "Saving..." : `Save${selectedIds.size > 0 ? ` ${selectedIds.size}` : ""} Selected`}
+              </Button>
+              <Button
+                variant="ghost"
+                onClick={() => { setSelectedIds(new Set()); setEdits({}); }}
+                disabled={selectedIds.size === 0}
+                className="text-sm"
+              >
+                Clear
+              </Button>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
       {/* Search */}
       <div className="relative max-w-md">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
@@ -139,6 +252,14 @@ export default function Pricing() {
         <table className="w-full text-sm">
           <thead>
             <tr className="border-b border-slate-100 bg-slate-50">
+              <th className="text-center px-3 py-3 w-10">
+                <button onClick={toggleSelectAll} className="inline-flex">
+                  {filtered.length > 0 && filtered.every(p => selectedIds.has(p.id)) && selectedIds.size > 0
+                    ? <CheckSquare className="w-5 h-5 text-emerald-600" />
+                    : <Square className="w-5 h-5 text-slate-400" />
+                  }
+                </button>
+              </th>
               <th className="text-left px-4 py-3 font-semibold text-slate-600">Product</th>
               <th className="text-right px-3 py-3 font-semibold text-slate-600">Cost (₱)</th>
               <th className="text-right px-3 py-3 font-semibold text-slate-600">Price (₱)</th>
@@ -156,7 +277,15 @@ export default function Pricing() {
               const marginNum = parseFloat(margin);
 
               return (
-                <tr key={product.id} className={`border-b border-slate-50 last:border-0 ${changed ? "bg-yellow-50" : "hover:bg-slate-50"}`}>
+                <tr key={product.id} className={`border-b border-slate-50 last:border-0 ${changed ? "bg-yellow-50" : selectedIds.has(product.id) ? "bg-amber-50" : "hover:bg-slate-50"}`}>
+                  <td className="px-3 py-3 text-center">
+                    <button onClick={() => toggleSelect(product.id)} className="inline-flex">
+                      {selectedIds.has(product.id)
+                        ? <CheckSquare className="w-5 h-5 text-emerald-600" />
+                        : <Square className="w-5 h-5 text-slate-300" />
+                      }
+                    </button>
+                  </td>
                   <td className="px-4 py-3">
                     <p className="font-medium text-slate-800">{product.name}</p>
                     {product.category && <p className="text-xs text-slate-400">{product.category}</p>}

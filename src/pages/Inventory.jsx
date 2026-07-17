@@ -7,10 +7,11 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Plus, Search, Package, AlertTriangle, Filter, ScanLine } from "lucide-react";
+import { Plus, Search, Package, AlertTriangle, Filter, ScanLine, Download, Upload } from "lucide-react";
 import ProductFormModal from "@/components/inventory/ProductFormModal";
 import ProductCard from "@/components/inventory/ProductCard";
 import BarcodeScanner from "@/components/shared/BarcodeScanner";
+import { exportProductsToCsv, downloadCsv, parseProductsCsv, csvRowsToProducts } from "@/lib/csv";
 
 export default function Inventory() {
   const [products, setProducts] = useState([]);
@@ -70,6 +71,40 @@ export default function Inventory() {
     loadData();
   };
 
+  const handleExportCsv = () => {
+    const csv = exportProductsToCsv(products);
+    const today = new Date().toISOString().slice(0, 10);
+    downloadCsv(`inventory-export-${today}.csv`, csv);
+  };
+
+  const handleImportCsv = async (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    e.target.value = "";
+    if (!confirm(`Import products from "${file.name}"? Existing products with matching SKUs will be skipped.`)) return;
+    try {
+      const text = await file.text();
+      const rows = parseProductsCsv(text);
+      const records = csvRowsToProducts(rows);
+      if (records.length === 0) {
+        alert("No valid product rows found in CSV.");
+        return;
+      }
+      // Skip rows whose SKU already matches an existing product
+      const existingSkus = new Set(products.map(p => p.sku).filter(Boolean));
+      const toCreate = records.filter(r => !r.sku || !existingSkus.has(r.sku));
+      if (toCreate.length === 0) {
+        alert("All rows have SKUs that already exist. Nothing to import.");
+        return;
+      }
+      await entities.Product.bulkCreate(toCreate);
+      alert(`Imported ${toCreate.length} product(s). Skipped ${records.length - toCreate.length} existing SKU(s).`);
+      loadData();
+    } catch (err) {
+      alert("Import failed: " + (err?.message || "Unknown error"));
+    }
+  };
+
   const filtered = products.filter((p) => {
     const matchSearch =
       p.name?.toLowerCase().includes(search.toLowerCase()) ||
@@ -101,6 +136,31 @@ export default function Inventory() {
             </h2>
           </div>
           <div className="flex gap-2">
+            <Button
+              variant="outline"
+              onClick={handleExportCsv}
+              className="gap-2 text-slate-600"
+              title="Export products to CSV"
+            >
+              <Download className="w-4 h-4" />
+              Export
+            </Button>
+            <Button
+              variant="outline"
+              onClick={() => document.getElementById("csv-import-input")?.click()}
+              className="gap-2 text-slate-600"
+              title="Import products from CSV"
+            >
+              <Upload className="w-4 h-4" />
+              Import
+            </Button>
+            <input
+              id="csv-import-input"
+              type="file"
+              accept=".csv"
+              className="hidden"
+              onChange={handleImportCsv}
+            />
             <Button
               variant="outline"
               onClick={() => setShowScanner(true)}
