@@ -10,6 +10,7 @@ import {
 } from "recharts";
 import { format, subDays, startOfMonth, addDays, subMonths } from "date-fns";
 import { runMonthlyAnalysis } from "@/lib/monthlyAnalysis";
+import TopCustomersAnalysis from "@/components/analytics/TopCustomersAnalysis";
 
 const COLORS = ["#10b981", "#3b82f6", "#8b5cf6", "#f59e0b", "#ef4444", "#06b6d4"];
 
@@ -148,12 +149,16 @@ export default function Analytics() {
     <div className="p-4 md:p-6 space-y-6">
       {/* Tab switcher */}
       <div className="flex gap-2 border-b border-slate-200 pb-0">
-        {["overview", "monthly"].map(tab => (
-          <button key={tab} onClick={() => setActiveTab(tab)}
-            className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${activeTab === tab
+        {[
+          { id: "overview", label: "Overview" },
+          { id: "monthly", label: "Monthly Analysis" },
+          { id: "topCustomers", label: "Top Customers" },
+        ].map(tab => (
+          <button key={tab.id} onClick={() => setActiveTab(tab.id)}
+            className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${activeTab === tab.id
               ? "border-emerald-500 text-emerald-700"
               : "border-transparent text-slate-500 hover:text-slate-700"}`}>
-            {tab === "overview" ? "Overview" : "Monthly Analysis"}
+            {tab.label}
           </button>
         ))}
       </div>
@@ -250,6 +255,7 @@ export default function Analytics() {
         </div>
       )}
 
+      {activeTab === "topCustomers" && <TopCustomersAnalysis />}
       {activeTab !== "overview" && null}
       {activeTab === "overview" && <>
 

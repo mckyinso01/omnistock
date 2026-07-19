@@ -7,9 +7,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { Plus, Truck, X, Trash2, Package, CheckCircle2, Clock, ChevronDown, ChevronUp, Mail, Loader2 } from "lucide-react";
+import { Plus, Truck, X, Trash2, Package, CheckCircle2, Clock, ChevronDown, ChevronUp, Mail, Loader2, Calendar } from "lucide-react";
 import { format } from "date-fns";
 import { sendWeeklyPOReports } from "@/lib/weeklyPOReport";
+import { base44 } from "@/api/base44Client";
+import { useToast } from "@/components/ui/use-toast";
 
 const STATUS_COLORS = {
   draft: "bg-slate-100 text-slate-600",
@@ -30,6 +32,8 @@ export default function PurchaseOrders() {
   const [saving, setSaving] = useState(false);
   const [sendingReport, setSendingReport] = useState(false);
   const [reportResult, setReportResult] = useState(null);
+  const [calSyncing, setCalSyncing] = useState(false);
+  const { toast } = useToast();
 
   useEffect(() => { loadData(); }, []);
 
@@ -81,11 +85,49 @@ export default function PurchaseOrders() {
     setSaving(true);
     const total = form.items.reduce((s, i) => s + (i.subtotal || 0), 0);
     const poNum = `PO-${Date.now()}`;
-    await entities.PurchaseOrder.create({ ...form, po_number: poNum, total_amount: total, status: "draft" });
+    const created = await entities.PurchaseOrder.create({ ...form, po_number: poNum, total_amount: total, status: "draft" });
     setSaving(false);
     setShowForm(false);
     setForm({ supplier_id: "", supplier_name: "", expected_date: "", notes: "", items: [] });
     loadData();
+    if (form.expected_date) {
+      try {
+        const res = await base44.functions.invoke("syncPOToCalendar", { po_id: created?.id });
+        const data = res?.data || {};
+        if (data?.success) {
+          toast({ title: "Added to Google Calendar", description: `PO ${poNum} scheduled for ${form.expected_date}.` });
+        } else {
+          toast({ title: "Calendar sync skipped", description: data?.error || "Connect Google Calendar to enable auto-sync.", variant: "destructive" });
+        }
+      } catch (e) {
+        toast({ title: "Calendar sync skipped", description: e?.message || "Connect Google Calendar to enable auto-sync.", variant: "destructive" });
+      }
+    }
+  };
+
+  const handleSyncToCalendar = async (poId) => {
+    setCalSyncing(true);
+    try {
+      const res = await base44.functions.invoke("syncPOToCalendar", poId ? { po_id: poId } : { all: true });
+      const data = res?.data || {};
+      if (data.success) {
+        toast({
+          title: "Synced to Google Calendar",
+          description: `${data.created} PO(s) scheduled on your calendar; ${data.failed} failed.`,
+        });
+      } else {
+        toast({
+          title: "Calendar sync issue",
+          description: data.error || "Could not sync to Google Calendar.",
+          variant: "destructive",
+        });
+      }
+    } catch (e) {
+      const msg = e?.response?.data?.error || e?.message || "Could not sync to Google Calendar. Is Google Calendar connected?";
+      toast({ title: "Calendar sync failed", description: msg, variant: "destructive" });
+    } finally {
+      setCalSyncing(false);
+    }
   };
 
   const updateStatus = async (id, status) => {
@@ -121,6 +163,15 @@ export default function PurchaseOrders() {
         >
           {sendingReport ? <Loader2 className="w-4 h-4 animate-spin" /> : <Mail className="w-4 h-4" />}
           {sendingReport ? "Sending..." : "Email Weekly PO Report"}
+        </Button>
+        <Button
+          variant="outline"
+          onClick={() => handleSyncToCalendar()}
+          disabled={calSyncing}
+          className="gap-2 text-violet-600 border-violet-200 hover:bg-violet-50"
+        >
+          {calSyncing ? <Loader2 className="w-4 h-4 animate-spin" /> : <Calendar className="w-4 h-4" />}
+          {calSyncing ? "Syncing..." : "Sync to Google Calendar"}
         </Button>
         <Button onClick={() => setShowForm(true)} className="bg-emerald-600 hover:bg-emerald-700 text-white gap-2">
           <Plus className="w-4 h-4" /> New Purchase Order
@@ -257,6 +308,16 @@ export default function PurchaseOrders() {
                       <Button size="sm" onClick={() => updateStatus(order.id, "received")} className="text-xs bg-emerald-600 hover:bg-emerald-700 text-white gap-1">
                         <CheckCircle2 className="w-3 h-3" />Received
                       </Button>
+                    )}
+                    {order.expected_date && (
+                      <button
+                        onClick={() => handleSyncToCalendar(order.id)}
+                        disabled={calSyncing}
+                        title="Add expected delivery to Google Calendar"
+                        className="p-1.5 rounded-md text-violet-500 hover:bg-violet-50 disabled:opacity-40"
+                      >
+                        <Calendar className="w-4 h-4" />
+                      </button>
                     )}
                     <button onClick={() => setExpanded(expanded === order.id ? null : order.id)} className="text-slate-400">
                       {expanded === order.id ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
