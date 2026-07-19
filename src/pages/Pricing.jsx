@@ -5,6 +5,8 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Search, TrendingUp, Save, History, Layers, CheckSquare, Square } from "lucide-react";
+import { useApiToast } from "@/hooks/useApiToast";
+import HelpTip from "@/components/ui/HelpTip";
 
 export default function Pricing() {
   const [products, setProducts] = useState([]);
@@ -17,6 +19,7 @@ export default function Pricing() {
   const [selectedIds, setSelectedIds] = useState(new Set());
   const [bulkMarkup, setBulkMarkup] = useState(10);
   const [bulkSaving, setBulkSaving] = useState(false);
+  const { toastSuccess, toastError } = useApiToast();
 
   useEffect(() => { loadData(); }, []);
 
@@ -60,7 +63,7 @@ export default function Pricing() {
     const e = edits[product.id];
     if (!e) return;
     setSaving(true);
-
+    try {
     // Save price history
     if (e.price !== product.price || e.cost !== product.cost) {
       await entities.PriceHistory.create({
@@ -74,10 +77,15 @@ export default function Pricing() {
       });
     }
 
-    await entities.Product.update(product.id, { price: e.price, cost: e.cost });
-    setEdits(prev => { const n = { ...prev }; delete n[product.id]; return n; });
-    setSaving(false);
-    loadData();
+      await entities.Product.update(product.id, { price: e.price, cost: e.cost });
+      setEdits(prev => { const n = { ...prev }; delete n[product.id]; return n; });
+      toastSuccess("Price updated", `${product.name} updated successfully.`);
+    } catch (err) {
+      toastError(err, "Could not save price");
+    } finally {
+      setSaving(false);
+      loadData();
+    }
   };
 
   const applyMarginToAll = () => {
@@ -121,27 +129,35 @@ export default function Pricing() {
 
   const saveAllSelected = async () => {
     setBulkSaving(true);
-    for (const id of Array.from(selectedIds)) {
-      const e = edits[id];
-      const product = products.find(p => p.id === id);
-      if (!e || !product) continue;
-      if (e.price !== product.price || e.cost !== product.cost) {
-        await entities.PriceHistory.create({
-          product_id: product.id,
-          product_name: product.name,
-          old_price: product.price,
-          new_price: e.price,
-          old_cost: product.cost,
-          new_cost: e.cost,
-          reason: `Bulk markup (${bulkMarkup}%)`,
-        });
-        await entities.Product.update(product.id, { price: e.price, cost: e.cost });
+    let updated = 0;
+    try {
+      for (const id of Array.from(selectedIds)) {
+        const e = edits[id];
+        const product = products.find(p => p.id === id);
+        if (!e || !product) continue;
+        if (e.price !== product.price || e.cost !== product.cost) {
+          await entities.PriceHistory.create({
+            product_id: product.id,
+            product_name: product.name,
+            old_price: product.price,
+            new_price: e.price,
+            old_cost: product.cost,
+            new_cost: e.cost,
+            reason: `Bulk markup (${bulkMarkup}%)`,
+          });
+          await entities.Product.update(product.id, { price: e.price, cost: e.cost });
+          updated++;
+        }
       }
+      toastSuccess("Bulk save complete", `${updated} product(s) updated.`);
+    } catch (err) {
+      toastError(err, "Bulk save failed");
+    } finally {
+      setBulkSaving(false);
+      setEdits({});
+      setSelectedIds(new Set());
+      loadData();
     }
-    setBulkSaving(false);
-    setEdits({});
-    setSelectedIds(new Set());
-    loadData();
   };
 
   const filtered = products.filter(p =>
@@ -167,7 +183,7 @@ export default function Pricing() {
             </div>
             <div className="flex items-center gap-3 sm:ml-auto">
               <div className="flex items-center gap-2">
-                <span className="text-sm font-medium text-slate-700">Target Margin:</span>
+                <span className="text-sm font-medium text-slate-700 flex items-center gap-1.5">Target Margin:<HelpTip>Margin = (price − cost) ÷ price. The Smart Margin Tool suggests a selling price for every product to hit this %.</HelpTip></span>
                 <Input
                   type="number"
                   min="0"

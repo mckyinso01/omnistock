@@ -7,6 +7,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Table2, Save, Send, Loader2, CheckCircle2, AlertCircle } from "lucide-react";
+import { useApiToast } from "@/hooks/useApiToast";
+import HelpTip from "@/components/ui/HelpTip";
 
 export default function SyncSettingsCard() {
   const [setting, setSetting] = useState(null);
@@ -14,24 +16,30 @@ export default function SyncSettingsCard() {
   const [saving, setSaving] = useState(false);
   const [testing, setTesting] = useState(null);
   const [msg, setMsg] = useState(null);
+  const { toastSuccess, toastError } = useApiToast();
 
   useEffect(() => { load(); }, []);
 
   const load = async () => {
-    const list = await entities.SyncSetting.list();
-    if (list.length > 0) {
-      setSetting(list[0]);
-    } else {
-      setSetting({
-        spreadsheet_id: "",
-        sheet_tab_name: "Transactions",
-        daily_enabled: false,
-        weekly_enabled: false,
-        monthly_enabled: false,
-        last_synced_at: null,
-      });
+    try {
+      const list = await entities.SyncSetting.list();
+      if (list.length > 0) {
+        setSetting(list[0]);
+      } else {
+        setSetting({
+          spreadsheet_id: "",
+          sheet_tab_name: "Transactions",
+          daily_enabled: false,
+          weekly_enabled: false,
+          monthly_enabled: false,
+          last_synced_at: null,
+        });
+      }
+    } catch (e) {
+      toastError(e, "Could not load sync settings");
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   const save = async () => {
@@ -44,9 +52,11 @@ export default function SyncSettingsCard() {
         await entities.SyncSetting.create(setting);
       }
       setMsg({ type: "success", text: "Sync settings saved." });
+      toastSuccess("Settings saved", "Your Google Sheets sync settings are saved.");
       await load();
     } catch (e) {
-      setMsg({ type: "error", text: e.message || "Save failed." });
+      setMsg({ type: "error", text: e?.message || "Save failed." });
+      toastError(e, "Save failed");
     }
     setSaving(false);
   };
@@ -61,12 +71,15 @@ export default function SyncSettingsCard() {
         setMsg({ type: "error", text: data.error });
       } else if ((data?.appended ?? 0) === 0) {
         setMsg({ type: "success", text: "Up to date — no new sales to push." });
+        toastSuccess("Up to date", "No new sales to push to your sheet.");
       } else {
         setMsg({ type: "success", text: `Synced ${data.appended} new sale(s) to your sheet.` });
+        toastSuccess("Sync complete", `${data.appended} new sale(s) sent to Google Sheets.`);
       }
       await load();
     } catch (e) {
-      setMsg({ type: "error", text: e.message || "Sync failed." });
+      setMsg({ type: "error", text: e?.message || "Sync failed." });
+      toastError(e, "Sync failed");
     }
     setTesting(null);
   };
@@ -92,7 +105,7 @@ export default function SyncSettingsCard() {
           Each completed sale is pushed to your Google Sheet as its own row — Date, Transaction #, Items, Total, Profit, Payment method, and more. Set your sheet and schedule below.
         </p>
         <div className="space-y-1.5">
-          <Label>Spreadsheet URL or ID</Label>
+          <Label className="flex items-center gap-1.5">Spreadsheet URL or ID <HelpTip>Paste the full Google Sheets URL or just the ID part of the address.</HelpTip></Label>
           <Input
             value={setting.spreadsheet_id || ""}
             onChange={e => setSetting({ ...setting, spreadsheet_id: e.target.value })}

@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { X, Upload } from "lucide-react";
+import { useApiToast } from "@/hooks/useApiToast";
 
 const UNITS = ["pcs", "ml", "L", "g", "kg", "pack", "box", "bottle", "can", "sachet", "set"];
 
@@ -19,6 +20,7 @@ export default function ProductFormModal({ product, categories, suppliers, onSav
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
   const fileRef = useRef(null);
+  const { toastSuccess, toastError } = useApiToast();
 
   useEffect(() => {
     if (product) {
@@ -48,13 +50,22 @@ export default function ProductFormModal({ product, categories, suppliers, onSav
     const file = e.target.files?.[0];
     if (!file) return;
     setUploading(true);
-    const { file_url } = await base44.integrations.Core.UploadFile({ file });
-    setForm(f => ({ ...f, photo_url: file_url }));
-    setUploading(false);
+    try {
+      const { file_url } = await base44.integrations.Core.UploadFile({ file });
+      setForm(f => ({ ...f, photo_url: file_url }));
+      toastSuccess("Photo uploaded", "Product photo ready to save.");
+    } catch (err) {
+      toastError(err, "Upload failed");
+    } finally {
+      setUploading(false);
+    }
   };
 
   const handleSave = async () => {
-    if (!form.name.trim()) return alert("Product name is required.");
+    if (!form.name.trim()) {
+      toastError("Product name is required.");
+      return;
+    }
     setSaving(true);
     const data = {
       ...form,
@@ -63,13 +74,20 @@ export default function ProductFormModal({ product, categories, suppliers, onSav
       quantity: Number(form.quantity),
       low_stock_threshold: Number(form.low_stock_threshold),
     };
-    if (product?.id) {
-      await entities.Product.update(product.id, data);
-    } else {
-      await entities.Product.create(data);
+    try {
+      if (product?.id) {
+        await entities.Product.update(product.id, data);
+        toastSuccess("Product updated", `${form.name} saved.`);
+      } else {
+        await entities.Product.create(data);
+        toastSuccess("Product created", `${form.name} added to inventory.`);
+      }
+      onSave();
+    } catch (err) {
+      toastError(err, "Could not save product");
+    } finally {
+      setSaving(false);
     }
-    setSaving(false);
-    onSave();
   };
 
   return (
