@@ -143,8 +143,6 @@ export default function Analytics() {
     setRunningAnalysis(false);
   };
 
-  if (loading) return <div className="p-6 text-slate-400">Loading analytics...</div>;
-
   return (
     <div className="p-4 md:p-6 space-y-6">
       {/* Tab switcher */}
@@ -289,7 +287,11 @@ export default function Analytics() {
           <Card key={kpi.label} className="border-0 shadow-sm">
             <CardContent className="p-4">
               <p className="text-xs text-slate-500 uppercase tracking-wide mb-1">{kpi.label}</p>
-              <p className={`text-xl font-bold ${kpi.color}`}>{kpi.value}</p>
+              {loading ? (
+                <div className="h-6 w-24 bg-slate-100 animate-pulse rounded mt-1" />
+              ) : (
+                <p className={`text-xl font-bold ${kpi.color}`}>{kpi.value}</p>
+              )}
             </CardContent>
           </Card>
         ))}
@@ -304,15 +306,21 @@ export default function Analytics() {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <ResponsiveContainer width="100%" height={220}>
-            <BarChart data={dailyData}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
-              <XAxis dataKey="day" tick={{ fontSize: 11, fill: "#94a3b8" }} axisLine={false} tickLine={false} />
-              <YAxis tick={{ fontSize: 11, fill: "#94a3b8" }} axisLine={false} tickLine={false} tickFormatter={(v) => `₱${v}`} />
-              <Tooltip formatter={(v) => [`₱${v.toLocaleString()}`, "Revenue"]} />
-              <Bar dataKey="revenue" fill="#10b981" radius={[4, 4, 0, 0]} />
-            </BarChart>
-          </ResponsiveContainer>
+          {loading ? (
+            <div className="w-full h-[220px] bg-slate-50 animate-pulse rounded-lg border border-slate-100 flex items-center justify-center text-xs text-slate-450 font-medium">
+              Loading daily revenue...
+            </div>
+          ) : (
+            <ResponsiveContainer width="100%" height={220}>
+              <BarChart data={dailyData}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
+                <XAxis dataKey="day" tick={{ fontSize: 11, fill: "#94a3b8" }} axisLine={false} tickLine={false} />
+                <YAxis tick={{ fontSize: 11, fill: "#94a3b8" }} axisLine={false} tickLine={false} tickFormatter={(v) => `₱${v}`} />
+                <Tooltip formatter={(v) => [`₱${v.toLocaleString()}`, "Revenue"]} />
+                <Bar dataKey="revenue" fill="#10b981" radius={[4, 4, 0, 0]} />
+              </BarChart>
+            </ResponsiveContainer>
+          )}
         </CardContent>
       </Card>
 
@@ -334,7 +342,11 @@ export default function Analytics() {
             ].map(item => (
               <div key={item.label} className={`${item.bg} rounded-xl p-4 text-center`}>
                 <p className="text-xs text-slate-500 mb-1">{item.label}</p>
-                <p className={`text-lg font-bold ${item.color}`}>{item.value}</p>
+                {loading ? (
+                  <div className="h-6 w-20 bg-slate-200/50 animate-pulse rounded mx-auto mt-1" />
+                ) : (
+                  <p className={`text-lg font-bold ${item.color}`}>{item.value}</p>
+                )}
               </div>
             ))}
           </div>
@@ -350,18 +362,24 @@ export default function Analytics() {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <ResponsiveContainer width="100%" height={220}>
-            <LineChart data={forecastData}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
-              <XAxis dataKey="day" tick={{ fontSize: 10, fill: "#94a3b8" }} axisLine={false} tickLine={false} interval={2} />
-              <YAxis tick={{ fontSize: 10, fill: "#94a3b8" }} axisLine={false} tickLine={false} tickFormatter={v => `₱${v}`} />
-              <Tooltip formatter={(v, name) => [`₱${(v || 0).toLocaleString()}`, name === "actual" ? "Actual" : "Forecast"]} />
-              <ReferenceLine x={format(new Date(), "MMM d")} stroke="#94a3b8" strokeDasharray="4 4" label={{ value: "Today", position: "top", fontSize: 10, fill: "#94a3b8" }} />
-              <Line type="monotone" dataKey="actual" stroke="#10b981" strokeWidth={2} dot={false} connectNulls={false} />
-              <Line type="monotone" dataKey="forecast" stroke="#8b5cf6" strokeWidth={2} strokeDasharray="5 5" dot={false} connectNulls={false} />
-            </LineChart>
-          </ResponsiveContainer>
-          <p className="text-xs text-slate-400 mt-2 text-center">
+          {loading ? (
+            <div className="w-full h-[220px] bg-slate-50 animate-pulse rounded-lg border border-slate-100 flex items-center justify-center text-xs text-slate-450 font-medium">
+              Loading sales forecast...
+            </div>
+          ) : (
+            <ResponsiveContainer width="100%" height={220}>
+              <LineChart data={forecastData}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
+                <XAxis dataKey="day" tick={{ fontSize: 10, fill: "#94a3b8" }} axisLine={false} tickLine={false} interval={2} />
+                <YAxis tick={{ fontSize: 10, fill: "#94a3b8" }} axisLine={false} tickLine={false} tickFormatter={v => `₱${v}`} />
+                <Tooltip formatter={(v, name) => [`₱${(v || 0).toLocaleString()}`, name === "actual" ? "Actual" : "Forecast"]} />
+                <ReferenceLine x={format(new Date(), "MMM d")} stroke="#94a3b8" strokeDasharray="4 4" label={{ value: "Today", position: "top", fontSize: 10, fill: "#94a3b8" }} />
+                <Line type="monotone" dataKey="actual" stroke="#10b981" strokeWidth={2} dot={false} connectNulls={false} />
+                <Line type="monotone" dataKey="forecast" stroke="#8b5cf6" strokeWidth={2} strokeDasharray="5 5" dot={false} connectNulls={false} />
+              </LineChart>
+            </ResponsiveContainer>
+          )}
+          <p className="text-xs text-slate-405 mt-2 text-center">
             <span className="inline-flex items-center gap-1"><span className="w-4 h-0.5 bg-emerald-500 inline-block"></span> Actual</span>
             <span className="mx-3 inline-flex items-center gap-1"><span className="w-4 h-0.5 bg-violet-500 inline-block border-t-2 border-dashed border-violet-500"></span> Forecast</span>
           </p>
@@ -378,7 +396,11 @@ export default function Analytics() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            {paymentData.length === 0 ? (
+            {loading ? (
+              <div className="w-full h-[200px] bg-slate-50 animate-pulse rounded-lg border border-slate-100 flex items-center justify-center text-xs text-slate-450 font-medium">
+                Loading payment breakdown...
+              </div>
+            ) : paymentData.length === 0 ? (
               <p className="text-sm text-slate-400 text-center py-8">No data</p>
             ) : (
               <ResponsiveContainer width="100%" height={200}>
@@ -404,7 +426,22 @@ export default function Analytics() {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
-            {topProducts.length === 0 ? (
+            {loading ? (
+              <div className="space-y-4">
+                {[1, 2, 3, 4, 5].map((i) => (
+                  <div key={i} className="flex justify-between items-center">
+                    <div className="flex items-center gap-3 flex-1 min-w-0 mr-4">
+                      <div className="w-5 h-5 rounded-full bg-slate-100 animate-pulse shrink-0" />
+                      <div className="flex-1 space-y-1.5 min-w-0">
+                        <div className="h-4 w-2/3 bg-slate-100 animate-pulse rounded" />
+                        <div className="h-3 w-1/3 bg-slate-50 animate-pulse rounded" />
+                      </div>
+                    </div>
+                    <div className="h-4 w-12 bg-slate-100 animate-pulse rounded shrink-0" />
+                  </div>
+                ))}
+              </div>
+            ) : topProducts.length === 0 ? (
               <p className="text-sm text-slate-400 text-center py-8">No data</p>
             ) : (
               topProducts.map((p, i) => (

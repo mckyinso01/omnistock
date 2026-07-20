@@ -19,6 +19,16 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const checkAppState = async () => {
+    // Local dev bypass for seamless sandbox testing
+    if (import.meta.env.DEV) {
+      setUser({ name: "Dev Administrator", email: "admin@omnistock.com", role: "admin" });
+      setIsAuthenticated(true);
+      setIsLoadingPublicSettings(false);
+      setIsLoadingAuth(false);
+      setAuthChecked(true);
+      return;
+    }
+
     try {
       setIsLoadingPublicSettings(true);
       setAuthError(null);

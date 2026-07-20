@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { entities } from "@/lib/db";
 import { base44 } from "@/api/base44Client";
+import { convertQuantity } from "@/utils/costing";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -59,12 +60,42 @@ export default function POS() {
 
   const loadData = async () => {
     setLoading(true);
-    const [p, c, cats] = await Promise.all([
+    const [p, c, cats, r] = await Promise.all([
       entities.Product.filter({ status: "active" }),
       entities.Customer.filter({ status: "active" }),
       entities.Category.list("name", 50),
+      entities.Recipe.filter({ status: "active" }),
     ]);
-    setProducts(p.filter((x) => (x.quantity || 0) > 0));
+
+    // Compute virtual stock for products with active recipes
+    const hydratedProducts = p.map(prod => {
+      const recipe = r.find(rec => rec.product_id === prod.id);
+      if (!recipe || !recipe.ingredients?.length) return prod;
+
+      // Compute max servings possible from current ingredient stock
+      let minBatches = Infinity;
+      for (const ing of recipe.ingredients) {
+        const rawProd = p.find(pItem => pItem.id === ing.product_id);
+        if (!rawProd || !ing.quantity_per_batch) continue;
+
+        // Convert units if raw product unit differs from recipe ingredient unit
+        const convertedRawQty = convertQuantity(rawProd.quantity || 0, rawProd.unit, ing.unit);
+        const possible = Math.floor(convertedRawQty / ing.quantity_per_batch);
+        if (possible < minBatches) minBatches = possible;
+      }
+
+      const maxBatches = minBatches === Infinity ? 0 : minBatches;
+      const maxServings = maxBatches * (recipe.yield_quantity || 1);
+
+      return {
+        ...prod,
+        quantity: maxServings, // virtual stock quantity
+        isRecipeLinked: true,
+        recipe: recipe
+      };
+    });
+
+    setProducts(hydratedProducts.filter((x) => (x.quantity || 0) > 0));
     setCustomers(c);
     setCategories(cats);
     setLoading(false);
@@ -162,10 +193,30 @@ export default function POS() {
     } catch (e) { /* best-effort: ignore cloud mirror failure */ }
 
     // Deduct stock
-    await Promise.all(cart.map((item) => {
+    await Promise.all(cart.map(async (item) => {
       const prod = products.find((p) => p.id === item.product_id);
-      if (!prod) return Promise.resolve();
-      return entities.Product.update(item.product_id, { quantity: Math.max(0, (prod.quantity || 0) - item.quantity) });
+      if (!prod) return;
+
+      if (prod.isRecipeLinked && prod.recipe) {
+        const recipe = prod.recipe;
+        const yieldQty = Number(recipe.yield_quantity) || 1;
+        const batchesSold = item.quantity / yieldQty;
+
+        for (const ing of recipe.ingredients) {
+          const rawProd = products.find(pItem => pItem.id === ing.product_id) || 
+                          await entities.Product.get(ing.product_id);
+          if (!rawProd) continue;
+
+          const qtyNeededInIngredientUnit = ing.quantity_per_batch * batchesSold;
+          const qtyNeededInProductUnit = convertQuantity(qtyNeededInIngredientUnit, ing.unit, rawProd.unit);
+          const newQty = Math.max(0, (rawProd.quantity || 0) - qtyNeededInProductUnit);
+
+          await entities.Product.update(ing.product_id, { quantity: newQty });
+        }
+      } else {
+        // Standard retail product deduction
+        await entities.Product.update(item.product_id, { quantity: Math.max(0, (prod.quantity || 0) - item.quantity) });
+      }
     }));
 
     // Update customer loyalty

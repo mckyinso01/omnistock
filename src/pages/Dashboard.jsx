@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { entities } from "@/lib/db";
 import { usePullToRefresh } from "@/hooks/usePullToRefresh";
 import PullToRefreshIndicator from "@/components/shared/PullToRefreshIndicator";
@@ -59,44 +59,56 @@ export default function Dashboard() {
     loadData();
   }, []);
 
-  const todaySales = transactions
-    .filter(
-      (t) =>
-        t.status === "completed" &&
-        t.type === "sale" &&
-        new Date(t.created_date).toDateString() === new Date().toDateString()
-    )
-    .reduce((sum, t) => sum + (t.total_amount || 0), 0);
-
-  const todayOrders = transactions.filter(
-    (t) =>
-      t.status === "completed" &&
-      t.type === "sale" &&
-      new Date(t.created_date).toDateString() === new Date().toDateString()
-  ).length;
-
-  const lowStockCount = products.filter(
-    (p) => p.status === "active" && (p.quantity || 0) <= (p.low_stock_threshold || 10)
-  ).length;
-
-  const totalProducts = products.filter((p) => p.status === "active").length;
-
-  // Sales chart last 7 days
-  const salesChart = Array.from({ length: 7 }, (_, i) => {
-    const day = subDays(new Date(), 6 - i);
-    const dayStr = day.toDateString();
-    const daySales = transactions
+  const todaySales = useMemo(() => {
+    return transactions
       .filter(
         (t) =>
           t.status === "completed" &&
           t.type === "sale" &&
-          new Date(t.created_date).toDateString() === dayStr
+          new Date(t.created_date).toDateString() === new Date().toDateString()
       )
       .reduce((sum, t) => sum + (t.total_amount || 0), 0);
-    return { day: format(day, "EEE"), sales: daySales };
-  });
+  }, [transactions]);
 
-  const recentTransactions = transactions.slice(0, 5);
+  const todayOrders = useMemo(() => {
+    return transactions.filter(
+      (t) =>
+        t.status === "completed" &&
+        t.type === "sale" &&
+        new Date(t.created_date).toDateString() === new Date().toDateString()
+    ).length;
+  }, [transactions]);
+
+  const lowStockCount = useMemo(() => {
+    return products.filter(
+      (p) => p.status === "active" && (p.quantity || 0) <= (p.low_stock_threshold || 10)
+    ).length;
+  }, [products]);
+
+  const totalProducts = useMemo(() => {
+    return products.filter((p) => p.status === "active").length;
+  }, [products]);
+
+  // Sales chart last 7 days
+  const salesChart = useMemo(() => {
+    return Array.from({ length: 7 }, (_, i) => {
+      const day = subDays(new Date(), 6 - i);
+      const dayStr = day.toDateString();
+      const daySales = transactions
+        .filter(
+          (t) =>
+            t.status === "completed" &&
+            t.type === "sale" &&
+            new Date(t.created_date).toDateString() === dayStr
+        )
+        .reduce((sum, t) => sum + (t.total_amount || 0), 0);
+      return { day: format(day, "EEE"), sales: daySales };
+    });
+  }, [transactions]);
+
+  const recentTransactions = useMemo(() => {
+    return transactions.slice(0, 5);
+  }, [transactions]);
 
   const paymentColors = {
     cash: "bg-green-100 text-green-700",
@@ -106,16 +118,6 @@ export default function Dashboard() {
     bank_transfer: "bg-slate-100 text-slate-700",
     split: "bg-pink-100 text-pink-700",
   };
-
-  if (loading) {
-    return (
-      <div className="p-6 grid grid-cols-2 lg:grid-cols-4 gap-4">
-        {[1, 2, 3, 4].map((i) => (
-          <div key={i} className="h-28 rounded-2xl bg-slate-200 animate-pulse" />
-        ))}
-      </div>
-    );
-  }
 
   return (
     <div ref={scrollRef} className="p-4 md:p-6 space-y-6 overflow-y-auto h-full">
@@ -131,6 +133,7 @@ export default function Dashboard() {
           icon={<PhilippinePeso className="w-5 h-5" />}
           color="from-emerald-500 to-teal-600"
           sub={`${todayOrders} orders`}
+          loading={loading}
         />
         <KPICard
           title="Total Products"
@@ -138,6 +141,7 @@ export default function Dashboard() {
           icon={<Package className="w-5 h-5" />}
           color="from-blue-500 to-indigo-600"
           sub="active items"
+          loading={loading}
         />
         <KPICard
           title="Transactions"
@@ -145,6 +149,7 @@ export default function Dashboard() {
           icon={<ShoppingCart className="w-5 h-5" />}
           color="from-violet-500 to-purple-600"
           sub="all time"
+          loading={loading}
         />
         <KPICard
           title="Stock Alerts"
@@ -153,6 +158,7 @@ export default function Dashboard() {
           color="from-orange-500 to-red-500"
           sub={`${lowStockCount} low stock`}
           urgent={alerts.length > 0}
+          loading={loading}
         />
         <KPICard
           title="Customers"
@@ -160,6 +166,7 @@ export default function Dashboard() {
           icon={<Users className="w-5 h-5" />}
           color="from-pink-500 to-rose-600"
           sub={`${customers.filter(c => (c.loyalty_points || 0) >= 500).length} loyalty members`}
+          loading={loading}
         />
       </div>
 
@@ -174,27 +181,33 @@ export default function Dashboard() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <ResponsiveContainer width="100%" height={200}>
-              <AreaChart data={salesChart}>
-                <defs>
-                  <linearGradient id="salesGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#10b981" stopOpacity={0.2} />
-                    <stop offset="95%" stopColor="#10b981" stopOpacity={0} />
-                  </linearGradient>
-                </defs>
-                <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
-                <XAxis dataKey="day" tick={{ fontSize: 12, fill: "#94a3b8" }} axisLine={false} tickLine={false} />
-                <YAxis tick={{ fontSize: 12, fill: "#94a3b8" }} axisLine={false} tickLine={false} tickFormatter={(v) => `₱${v}`} />
-                <Tooltip formatter={(v) => [`₱${v.toLocaleString()}`, "Sales"]} />
-                <Area
-                  type="monotone"
-                  dataKey="sales"
-                  stroke="#10b981"
-                  strokeWidth={2}
-                  fill="url(#salesGrad)"
-                />
-              </AreaChart>
-            </ResponsiveContainer>
+            {loading ? (
+              <div className="w-full h-[200px] bg-slate-50 animate-pulse rounded-lg border border-slate-100 flex items-center justify-center text-xs text-slate-450 font-medium">
+                Loading sales trend...
+              </div>
+            ) : (
+              <ResponsiveContainer width="100%" height={200}>
+                <AreaChart data={salesChart}>
+                  <defs>
+                    <linearGradient id="salesGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="#10b981" stopOpacity={0.2} />
+                      <stop offset="95%" stopColor="#10b981" stopOpacity={0} />
+                    </linearGradient>
+                  </defs>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
+                  <XAxis dataKey="day" tick={{ fontSize: 12, fill: "#94a3b8" }} axisLine={false} tickLine={false} />
+                  <YAxis tick={{ fontSize: 12, fill: "#94a3b8" }} axisLine={false} tickLine={false} tickFormatter={(v) => `₱${v}`} />
+                  <Tooltip formatter={(v) => [`₱${v.toLocaleString()}`, "Sales"]} />
+                  <Area
+                    type="monotone"
+                    dataKey="sales"
+                    stroke="#10b981"
+                    strokeWidth={2}
+                    fill="url(#salesGrad)"
+                  />
+                </AreaChart>
+              </ResponsiveContainer>
+            )}
           </CardContent>
         </Card>
 
@@ -207,7 +220,19 @@ export default function Dashboard() {
             </Link>
           </CardHeader>
           <CardContent className="space-y-3">
-            {recentTransactions.length === 0 ? (
+            {loading ? (
+              <div className="space-y-4">
+                {[1, 2, 3, 4, 5].map((i) => (
+                  <div key={i} className="flex justify-between items-center">
+                    <div className="space-y-1.5 flex-1 mr-4">
+                      <div className="h-4 w-2/3 bg-slate-100 animate-pulse rounded" />
+                      <div className="h-3 w-1/3 bg-slate-50 animate-pulse rounded" />
+                    </div>
+                    <div className="h-4 w-12 bg-slate-100 animate-pulse rounded" />
+                  </div>
+                ))}
+              </div>
+            ) : recentTransactions.length === 0 ? (
               <p className="text-sm text-slate-400 text-center py-6">No transactions yet</p>
             ) : (
               recentTransactions.map((t) => (
@@ -236,7 +261,7 @@ export default function Dashboard() {
   );
 }
 
-function KPICard({ title, value, icon, color, sub, urgent }) {
+function KPICard({ title, value, icon, color, sub, urgent, loading }) {
   return (
     <Card className={`border-0 shadow-sm overflow-hidden ${urgent ? "ring-2 ring-red-300" : ""}`}>
       <CardContent className="p-4">
@@ -246,8 +271,17 @@ function KPICard({ title, value, icon, color, sub, urgent }) {
             {icon}
           </div>
         </div>
-        <p className="text-2xl font-bold text-slate-800">{value}</p>
-        <p className="text-xs text-slate-400 mt-0.5">{sub}</p>
+        {loading ? (
+          <div className="space-y-1.5 py-1">
+            <div className="h-6 w-24 bg-slate-100 animate-pulse rounded" />
+            <div className="h-3 w-16 bg-slate-50 animate-pulse rounded" />
+          </div>
+        ) : (
+          <>
+            <p className="text-2xl font-bold text-slate-800">{value}</p>
+            <p className="text-xs text-slate-400 mt-0.5">{sub}</p>
+          </>
+        )}
       </CardContent>
     </Card>
   );

@@ -3,7 +3,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { X, FlaskConical, AlertTriangle, CheckCircle2, TrendingDown } from "lucide-react";
+import { X, FlaskConical, AlertTriangle, CheckCircle2, TrendingDown, TrendingUp } from "lucide-react";
+import { calculateRecipeCostDetails } from "@/utils/costing";
 
 export default function YieldCalculatorPanel({ recipe, products, onClose }) {
   const [batchCount, setBatchCount] = useState(1);
@@ -101,6 +102,34 @@ export default function YieldCalculatorPanel({ recipe, products, onClose }) {
             </div>
           )}
         </div>
+
+        {/* Costing Summary for batches */}
+        {(() => {
+          const costing = calculateRecipeCostDetails(recipe, products);
+          const totalCostForRequested = costing.costPerServing * requestedServings;
+          const totalRevenueForRequested = costing.sellingPrice * requestedServings;
+          const totalProfitForRequested = totalRevenueForRequested - totalCostForRequested;
+          return (
+            <div className="bg-white border border-slate-200 rounded-xl p-4 grid grid-cols-3 gap-4 text-xs">
+              <div>
+                <span className="text-slate-500 block font-medium mb-1">Total Raw Cost</span>
+                <span className="text-base font-bold text-slate-800">₱{totalCostForRequested.toFixed(2)}</span>
+              </div>
+              <div>
+                <span className="text-slate-500 block font-medium mb-1">Projected Revenue</span>
+                <span className="text-base font-bold text-slate-800">
+                  {costing.sellingPrice > 0 ? `₱${totalRevenueForRequested.toFixed(2)}` : "—"}
+                </span>
+              </div>
+              <div>
+                <span className="text-slate-500 block font-medium mb-1">Projected Profit</span>
+                <span className={`text-base font-bold ${totalProfitForRequested >= 0 ? "text-emerald-600" : "text-red-500"}`}>
+                  {costing.sellingPrice > 0 ? `₱${totalProfitForRequested.toFixed(2)}` : "—"}
+                </span>
+              </div>
+            </div>
+          );
+        })()}
 
         {/* Ingredient Table */}
         {ingredientStats.length > 0 && (

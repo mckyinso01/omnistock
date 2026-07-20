@@ -4,8 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { X, Plus, Trash2 } from "lucide-react";
+import { calculateRecipeCostDetails } from "@/utils/costing";
 
 const UNITS = ["ml", "L", "g", "kg", "pcs", "cups", "tbsp", "tsp", "oz", "lb", "pack", "sachet", "bottle", "can"];
 
@@ -32,17 +32,29 @@ export default function RecipeFormModal({ recipe, products, onSave, onClose }) {
         description: recipe.description || "",
         yield_quantity: recipe.yield_quantity || 1,
         yield_unit: recipe.yield_unit || "servings",
-        ingredients: recipe.ingredients || [],
+        ingredients: (recipe.ingredients || []).map(ing => ({
+          ...ing,
+          id: ing.id || Math.random().toString(36).substring(2, 11)
+        })),
         notes: recipe.notes || "",
         status: recipe.status || "active",
       });
     }
   }, [recipe]);
 
+  const costing = (() => {
+    const simulatedRecipe = {
+      product_id: form.product_id,
+      yield_quantity: Number(form.yield_quantity) || 1,
+      ingredients: form.ingredients
+    };
+    return calculateRecipeCostDetails(simulatedRecipe, products);
+  })();
+
   const addIngredient = () => {
     setForm(f => ({
       ...f,
-      ingredients: [...f.ingredients, { product_id: "", product_name: "", quantity_per_batch: 1, unit: "g" }]
+      ingredients: [...f.ingredients, { id: Math.random().toString(36).substring(2, 11), product_id: "", product_name: "", quantity_per_batch: 1, unit: "g" }]
     }));
   };
 
@@ -67,24 +79,33 @@ export default function RecipeFormModal({ recipe, products, onSave, onClose }) {
 
   const handleProductSelect = (pid) => {
     const prod = products.find(p => p.id === pid);
-    setForm(f => ({ ...f, product_id: pid, product_name: prod?.name || "" }));
+    setTimeout(() => setForm(f => ({ ...f, product_id: pid, product_name: prod?.name || "" })), 0);
   };
 
   const handleSave = async () => {
     if (!form.name.trim()) return alert("Recipe name is required.");
     setSaving(true);
-    const data = { ...form, yield_quantity: Number(form.yield_quantity) };
+    const cleanedIngredients = form.ingredients.map((ing) => {
+      const copy = { ...ing };
+      delete copy.id;
+      return copy;
+    });
+    const data = { ...form, yield_quantity: Number(form.yield_quantity), ingredients: cleanedIngredients };
     if (recipe?.id) {
       await entities.Recipe.update(recipe.id, data);
     } else {
       await entities.Recipe.create(data);
     }
+
+    // Roll up calculated serving cost to the linked Product
+    if (form.product_id && form.product_id !== "none") {
+      const costingDetails = calculateRecipeCostDetails(data, products);
+      await entities.Product.update(form.product_id, { cost: costingDetails.costPerServing });
+    }
+
     setSaving(false);
     onSave();
   };
-
-  // Only show products that can be "finished products" — exclude those used as ingredients
-  const ingredientProductIds = new Set(form.ingredients.map(i => i.product_id));
 
   return (
     <div className="fixed inset-0 z-50 bg-black/40 flex items-center justify-center p-4">
@@ -110,30 +131,28 @@ export default function RecipeFormModal({ recipe, products, onSave, onClose }) {
 
             <div className="space-y-1.5">
               <Label>Finished Product (optional)</Label>
-              <Select value={form.product_id} onValueChange={handleProductSelect}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Link to a product..." />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="none">— None —</SelectItem>
-                  {products.map(p => (
-                    <SelectItem key={p.id} value={p.id}>{p.name}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+              <select
+                value={form.product_id}
+                onChange={e => handleProductSelect(e.target.value)}
+                className="flex h-9 w-full rounded-md border border-slate-200 bg-white px-3 py-1.5 text-sm shadow-sm focus:outline-none focus:ring-1 focus:ring-slate-400"
+              >
+                <option value="none">— None —</option>
+                {products.map(p => (
+                  <option key={p.id} value={p.id}>{p.name}</option>
+                ))}
+              </select>
             </div>
 
             <div className="space-y-1.5">
               <Label>Status</Label>
-              <Select value={form.status} onValueChange={v => setForm(f => ({ ...f, status: v }))}>
-                <SelectTrigger>
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="active">Active</SelectItem>
-                  <SelectItem value="inactive">Inactive</SelectItem>
-                </SelectContent>
-              </Select>
+              <select
+                value={form.status}
+                onChange={e => setForm(f => ({ ...f, status: e.target.value }))}
+                className="flex h-9 w-full rounded-md border border-slate-200 bg-white px-3 py-1.5 text-sm shadow-sm focus:outline-none focus:ring-1 focus:ring-slate-400"
+              >
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+              </select>
             </div>
 
             <div className="space-y-1.5">
@@ -149,16 +168,15 @@ export default function RecipeFormModal({ recipe, products, onSave, onClose }) {
 
             <div className="space-y-1.5">
               <Label>Yield Unit</Label>
-              <Select value={form.yield_unit} onValueChange={v => setForm(f => ({ ...f, yield_unit: v }))}>
-                <SelectTrigger>
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  {["servings", "cups", "pcs", "bottles", "packs", "liters", "kg", "portions"].map(u => (
-                    <SelectItem key={u} value={u}>{u}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+              <select
+                value={form.yield_unit}
+                onChange={e => setForm(f => ({ ...f, yield_unit: e.target.value }))}
+                className="flex h-9 w-full rounded-md border border-slate-200 bg-white px-3 py-1.5 text-sm shadow-sm focus:outline-none focus:ring-1 focus:ring-slate-400"
+              >
+                {["servings", "cups", "pcs", "bottles", "packs", "liters", "kg", "portions"].map(u => (
+                  <option key={u} value={u}>{u}</option>
+                ))}
+              </select>
             </div>
 
             <div className="sm:col-span-2 space-y-1.5">
@@ -170,6 +188,34 @@ export default function RecipeFormModal({ recipe, products, onSave, onClose }) {
                 rows={2}
               />
             </div>
+          </div>
+
+          {/* Live Costing Calculator Banner */}
+          <div className="bg-orange-50 border border-orange-200 rounded-xl p-4 flex items-center justify-between text-sm">
+            <div>
+              <p className="text-xs text-slate-500 font-medium">Estimated Batch Cost</p>
+              <p className="text-lg font-bold text-slate-900">₱{costing.totalBatchCost.toFixed(2)}</p>
+            </div>
+            <div className="text-center">
+              <p className="text-xs text-slate-500 font-medium">Cost per Serving</p>
+              <p className="text-lg font-bold text-slate-900">₱{costing.costPerServing.toFixed(2)}</p>
+            </div>
+            {costing.sellingPrice > 0 ? (
+              <div className="text-right">
+                <p className="text-xs text-slate-500 font-medium">Projected Margin</p>
+                <p className={`text-lg font-bold ${
+                  costing.profitMargin >= 40 
+                    ? "text-green-600" 
+                    : costing.profitMargin >= 15 
+                    ? "text-yellow-600" 
+                    : "text-red-500"
+                }`}>{costing.profitMargin.toFixed(1)}%</p>
+              </div>
+            ) : (
+              <div className="text-right text-slate-400 text-xs">
+                Product not linked
+              </div>
+            )}
           </div>
 
           {/* Ingredients */}
@@ -189,21 +235,21 @@ export default function RecipeFormModal({ recipe, products, onSave, onClose }) {
             ) : (
               <div className="space-y-3">
                 {form.ingredients.map((ing, idx) => (
-                  <div key={idx} className="flex gap-2 items-end p-3 bg-slate-50 rounded-lg">
+                  <div key={ing.id} className="flex gap-2 items-end p-3 bg-slate-50 rounded-lg">
                     <div className="flex-1 space-y-1">
                       <Label className="text-xs text-slate-500">Ingredient</Label>
-                      <Select value={ing.product_id} onValueChange={v => updateIngredient(idx, "product_id", v)}>
-                        <SelectTrigger className="bg-white">
-                          <SelectValue placeholder="Select ingredient..." />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {products.map(p => (
-                            <SelectItem key={p.id} value={p.id}>
-                              {p.name} {p.quantity !== undefined ? `(${p.quantity} ${p.unit || ""})` : ""}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
+                      <select
+                        value={ing.product_id}
+                        onChange={e => updateIngredient(idx, "product_id", e.target.value)}
+                        className="flex h-9 w-full rounded-md border border-slate-200 bg-white px-3 py-1.5 text-sm shadow-sm focus:outline-none focus:ring-1 focus:ring-slate-400"
+                      >
+                        <option value="">Select ingredient...</option>
+                        {products.map(p => (
+                          <option key={p.id} value={p.id}>
+                            {p.name} {p.quantity !== undefined ? `(${p.quantity} ${p.unit || ""})` : ""}
+                          </option>
+                        ))}
+                      </select>
                     </div>
                     <div className="w-24 space-y-1">
                       <Label className="text-xs text-slate-500">Qty</Label>
@@ -218,14 +264,13 @@ export default function RecipeFormModal({ recipe, products, onSave, onClose }) {
                     </div>
                     <div className="w-24 space-y-1">
                       <Label className="text-xs text-slate-500">Unit</Label>
-                      <Select value={ing.unit} onValueChange={v => updateIngredient(idx, "unit", v)}>
-                        <SelectTrigger className="bg-white">
-                          <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {UNITS.map(u => <SelectItem key={u} value={u}>{u}</SelectItem>)}
-                        </SelectContent>
-                      </Select>
+                      <select
+                        value={ing.unit}
+                        onChange={e => updateIngredient(idx, "unit", e.target.value)}
+                        className="flex h-9 w-full rounded-md border border-slate-200 bg-white px-3 py-1.5 text-sm shadow-sm focus:outline-none focus:ring-1 focus:ring-slate-400"
+                      >
+                        {UNITS.map(u => <option key={u} value={u}>{u}</option>)}
+                      </select>
                     </div>
                     <Button size="sm" variant="ghost" className="text-red-400 hover:text-red-600 mb-0.5" onClick={() => removeIngredient(idx)}>
                       <Trash2 className="w-4 h-4" />

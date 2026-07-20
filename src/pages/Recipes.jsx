@@ -8,6 +8,7 @@ import { Plus, Search, ChefHat, FlaskConical, Pencil, Trash2, Eye } from "lucide
 import RecipeFormModal from "@/components/recipes/RecipeFormModal";
 import RecipeDetailModal from "@/components/recipes/RecipeDetailModal";
 import YieldCalculatorPanel from "@/components/recipes/YieldCalculatorPanel";
+import { calculateRecipeCostDetails } from "@/utils/costing";
 
 export default function Recipes() {
   const [recipes, setRecipes] = useState([]);
@@ -148,6 +149,7 @@ export default function Recipes() {
 
 function RecipeCard({ recipe, products, onEdit, onDelete, onView, onCalculate }) {
   const ingredientCount = recipe.ingredients?.length || 0;
+  const costing = calculateRecipeCostDetails(recipe, products);
 
   // Compute max possible batches from current stock
   const maxBatches = (() => {
@@ -192,6 +194,35 @@ function RecipeCard({ recipe, products, onEdit, onDelete, onView, onCalculate })
             <div className="text-slate-500">
               Yield: <span className="font-medium text-slate-800">{recipe.yield_quantity} {recipe.yield_unit || "pcs"}/batch</span>
             </div>
+          )}
+        </div>
+
+        <div className="border-t border-slate-100 pt-3 grid grid-cols-2 gap-y-2.5 gap-x-4 text-xs bg-slate-50/50 p-2.5 rounded-lg border">
+          <div>
+            <span className="text-slate-500 block font-medium">Batch Cost</span>
+            <span className="text-sm font-bold text-slate-800">₱{costing.totalBatchCost.toFixed(2)}</span>
+          </div>
+          <div>
+            <span className="text-slate-500 block font-medium">Cost / Serving</span>
+            <span className="text-sm font-bold text-slate-800">₱{costing.costPerServing.toFixed(2)}</span>
+          </div>
+          {costing.sellingPrice > 0 && (
+            <>
+              <div>
+                <span className="text-slate-500 block font-medium">Profit / Serving</span>
+                <span className="text-sm font-bold text-emerald-600">₱{costing.profitPerServing.toFixed(2)}</span>
+              </div>
+              <div>
+                <span className="text-slate-500 block font-medium">Profit Margin</span>
+                <span className={`text-sm font-extrabold ${
+                  costing.profitMargin >= 40 
+                    ? "text-green-600" 
+                    : costing.profitMargin >= 15 
+                    ? "text-yellow-600" 
+                    : "text-red-500"
+                }`}>{costing.profitMargin.toFixed(1)}%</span>
+              </div>
+            </>
           )}
         </div>
 
