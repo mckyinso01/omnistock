@@ -38,7 +38,7 @@ const specs = [
 const benefits = [
   { icon: Clock, title: "Reclaim your hours", desc: "Less time on manual encoding and stock counts — more time on growing the business." },
   { icon: TrendingUp, title: "Make smarter money moves", desc: "Spot what sells, what's slipping, and where your profit really comes from." },
-  { icon: Bell, title: "Never get caught short", desc: "Restockalerts fire the moment an item falls below your custom threshold." },
+  { icon: Bell, title: "Never get caught short", desc: "Restock alerts fire the moment an item falls below your custom threshold." },
   { icon: FileSpreadsheet, title: "Sleep easy, data's safe", desc: "Every sale is logged to Google Sheets and emailed — nothing falls through the cracks." },
 ];
 
@@ -51,54 +51,53 @@ const howItWorks = [
 
 export default function Landing() {
   return (
-    <div className="min-h-screen bg-slate-950 text-white overflow-x-hidden">
+    <div className="min-h-screen bg-white text-slate-900 overflow-x-hidden font-sans">
       {/* Header */}
-      <header className="sticky top-0 z-30 backdrop-blur-md bg-slate-950/80 border-b border-white/10">
+      <header className="sticky top-0 z-30 backdrop-blur-md bg-white/90 border-b border-slate-200">
         <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center shadow-xs">
               <Boxes className="w-5 h-5 text-white" />
             </div>
-            <span className="font-semibold tracking-tight">OmniStock</span>
+            <span className="font-bold tracking-tight text-slate-900">OmniStock</span>
           </Link>
-          <div className="hidden md:flex items-center gap-6 text-sm text-slate-300">
-            <a href="#tools" className="hover:text-white transition-colors">Tools</a>
-            <a href="#specs" className="hover:text-white transition-colors">Specs</a>
-            <a href="#benefits" className="hover:text-white transition-colors">Benefits</a>
+          <div className="hidden md:flex items-center gap-6 text-sm text-slate-600 font-medium">
+            <a href="#tools" className="hover:text-emerald-600 transition-colors">Tools</a>
+            <a href="#specs" className="hover:text-emerald-600 transition-colors">Specs</a>
+            <a href="#benefits" className="hover:text-emerald-600 transition-colors">Benefits</a>
           </div>
-          <Button asChild size="sm" className="bg-emerald-500 hover:bg-emerald-600 text-white">
-            <Link to="/inventory">Open app <ArrowRight className="w-4 h-4" /></Link>
+          <Button asChild size="sm" className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold shadow-xs">
+            <Link to="/inventory">Open app <ArrowRight className="w-4 h-4 ml-1" /></Link>
           </Button>
         </div>
       </header>
 
       {/* Hero */}
-      <section className="relative pt-20 pb-20">
-        <div className="absolute inset-0 bg-radial-gradient from-emerald-600/20 via-transparent to-transparent" style={{ background: "radial-gradient(circle at 50% 0%, rgba(16,185,129,0.18), transparent 60%)" }} />
+      <section className="relative pt-16 pb-20 bg-gradient-to-b from-emerald-50/50 via-white to-white border-b border-slate-100">
         <div className="max-w-4xl mx-auto px-4 text-center relative">
-          <Badge className="bg-emerald-500/15 text-emerald-300 border-emerald-500/30 mb-6 hover:bg-emerald-500/20">
+          <Badge className="bg-emerald-100 text-emerald-800 border-emerald-200 mb-6 hover:bg-emerald-200 font-bold px-3 py-1">
             🇵🇭 Built for Filipino retailers
           </Badge>
-          <h1 className="text-4xl sm:text-6xl font-bold leading-tight tracking-tight mb-5">
+          <h1 className="text-4xl sm:text-6xl font-extrabold leading-tight tracking-tight text-slate-900 mb-5">
             Inventory, POS, & Analytics<br />
-            running on <span className="bg-gradient-to-r from-emerald-300 to-emerald-500 bg-clip-text text-transparent">one quiet engine</span>.
+            running on <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">one quiet engine</span>.
           </h1>
-          <p className="text-slate-300 text-lg sm:text-xl mb-8 max-w-2xl mx-auto">
+          <p className="text-slate-600 text-lg sm:text-xl mb-8 max-w-2xl mx-auto leading-relaxed">
             OmniStock replaces the spreadsheets, paper catalogues, and manual stock counts that quietly drain your day — so you can spend it growing sales instead.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Button asChild size="lg" className="bg-emerald-500 hover:bg-emerald-600 text-white gap-2">
+            <Button asChild size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold gap-2 shadow-sm">
               <Link to="/inventory"><ShoppingCart className="w-5 h-5" /> Start selling</Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="bg-transparent border-white/20 text-white hover:bg-white/10">
+            <Button asChild size="lg" variant="outline" className="bg-white border-slate-300 text-slate-800 hover:bg-slate-50 font-bold">
               <Link to="/">See the dashboard</Link>
             </Button>
           </div>
           <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto">
             {stats.map(s => (
-              <div key={s.label} className="text-center">
-                <p className="text-2xl sm:text-3xl font-bold text-emerald-300">{s.value}</p>
-                <p className="text-xs text-slate-400 mt-1">{s.label}</p>
+              <div key={s.label} className="text-center p-4 rounded-xl bg-white border border-emerald-100 shadow-[0_2px_10px_rgba(16,185,129,0.06)]">
+                <p className="text-2xl sm:text-3xl font-black text-emerald-600">{s.value}</p>
+                <p className="text-xs text-slate-600 font-medium mt-1">{s.label}</p>
               </div>
             ))}
           </div>
@@ -106,26 +105,26 @@ export default function Landing() {
       </section>
 
       {/* Tools */}
-      <section id="tools" className="py-16 border-t border-white/10">
+      <section id="tools" className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
-            <Badge variant="outline" className="bg-white/5 border-white/10 text-emerald-300 mb-3">
-              <Sparkles className="w-3 h-3 mr-1" /> Eight tools, one app
+            <Badge variant="outline" className="bg-emerald-50 border-emerald-200 text-emerald-800 mb-3 font-semibold">
+              <Sparkles className="w-3.5 h-3.5 mr-1 text-emerald-600" /> Eight tools, one app
             </Badge>
-            <h2 className="text-3xl font-bold mb-2">Everything you need to run the floor</h2>
-            <p className="text-slate-400 max-w-xl mx-auto">From the backroom inventory count to the front-counter sale — and everything in between.</p>
+            <h2 className="text-3xl font-extrabold text-slate-900 mb-2">Everything you need to run the floor</h2>
+            <p className="text-slate-600 max-w-xl mx-auto">From the backroom inventory count to the front-counter sale — and everything in between.</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {tools.map((t) => {
               const Icon = t.icon;
               return (
-                <Card key={t.title} className="bg-white/5 border-white/10 hover:border-emerald-500/40 transition-colors">
-                  <CardContent className="p-5 space-y-2">
-                    <div className="w-10 h-10 rounded-lg bg-emerald-500/15 flex items-center justify-center mb-2">
-                      <Icon className="w-5 h-5 text-emerald-300" />
+                <Card key={t.title} className="bg-white border-slate-200 hover:border-emerald-400 hover:shadow-md transition-all">
+                  <CardContent className="p-5 space-y-2 text-left">
+                    <div className="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center mb-2">
+                      <Icon className="w-5 h-5 text-emerald-700" />
                     </div>
-                    <h3 className="font-semibold">{t.title}</h3>
-                    <p className="text-sm text-slate-400">{t.desc}</p>
+                    <h3 className="font-bold text-slate-900 text-base">{t.title}</h3>
+                    <p className="text-xs text-slate-600 leading-relaxed">{t.desc}</p>
                   </CardContent>
                 </Card>
               );
@@ -135,19 +134,19 @@ export default function Landing() {
       </section>
 
       {/* How it works */}
-      <section className="py-16 bg-slate-900/40 border-y border-white/10">
+      <section className="py-16 bg-gradient-to-b from-blue-50/30 via-white to-white border-y border-slate-200">
         <div className="max-w-4xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-2">From paper catalogue to live sale in four steps</h2>
-            <p className="text-slate-400">A workflow designed for the realities of a busy Filipino sari-sari or retail store.</p>
+            <h2 className="text-3xl font-extrabold text-slate-900 mb-2">From paper catalogue to live sale in four steps</h2>
+            <p className="text-slate-600">A workflow designed for the realities of a busy Filipino sari-sari or retail store.</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {howItWorks.map((step, i) => (
-              <div key={i} className="flex items-start gap-3 p-4 rounded-xl bg-white/5 border border-white/10">
-                <div className="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-300 flex items-center justify-center font-bold text-sm shrink-0">
+              <div key={i} className="flex items-start gap-3 p-5 rounded-2xl bg-white border border-slate-200 shadow-xs text-left">
+                <div className="w-8 h-8 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center font-extrabold text-sm shrink-0 border border-emerald-200">
                   {i + 1}
                 </div>
-                <p className="text-sm text-slate-200 pt-1">{step}</p>
+                <p className="text-sm text-slate-700 font-medium pt-1 leading-relaxed">{step}</p>
               </div>
             ))}
           </div>
@@ -155,23 +154,23 @@ export default function Landing() {
       </section>
 
       {/* Specs */}
-      <section id="specs" className="py-16">
+      <section id="specs" className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-2">Engineered for the modern mestizo</h2>
-            <p className="text-slate-400">Quiet, dependable plumbing — so you don't notice it working.</p>
+            <h2 className="text-3xl font-extrabold text-slate-900 mb-2">Engineered for the modern merchant</h2>
+            <p className="text-slate-600">Quiet, dependable plumbing — so you don't notice it working.</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {specs.map((s) => {
               const Icon = s.icon;
               return (
-                <div key={s.title} className="flex items-start gap-3 p-4 rounded-xl bg-white/5 border border-white/10">
-                  <div className="w-10 h-10 rounded-lg bg-emerald-500/15 flex items-center justify-center shrink-0">
-                    <Icon className="w-5 h-5 text-emerald-300" />
+                <div key={s.title} className="flex items-start gap-3 p-5 rounded-2xl bg-white border border-slate-200 shadow-xs text-left">
+                  <div className="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center shrink-0">
+                    <Icon className="w-5 h-5 text-emerald-700" />
                   </div>
                   <div>
-                    <h3 className="font-semibold">{s.title}</h3>
-                    <p className="text-sm text-slate-400">{s.desc}</p>
+                    <h3 className="font-bold text-slate-900 text-base">{s.title}</h3>
+                    <p className="text-xs text-slate-600 mt-1 leading-relaxed">{s.desc}</p>
                   </div>
                 </div>
               );
@@ -181,22 +180,22 @@ export default function Landing() {
       </section>
 
       {/* Benefits */}
-      <section id="benefits" className="py-16 bg-slate-900/40 border-y border-white/10">
+      <section id="benefits" className="py-16 bg-emerald-50/30 border-y border-emerald-100">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-2">Why store owners switch</h2>
-            <p className="text-slate-400">Not just software — a measurable lift for the things that matter.</p>
+            <h2 className="text-3xl font-extrabold text-slate-900 mb-2">Why store owners switch</h2>
+            <p className="text-slate-600">Not just software — a measurable lift for the things that matter.</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {benefits.map((b) => {
               const Icon = b.icon;
               return (
-                <div key={b.title} className="text-center p-6 rounded-xl bg-gradient-to-b from-emerald-500/10 to-transparent border border-emerald-500/20">
-                  <div className="w-12 h-12 mx-auto rounded-full bg-emerald-500/20 flex items-center justify-center mb-3">
-                    <Icon className="w-6 h-6 text-emerald-300" />
+                <div key={b.title} className="text-left p-6 rounded-2xl bg-white border border-emerald-200 shadow-xs">
+                  <div className="w-12 h-12 rounded-xl bg-emerald-100 flex items-center justify-center mb-4">
+                    <Icon className="w-6 h-6 text-emerald-700" />
                   </div>
-                  <h3 className="font-semibold mb-1">{b.title}</h3>
-                  <p className="text-sm text-slate-400">{b.desc}</p>
+                  <h3 className="font-bold text-slate-900 text-base mb-1">{b.title}</h3>
+                  <p className="text-xs text-slate-600 leading-relaxed">{b.desc}</p>
                 </div>
               );
             })}
@@ -205,23 +204,23 @@ export default function Landing() {
       </section>
 
       {/* CTA */}
-      <section className="py-20">
+      <section className="py-20 bg-white">
         <div className="max-w-3xl mx-auto px-4 text-center">
-          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-6 text-sm text-slate-300">
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-6 text-sm text-slate-700 font-semibold">
             {["No setup fees", "Mobile + desktop", "Offline-ready"].map(t => (
-              <span key={t} className="inline-flex items-center gap-1"><CheckCircle2 className="w-4 h-4 text-emerald-400" /> {t}</span>
+              <span key={t} className="inline-flex items-center gap-1.5"><CheckCircle2 className="w-4 h-4 text-emerald-600" /> {t}</span>
             ))}
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Ready to reclaim your day?</h2>
-          <p className="text-slate-300 mb-6">Open OmniStock and ring your first sale in minutes — no spreadsheets required.</p>
-          <Button asChild size="lg" className="bg-emerald-500 hover:bg-emerald-600 text-white gap-2">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4">Ready to reclaim your day?</h2>
+          <p className="text-slate-600 mb-8 text-base">Open OmniStock and ring your first sale in minutes — no spreadsheets required.</p>
+          <Button asChild size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold gap-2 shadow-md">
             <Link to="/inventory"><ArrowRight className="w-5 h-5" /> Open the app</Link>
           </Button>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-white/10 py-6 text-center text-sm text-slate-500">
+      <footer className="border-t border-slate-200 py-6 text-center text-xs text-slate-500 bg-slate-50">
         OmniStock · Inventory & POS for Filipino businesses.
       </footer>
     </div>
