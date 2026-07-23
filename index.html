@@ -1,20 +1,42 @@
 <!doctype html>
-<html lang="fil">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="https://base44.com/logo_v2.svg" />
-    <link rel="apple-touch-icon" href="https://base44.com/logo_v2.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <meta name="apple-mobile-web-app-title" content="StockMate" />
-    <meta name="theme-color" content="#059669" />
-    <meta name="description" content="StockMate - Inventory & POS Management System para sa inyong negosyo" />
-    <link rel="manifest" href="/manifest.json" />
-    <title>StockMate</title>
+    <title>StockMate | Autonomous Inventory & Point-of-Sale Engine</title>
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="StockMate | Autonomous Inventory & Point-of-Sale Engine" />
+    <meta name="description" content="Offline-first Point-of-Sale (POS) and intelligent inventory management engine with sub-10ms transaction speeds and barcode scanning." />
+    <meta name="keywords" content="POS System, Inventory Management, Barcode Scanner, StockMate, Retail Management, Point of Sale" />
+    <meta name="author" content="StockMate Retail Systems" />
+    <link rel="canonical" href="http://localhost:5173/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://localhost:5173/" />
+    <meta property="og:title" content="StockMate | POS & Inventory Management Engine" />
+    <meta property="og:description" content="Offline-first Point-of-Sale (POS) and intelligent inventory engine." />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="http://localhost:5173/" />
+    <meta property="twitter:title" content="StockMate | POS & Inventory Management Engine" />
+    <meta property="twitter:description" content="Offline-first Point-of-Sale (POS) and intelligent inventory engine." />
+
+    <!-- JSON-LD Microdata -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "StockMate Engine",
+      "operatingSystem": "Web",
+      "applicationCategory": "BusinessApplication",
+      "description": "Offline-first Point-of-Sale (POS) and Inventory Management System."
+    }
+    </script>
   </head>
-  <body>
+  <body class="bg-slate-950 text-slate-100 antialiased">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

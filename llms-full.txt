@@ -1,0 +1,14 @@
+# STOCKMATE (OMNISTOCK) FULL SYSTEM CONTEXT SPECIFICATION
+
+## System Architecture Overview
+StockMate (OmniStock) is an offline-first, multi-branch Point-of-Sale (POS) and Inventory Management System built with React 18, TypeScript, Vite, TailwindCSS, and IndexedDB / SQLite persistence engines.
+
+### Tech Stack
+- Frontend: React 18, TypeScript, TailwindCSS, Lucide Icons, Recharts
+- Storage & Sync: Dexie.js (IndexedDB), LocalStorage, ServiceWorker PWA cache
+- Integrations: Thermal Printer ESC/POS driver, USB/Camera Barcode Scanner, Stripe Terminal
+
+### Data Models
+1. `products` (id, sku, barcode, name, category, price, cost, stock_quantity, min_stock_threshold)
+2. `transactions` (id, receipt_number, timestamp, items, total_amount, payment_method, cashier_id)
+3. `suppliers` (id, name, contact_email, lead_time_days, active_orders)

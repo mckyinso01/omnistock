@@ -1,0 +1,19 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: stockmate-in-toto-attestation-gate
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+    - name: verify-stockmate-attestations
+      match:
+        any:
+        - resources:
+            kinds:
+              - Pod
+      verifyImages:
+        - imageReferences:
+            - "ghcr.io/mckyinso01/stockmate:*"
+          attestations:
+            - type: https://slsa.dev/provenance/v1

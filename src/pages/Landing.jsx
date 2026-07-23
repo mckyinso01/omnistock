@@ -7,6 +7,13 @@ import {
   Bell, FileSpreadsheet, Mail, CloudOff, Smartphone, ShieldCheck, ArrowRight,
   Clock, TrendingUp, Calculator, Package, Sparkles, CheckCircle2
 } from "lucide-react";
+import { InteractiveVideoPlayer } from "../components/shared/InteractiveVideoPlayer";
+import { EnterpriseTechnicalSpecs } from "../components/shared/EnterpriseTechnicalSpecs";
+import { SecurityTrustStrip } from "../components/shared/SecurityTrustStrip";
+import { RoiCalculator } from "../components/shared/RoiCalculator";
+import { FaqSection } from "../components/shared/FaqSection";
+
+
 
 const stats = [
   { value: "8-in-1", label: "Modules in one app" },
@@ -101,8 +108,17 @@ export default function Landing() {
               </div>
             ))}
           </div>
+
+          {/* Interactive POS Barcode & Inventory Simulator Video */}
+          <div className="mt-10 max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-2xl border border-slate-800">
+            <InteractiveVideoPlayer 
+              title="StockMate POS Barcode Scanner & Receipt Simulator" 
+              autoPlay={true}
+            />
+          </div>
         </div>
       </section>
+
 
       {/* Tools */}
       <section id="tools" className="py-16 bg-white">
@@ -203,8 +219,22 @@ export default function Landing() {
         </div>
       </section>
 
+      {/* Security & Reliability Trust Strip */}
+      <SecurityTrustStrip />
+
+      {/* Full Enterprise Technical Specifications Matrix */}
+      <EnterpriseTechnicalSpecs />
+
+      {/* Interactive Retail ROI & Savings Calculator */}
+      <RoiCalculator />
+
+      {/* Interactive FAQ Accordion */}
+      <FaqSection />
+
+
       {/* CTA */}
       <section className="py-20 bg-white">
+
         <div className="max-w-3xl mx-auto px-4 text-center">
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-6 text-sm text-slate-700 font-semibold">
             {["No setup fees", "Mobile + desktop", "Offline-ready"].map(t => (

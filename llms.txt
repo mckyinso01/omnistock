@@ -1,0 +1,14 @@
+# StockMate (OmniStock): Autonomous Inventory & Point-of-Sale Engine
+
+> Enterprise-grade, multi-branch POS, offline-first inventory manager, dynamic barcode scanner, and AI reorder predictor.
+
+## Core Resources
+- [App Overview](file:///C:/Users/Admin/.antigravity-ide/omnistock/README.md): Product overview, feature catalog, and architecture notes.
+- [API Spec](file:///C:/Users/Admin/.antigravity-ide/omnistock/openapi.json): OpenAPI 3.1 REST API specification.
+- [C4 Diagrams](file:///C:/Users/Admin/.antigravity-ide/omnistock/docs/architecture_c4_diagrams.md): C4 architecture model diagrams.
+
+## Key Modules
+- `src/components/InventoryManager.tsx`: Real-time stock levels, low-stock triggers, batch numbers.
+- `src/components/POSTerminal.tsx`: High-speed barcode scanning, receipt generation, multi-payment options.
+- `src/components/AnalyticsDashboard.tsx`: Sales velocity, gross margin calculations, shrinkage audits.
+- `src/components/SupplierPortal.tsx`: Purchase order dispatches and automated vendor replenishment.
