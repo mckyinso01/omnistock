@@ -1,0 +1,12 @@
+# StockMate POS (OmniStock): Full System Architecture & API Context
+
+## System Architecture
+StockMate POS is structured around 8 core retail operational modules:
+1. Inventory Management & SKU catalog
+2. Point of Sale & Receipt printer simulator
+3. Barcode scanner & AI Catalogue digitizer
+4. Purchase orders & Supplier tracking
+5. Customer CRM & Loyalty point engine
+6. Pricing & Profit margin calculator
+7. Recipe yield costing
+8. Automated Google Sheets sync & Email reports

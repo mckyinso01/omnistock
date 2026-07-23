@@ -12,6 +12,7 @@ import { EnterpriseTechnicalSpecs } from "../components/shared/EnterpriseTechnic
 import { SecurityTrustStrip } from "../components/shared/SecurityTrustStrip";
 import { RoiCalculator } from "../components/shared/RoiCalculator";
 import { FaqSection } from "../components/shared/FaqSection";
+import { LicensingDeploymentTierBar } from "../components/shared/LicensingDeploymentTierBar";
 
 
 
@@ -117,6 +118,11 @@ export default function Landing() {
             />
           </div>
         </div>
+      </section>
+
+      {/* Licensing & Deployment Tier Selector Bar */}
+      <section className="bg-slate-950 border-t border-slate-800">
+        <LicensingDeploymentTierBar appName="StockMate POS" />
       </section>
 
 

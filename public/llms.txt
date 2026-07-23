@@ -1,0 +1,10 @@
+# StockMate POS (OmniStock): Smart Retail & Inventory Management System
+
+> Enterprise AI context summary file for LLMs & AI Coding Agents.
+
+## System Overview
+StockMate POS (OmniStock) is an 8-in-1 retail inventory, point of sale, supplier purchase order, and customer CRM application. Built for sub-1ms SQLite/IndexedDB ACID transactions with 100% offline-first operations.
+
+## Key Technical Stack
+- Frontend: React 18, Vite 6, Tailwind CSS 3, Radix UI, Lucide Icons, Recharts
+- Self-Host Engine: 1-click state purge (`purgeClientState.js`) and `<SelfHostProvisioningModal />`

@@ -1,0 +1,19 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "StockMate POS REST API",
+    "version": "1.0.0",
+    "description": "API specification for StockMate POS & Inventory Management System"
+  },
+  "servers": [
+    { "url": "http://localhost:5173", "description": "Local Development Server" }
+  ],
+  "paths": {
+    "/api/inventory": {
+      "get": { "summary": "List Inventory SKUs", "responses": { "200": { "description": "Success" } } }
+    },
+    "/api/admin/self-host-provision": {
+      "post": { "summary": "Purge Client State & Self-Host Reset", "responses": { "200": { "description": "Success" } } }
+    }
+  }
+}
