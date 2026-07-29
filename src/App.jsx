@@ -28,6 +28,7 @@ import Monetization from './pages/Monetization';
 import Settings from './pages/Settings';
 import Automations from './pages/Automations';
 import Landing from './pages/Landing';
+import Login from './pages/Login';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -63,8 +64,9 @@ const AuthenticatedApp = () => {
 
   return (
     <Routes>
+      <Route path="/" element={<Login />} />
       <Route element={<AppLayout />}>
-        <Route path="/" element={<Dashboard />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/inventory" element={<Inventory />} />
         <Route path="/pos" element={<POS />} />
         <Route path="/analytics" element={<Analytics />} />
@@ -81,6 +83,7 @@ const AuthenticatedApp = () => {
         <Route path="/settings" element={<Settings />} />
         <Route path="/automations" element={<Automations />} />
       </Route>
+      <Route path="/login" element={<Login />} />
       <Route path="/landing" element={<Landing />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
