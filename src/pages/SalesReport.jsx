@@ -15,6 +15,7 @@ import { format, subDays, startOfMonth, endOfMonth, startOfWeek, endOfWeek } fro
 import jsPDF from "jspdf";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import TopProductsAnalytics from "@/components/sales/TopProductsAnalytics";
+import DESIGN_TOKENS from "@/lib/designSystem";
 
 export default function SalesReport() {
   const [transactions, setTransactions] = useState([]);
@@ -385,9 +386,12 @@ Report generated on ${format(new Date(), "MMMM d, yyyy hh:mm a")}
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="space-y-1.5">
-              <Label className="text-xs font-bold text-slate-300 uppercase tracking-wider font-mono">Send report to email:</Label>
+              <Label htmlFor="sales-report-email" className="text-xs font-bold text-slate-300 uppercase tracking-wider font-mono">Send report to email:</Label>
               <Input
+                id="sales-report-email"
+                name="email"
                 type="email"
+                autoComplete="email"
                 placeholder="example@email.com"
                 value={emailTo}
                 onChange={e => setEmailTo(e.target.value)}
