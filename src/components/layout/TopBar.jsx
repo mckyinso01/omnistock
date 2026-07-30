@@ -1,4 +1,4 @@
-import { Menu, Bell, ChevronLeft, User, LogOut } from "lucide-react";
+import { Menu, Bell, ChevronLeft, User, LogOut, Database } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "@/lib/AuthContext";
 
@@ -68,6 +68,12 @@ export default function TopBar({ onMenuClick, alertCount = 0 }) {
         <h1 className="text-lg font-bold text-white tracking-tight">{title}</h1>
       </div>
       <div className="flex items-center gap-3">
+        {/* Dexie.js Offline DB Sync Status Badge */}
+        <div className="hidden md:flex items-center gap-2 px-3 py-1.5 bg-[#071322] border border-emerald-500/40 text-emerald-300 rounded-xl text-xs font-mono shadow-[0_0_12px_rgba(16,185,129,0.2)]">
+          <Database className="w-3.5 h-3.5 text-emerald-400 animate-pulse" />
+          <span className="font-bold">Local DB Synced</span>
+        </div>
+
         <a href="/alerts" className="relative p-2.5 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition-all app-card-hover">
           <Bell className="w-5 h-5 text-slate-300" />
           {alertCount > 0 && (

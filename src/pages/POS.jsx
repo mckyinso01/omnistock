@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import ReceiptModal from "@/components/pos/ReceiptModal";
 import RefundModal from "@/components/pos/RefundModal";
+import ThermalReceiptModal from "@/components/pos/ThermalReceiptModal";
 import BarcodeScanner from "@/components/shared/BarcodeScanner";
 import { trackPriceChangesFromTransaction } from "@/lib/priceChangeTracker";
 import DESIGN_TOKENS from "@/lib/designSystem";
@@ -51,6 +52,7 @@ export default function POS() {
   const [processing, setProcessing] = useState(false);
   const [lastTransaction, setLastTransaction] = useState(null);
   const [showRefund, setShowRefund] = useState(false);
+  const [showThermalModal, setShowThermalModal] = useState(false);
   const [activeCategory, setActiveCategory] = useState("all");
   const [categories, setCategories] = useState([]);
   const [showScanner, setShowScanner] = useState(false);
@@ -235,6 +237,7 @@ export default function POS() {
     trackPriceChangesFromTransaction(txn, selectedCustomer?.name ? `POS - ${selectedCustomer.name}` : "POS");
 
     setLastTransaction({ ...txn, items: cart, total, change: Math.max(0, change), paymentMethod, customerName: selectedCustomer?.name });
+    setShowThermalModal(true);
     setCart([]); setAmountTendered(""); setPaymentRef(""); setSelectedCustomer(null);
     setCustomerSearch(""); setDiscount(0); setPaymentMethod("cash");
     setSplitPayments([{ method: "cash", amount: "" }]);
@@ -565,7 +568,10 @@ export default function POS() {
         />
       )}
       {lastTransaction && (
-        <ReceiptModal transaction={lastTransaction} onClose={() => setLastTransaction(null)} />
+        <>
+          <ReceiptModal transaction={lastTransaction} onClose={() => setLastTransaction(null)} />
+          <ThermalReceiptModal open={showThermalModal} transaction={lastTransaction} onClose={() => setShowThermalModal(false)} onPrint={() => window.print()} />
+        </>
       )}
       {showRefund && (
         <RefundModal onClose={() => { setShowRefund(false); loadData(); }} />
