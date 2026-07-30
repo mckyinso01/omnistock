@@ -10,21 +10,42 @@ import { DESIGN_TOKENS } from "@/lib/designSystem";
 
 const PLANS = [
   {
-    name: "Basic",
+    name: "Basic Starter",
     price: "₱299",
+    subtext: "₱299 / month (Local Starter)",
     priceId: "price_1TVxM9ImHZmwgSf4afwrZ5vk",
     color: "border-cyan-500/40",
     icon: <Zap className="w-5 h-5 text-cyan-400" />,
     features: ["Unlimited products", "POS & transactions", "Stock alerts", "Basic analytics"],
   },
   {
-    name: "Pro",
+    name: "Pro Growth",
     price: "₱599",
+    subtext: "₱599 / month (Popular)",
     priceId: "price_1TVxM8ImHZmwgSf4aqoiFip6",
     color: "border-emerald-500/60 shadow-[0_0_24px_rgba(16,185,129,0.2)]",
     badge: "Best Value",
     icon: <Crown className="w-5 h-5 text-emerald-400" />,
     features: ["Everything in Basic", "Advanced analytics", "Monthly AI reports", "Priority support", "Referral bonuses"],
+  },
+  {
+    name: "Hosted Cloud SaaS",
+    price: "$299",
+    subtext: "$299 / month (Global Cloud)",
+    priceId: "price_cloud_299",
+    color: "border-blue-500/60 shadow-[0_0_24px_rgba(37,99,235,0.2)]",
+    icon: <Crown className="w-5 h-5 text-blue-400" />,
+    features: ["Global Cloud Hosted", "Sub-1ms Triton ML SLA", "Automated Daily Backups", "24/7 SLA Engineering Support"],
+  },
+  {
+    name: "Enterprise Self-Hosted",
+    price: "$4,999",
+    subtext: "$4,999 One-Time (On-Prem)",
+    priceId: "price_selfhost_4999",
+    color: "border-amber-500/60 shadow-[0_0_24px_rgba(245,158,11,0.2)]",
+    badge: "Full Ownership",
+    icon: <Crown className="w-5 h-5 text-amber-400" />,
+    features: ["100% On-Premise Storage", "Self-Host Data Purge Wizard", "Zero-Quota Offline Engine", "Lifetime Perpetual License"],
   },
 ];
 
@@ -68,7 +89,7 @@ export default function Monetization() {
   }
 
   return (
-    <div className="p-4 md:p-6 space-y-6 max-w-3xl mx-auto min-h-screen bg-[#050811] text-white font-sans">
+    <div className="p-4 md:p-6 space-y-6 max-w-6xl mx-auto min-h-screen bg-[#050811] text-white font-sans">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#0B1C30]/80 p-5 rounded-2xl border border-slate-800/80 shadow-xl">
         <div className="flex items-center gap-3.5">
@@ -77,10 +98,10 @@ export default function Monetization() {
           </div>
           <div>
             <h1 className={DESIGN_TOKENS.typography.h1 + " flex items-center gap-2"}>
-              Plans & Referrals
+              Plans & Commercial Tiers
             </h1>
             <p className={DESIGN_TOKENS.typography.muted + " mt-0.5"}>
-              Manage your active subscription tier and earn referral rewards for sharing OmniStock
+              Choose your deployment tier aligned with company commercial pricing standards ($299/mo Cloud to $4,999 Self-Hosted)
             </p>
           </div>
         </div>
@@ -89,7 +110,7 @@ export default function Monetization() {
       <TrialStatusBanner trialData={trialData} daysRemaining={getDaysRemaining()} />
 
       {/* Pricing Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 pt-3">
         {PLANS.map((plan) => (
           <div key={plan.name} className="relative pt-3.5">
             {plan.badge && (
@@ -107,7 +128,7 @@ export default function Monetization() {
               </div>
               <div>
                 <span className="text-3xl font-extrabold text-cyan-300 font-mono">{plan.price}</span>
-                <span className="text-slate-400 text-xs font-mono ml-1">/month</span>
+                <p className="text-slate-400 text-xs font-mono mt-0.5">{plan.subtext}</p>
               </div>
               <ul className="space-y-2.5 border-t border-b border-slate-800/80 py-4">
                 {plan.features.map((f) => (
