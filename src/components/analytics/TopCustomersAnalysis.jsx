@@ -8,10 +8,10 @@ import { entities } from "@/lib/db";
 const fmt = (n) => `₱${Number(n || 0).toLocaleString("en-PH", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 
 const TIERS = [
-  { name: "Diamond", min: 1000, color: "bg-cyan-100 text-cyan-700 border-cyan-200", discount: "20%" },
-  { name: "Gold", min: 500, color: "bg-amber-100 text-amber-700 border-amber-200", discount: "10%" },
-  { name: "Silver", min: 100, color: "bg-slate-100 text-slate-300 border-slate-200", discount: "5%" },
-  { name: "Member", min: 0, color: "bg-emerald-100 text-emerald-700 border-emerald-200", discount: "—" },
+  { name: "Diamond", min: 1000, color: "bg-cyan-950/80 text-cyan-300 border-cyan-500/50", discount: "20%" },
+  { name: "Gold", min: 500, color: "bg-amber-950/80 text-amber-300 border-amber-500/50", discount: "10%" },
+  { name: "Silver", min: 100, color: "bg-slate-900/80 text-slate-300 border-slate-700", discount: "5%" },
+  { name: "Member", min: 0, color: "bg-emerald-950/80 text-emerald-300 border-emerald-500/50", discount: "—" },
 ];
 
 const tierOf = (points) => TIERS.find(t => points >= t.min) || TIERS[TIERS.length - 1];

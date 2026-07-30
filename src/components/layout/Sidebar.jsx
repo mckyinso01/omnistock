@@ -77,7 +77,7 @@ export default function Sidebar({ open, onClose }) {
         {/* Logo */}
         <div className="flex items-center justify-between px-5 py-4 border-b border-slate-800/80">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center shadow-md shadow-blue-950/50">
+            <div className="w-8 h-8 bg-[#2563EB] rounded-lg flex items-center justify-center shadow-md shadow-blue-950/50">
               <Package className="w-5 h-5 text-white" />
             </div>
             <span className="font-bold text-white text-lg tracking-tight">OmniStock</span>
@@ -91,7 +91,7 @@ export default function Sidebar({ open, onClose }) {
         <nav className="flex-1 overflow-y-auto py-4 px-3 space-y-5">
           {navGroups.map((group) => (
             <div key={group.label}>
-              <p className="text-[11px] font-semibold text-blue-400/80 uppercase tracking-wider px-2 mb-1.5 font-mono">
+              <p className="text-[11px] font-semibold text-[#00E5FF]/80 uppercase tracking-wider px-2 mb-1.5 font-mono">
                 {group.label}
               </p>
               <div className="space-y-1">
@@ -104,11 +104,11 @@ export default function Sidebar({ open, onClose }) {
                       onClick={onClose}
                       className={`flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold transition-all duration-200 app-card-hover
                         ${active
-                          ? "bg-blue-600/20 text-blue-400 border border-blue-500/40 shadow-sm"
+                          ? "bg-[#2563EB]/20 text-[#00E5FF] border border-[#00E5FF]/40 shadow-sm"
                           : "text-slate-300 hover:bg-slate-800/60 hover:text-white border border-transparent"
                         }`}
                     >
-                      <Icon className={`w-4 h-4 ${active ? "text-blue-400" : "text-slate-400"}`} />
+                      <Icon className={`w-4 h-4 ${active ? "text-[#00E5FF]" : "text-slate-400"}`} />
                       {label}
                     </Link>
                   );

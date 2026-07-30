@@ -7,9 +7,10 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Plus, Search, Package, AlertTriangle, Filter, ScanLine, Download, Upload, ScanText, Loader2 } from "lucide-react";
+import { Plus, Search, Package, AlertTriangle, Filter, ScanLine, Download, Upload, ScanText, Loader2, Scale } from "lucide-react";
 import ProductFormModal from "@/components/inventory/ProductFormModal";
 import CatalogueUploaderModal from "@/components/inventory/CatalogueUploaderModal";
+import RecipeIngredientModal from "@/components/inventory/RecipeIngredientModal";
 import ProductCard from "@/components/inventory/ProductCard";
 import BarcodeScanner from "@/components/shared/BarcodeScanner";
 import { exportProductsToCsv, downloadCsv, parseProductsCsv, csvRowsToProducts } from "@/lib/csv";
@@ -28,6 +29,8 @@ export default function Inventory() {
   const [showScanner, setShowScanner] = useState(false);
   const [scannedProduct, setScannedProduct] = useState(null);
   const [showCatalogue, setShowCatalogue] = useState(false);
+  const [showRecipeModal, setShowRecipeModal] = useState(false);
+  const [recipeProduct, setRecipeProduct] = useState(null);
 
   const scrollRef = useRef(null);
 
@@ -165,6 +168,15 @@ export default function Inventory() {
           <div className="flex gap-2 flex-wrap items-center">
             <Button
               variant="outline"
+              onClick={() => setShowRecipeModal(true)}
+              className="bg-amber-950/80 text-amber-300 border border-amber-500/50 hover:bg-amber-900/90 shadow-[0_0_16px_rgba(245,158,11,0.3)] gap-1.5 text-xs h-9 cursor-pointer font-semibold"
+              title="Configure Recipe & Portion Control"
+            >
+              <Scale className="w-3.5 h-3.5 text-amber-400" />
+              Recipe & Portion Guard
+            </Button>
+            <Button
+              variant="outline"
               onClick={handleExportCsv}
               className={DESIGN_TOKENS.buttons.secondary + " gap-1.5 text-xs h-9 cursor-pointer font-semibold"}
               title="Export products to CSV"
@@ -299,6 +311,13 @@ export default function Inventory() {
         <CatalogueUploaderModal
           onImported={handleCatalogueImport}
           onClose={() => setShowCatalogue(false)}
+        />
+      )}
+      {showRecipeModal && (
+        <RecipeIngredientModal
+          isOpen={showRecipeModal}
+          product={recipeProduct}
+          onClose={() => { setShowRecipeModal(false); setRecipeProduct(null); }}
         />
       )}
     </div>

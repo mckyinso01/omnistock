@@ -52,7 +52,7 @@ export default function Login() {
   return (
     <div className="min-h-screen bg-[#050811] text-slate-100 flex items-center justify-center p-6 font-sans relative overflow-hidden">
       {/* Background ambient glow */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-600/15 rounded-full blur-[130px] pointer-events-none"></div>
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#2563EB]/15 rounded-full blur-[130px] pointer-events-none"></div>
 
       {/* Login Container with 2px Moving Border Line Only & App-Wide Hover Shadow */}
       <div className="moving-border-card app-card-hover w-full max-w-[460px] shadow-2xl relative z-10">
@@ -127,7 +127,7 @@ export default function Login() {
             <button 
               type="submit"
               disabled={loading}
-              className="w-full py-4 rounded-xl bg-blue-600 hover:bg-blue-500 active:scale-[0.98] text-white font-bold text-xs sm:text-sm shadow-[0_0_20px_rgba(0,229,255,0.3)] border border-cyan-400/40 transition-all cursor-pointer flex items-center justify-center gap-2 mt-2"
+              className="w-full py-4 rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] active:scale-[0.98] text-white font-bold text-xs sm:text-sm shadow-[0_0_20px_rgba(0,229,255,0.3)] border border-cyan-400/40 transition-all cursor-pointer flex items-center justify-center gap-2 mt-2"
             >
               {loading ? (
                 <>

@@ -110,9 +110,9 @@ export default function TopProductsAnalytics({ topProducts, totalRevenue, totalO
                     const margin = p.revenue > 0 ? (p.profit / p.revenue) * 100 : 0;
                     const share = totalRevenue > 0 ? (p.revenue / totalRevenue) * 100 : 0;
                     return (
-                      <tr key={p.name} className="border-t border-slate-100">
+                      <tr key={p.name} className="border-t border-slate-800">
                         <td className="p-2">
-                          <span className={`w-6 h-6 rounded-full inline-flex items-center justify-center text-xs font-bold ${i === 0 ? "bg-amber-100 text-amber-700" : "bg-slate-100 text-slate-500"}`}>{i + 1}</span>
+                          <span className={`w-6 h-6 rounded-full inline-flex items-center justify-center text-xs font-bold ${i === 0 ? "bg-amber-950/80 text-amber-300 border border-amber-500/50" : "bg-slate-900/80 text-slate-400 border border-slate-700"}`}>{i + 1}</span>
                         </td>
                         <td className="p-2 font-medium text-slate-200 truncate max-w-[200px]">{p.name}</td>
                         <td className="p-2 text-right text-slate-400">{p.qty}</td>

@@ -3,12 +3,17 @@
 @tailwind utilities;
 
 /* Safe area & overscroll */
-body {
-  overscroll-behavior-y: none;
-  -webkit-overflow-scrolling: touch;
-  background-color: #050811;
+:root, html, body {
+  color-scheme: dark !important;
+  background-color: #050811 !important;
   color: #f8fafc;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  scrollbar-color: rgba(0, 229, 255, 0.45) #0B1C30;
+}
+
+body {
+  overscroll-behavior-y: none;
+  overflow-y: auto;
 }
 
 /* Hide native browser white spin buttons on numeric inputs for dark mode */
@@ -19,6 +24,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 input[type=number] {
   -moz-appearance: textfield;
+  appearance: textfield;
 }
 
 /* Code & SKU monospace font */
@@ -480,7 +486,7 @@ button, a, nav, [role="tab"], [role="button"] {
   }
 
   * {
-    @apply border-border;
+    border-color: hsl(var(--border));
   }
 
   /* Universal Default Borderline Color Inheritance Rule */
@@ -523,6 +529,7 @@ button, a, nav, [role="tab"], [role="button"] {
   }
 
   body {
-    @apply bg-[#050811] text-slate-100;
+    background-color: #050811;
+    color: #f8fafc;
   }
 }

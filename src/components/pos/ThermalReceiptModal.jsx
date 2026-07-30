@@ -83,7 +83,7 @@ export default function ThermalReceiptModal({ open, transaction, onClose, onPrin
           </button>
           <button
             onClick={() => { onPrint?.(); onClose(); }}
-            className="flex-1 min-h-[44px] rounded-xl bg-[#2563EB] hover:bg-blue-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(0,229,255,0.4)] transition-all cursor-pointer"
+            className="flex-1 min-h-[44px] rounded-xl bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-bold text-xs flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(0,229,255,0.4)] transition-all cursor-pointer"
           >
             <CheckCircle2 className="w-4 h-4 text-cyan-300" />
             Print Receipt

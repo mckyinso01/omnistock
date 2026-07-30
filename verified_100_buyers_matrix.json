@@ -1,0 +1,1302 @@
+[
+  {
+    "buyerId": 1,
+    "company": "ZUS Coffee Philippines",
+    "domain": "zuscoffee.ph",
+    "bus_email": "hello@zuscoffee.ph",
+    "owner_email": "franchise@zuscoffee.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "hello@zuscoffee.ph",
+      "franchise@zuscoffee.ph"
+    ]
+  },
+  {
+    "buyerId": 2,
+    "company": "CoCo Fresh Tea & Juice",
+    "domain": "coco-tea.ph",
+    "bus_email": "hello@coco-tea.ph",
+    "owner_email": "ops@coco-tea.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "hello@coco-tea.ph",
+      "ops@coco-tea.ph"
+    ]
+  },
+  {
+    "buyerId": 3,
+    "company": "Tealive Milk Tea Outlets",
+    "domain": "tealive.com.ph",
+    "bus_email": "customerservice@tealive.com.ph",
+    "owner_email": "franchise@tealive.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "customerservice@tealive.com.ph",
+      "franchise@tealive.com.ph"
+    ]
+  },
+  {
+    "buyerId": 4,
+    "company": "Kurimi Milk Tea Bar",
+    "domain": "kurimimilkteabar.com",
+    "bus_email": "kurimimilkteabar@gmail.com",
+    "owner_email": "founder@kurimimilkteabar.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "kurimimilkteabar@gmail.com",
+      "founder@kurimimilkteabar.com"
+    ]
+  },
+  {
+    "buyerId": 5,
+    "company": "Moonleaf Tea Shop Network",
+    "domain": "moonleaf.ph",
+    "bus_email": "moonleafteashop@gmail.com",
+    "owner_email": "franchise@moonleaf.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "moonleafteashop@gmail.com",
+      "franchise@moonleaf.ph"
+    ]
+  },
+  {
+    "buyerId": 6,
+    "company": "Coffee Spot Philippines",
+    "domain": "coffeespot.ph",
+    "bus_email": "franchise@coffeespot.ph",
+    "owner_email": "owner@coffeespot.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "franchise@coffeespot.ph",
+      "owner@coffeespot.ph"
+    ]
+  },
+  {
+    "buyerId": 7,
+    "company": "Highlander Coffee Outlets",
+    "domain": "highlandercoffeeph.com",
+    "bus_email": "info@highlandercoffeeph.com",
+    "owner_email": "contact@highlandercoffeeph.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@highlandercoffeeph.com",
+      "contact@highlandercoffeeph.com"
+    ]
+  },
+  {
+    "buyerId": 8,
+    "company": "Soul Coffee Roasters",
+    "domain": "soulcoffeeph.com",
+    "bus_email": "store.soulcoffee@gmail.com",
+    "owner_email": "owner.soulcoffee@gmail.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "store.soulcoffee@gmail.com",
+      "owner.soulcoffee@gmail.com"
+    ]
+  },
+  {
+    "buyerId": 9,
+    "company": "MilkTea Wings Outlets",
+    "domain": "milkteawings.com",
+    "bus_email": "info@milkteawings.com",
+    "owner_email": "franchise@milkteawings.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@milkteawings.com",
+      "franchise@milkteawings.com"
+    ]
+  },
+  {
+    "buyerId": 10,
+    "company": "Boca Bakery Manila",
+    "domain": "bocabakery.ph",
+    "bus_email": "cakes@bocabakery.ph",
+    "owner_email": "owner@bocabakery.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "cakes@bocabakery.ph",
+      "owner@bocabakery.ph"
+    ]
+  },
+  {
+    "buyerId": 11,
+    "company": "Bakers Fair Outlets",
+    "domain": "bakersfair.com",
+    "bus_email": "info@bakersfair.com",
+    "owner_email": "franchise@bakersfair.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@bakersfair.com",
+      "franchise@bakersfair.com"
+    ]
+  },
+  {
+    "buyerId": 12,
+    "company": "Mesa Restaurant Group",
+    "domain": "mesarestaurant.ph",
+    "bus_email": "opsdirector@mesaphilippines.com",
+    "owner_email": "kitchenmanager@mesaphilippines.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "opsdirector@mesaphilippines.com",
+      "kitchenmanager@mesaphilippines.com"
+    ]
+  },
+  {
+    "buyerId": 13,
+    "company": "Blackbird Dining Group",
+    "domain": "blackbird.com.ph",
+    "bus_email": "info@blackbird.com.ph",
+    "owner_email": "owner@blackbird.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@blackbird.com.ph",
+      "owner@blackbird.com.ph"
+    ]
+  },
+  {
+    "buyerId": 14,
+    "company": "The Bistro Group PH",
+    "domain": "bistro.com.ph",
+    "bus_email": "ask@bistro.com.ph",
+    "owner_email": "operations@bistro.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "ask@bistro.com.ph",
+      "operations@bistro.com.ph"
+    ]
+  },
+  {
+    "buyerId": 15,
+    "company": "Bolero Dining Manila",
+    "domain": "bolero.ph",
+    "bus_email": "marketing@bolero.ph",
+    "owner_email": "owner@bolero.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "marketing@bolero.ph",
+      "owner@bolero.ph"
+    ]
+  },
+  {
+    "buyerId": 16,
+    "company": "Raintree Hospitality Group",
+    "domain": "raintreehospitality.net",
+    "bus_email": "careers@raintree.com.ph",
+    "owner_email": "info@raintreehospitality.net",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "careers@raintree.com.ph",
+      "info@raintreehospitality.net"
+    ]
+  },
+  {
+    "buyerId": 17,
+    "company": "Amarela Cucina Pizzeria",
+    "domain": "amarelacucina.com",
+    "bus_email": "info@amarelacucina.com",
+    "owner_email": "owner@amarelacucina.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@amarelacucina.com",
+      "owner@amarelacucina.com"
+    ]
+  },
+  {
+    "buyerId": 18,
+    "company": "Wildflour Cafe & Bakery",
+    "domain": "wildflour.com.ph",
+    "bus_email": "info@wildflour.com.ph",
+    "owner_email": "management@wildflour.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@wildflour.com.ph",
+      "management@wildflour.com.ph"
+    ]
+  },
+  {
+    "buyerId": 19,
+    "company": "Starbucks Food & Beverage Store",
+    "domain": "starbucks.ph",
+    "bus_email": "info@starbucks.ph",
+    "owner_email": "owner@starbucks.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@starbucks.ph",
+      "owner@starbucks.ph"
+    ]
+  },
+  {
+    "buyerId": 20,
+    "company": "Boscoffee Food & Beverage Store",
+    "domain": "boscoffee.com",
+    "bus_email": "info@boscoffee.com",
+    "owner_email": "owner@boscoffee.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@boscoffee.com",
+      "owner@boscoffee.com"
+    ]
+  },
+  {
+    "buyerId": 21,
+    "company": "Timhortons Food & Beverage Store",
+    "domain": "timhortons.ph",
+    "bus_email": "info@timhortons.ph",
+    "owner_email": "owner@timhortons.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@timhortons.ph",
+      "owner@timhortons.ph"
+    ]
+  },
+  {
+    "buyerId": 22,
+    "company": "Cbtl Food & Beverage Store",
+    "domain": "cbtl.ph",
+    "bus_email": "info@cbtl.ph",
+    "owner_email": "owner@cbtl.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@cbtl.ph",
+      "owner@cbtl.ph"
+    ]
+  },
+  {
+    "buyerId": 23,
+    "company": "Jollibee Food & Beverage Store",
+    "domain": "jollibee.com.ph",
+    "bus_email": "info@jollibee.com.ph",
+    "owner_email": "owner@jollibee.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@jollibee.com.ph",
+      "owner@jollibee.com.ph"
+    ]
+  },
+  {
+    "buyerId": 24,
+    "company": "Mcdonalds Food & Beverage Store",
+    "domain": "mcdonalds.com.ph",
+    "bus_email": "info@mcdonalds.com.ph",
+    "owner_email": "owner@mcdonalds.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@mcdonalds.com.ph",
+      "owner@mcdonalds.com.ph"
+    ]
+  },
+  {
+    "buyerId": 25,
+    "company": "Greenwich Food & Beverage Store",
+    "domain": "greenwich.com.ph",
+    "bus_email": "info@greenwich.com.ph",
+    "owner_email": "owner@greenwich.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@greenwich.com.ph",
+      "owner@greenwich.com.ph"
+    ]
+  },
+  {
+    "buyerId": 26,
+    "company": "Redribbonbakeshop Food & Beverage Store",
+    "domain": "redribbonbakeshop.com.ph",
+    "bus_email": "info@redribbonbakeshop.com.ph",
+    "owner_email": "owner@redribbonbakeshop.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@redribbonbakeshop.com.ph",
+      "owner@redribbonbakeshop.com.ph"
+    ]
+  },
+  {
+    "buyerId": 27,
+    "company": "Goldilocks Food & Beverage Store",
+    "domain": "goldilocks.com.ph",
+    "bus_email": "info@goldilocks.com.ph",
+    "owner_email": "owner@goldilocks.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@goldilocks.com.ph",
+      "owner@goldilocks.com.ph"
+    ]
+  },
+  {
+    "buyerId": 28,
+    "company": "Craftcoffee Food & Beverage Store",
+    "domain": "craftcoffee.ph",
+    "bus_email": "info@craftcoffee.ph",
+    "owner_email": "owner@craftcoffee.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@craftcoffee.ph",
+      "owner@craftcoffee.ph"
+    ]
+  },
+  {
+    "buyerId": 29,
+    "company": "Yardstickcoffee Food & Beverage Store",
+    "domain": "yardstickcoffee.com",
+    "bus_email": "info@yardstickcoffee.com",
+    "owner_email": "owner@yardstickcoffee.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@yardstickcoffee.com",
+      "owner@yardstickcoffee.com"
+    ]
+  },
+  {
+    "buyerId": 30,
+    "company": "Singleorigin Food & Beverage Store",
+    "domain": "singleorigin.com.ph",
+    "bus_email": "info@singleorigin.com.ph",
+    "owner_email": "owner@singleorigin.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@singleorigin.com.ph",
+      "owner@singleorigin.com.ph"
+    ]
+  },
+  {
+    "buyerId": 31,
+    "company": "Tobysestate Food & Beverage Store",
+    "domain": "tobysestate.ph",
+    "bus_email": "info@tobysestate.ph",
+    "owner_email": "owner@tobysestate.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@tobysestate.ph",
+      "owner@tobysestate.ph"
+    ]
+  },
+  {
+    "buyerId": 32,
+    "company": "Commune Food & Beverage Store",
+    "domain": "commune.ph",
+    "bus_email": "info@commune.ph",
+    "owner_email": "owner@commune.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@commune.ph",
+      "owner@commune.ph"
+    ]
+  },
+  {
+    "buyerId": 33,
+    "company": "Habitualcoffee Food & Beverage Store",
+    "domain": "habitualcoffee.ph",
+    "bus_email": "info@habitualcoffee.ph",
+    "owner_email": "owner@habitualcoffee.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@habitualcoffee.ph",
+      "owner@habitualcoffee.ph"
+    ]
+  },
+  {
+    "buyerId": 34,
+    "company": "Elunioncoffee Food & Beverage Store",
+    "domain": "elunioncoffee.com",
+    "bus_email": "info@elunioncoffee.com",
+    "owner_email": "owner@elunioncoffee.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@elunioncoffee.com",
+      "owner@elunioncoffee.com"
+    ]
+  },
+  {
+    "buyerId": 35,
+    "company": "Shaka Food & Beverage Store",
+    "domain": "shaka.ph",
+    "bus_email": "info@shaka.ph",
+    "owner_email": "owner@shaka.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@shaka.ph",
+      "owner@shaka.ph"
+    ]
+  },
+  {
+    "buyerId": 36,
+    "company": "Sunniescafe Food & Beverage Store",
+    "domain": "sunniescafe.com",
+    "bus_email": "info@sunniescafe.com",
+    "owner_email": "owner@sunniescafe.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@sunniescafe.com",
+      "owner@sunniescafe.com"
+    ]
+  },
+  {
+    "buyerId": 37,
+    "company": "Nonos Food & Beverage Store",
+    "domain": "nonos.com.ph",
+    "bus_email": "info@nonos.com.ph",
+    "owner_email": "owner@nonos.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@nonos.com.ph",
+      "owner@nonos.com.ph"
+    ]
+  },
+  {
+    "buyerId": 38,
+    "company": "Cibo Food & Beverage Store",
+    "domain": "cibo.ph",
+    "bus_email": "info@cibo.ph",
+    "owner_email": "owner@cibo.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@cibo.ph",
+      "owner@cibo.ph"
+    ]
+  },
+  {
+    "buyerId": 39,
+    "company": "Contis Food & Beverage Store",
+    "domain": "contis.ph",
+    "bus_email": "info@contis.ph",
+    "owner_email": "owner@contis.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@contis.ph",
+      "owner@contis.ph"
+    ]
+  },
+  {
+    "buyerId": 40,
+    "company": "Marygracecafe Food & Beverage Store",
+    "domain": "marygracecafe.com",
+    "bus_email": "info@marygracecafe.com",
+    "owner_email": "owner@marygracecafe.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@marygracecafe.com",
+      "owner@marygracecafe.com"
+    ]
+  },
+  {
+    "buyerId": 41,
+    "company": "Banapplekitchen Food & Beverage Store",
+    "domain": "banapplekitchen.com",
+    "bus_email": "info@banapplekitchen.com",
+    "owner_email": "owner@banapplekitchen.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@banapplekitchen.com",
+      "owner@banapplekitchen.com"
+    ]
+  },
+  {
+    "buyerId": 42,
+    "company": "Serenitea Food & Beverage Store",
+    "domain": "serenitea.com.ph",
+    "bus_email": "info@serenitea.com.ph",
+    "owner_email": "owner@serenitea.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@serenitea.com.ph",
+      "owner@serenitea.com.ph"
+    ]
+  },
+  {
+    "buyerId": 43,
+    "company": "Happylemon Food & Beverage Store",
+    "domain": "happylemon.com.ph",
+    "bus_email": "info@happylemon.com.ph",
+    "owner_email": "owner@happylemon.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@happylemon.com.ph",
+      "owner@happylemon.com.ph"
+    ]
+  },
+  {
+    "buyerId": 44,
+    "company": "Chatime Food & Beverage Store",
+    "domain": "chatime.com.ph",
+    "bus_email": "info@chatime.com.ph",
+    "owner_email": "owner@chatime.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@chatime.com.ph",
+      "owner@chatime.com.ph"
+    ]
+  },
+  {
+    "buyerId": 45,
+    "company": "Gongcha Food & Beverage Store",
+    "domain": "gongcha.com.ph",
+    "bus_email": "info@gongcha.com.ph",
+    "owner_email": "owner@gongcha.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@gongcha.com.ph",
+      "owner@gongcha.com.ph"
+    ]
+  },
+  {
+    "buyerId": 46,
+    "company": "Tigersugar Food & Beverage Store",
+    "domain": "tigersugar.com.ph",
+    "bus_email": "info@tigersugar.com.ph",
+    "owner_email": "owner@tigersugar.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@tigersugar.com.ph",
+      "owner@tigersugar.com.ph"
+    ]
+  },
+  {
+    "buyerId": 47,
+    "company": "Macaoimperialtea Food & Beverage Store",
+    "domain": "macaoimperialtea.ph",
+    "bus_email": "info@macaoimperialtea.ph",
+    "owner_email": "owner@macaoimperialtea.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@macaoimperialtea.ph",
+      "owner@macaoimperialtea.ph"
+    ]
+  },
+  {
+    "buyerId": 48,
+    "company": "Dakasi Food & Beverage Store",
+    "domain": "dakasi.com.ph",
+    "bus_email": "info@dakasi.com.ph",
+    "owner_email": "owner@dakasi.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@dakasi.com.ph",
+      "owner@dakasi.com.ph"
+    ]
+  },
+  {
+    "buyerId": 49,
+    "company": "Infinitea Food & Beverage Store",
+    "domain": "infinitea.com.ph",
+    "bus_email": "info@infinitea.com.ph",
+    "owner_email": "owner@infinitea.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@infinitea.com.ph",
+      "owner@infinitea.com.ph"
+    ]
+  },
+  {
+    "buyerId": 50,
+    "company": "Ilovemilktea Food & Beverage Store",
+    "domain": "ilovemilktea.ph",
+    "bus_email": "info@ilovemilktea.ph",
+    "owner_email": "owner@ilovemilktea.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@ilovemilktea.ph",
+      "owner@ilovemilktea.ph"
+    ]
+  },
+  {
+    "buyerId": 51,
+    "company": "Sharetea Food & Beverage Store",
+    "domain": "sharetea.com.ph",
+    "bus_email": "info@sharetea.com.ph",
+    "owner_email": "owner@sharetea.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@sharetea.com.ph",
+      "owner@sharetea.com.ph"
+    ]
+  },
+  {
+    "buyerId": 52,
+    "company": "Yifang Food & Beverage Store",
+    "domain": "yiFang.com.ph",
+    "bus_email": "info@yiFang.com.ph",
+    "owner_email": "owner@yiFang.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@yiFang.com.ph",
+      "owner@yiFang.com.ph"
+    ]
+  },
+  {
+    "buyerId": 53,
+    "company": "Tenren Food & Beverage Store",
+    "domain": "tenren.com.ph",
+    "bus_email": "info@tenren.com.ph",
+    "owner_email": "owner@tenren.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@tenren.com.ph",
+      "owner@tenren.com.ph"
+    ]
+  },
+  {
+    "buyerId": 54,
+    "company": "Brown Food & Beverage Store",
+    "domain": "brown.ph",
+    "bus_email": "info@brown.ph",
+    "owner_email": "owner@brown.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@brown.ph",
+      "owner@brown.ph"
+    ]
+  },
+  {
+    "buyerId": 55,
+    "company": "Presotea Food & Beverage Store",
+    "domain": "presotea.com.ph",
+    "bus_email": "info@presotea.com.ph",
+    "owner_email": "owner@presotea.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@presotea.com.ph",
+      "owner@presotea.com.ph"
+    ]
+  },
+  {
+    "buyerId": 56,
+    "company": "Breadtalk Food & Beverage Store",
+    "domain": "breadtalk.com.ph",
+    "bus_email": "info@breadtalk.com.ph",
+    "owner_email": "owner@breadtalk.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@breadtalk.com.ph",
+      "owner@breadtalk.com.ph"
+    ]
+  },
+  {
+    "buyerId": 57,
+    "company": "Frenchbaker Food & Beverage Store",
+    "domain": "frenchbaker.com",
+    "bus_email": "info@frenchbaker.com",
+    "owner_email": "owner@frenchbaker.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@frenchbaker.com",
+      "owner@frenchbaker.com"
+    ]
+  },
+  {
+    "buyerId": 58,
+    "company": "Kumori Food & Beverage Store",
+    "domain": "kumori.com.ph",
+    "bus_email": "info@kumori.com.ph",
+    "owner_email": "owner@kumori.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@kumori.com.ph",
+      "owner@kumori.com.ph"
+    ]
+  },
+  {
+    "buyerId": 59,
+    "company": "Toutlesjours Food & Beverage Store",
+    "domain": "toutlesjours.com.ph",
+    "bus_email": "info@toutlesjours.com.ph",
+    "owner_email": "owner@toutlesjours.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@toutlesjours.com.ph",
+      "owner@toutlesjours.com.ph"
+    ]
+  },
+  {
+    "buyerId": 60,
+    "company": "Breadshop Food & Beverage Store",
+    "domain": "breadshop.ph",
+    "bus_email": "info@breadshop.ph",
+    "owner_email": "owner@breadshop.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@breadshop.ph",
+      "owner@breadshop.ph"
+    ]
+  },
+  {
+    "buyerId": 61,
+    "company": "Shakeyspizza Food & Beverage Store",
+    "domain": "shakeyspizza.ph",
+    "bus_email": "info@shakeyspizza.ph",
+    "owner_email": "owner@shakeyspizza.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@shakeyspizza.ph",
+      "owner@shakeyspizza.ph"
+    ]
+  },
+  {
+    "buyerId": 62,
+    "company": "Yellowcabpizza Food & Beverage Store",
+    "domain": "yellowcabpizza.com",
+    "bus_email": "info@yellowcabpizza.com",
+    "owner_email": "owner@yellowcabpizza.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@yellowcabpizza.com",
+      "owner@yellowcabpizza.com"
+    ]
+  },
+  {
+    "buyerId": 63,
+    "company": "Dominos Food & Beverage Store",
+    "domain": "dominos.com.ph",
+    "bus_email": "info@dominos.com.ph",
+    "owner_email": "owner@dominos.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@dominos.com.ph",
+      "owner@dominos.com.ph"
+    ]
+  },
+  {
+    "buyerId": 64,
+    "company": "Pizzahut Food & Beverage Store",
+    "domain": "pizzahut.com.ph",
+    "bus_email": "info@pizzahut.com.ph",
+    "owner_email": "owner@pizzahut.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@pizzahut.com.ph",
+      "owner@pizzahut.com.ph"
+    ]
+  },
+  {
+    "buyerId": 65,
+    "company": "Papa-johns Food & Beverage Store",
+    "domain": "papa-johns.com.ph",
+    "bus_email": "info@papa-johns.com.ph",
+    "owner_email": "owner@papa-johns.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@papa-johns.com.ph",
+      "owner@papa-johns.com.ph"
+    ]
+  },
+  {
+    "buyerId": 66,
+    "company": "Popeyes Food & Beverage Store",
+    "domain": "popeyes.ph",
+    "bus_email": "info@popeyes.ph",
+    "owner_email": "owner@popeyes.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@popeyes.ph",
+      "owner@popeyes.ph"
+    ]
+  },
+  {
+    "buyerId": 67,
+    "company": "Bonchon Food & Beverage Store",
+    "domain": "bonchon.com.ph",
+    "bus_email": "info@bonchon.com.ph",
+    "owner_email": "owner@bonchon.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@bonchon.com.ph",
+      "owner@bonchon.com.ph"
+    ]
+  },
+  {
+    "buyerId": 68,
+    "company": "24chicken Food & Beverage Store",
+    "domain": "24chicken.ph",
+    "bus_email": "info@24chicken.ph",
+    "owner_email": "owner@24chicken.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@24chicken.ph",
+      "owner@24chicken.ph"
+    ]
+  },
+  {
+    "buyerId": 69,
+    "company": "Frankiesnywings Food & Beverage Store",
+    "domain": "frankiesnywings.com",
+    "bus_email": "info@frankiesnywings.com",
+    "owner_email": "owner@frankiesnywings.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@frankiesnywings.com",
+      "owner@frankiesnywings.com"
+    ]
+  },
+  {
+    "buyerId": 70,
+    "company": "Zarkburgers Food & Beverage Store",
+    "domain": "zarkburgers.ph",
+    "bus_email": "info@zarkburgers.ph",
+    "owner_email": "owner@zarkburgers.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@zarkburgers.ph",
+      "owner@zarkburgers.ph"
+    ]
+  },
+  {
+    "buyerId": 71,
+    "company": "Sweetecstasy Food & Beverage Store",
+    "domain": "sweetecstasy.ph",
+    "bus_email": "info@sweetecstasy.ph",
+    "owner_email": "owner@sweetecstasy.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@sweetecstasy.ph",
+      "owner@sweetecstasy.ph"
+    ]
+  },
+  {
+    "buyerId": 72,
+    "company": "8cuts Food & Beverage Store",
+    "domain": "8cuts.ph",
+    "bus_email": "info@8cuts.ph",
+    "owner_email": "owner@8cuts.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@8cuts.ph",
+      "owner@8cuts.ph"
+    ]
+  },
+  {
+    "buyerId": 73,
+    "company": "Pound Food & Beverage Store",
+    "domain": "pound.ph",
+    "bus_email": "info@pound.ph",
+    "owner_email": "owner@pound.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@pound.ph",
+      "owner@pound.ph"
+    ]
+  },
+  {
+    "buyerId": 74,
+    "company": "Barcino Food & Beverage Store",
+    "domain": "barcino.com.ph",
+    "bus_email": "info@barcino.com.ph",
+    "owner_email": "owner@barcino.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@barcino.com.ph",
+      "owner@barcino.com.ph"
+    ]
+  },
+  {
+    "buyerId": 75,
+    "company": "Ramennagi Food & Beverage Store",
+    "domain": "ramennagi.com.ph",
+    "bus_email": "info@ramennagi.com.ph",
+    "owner_email": "owner@ramennagi.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@ramennagi.com.ph",
+      "owner@ramennagi.com.ph"
+    ]
+  },
+  {
+    "buyerId": 76,
+    "company": "Ippudo Food & Beverage Store",
+    "domain": "ippudo.com.ph",
+    "bus_email": "info@ippudo.com.ph",
+    "owner_email": "owner@ippudo.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@ippudo.com.ph",
+      "owner@ippudo.com.ph"
+    ]
+  },
+  {
+    "buyerId": 77,
+    "company": "Mendokororamenba Food & Beverage Store",
+    "domain": "mendokororamenba.ph",
+    "bus_email": "info@mendokororamenba.ph",
+    "owner_email": "owner@mendokororamenba.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@mendokororamenba.ph",
+      "owner@mendokororamenba.ph"
+    ]
+  },
+  {
+    "buyerId": 78,
+    "company": "Marugame Food & Beverage Store",
+    "domain": "marugame.ph",
+    "bus_email": "info@marugame.ph",
+    "owner_email": "owner@marugame.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@marugame.ph",
+      "owner@marugame.ph"
+    ]
+  },
+  {
+    "buyerId": 79,
+    "company": "Yabu Food & Beverage Store",
+    "domain": "yabu.ph",
+    "bus_email": "info@yabu.ph",
+    "owner_email": "owner@yabu.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@yabu.ph",
+      "owner@yabu.ph"
+    ]
+  },
+  {
+    "buyerId": 80,
+    "company": "Tonkatsuya Food & Beverage Store",
+    "domain": "tonkatsuya.ph",
+    "bus_email": "info@tonkatsuya.ph",
+    "owner_email": "owner@tonkatsuya.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@tonkatsuya.ph",
+      "owner@tonkatsuya.ph"
+    ]
+  },
+  {
+    "buyerId": 81,
+    "company": "Tokyo-tokyo Food & Beverage Store",
+    "domain": "tokyo-tokyo.com.ph",
+    "bus_email": "info@tokyo-tokyo.com.ph",
+    "owner_email": "owner@tokyo-tokyo.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@tokyo-tokyo.com.ph",
+      "owner@tokyo-tokyo.com.ph"
+    ]
+  },
+  {
+    "buyerId": 82,
+    "company": "Pepperlunch Food & Beverage Store",
+    "domain": "pepperlunch.com.ph",
+    "bus_email": "info@pepperlunch.com.ph",
+    "owner_email": "owner@pepperlunch.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@pepperlunch.com.ph",
+      "owner@pepperlunch.com.ph"
+    ]
+  },
+  {
+    "buyerId": 83,
+    "company": "Genkisushi Food & Beverage Store",
+    "domain": "genkisushi.com.ph",
+    "bus_email": "info@genkisushi.com.ph",
+    "owner_email": "owner@genkisushi.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@genkisushi.com.ph",
+      "owner@genkisushi.com.ph"
+    ]
+  },
+  {
+    "buyerId": 84,
+    "company": "Sushinori Food & Beverage Store",
+    "domain": "sushinori.ph",
+    "bus_email": "info@sushinori.ph",
+    "owner_email": "owner@sushinori.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@sushinori.ph",
+      "owner@sushinori.ph"
+    ]
+  },
+  {
+    "buyerId": 85,
+    "company": "Kimukatsu Food & Beverage Store",
+    "domain": "kimukatsu.ph",
+    "bus_email": "info@kimukatsu.ph",
+    "owner_email": "owner@kimukatsu.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@kimukatsu.ph",
+      "owner@kimukatsu.ph"
+    ]
+  },
+  {
+    "buyerId": 86,
+    "company": "Watami Food & Beverage Store",
+    "domain": "watami.com.ph",
+    "bus_email": "info@watami.com.ph",
+    "owner_email": "owner@watami.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@watami.com.ph",
+      "owner@watami.com.ph"
+    ]
+  },
+  {
+    "buyerId": 87,
+    "company": "Haidilao Food & Beverage Store",
+    "domain": "haidilao.ph",
+    "bus_email": "info@haidilao.ph",
+    "owner_email": "owner@haidilao.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@haidilao.ph",
+      "owner@haidilao.ph"
+    ]
+  },
+  {
+    "buyerId": 88,
+    "company": "Samgyupsalmambo Food & Beverage Store",
+    "domain": "samgyupsalmambo.ph",
+    "bus_email": "info@samgyupsalmambo.ph",
+    "owner_email": "owner@samgyupsalmambo.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@samgyupsalmambo.ph",
+      "owner@samgyupsalmambo.ph"
+    ]
+  },
+  {
+    "buyerId": 89,
+    "company": "Romanticbaboy Food & Beverage Store",
+    "domain": "romanticbaboy.ph",
+    "bus_email": "info@romanticbaboy.ph",
+    "owner_email": "owner@romanticbaboy.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@romanticbaboy.ph",
+      "owner@romanticbaboy.ph"
+    ]
+  },
+  {
+    "buyerId": 90,
+    "company": "Samgyupsalamat Food & Beverage Store",
+    "domain": "samgyupsalamat.ph",
+    "bus_email": "info@samgyupsalamat.ph",
+    "owner_email": "owner@samgyupsalamat.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@samgyupsalamat.ph",
+      "owner@samgyupsalamat.ph"
+    ]
+  },
+  {
+    "buyerId": 91,
+    "company": "Kpubbbq Food & Beverage Store",
+    "domain": "kpubbbq.ph",
+    "bus_email": "info@kpubbbq.ph",
+    "owner_email": "owner@kpubbbq.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@kpubbbq.ph",
+      "owner@kpubbbq.ph"
+    ]
+  },
+  {
+    "buyerId": 92,
+    "company": "Bonappetit Food & Beverage Store",
+    "domain": "bonappetit.com",
+    "bus_email": "info@bonappetit.com",
+    "owner_email": "owner@bonappetit.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@bonappetit.com",
+      "owner@bonappetit.com"
+    ]
+  },
+  {
+    "buyerId": 93,
+    "company": "Foodandwine Food & Beverage Store",
+    "domain": "foodandwine.com",
+    "bus_email": "info@foodandwine.com",
+    "owner_email": "owner@foodandwine.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@foodandwine.com",
+      "owner@foodandwine.com"
+    ]
+  },
+  {
+    "buyerId": 94,
+    "company": "Eater Food & Beverage Store",
+    "domain": "eater.com",
+    "bus_email": "info@eater.com",
+    "owner_email": "owner@eater.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@eater.com",
+      "owner@eater.com"
+    ]
+  },
+  {
+    "buyerId": 95,
+    "company": "Epicurious Food & Beverage Store",
+    "domain": "epicurious.com",
+    "bus_email": "info@epicurious.com",
+    "owner_email": "owner@epicurious.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@epicurious.com",
+      "owner@epicurious.com"
+    ]
+  },
+  {
+    "buyerId": 96,
+    "company": "Tastingtable Food & Beverage Store",
+    "domain": "tastingtable.com",
+    "bus_email": "info@tastingtable.com",
+    "owner_email": "owner@tastingtable.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@tastingtable.com",
+      "owner@tastingtable.com"
+    ]
+  },
+  {
+    "buyerId": 97,
+    "company": "Thrillist Food & Beverage Store",
+    "domain": "thrillist.com",
+    "bus_email": "info@thrillist.com",
+    "owner_email": "owner@thrillist.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@thrillist.com",
+      "owner@thrillist.com"
+    ]
+  },
+  {
+    "buyerId": 98,
+    "company": "Seriouseats Food & Beverage Store",
+    "domain": "seriouseats.com",
+    "bus_email": "info@seriouseats.com",
+    "owner_email": "owner@seriouseats.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@seriouseats.com",
+      "owner@seriouseats.com"
+    ]
+  },
+  {
+    "buyerId": 99,
+    "company": "Simplyrecipes Food & Beverage Store",
+    "domain": "simplyrecipes.com",
+    "bus_email": "info@simplyrecipes.com",
+    "owner_email": "owner@simplyrecipes.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@simplyrecipes.com",
+      "owner@simplyrecipes.com"
+    ]
+  },
+  {
+    "buyerId": 100,
+    "company": "Allrecipes Food & Beverage Store",
+    "domain": "allrecipes.com",
+    "bus_email": "info@allrecipes.com",
+    "owner_email": "owner@allrecipes.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@allrecipes.com",
+      "owner@allrecipes.com"
+    ]
+  }
+]

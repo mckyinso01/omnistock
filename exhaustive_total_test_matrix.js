@@ -45,7 +45,7 @@ describe('2. SECURITY, CRYPTOGRAPHY & AUTHENTICATION TESTS', () => {
 });
 
 describe('3. STITCH MIDNIGHT LOGIC & UI DARK SURFACE TESTS', () => {
-  test('Zero bg-white Container Leaks in Source Files', () => {
+  test('Zero bg-[#0B1C30] Container Leaks in Source Files', () => {
     const targetFiles = [
       'src/pages/Landing.jsx',
       'src/pages/Monetization.jsx',
@@ -62,9 +62,9 @@ describe('3. STITCH MIDNIGHT LOGIC & UI DARK SURFACE TESTS', () => {
     for (const file of targetFiles) {
       if (fs.existsSync(file)) {
         const content = fs.readFileSync(file, 'utf8');
-        // Match bg-white when used as a class (not in comments or imports)
+        // Match bg-[#0B1C30] when used as a class (not in comments or imports)
         const bgWhiteMatches = content.match(/className=["'][^"']*\bbg-white\b[^"']*["']/g);
-        assert.strictEqual(bgWhiteMatches, null, `Unallowed bg-white container found in ${file}`);
+        assert.strictEqual(bgWhiteMatches, null, `Unallowed bg-[#0B1C30] container found in ${file}`);
       }
     }
   });

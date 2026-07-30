@@ -203,7 +203,7 @@ export default function Analytics() {
               <input type="month" value={analysisMonth} onChange={e => setAnalysisMonth(e.target.value)}
                 className="h-10 rounded-xl bg-[#071322] border border-slate-700 px-3 py-1 text-sm text-white font-mono shadow-sm focus:outline-none focus:border-blue-500" />
             </div>
-            <Button onClick={handleRunAnalysis} disabled={runningAnalysis} className="bg-blue-600 hover:bg-blue-500 text-white font-bold h-10 gap-2 shadow-lg shadow-blue-600/30 app-card-hover">
+            <Button onClick={handleRunAnalysis} disabled={runningAnalysis} className="bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-bold h-10 gap-2 shadow-lg shadow-blue-600/30 app-card-hover">
               {runningAnalysis ? <><BarChart3 className="w-4 h-4 animate-pulse" /> Analyzing Database...</> : <><BarChart3 className="w-4 h-4" /> Run Monthly Audit</>}
             </Button>
           </div>
@@ -294,7 +294,7 @@ export default function Analytics() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {[
               { label: "Total Revenue", value: `₱${totalRevenue.toLocaleString("en-PH", { minimumFractionDigits: 2 })}`, color: "bg-gradient-to-r from-cyan-300 via-emerald-300 to-cyan-400 text-transparent bg-clip-text animate-shimmer", badge: "REALTIME", badgeColor: "bg-cyan-500/20 text-cyan-300 border-cyan-500/40", bg: "bg-[#071322] border-slate-800 hover:border-cyan-500/50 hover:shadow-[0_0_20px_rgba(0,229,255,0.2)]" },
-              { label: "Total Sales Orders", value: totalOrders, color: "bg-gradient-to-r from-blue-300 via-indigo-200 to-blue-400 text-transparent bg-clip-text animate-shimmer", badge: "ORDERS", badgeColor: "bg-blue-500/20 text-blue-300 border-blue-500/40", bg: "bg-[#071322] border-slate-800 hover:border-blue-500/50 hover:shadow-[0_0_20px_rgba(37,99,235,0.2)]" },
+              { label: "Total Sales Orders", value: totalOrders, color: "bg-gradient-to-r from-cyan-300 via-indigo-200 to-cyan-400 text-transparent bg-clip-text animate-shimmer", badge: "ORDERS", badgeColor: "bg-cyan-500/20 text-cyan-300 border-cyan-500/40", bg: "bg-[#071322] border-slate-800 hover:border-cyan-500/50 hover:shadow-[0_0_20px_rgba(0,229,255,0.2)]" },
               { label: "Average Order Value", value: `₱${avgOrder.toLocaleString("en-PH", { minimumFractionDigits: 2 })}`, color: "bg-gradient-to-r from-violet-300 via-fuchsia-300 to-violet-400 text-transparent bg-clip-text animate-shimmer", badge: "AVG TICKET", badgeColor: "bg-violet-500/20 text-violet-300 border-violet-500/40", bg: "bg-[#071322] border-slate-800 hover:border-violet-500/50 hover:shadow-[0_0_20px_rgba(139,92,246,0.2)]" },
               { label: "Gross Profit Margin", value: `₱${grossProfit.toLocaleString("en-PH", { minimumFractionDigits: 2 })}`, color: grossProfit >= 0 ? "bg-gradient-to-r from-emerald-300 via-teal-200 to-emerald-400 text-transparent bg-clip-text animate-shimmer" : "text-rose-400", badge: "GROSS PROFIT", badgeColor: "bg-emerald-500/20 text-emerald-300 border-emerald-500/40", bg: "bg-[#071322] border-slate-800 hover:border-emerald-500/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.2)]" },
             ].map((kpi) => (
@@ -485,7 +485,7 @@ export default function Analytics() {
                       {paymentData.map((item, i) => {
                         const total = paymentData.reduce((acc, curr) => acc + curr.value, 0);
                         const pct = total > 0 ? ((item.value / total) * 100).toFixed(0) : 0;
-                        const badgeBgs = ["bg-emerald-500/10 border-emerald-500/30 text-emerald-300", "bg-blue-500/10 border-blue-500/30 text-blue-300", "bg-amber-500/10 border-amber-500/30 text-amber-300"];
+                        const badgeBgs = ["bg-emerald-500/10 border-emerald-500/30 text-emerald-300", "bg-cyan-500/10 border-cyan-500/30 text-cyan-300", "bg-amber-500/10 border-amber-500/30 text-amber-300"];
                         return (
                           <div key={item.name} className={`px-3 py-1 rounded-xl border ${badgeBgs[i % badgeBgs.length]} flex items-center gap-2 font-bold`}>
                             <span className="w-2 h-2 rounded-full bg-current animate-pulse"></span>

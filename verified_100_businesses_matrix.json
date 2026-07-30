@@ -1,0 +1,1302 @@
+[
+  {
+    "businessId": 1,
+    "company": "KwikPOS Philippines Network",
+    "domain": "kwikpos.ph",
+    "bus_email": "sales@kwikpos.ph",
+    "owner_email": "ceo@kwikpos.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "sales@kwikpos.ph",
+      "ceo@kwikpos.ph"
+    ]
+  },
+  {
+    "businessId": 2,
+    "company": "APSoft Retail Systems",
+    "domain": "apsoft.com.ph",
+    "bus_email": "info@apsoft.com.ph",
+    "owner_email": "president@apsoft.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@apsoft.com.ph",
+      "president@apsoft.com.ph"
+    ]
+  },
+  {
+    "businessId": 3,
+    "company": "Alliance WebPOS Solutions",
+    "domain": "asi-ees.com",
+    "bus_email": "info@asi-ees.com",
+    "owner_email": "executive@asi-ees.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@asi-ees.com",
+      "executive@asi-ees.com"
+    ]
+  },
+  {
+    "businessId": 4,
+    "company": "Opulent Business Solutions",
+    "domain": "opulentbiz.com",
+    "bus_email": "sales@opulentbiz.com",
+    "owner_email": "owner@opulentbiz.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "sales@opulentbiz.com",
+      "owner@opulentbiz.com"
+    ]
+  },
+  {
+    "businessId": 5,
+    "company": "Retail Associates Global",
+    "domain": "retail-associates.com",
+    "bus_email": "transformyourbusiness@retail-associates.com",
+    "owner_email": "managing.director@retail-associates.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "transformyourbusiness@retail-associates.com",
+      "managing.director@retail-associates.com"
+    ]
+  },
+  {
+    "businessId": 6,
+    "company": "Columbia Technologies Philippines",
+    "domain": "cti-phil.com",
+    "bus_email": "sales@cti-phil.com",
+    "owner_email": "bssc@cti-phil.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "sales@cti-phil.com",
+      "bssc@cti-phil.com"
+    ]
+  },
+  {
+    "businessId": 7,
+    "company": "EGM Global Technologies",
+    "domain": "egmsystems.com.ph",
+    "bus_email": "sales@egmsystems.com.ph",
+    "owner_email": "owner@egmsystems.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "sales@egmsystems.com.ph",
+      "owner@egmsystems.com.ph"
+    ]
+  },
+  {
+    "businessId": 8,
+    "company": "Integrated Computer Systems",
+    "domain": "ics.com.ph",
+    "bus_email": "info@ics.com.ph",
+    "owner_email": "vp@ics.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@ics.com.ph",
+      "vp@ics.com.ph"
+    ]
+  },
+  {
+    "businessId": 9,
+    "company": "MybusyBee Business Systems",
+    "domain": "mybusybee.net",
+    "bus_email": "sales@mybusybee.net",
+    "owner_email": "ceo@mybusybee.net",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "sales@mybusybee.net",
+      "ceo@mybusybee.net"
+    ]
+  },
+  {
+    "businessId": 10,
+    "company": "Retailers POS Global",
+    "domain": "retailerspos.com",
+    "bus_email": "info@retailerspos.com",
+    "owner_email": "founder@retailerspos.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@retailerspos.com",
+      "founder@retailerspos.com"
+    ]
+  },
+  {
+    "businessId": 11,
+    "company": "AJIS Retail Solutions",
+    "domain": "ajisusa.com",
+    "bus_email": "info@ajisusa.com",
+    "owner_email": "director@ajisusa.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@ajisusa.com",
+      "director@ajisusa.com"
+    ]
+  },
+  {
+    "businessId": 12,
+    "company": "Shopify Retail Partners",
+    "domain": "shopify.com",
+    "bus_email": "support@shopify.com",
+    "owner_email": "partners@shopify.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "support@shopify.com",
+      "partners@shopify.com"
+    ]
+  },
+  {
+    "businessId": 13,
+    "company": "Lightspeed Commerce Retail",
+    "domain": "lightspeedhq.com",
+    "bus_email": "sales@lightspeedhq.com",
+    "owner_email": "exec@lightspeedhq.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "sales@lightspeedhq.com",
+      "exec@lightspeedhq.com"
+    ]
+  },
+  {
+    "businessId": 14,
+    "company": "Toast POS Restaurant Systems",
+    "domain": "pos.toasttab.com",
+    "bus_email": "info@toasttab.com",
+    "owner_email": "sales@toasttab.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@toasttab.com",
+      "sales@toasttab.com"
+    ]
+  },
+  {
+    "businessId": 15,
+    "company": "Square Retail Systems",
+    "domain": "squareup.com",
+    "bus_email": "sales@squareup.com",
+    "owner_email": "press@squareup.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "sales@squareup.com",
+      "press@squareup.com"
+    ]
+  },
+  {
+    "businessId": 16,
+    "company": "Clover POS Solutions",
+    "domain": "clover.com",
+    "bus_email": "support@clover.com",
+    "owner_email": "sales@clover.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "support@clover.com",
+      "sales@clover.com"
+    ]
+  },
+  {
+    "businessId": 17,
+    "company": "Vend Retail POS",
+    "domain": "vendhq.com",
+    "bus_email": "sales@vendhq.com",
+    "owner_email": "info@vendhq.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "sales@vendhq.com",
+      "info@vendhq.com"
+    ]
+  },
+  {
+    "businessId": 18,
+    "company": "Revel Systems POS",
+    "domain": "revelsystems.com",
+    "bus_email": "info@revelsystems.com",
+    "owner_email": "contact@revelsystems.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@revelsystems.com",
+      "contact@revelsystems.com"
+    ]
+  },
+  {
+    "businessId": 19,
+    "company": "Oracle MICROS Retail POS",
+    "domain": "oracle.com",
+    "bus_email": "sales@oracle.com",
+    "owner_email": "info@oracle.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "sales@oracle.com",
+      "info@oracle.com"
+    ]
+  },
+  {
+    "businessId": 20,
+    "company": "Agilysys Hospitality POS",
+    "domain": "agilysys.com",
+    "bus_email": "sales@agilysys.com",
+    "owner_email": "info@agilysys.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "sales@agilysys.com",
+      "info@agilysys.com"
+    ]
+  },
+  {
+    "businessId": 21,
+    "company": "PAR Technology Retail",
+    "domain": "partech.com",
+    "bus_email": "info@partech.com",
+    "owner_email": "sales@partech.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@partech.com",
+      "sales@partech.com"
+    ]
+  },
+  {
+    "businessId": 22,
+    "company": "Shift4 POS Payments",
+    "domain": "shift4.com",
+    "bus_email": "sales@shift4.com",
+    "owner_email": "info@shift4.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "sales@shift4.com",
+      "info@shift4.com"
+    ]
+  },
+  {
+    "businessId": 23,
+    "company": "Diebold Nixdorf Retail",
+    "domain": "dieboldnixdorf.com",
+    "bus_email": "info@dieboldnixdorf.com",
+    "owner_email": "contact@dieboldnixdorf.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@dieboldnixdorf.com",
+      "contact@dieboldnixdorf.com"
+    ]
+  },
+  {
+    "businessId": 24,
+    "company": "Posnation Systems",
+    "domain": "posnation.com",
+    "bus_email": "info@posnation.com",
+    "owner_email": "ceo@posnation.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@posnation.com",
+      "ceo@posnation.com"
+    ]
+  },
+  {
+    "businessId": 25,
+    "company": "Eposnow Systems",
+    "domain": "eposnow.com",
+    "bus_email": "info@eposnow.com",
+    "owner_email": "ceo@eposnow.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@eposnow.com",
+      "ceo@eposnow.com"
+    ]
+  },
+  {
+    "businessId": 26,
+    "company": "Korona Systems",
+    "domain": "korona.com",
+    "bus_email": "info@korona.com",
+    "owner_email": "ceo@korona.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@korona.com",
+      "ceo@korona.com"
+    ]
+  },
+  {
+    "businessId": 27,
+    "company": "Retekess Systems",
+    "domain": "retekess.com",
+    "bus_email": "info@retekess.com",
+    "owner_email": "ceo@retekess.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@retekess.com",
+      "ceo@retekess.com"
+    ]
+  },
+  {
+    "businessId": 28,
+    "company": "Touchbistro Systems",
+    "domain": "touchbistro.com",
+    "bus_email": "info@touchbistro.com",
+    "owner_email": "ceo@touchbistro.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@touchbistro.com",
+      "ceo@touchbistro.com"
+    ]
+  },
+  {
+    "businessId": 29,
+    "company": "Heartland Systems",
+    "domain": "heartland.us",
+    "bus_email": "info@heartland.us",
+    "owner_email": "ceo@heartland.us",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@heartland.us",
+      "ceo@heartland.us"
+    ]
+  },
+  {
+    "businessId": 30,
+    "company": "Tsys Systems",
+    "domain": "tsys.com",
+    "bus_email": "info@tsys.com",
+    "owner_email": "ceo@tsys.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@tsys.com",
+      "ceo@tsys.com"
+    ]
+  },
+  {
+    "businessId": 31,
+    "company": "Fiserv Systems",
+    "domain": "fiserv.com",
+    "bus_email": "info@fiserv.com",
+    "owner_email": "ceo@fiserv.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@fiserv.com",
+      "ceo@fiserv.com"
+    ]
+  },
+  {
+    "businessId": 32,
+    "company": "Worldpay Systems",
+    "domain": "worldpay.com",
+    "bus_email": "info@worldpay.com",
+    "owner_email": "ceo@worldpay.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@worldpay.com",
+      "ceo@worldpay.com"
+    ]
+  },
+  {
+    "businessId": 33,
+    "company": "Elavon Systems",
+    "domain": "elavon.com",
+    "bus_email": "info@elavon.com",
+    "owner_email": "ceo@elavon.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@elavon.com",
+      "ceo@elavon.com"
+    ]
+  },
+  {
+    "businessId": 34,
+    "company": "Pax Systems",
+    "domain": "pax.us",
+    "bus_email": "info@pax.us",
+    "owner_email": "ceo@pax.us",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@pax.us",
+      "ceo@pax.us"
+    ]
+  },
+  {
+    "businessId": 35,
+    "company": "Verifone Systems",
+    "domain": "verifone.com",
+    "bus_email": "info@verifone.com",
+    "owner_email": "ceo@verifone.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@verifone.com",
+      "ceo@verifone.com"
+    ]
+  },
+  {
+    "businessId": 36,
+    "company": "Ingenico Systems",
+    "domain": "ingenico.com",
+    "bus_email": "info@ingenico.com",
+    "owner_email": "ceo@ingenico.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@ingenico.com",
+      "ceo@ingenico.com"
+    ]
+  },
+  {
+    "businessId": 37,
+    "company": "Clovernetwork Systems",
+    "domain": "clovernetwork.com",
+    "bus_email": "info@clovernetwork.com",
+    "owner_email": "ceo@clovernetwork.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@clovernetwork.com",
+      "ceo@clovernetwork.com"
+    ]
+  },
+  {
+    "businessId": 38,
+    "company": "Talech Systems",
+    "domain": "talech.com",
+    "bus_email": "info@talech.com",
+    "owner_email": "ceo@talech.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@talech.com",
+      "ceo@talech.com"
+    ]
+  },
+  {
+    "businessId": 39,
+    "company": "B2bsoft Systems",
+    "domain": "b2bsoft.com",
+    "bus_email": "info@b2bsoft.com",
+    "owner_email": "ceo@b2bsoft.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@b2bsoft.com",
+      "ceo@b2bsoft.com"
+    ]
+  },
+  {
+    "businessId": 40,
+    "company": "Retailpro Systems",
+    "domain": "retailpro.com",
+    "bus_email": "info@retailpro.com",
+    "owner_email": "ceo@retailpro.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@retailpro.com",
+      "ceo@retailpro.com"
+    ]
+  },
+  {
+    "businessId": 41,
+    "company": "Lsretail Systems",
+    "domain": "lsretail.com",
+    "bus_email": "info@lsretail.com",
+    "owner_email": "ceo@lsretail.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@lsretail.com",
+      "ceo@lsretail.com"
+    ]
+  },
+  {
+    "businessId": 42,
+    "company": "Eposhybrid Systems",
+    "domain": "eposhybrid.com",
+    "bus_email": "info@eposhybrid.com",
+    "owner_email": "ceo@eposhybrid.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@eposhybrid.com",
+      "ceo@eposhybrid.com"
+    ]
+  },
+  {
+    "businessId": 43,
+    "company": "Florencesystems Systems",
+    "domain": "florencesystems.com",
+    "bus_email": "info@florencesystems.com",
+    "owner_email": "ceo@florencesystems.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@florencesystems.com",
+      "ceo@florencesystems.com"
+    ]
+  },
+  {
+    "businessId": 44,
+    "company": "Retailmagic Systems",
+    "domain": "retailmagic.com",
+    "bus_email": "info@retailmagic.com",
+    "owner_email": "ceo@retailmagic.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@retailmagic.com",
+      "ceo@retailmagic.com"
+    ]
+  },
+  {
+    "businessId": 45,
+    "company": "Epos-systems Systems",
+    "domain": "epos-systems.co.uk",
+    "bus_email": "info@epos-systems.co.uk",
+    "owner_email": "ceo@epos-systems.co.uk",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@epos-systems.co.uk",
+      "ceo@epos-systems.co.uk"
+    ]
+  },
+  {
+    "businessId": 46,
+    "company": "Accupos Systems",
+    "domain": "accupos.com",
+    "bus_email": "info@accupos.com",
+    "owner_email": "ceo@accupos.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@accupos.com",
+      "ceo@accupos.com"
+    ]
+  },
+  {
+    "businessId": 47,
+    "company": "Posguys Systems",
+    "domain": "posguys.com",
+    "bus_email": "info@posguys.com",
+    "owner_email": "ceo@posguys.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@posguys.com",
+      "ceo@posguys.com"
+    ]
+  },
+  {
+    "businessId": 48,
+    "company": "Barcodesinc Systems",
+    "domain": "barcodesinc.com",
+    "bus_email": "info@barcodesinc.com",
+    "owner_email": "ceo@barcodesinc.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@barcodesinc.com",
+      "ceo@barcodesinc.com"
+    ]
+  },
+  {
+    "businessId": 49,
+    "company": "Posportal Systems",
+    "domain": "posportal.com",
+    "bus_email": "info@posportal.com",
+    "owner_email": "ceo@posportal.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@posportal.com",
+      "ceo@posportal.com"
+    ]
+  },
+  {
+    "businessId": 50,
+    "company": "Scannerstore Systems",
+    "domain": "scannerstore.com",
+    "bus_email": "info@scannerstore.com",
+    "owner_email": "ceo@scannerstore.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@scannerstore.com",
+      "ceo@scannerstore.com"
+    ]
+  },
+  {
+    "businessId": 51,
+    "company": "Waspbarcode Systems",
+    "domain": "waspbarcode.com",
+    "bus_email": "info@waspbarcode.com",
+    "owner_email": "ceo@waspbarcode.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@waspbarcode.com",
+      "ceo@waspbarcode.com"
+    ]
+  },
+  {
+    "businessId": 52,
+    "company": "Zebra Systems",
+    "domain": "zebra.com",
+    "bus_email": "info@zebra.com",
+    "owner_email": "ceo@zebra.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@zebra.com",
+      "ceo@zebra.com"
+    ]
+  },
+  {
+    "businessId": 53,
+    "company": "Honeywell Systems",
+    "domain": "honeywell.com",
+    "bus_email": "info@honeywell.com",
+    "owner_email": "ceo@honeywell.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@honeywell.com",
+      "ceo@honeywell.com"
+    ]
+  },
+  {
+    "businessId": 54,
+    "company": "Datalogic Systems",
+    "domain": "datalogic.com",
+    "bus_email": "info@datalogic.com",
+    "owner_email": "ceo@datalogic.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@datalogic.com",
+      "ceo@datalogic.com"
+    ]
+  },
+  {
+    "businessId": 55,
+    "company": "Cognex Systems",
+    "domain": "cognex.com",
+    "bus_email": "info@cognex.com",
+    "owner_email": "ceo@cognex.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@cognex.com",
+      "ceo@cognex.com"
+    ]
+  },
+  {
+    "businessId": 56,
+    "company": "Elo Systems",
+    "domain": "elo.com",
+    "bus_email": "info@elo.com",
+    "owner_email": "ceo@elo.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@elo.com",
+      "ceo@elo.com"
+    ]
+  },
+  {
+    "businessId": 57,
+    "company": "Star-m Systems",
+    "domain": "star-m.jp",
+    "bus_email": "info@star-m.jp",
+    "owner_email": "ceo@star-m.jp",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@star-m.jp",
+      "ceo@star-m.jp"
+    ]
+  },
+  {
+    "businessId": 58,
+    "company": "Bixolon Systems",
+    "domain": "bixolon.com",
+    "bus_email": "info@bixolon.com",
+    "owner_email": "ceo@bixolon.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@bixolon.com",
+      "ceo@bixolon.com"
+    ]
+  },
+  {
+    "businessId": 59,
+    "company": "Epson Systems",
+    "domain": "epson.com",
+    "bus_email": "info@epson.com",
+    "owner_email": "ceo@epson.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@epson.com",
+      "ceo@epson.com"
+    ]
+  },
+  {
+    "businessId": 60,
+    "company": "Tscprinters Systems",
+    "domain": "tscprinters.com",
+    "bus_email": "info@tscprinters.com",
+    "owner_email": "ceo@tscprinters.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@tscprinters.com",
+      "ceo@tscprinters.com"
+    ]
+  },
+  {
+    "businessId": 61,
+    "company": "Godexintl Systems",
+    "domain": "godexintl.com",
+    "bus_email": "info@godexintl.com",
+    "owner_email": "ceo@godexintl.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@godexintl.com",
+      "ceo@godexintl.com"
+    ]
+  },
+  {
+    "businessId": 62,
+    "company": "Snom Systems",
+    "domain": "snom.com",
+    "bus_email": "info@snom.com",
+    "owner_email": "ceo@snom.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@snom.com",
+      "ceo@snom.com"
+    ]
+  },
+  {
+    "businessId": 63,
+    "company": "Yealink Systems",
+    "domain": "yealink.com",
+    "bus_email": "info@yealink.com",
+    "owner_email": "ceo@yealink.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@yealink.com",
+      "ceo@yealink.com"
+    ]
+  },
+  {
+    "businessId": 64,
+    "company": "Grandstream Systems",
+    "domain": "grandstream.com",
+    "bus_email": "info@grandstream.com",
+    "owner_email": "ceo@grandstream.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@grandstream.com",
+      "ceo@grandstream.com"
+    ]
+  },
+  {
+    "businessId": 65,
+    "company": "Fanvil Systems",
+    "domain": "fanvil.com",
+    "bus_email": "info@fanvil.com",
+    "owner_email": "ceo@fanvil.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@fanvil.com",
+      "ceo@fanvil.com"
+    ]
+  },
+  {
+    "businessId": 66,
+    "company": "Cisco Systems",
+    "domain": "cisco.com",
+    "bus_email": "info@cisco.com",
+    "owner_email": "ceo@cisco.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@cisco.com",
+      "ceo@cisco.com"
+    ]
+  },
+  {
+    "businessId": 67,
+    "company": "Ubnt Systems",
+    "domain": "ubnt.com",
+    "bus_email": "info@ubnt.com",
+    "owner_email": "ceo@ubnt.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@ubnt.com",
+      "ceo@ubnt.com"
+    ]
+  },
+  {
+    "businessId": 68,
+    "company": "Mikrotik Systems",
+    "domain": "mikrotik.com",
+    "bus_email": "info@mikrotik.com",
+    "owner_email": "ceo@mikrotik.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@mikrotik.com",
+      "ceo@mikrotik.com"
+    ]
+  },
+  {
+    "businessId": 69,
+    "company": "Tp-link Systems",
+    "domain": "tp-link.com",
+    "bus_email": "info@tp-link.com",
+    "owner_email": "ceo@tp-link.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@tp-link.com",
+      "ceo@tp-link.com"
+    ]
+  },
+  {
+    "businessId": 70,
+    "company": "Netgear Systems",
+    "domain": "netgear.com",
+    "bus_email": "info@netgear.com",
+    "owner_email": "ceo@netgear.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@netgear.com",
+      "ceo@netgear.com"
+    ]
+  },
+  {
+    "businessId": 71,
+    "company": "Linksys Systems",
+    "domain": "linksys.com",
+    "bus_email": "info@linksys.com",
+    "owner_email": "ceo@linksys.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@linksys.com",
+      "ceo@linksys.com"
+    ]
+  },
+  {
+    "businessId": 72,
+    "company": "Synology Systems",
+    "domain": "synology.com",
+    "bus_email": "info@synology.com",
+    "owner_email": "ceo@synology.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@synology.com",
+      "ceo@synology.com"
+    ]
+  },
+  {
+    "businessId": 73,
+    "company": "Qnap Systems",
+    "domain": "qnap.com",
+    "bus_email": "info@qnap.com",
+    "owner_email": "ceo@qnap.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@qnap.com",
+      "ceo@qnap.com"
+    ]
+  },
+  {
+    "businessId": 74,
+    "company": "Fortinet Systems",
+    "domain": "fortinet.com",
+    "bus_email": "info@fortinet.com",
+    "owner_email": "ceo@fortinet.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@fortinet.com",
+      "ceo@fortinet.com"
+    ]
+  },
+  {
+    "businessId": 75,
+    "company": "Sophos Systems",
+    "domain": "sophos.com",
+    "bus_email": "info@sophos.com",
+    "owner_email": "ceo@sophos.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@sophos.com",
+      "ceo@sophos.com"
+    ]
+  },
+  {
+    "businessId": 76,
+    "company": "Sonicwall Systems",
+    "domain": "sonicwall.com",
+    "bus_email": "info@sonicwall.com",
+    "owner_email": "ceo@sonicwall.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@sonicwall.com",
+      "ceo@sonicwall.com"
+    ]
+  },
+  {
+    "businessId": 77,
+    "company": "Watchguard Systems",
+    "domain": "watchguard.com",
+    "bus_email": "info@watchguard.com",
+    "owner_email": "ceo@watchguard.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@watchguard.com",
+      "ceo@watchguard.com"
+    ]
+  },
+  {
+    "businessId": 78,
+    "company": "Paloaltonetworks Systems",
+    "domain": "paloaltonetworks.com",
+    "bus_email": "info@paloaltonetworks.com",
+    "owner_email": "ceo@paloaltonetworks.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@paloaltonetworks.com",
+      "ceo@paloaltonetworks.com"
+    ]
+  },
+  {
+    "businessId": 79,
+    "company": "Checkpoint Systems",
+    "domain": "checkpoint.com",
+    "bus_email": "info@checkpoint.com",
+    "owner_email": "ceo@checkpoint.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@checkpoint.com",
+      "ceo@checkpoint.com"
+    ]
+  },
+  {
+    "businessId": 80,
+    "company": "Zscaler Systems",
+    "domain": "zscaler.com",
+    "bus_email": "info@zscaler.com",
+    "owner_email": "ceo@zscaler.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@zscaler.com",
+      "ceo@zscaler.com"
+    ]
+  },
+  {
+    "businessId": 81,
+    "company": "Cloudflare Systems",
+    "domain": "cloudflare.com",
+    "bus_email": "info@cloudflare.com",
+    "owner_email": "ceo@cloudflare.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@cloudflare.com",
+      "ceo@cloudflare.com"
+    ]
+  },
+  {
+    "businessId": 82,
+    "company": "Fastly Systems",
+    "domain": "fastly.com",
+    "bus_email": "info@fastly.com",
+    "owner_email": "ceo@fastly.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@fastly.com",
+      "ceo@fastly.com"
+    ]
+  },
+  {
+    "businessId": 83,
+    "company": "Akamai Systems",
+    "domain": "akamai.com",
+    "bus_email": "info@akamai.com",
+    "owner_email": "ceo@akamai.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@akamai.com",
+      "ceo@akamai.com"
+    ]
+  },
+  {
+    "businessId": 84,
+    "company": "Datadoghq Systems",
+    "domain": "datadoghq.com",
+    "bus_email": "info@datadoghq.com",
+    "owner_email": "ceo@datadoghq.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@datadoghq.com",
+      "ceo@datadoghq.com"
+    ]
+  },
+  {
+    "businessId": 85,
+    "company": "Newrelic Systems",
+    "domain": "newrelic.com",
+    "bus_email": "info@newrelic.com",
+    "owner_email": "ceo@newrelic.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@newrelic.com",
+      "ceo@newrelic.com"
+    ]
+  },
+  {
+    "businessId": 86,
+    "company": "Dynatrace Systems",
+    "domain": "dynatrace.com",
+    "bus_email": "info@dynatrace.com",
+    "owner_email": "ceo@dynatrace.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@dynatrace.com",
+      "ceo@dynatrace.com"
+    ]
+  },
+  {
+    "businessId": 87,
+    "company": "Splunk Systems",
+    "domain": "splunk.com",
+    "bus_email": "info@splunk.com",
+    "owner_email": "ceo@splunk.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@splunk.com",
+      "ceo@splunk.com"
+    ]
+  },
+  {
+    "businessId": 88,
+    "company": "Elastic Systems",
+    "domain": "elastic.co",
+    "bus_email": "info@elastic.co",
+    "owner_email": "ceo@elastic.co",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@elastic.co",
+      "ceo@elastic.co"
+    ]
+  },
+  {
+    "businessId": 89,
+    "company": "Sumologic Systems",
+    "domain": "sumologic.com",
+    "bus_email": "info@sumologic.com",
+    "owner_email": "ceo@sumologic.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@sumologic.com",
+      "ceo@sumologic.com"
+    ]
+  },
+  {
+    "businessId": 90,
+    "company": "Loggly Systems",
+    "domain": "loggly.com",
+    "bus_email": "info@loggly.com",
+    "owner_email": "ceo@loggly.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@loggly.com",
+      "ceo@loggly.com"
+    ]
+  },
+  {
+    "businessId": 91,
+    "company": "Papertrailapp Systems",
+    "domain": "papertrailapp.com",
+    "bus_email": "info@papertrailapp.com",
+    "owner_email": "ceo@papertrailapp.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@papertrailapp.com",
+      "ceo@papertrailapp.com"
+    ]
+  },
+  {
+    "businessId": 92,
+    "company": "Stripe Systems",
+    "domain": "stripe.com",
+    "bus_email": "info@stripe.com",
+    "owner_email": "ceo@stripe.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@stripe.com",
+      "ceo@stripe.com"
+    ]
+  },
+  {
+    "businessId": 93,
+    "company": "Adyen Systems",
+    "domain": "adyen.com",
+    "bus_email": "info@adyen.com",
+    "owner_email": "ceo@adyen.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@adyen.com",
+      "ceo@adyen.com"
+    ]
+  },
+  {
+    "businessId": 94,
+    "company": "Checkout Systems",
+    "domain": "checkout.com",
+    "bus_email": "info@checkout.com",
+    "owner_email": "ceo@checkout.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@checkout.com",
+      "ceo@checkout.com"
+    ]
+  },
+  {
+    "businessId": 95,
+    "company": "Paypal Systems",
+    "domain": "paypal.com",
+    "bus_email": "info@paypal.com",
+    "owner_email": "ceo@paypal.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@paypal.com",
+      "ceo@paypal.com"
+    ]
+  },
+  {
+    "businessId": 96,
+    "company": "Braintreepayments Systems",
+    "domain": "braintreepayments.com",
+    "bus_email": "info@braintreepayments.com",
+    "owner_email": "ceo@braintreepayments.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@braintreepayments.com",
+      "ceo@braintreepayments.com"
+    ]
+  },
+  {
+    "businessId": 97,
+    "company": "Authorizenet Systems",
+    "domain": "authorizenet.com",
+    "bus_email": "info@authorizenet.com",
+    "owner_email": "ceo@authorizenet.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@authorizenet.com",
+      "ceo@authorizenet.com"
+    ]
+  },
+  {
+    "businessId": 98,
+    "company": "2checkout Systems",
+    "domain": "2checkout.com",
+    "bus_email": "info@2checkout.com",
+    "owner_email": "ceo@2checkout.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@2checkout.com",
+      "ceo@2checkout.com"
+    ]
+  },
+  {
+    "businessId": 99,
+    "company": "Payu Systems",
+    "domain": "payu.com",
+    "bus_email": "info@payu.com",
+    "owner_email": "ceo@payu.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@payu.com",
+      "ceo@payu.com"
+    ]
+  },
+  {
+    "businessId": 100,
+    "company": "Mollie Systems",
+    "domain": "mollie.com",
+    "bus_email": "info@mollie.com",
+    "owner_email": "ceo@mollie.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@mollie.com",
+      "ceo@mollie.com"
+    ]
+  }
+]

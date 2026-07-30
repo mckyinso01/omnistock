@@ -14,11 +14,11 @@ import { base44 } from "@/api/base44Client";
 import { useToast } from "@/components/ui/use-toast";
 
 const STATUS_COLORS = {
-  draft: "bg-slate-100 text-slate-400",
-  sent: "bg-blue-100 text-blue-700",
-  partial: "bg-yellow-100 text-yellow-700",
-  received: "bg-green-100 text-green-700",
-  cancelled: "bg-red-100 text-red-600",
+  draft: "bg-slate-900/80 text-slate-300 border border-slate-700",
+  sent: "bg-cyan-950/80 text-cyan-300 border border-cyan-500/50",
+  partial: "bg-amber-950/80 text-amber-300 border border-amber-500/50",
+  received: "bg-emerald-950/80 text-emerald-300 border border-emerald-500/50",
+  cancelled: "bg-rose-950/80 text-rose-300 border border-rose-500/50",
 };
 
 export default function PurchaseOrders() {
@@ -277,7 +277,7 @@ export default function PurchaseOrders() {
 
       {/* Orders List */}
       {loading ? (
-        <div className="space-y-3">{[1,2,3].map(i => <div key={i} className="h-20 rounded-xl bg-slate-200 animate-pulse" />)}</div>
+        <div className="space-y-3">{[1,2,3].map(i => <div key={i} className="h-20 rounded-xl bg-slate-800/60 animate-pulse" />)}</div>
       ) : orders.length === 0 ? (
         <div className="text-center py-20 text-slate-400">
           <Truck className="w-12 h-12 mx-auto mb-3 opacity-30" />
@@ -290,7 +290,7 @@ export default function PurchaseOrders() {
               <CardContent className="p-4">
                 <div className="flex items-center justify-between gap-3">
                   <div className="flex items-center gap-3 flex-1 min-w-0">
-                    <div className="w-9 h-9 rounded-xl bg-blue-50 flex items-center justify-center">
+                    <div className="w-9 h-9 rounded-xl bg-[#071322] border border-slate-800 flex items-center justify-center">
                       <Package className="w-5 h-5 text-cyan-400" />
                     </div>
                     <div className="min-w-0">
@@ -302,7 +302,7 @@ export default function PurchaseOrders() {
                     <Badge className={STATUS_COLORS[order.status]}>{order.status}</Badge>
                     <p className="text-sm font-bold text-slate-300">₱{(order.total_amount || 0).toLocaleString()}</p>
                     {order.status === "draft" && (
-                      <Button size="sm" onClick={() => updateStatus(order.id, "sent")} className="text-xs bg-blue-600 hover:bg-blue-700 text-white">Send</Button>
+                      <Button size="sm" onClick={() => updateStatus(order.id, "sent")} className="text-xs bg-[#2563EB] hover:bg-[#1D4ED8] text-white">Send</Button>
                     )}
                     {(order.status === "sent" || order.status === "partial") && (
                       <Button size="sm" onClick={() => updateStatus(order.id, "received")} className="text-xs bg-emerald-600 hover:bg-emerald-700 text-white gap-1">

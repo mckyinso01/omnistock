@@ -99,10 +99,17 @@ export default function Dashboard() {
     return products.filter((p) => p.status === "active").length;
   }, [products]);
 
-  // Sales chart last 7 days
+  const [timeframe, setTimeframe] = useState("7d"); // "7d" | "30d" | "monthly" | "ytd"
+
+  // Dynamic Sales chart based on selected timeframe
   const salesChart = useMemo(() => {
-    return Array.from({ length: 7 }, (_, i) => {
-      const day = subDays(new Date(), 6 - i);
+    let daysCount = 7;
+    if (timeframe === "30d") daysCount = 30;
+    if (timeframe === "monthly") daysCount = 30;
+    if (timeframe === "ytd") daysCount = 90;
+
+    return Array.from({ length: daysCount }, (_, i) => {
+      const day = subDays(new Date(), (daysCount - 1) - i);
       const dayStr = day.toDateString();
       const daySales = transactions
         .filter(
@@ -112,9 +119,9 @@ export default function Dashboard() {
             new Date(t.created_date).toDateString() === dayStr
         )
         .reduce((sum, t) => sum + (t.total_amount || 0), 0);
-      return { day: format(day, "EEE"), sales: daySales };
+      return { day: format(day, daysCount > 14 ? "MMM dd" : "EEE"), sales: daySales };
     });
-  }, [transactions]);
+  }, [transactions, timeframe]);
 
   const recentTransactions = useMemo(() => {
     return transactions.slice(0, 5);
@@ -175,11 +182,38 @@ export default function Dashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         {/* Sales Chart */}
         <Card className="lg:col-span-2 water-breathing-card rounded-2xl">
-          <CardHeader className="pb-3 border-b border-slate-800/80">
+          <CardHeader className="pb-3 border-b border-slate-800/80 flex flex-row items-center justify-between">
             <CardTitle className={DESIGN_TOKENS.typography.h2 + " flex items-center gap-2"}>
               <TrendingUp className="w-4 h-4 text-cyan-400" />
-              Sales — Last 7 Days
+              Income Analytics ({timeframe === '7d' ? 'Daily / 7-Day' : timeframe === '30d' ? '30-Day Monthly' : timeframe === 'monthly' ? 'Monthly Rollup' : 'YTD Annual'})
             </CardTitle>
+            {/* Timeframe Selector Pills */}
+            <div className="flex items-center gap-1 bg-[#071322] p-1 rounded-xl border border-slate-800">
+              <button
+                onClick={() => setTimeframe('7d')}
+                className={`px-2.5 py-1 text-xs font-semibold rounded-lg transition-all ${timeframe === '7d' ? 'bg-[#2563EB] text-white shadow-lg' : 'text-slate-400 hover:text-white'}`}
+              >
+                7-Day
+              </button>
+              <button
+                onClick={() => setTimeframe('30d')}
+                className={`px-2.5 py-1 text-xs font-semibold rounded-lg transition-all ${timeframe === '30d' ? 'bg-[#2563EB] text-white shadow-lg' : 'text-slate-400 hover:text-white'}`}
+              >
+                30-Day
+              </button>
+              <button
+                onClick={() => setTimeframe('monthly')}
+                className={`px-2.5 py-1 text-xs font-semibold rounded-lg transition-all ${timeframe === 'monthly' ? 'bg-[#2563EB] text-white shadow-lg' : 'text-slate-400 hover:text-white'}`}
+              >
+                Monthly
+              </button>
+              <button
+                onClick={() => setTimeframe('ytd')}
+                className={`px-2.5 py-1 text-xs font-semibold rounded-lg transition-all ${timeframe === 'ytd' ? 'bg-[#2563EB] text-white shadow-lg' : 'text-slate-400 hover:text-white'}`}
+              >
+                YTD
+              </button>
+            </div>
           </CardHeader>
           <CardContent className="pt-4">
             {loading ? (

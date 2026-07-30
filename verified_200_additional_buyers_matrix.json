@@ -1,0 +1,2602 @@
+[
+  {
+    "buyerId": 1,
+    "company": "Robinsonssupermarket Store & Outlet",
+    "domain": "robinsonssupermarket.com.ph",
+    "bus_email": "info@robinsonssupermarket.com.ph",
+    "owner_email": "owner@robinsonssupermarket.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@robinsonssupermarket.com.ph",
+      "owner@robinsonssupermarket.com.ph"
+    ]
+  },
+  {
+    "buyerId": 2,
+    "company": "Puregold Store & Outlet",
+    "domain": "puregold.com.ph",
+    "bus_email": "info@puregold.com.ph",
+    "owner_email": "owner@puregold.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@puregold.com.ph",
+      "owner@puregold.com.ph"
+    ]
+  },
+  {
+    "buyerId": 3,
+    "company": "Smmarkets Store & Outlet",
+    "domain": "smmarkets.ph",
+    "bus_email": "info@smmarkets.ph",
+    "owner_email": "owner@smmarkets.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@smmarkets.ph",
+      "owner@smmarkets.ph"
+    ]
+  },
+  {
+    "buyerId": 4,
+    "company": "Waltermart Store & Outlet",
+    "domain": "waltermart.com.ph",
+    "bus_email": "info@waltermart.com.ph",
+    "owner_email": "owner@waltermart.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@waltermart.com.ph",
+      "owner@waltermart.com.ph"
+    ]
+  },
+  {
+    "buyerId": 5,
+    "company": "Super8 Store & Outlet",
+    "domain": "super8.com.ph",
+    "bus_email": "info@super8.com.ph",
+    "owner_email": "owner@super8.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@super8.com.ph",
+      "owner@super8.com.ph"
+    ]
+  },
+  {
+    "buyerId": 6,
+    "company": "Allhome Store & Outlet",
+    "domain": "allhome.com.ph",
+    "bus_email": "info@allhome.com.ph",
+    "owner_email": "owner@allhome.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@allhome.com.ph",
+      "owner@allhome.com.ph"
+    ]
+  },
+  {
+    "buyerId": 7,
+    "company": "Handyman Store & Outlet",
+    "domain": "handyman.com.ph",
+    "bus_email": "info@handyman.com.ph",
+    "owner_email": "owner@handyman.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@handyman.com.ph",
+      "owner@handyman.com.ph"
+    ]
+  },
+  {
+    "buyerId": 8,
+    "company": "Acehardware Store & Outlet",
+    "domain": "acehardware.ph",
+    "bus_email": "info@acehardware.ph",
+    "owner_email": "owner@acehardware.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@acehardware.ph",
+      "owner@acehardware.ph"
+    ]
+  },
+  {
+    "buyerId": 9,
+    "company": "Truevalue Store & Outlet",
+    "domain": "truevalue.com.ph",
+    "bus_email": "info@truevalue.com.ph",
+    "owner_email": "owner@truevalue.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@truevalue.com.ph",
+      "owner@truevalue.com.ph"
+    ]
+  },
+  {
+    "buyerId": 10,
+    "company": "Wilcon Store & Outlet",
+    "domain": "wilcon.com.ph",
+    "bus_email": "info@wilcon.com.ph",
+    "owner_email": "owner@wilcon.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@wilcon.com.ph",
+      "owner@wilcon.com.ph"
+    ]
+  },
+  {
+    "buyerId": 11,
+    "company": "Mercurydrug Store & Outlet",
+    "domain": "mercurydrug.com",
+    "bus_email": "info@mercurydrug.com",
+    "owner_email": "owner@mercurydrug.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@mercurydrug.com",
+      "owner@mercurydrug.com"
+    ]
+  },
+  {
+    "buyerId": 12,
+    "company": "Watsons Store & Outlet",
+    "domain": "watsons.com.ph",
+    "bus_email": "info@watsons.com.ph",
+    "owner_email": "owner@watsons.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@watsons.com.ph",
+      "owner@watsons.com.ph"
+    ]
+  },
+  {
+    "buyerId": 13,
+    "company": "Southstardrug Store & Outlet",
+    "domain": "southstardrug.com.ph",
+    "bus_email": "info@southstardrug.com.ph",
+    "owner_email": "owner@southstardrug.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@southstardrug.com.ph",
+      "owner@southstardrug.com.ph"
+    ]
+  },
+  {
+    "buyerId": 14,
+    "company": "Rosepharmacy Store & Outlet",
+    "domain": "rosepharmacy.com",
+    "bus_email": "info@rosepharmacy.com",
+    "owner_email": "owner@rosepharmacy.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@rosepharmacy.com",
+      "owner@rosepharmacy.com"
+    ]
+  },
+  {
+    "buyerId": 15,
+    "company": "Generika Store & Outlet",
+    "domain": "generika.com.ph",
+    "bus_email": "info@generika.com.ph",
+    "owner_email": "owner@generika.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@generika.com.ph",
+      "owner@generika.com.ph"
+    ]
+  },
+  {
+    "buyerId": 16,
+    "company": "Tgp Store & Outlet",
+    "domain": "tGP.com.ph",
+    "bus_email": "info@tGP.com.ph",
+    "owner_email": "owner@tGP.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@tGP.com.ph",
+      "owner@tGP.com.ph"
+    ]
+  },
+  {
+    "buyerId": 17,
+    "company": "Stjosephdrug Store & Outlet",
+    "domain": "stjosephdrug.com.ph",
+    "bus_email": "info@stjosephdrug.com.ph",
+    "owner_email": "owner@stjosephdrug.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@stjosephdrug.com.ph",
+      "owner@stjosephdrug.com.ph"
+    ]
+  },
+  {
+    "buyerId": 18,
+    "company": "Medexpress Store & Outlet",
+    "domain": "medexpress.com.ph",
+    "bus_email": "info@medexpress.com.ph",
+    "owner_email": "owner@medexpress.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@medexpress.com.ph",
+      "owner@medexpress.com.ph"
+    ]
+  },
+  {
+    "buyerId": 19,
+    "company": "Watsonsasia Store & Outlet",
+    "domain": "watsonsasia.com",
+    "bus_email": "info@watsonsasia.com",
+    "owner_email": "owner@watsonsasia.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@watsonsasia.com",
+      "owner@watsonsasia.com"
+    ]
+  },
+  {
+    "buyerId": 20,
+    "company": "Figarocoffee Store & Outlet",
+    "domain": "figarocoffee.com",
+    "bus_email": "info@figarocoffee.com",
+    "owner_email": "owner@figarocoffee.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@figarocoffee.com",
+      "owner@figarocoffee.com"
+    ]
+  },
+  {
+    "buyerId": 21,
+    "company": "Pickup-coffee Store & Outlet",
+    "domain": "pickup-coffee.com",
+    "bus_email": "info@pickup-coffee.com",
+    "owner_email": "owner@pickup-coffee.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@pickup-coffee.com",
+      "owner@pickup-coffee.com"
+    ]
+  },
+  {
+    "buyerId": 22,
+    "company": "Timhortons Store & Outlet",
+    "domain": "timhortons.ca",
+    "bus_email": "info@timhortons.ca",
+    "owner_email": "owner@timhortons.ca",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@timhortons.ca",
+      "owner@timhortons.ca"
+    ]
+  },
+  {
+    "buyerId": 23,
+    "company": "Seattlesbest Store & Outlet",
+    "domain": "seattlesbest.com.ph",
+    "bus_email": "info@seattlesbest.com.ph",
+    "owner_email": "owner@seattlesbest.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@seattlesbest.com.ph",
+      "owner@seattlesbest.com.ph"
+    ]
+  },
+  {
+    "buyerId": 24,
+    "company": "Coffee-bean Store & Outlet",
+    "domain": "coffee-bean.com.ph",
+    "bus_email": "info@coffee-bean.com.ph",
+    "owner_email": "owner@coffee-bean.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@coffee-bean.com.ph",
+      "owner@coffee-bean.com.ph"
+    ]
+  },
+  {
+    "buyerId": 25,
+    "company": "Dunkin Store & Outlet",
+    "domain": "dunkin.ph",
+    "bus_email": "info@dunkin.ph",
+    "owner_email": "owner@dunkin.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@dunkin.ph",
+      "owner@dunkin.ph"
+    ]
+  },
+  {
+    "buyerId": 26,
+    "company": "Krispykreme Store & Outlet",
+    "domain": "krispykreme.com.ph",
+    "bus_email": "info@krispykreme.com.ph",
+    "owner_email": "owner@krispykreme.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@krispykreme.com.ph",
+      "owner@krispykreme.com.ph"
+    ]
+  },
+  {
+    "buyerId": 27,
+    "company": "Jco Store & Outlet",
+    "domain": "jco.com.ph",
+    "bus_email": "info@jco.com.ph",
+    "owner_email": "owner@jco.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@jco.com.ph",
+      "owner@jco.com.ph"
+    ]
+  },
+  {
+    "buyerId": 28,
+    "company": "Manginasal Store & Outlet",
+    "domain": "manginasal.ph",
+    "bus_email": "info@manginasal.ph",
+    "owner_email": "owner@manginasal.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@manginasal.ph",
+      "owner@manginasal.ph"
+    ]
+  },
+  {
+    "buyerId": 29,
+    "company": "Maxschicken Store & Outlet",
+    "domain": "maxschicken.com",
+    "bus_email": "info@maxschicken.com",
+    "owner_email": "owner@maxschicken.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@maxschicken.com",
+      "owner@maxschicken.com"
+    ]
+  },
+  {
+    "buyerId": 30,
+    "company": "Pancakehouse Store & Outlet",
+    "domain": "pancakehouse.com.ph",
+    "bus_email": "info@pancakehouse.com.ph",
+    "owner_email": "owner@pancakehouse.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@pancakehouse.com.ph",
+      "owner@pancakehouse.com.ph"
+    ]
+  },
+  {
+    "buyerId": 31,
+    "company": "Teriyakiboy Store & Outlet",
+    "domain": "teriyakiboy.com.ph",
+    "bus_email": "info@teriyakiboy.com.ph",
+    "owner_email": "owner@teriyakiboy.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@teriyakiboy.com.ph",
+      "owner@teriyakiboy.com.ph"
+    ]
+  },
+  {
+    "buyerId": 32,
+    "company": "Yellowcab Store & Outlet",
+    "domain": "yellowcab.com.ph",
+    "bus_email": "info@yellowcab.com.ph",
+    "owner_email": "owner@yellowcab.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@yellowcab.com.ph",
+      "owner@yellowcab.com.ph"
+    ]
+  },
+  {
+    "buyerId": 33,
+    "company": "Goldilocksbakeshop Store & Outlet",
+    "domain": "goldilocksbakeshop.com",
+    "bus_email": "info@goldilocksbakeshop.com",
+    "owner_email": "owner@goldilocksbakeshop.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@goldilocksbakeshop.com",
+      "owner@goldilocksbakeshop.com"
+    ]
+  },
+  {
+    "buyerId": 34,
+    "company": "Redribbon Store & Outlet",
+    "domain": "redribbon.ph",
+    "bus_email": "info@redribbon.ph",
+    "owner_email": "owner@redribbon.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@redribbon.ph",
+      "owner@redribbon.ph"
+    ]
+  },
+  {
+    "buyerId": 35,
+    "company": "Kuyaj Store & Outlet",
+    "domain": "kuyaj.ph",
+    "bus_email": "info@kuyaj.ph",
+    "owner_email": "owner@kuyaj.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@kuyaj.ph",
+      "owner@kuyaj.ph"
+    ]
+  },
+  {
+    "buyerId": 36,
+    "company": "Gerrysgrill Store & Outlet",
+    "domain": "gerrysgrill.com",
+    "bus_email": "info@gerrysgrill.com",
+    "owner_email": "owner@gerrysgrill.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@gerrysgrill.com",
+      "owner@gerrysgrill.com"
+    ]
+  },
+  {
+    "buyerId": 37,
+    "company": "Bench Store & Outlet",
+    "domain": "bench.com.ph",
+    "bus_email": "info@bench.com.ph",
+    "owner_email": "owner@bench.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@bench.com.ph",
+      "owner@bench.com.ph"
+    ]
+  },
+  {
+    "buyerId": 38,
+    "company": "Penshoppe Store & Outlet",
+    "domain": "penshoppe.com",
+    "bus_email": "info@penshoppe.com",
+    "owner_email": "owner@penshoppe.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@penshoppe.com",
+      "owner@penshoppe.com"
+    ]
+  },
+  {
+    "buyerId": 39,
+    "company": "Oxygenclothing Store & Outlet",
+    "domain": "oxygenclothing.com",
+    "bus_email": "info@oxygenclothing.com",
+    "owner_email": "owner@oxygenclothing.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@oxygenclothing.com",
+      "owner@oxygenclothing.com"
+    ]
+  },
+  {
+    "buyerId": 40,
+    "company": "Memo Store & Outlet",
+    "domain": "memo.com.ph",
+    "bus_email": "info@memo.com.ph",
+    "owner_email": "owner@memo.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@memo.com.ph",
+      "owner@memo.com.ph"
+    ]
+  },
+  {
+    "buyerId": 41,
+    "company": "Human Store & Outlet",
+    "domain": "human.com.ph",
+    "bus_email": "info@human.com.ph",
+    "owner_email": "owner@human.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@human.com.ph",
+      "owner@human.com.ph"
+    ]
+  },
+  {
+    "buyerId": 42,
+    "company": "Kamiseta Store & Outlet",
+    "domain": "kamiseta.com",
+    "bus_email": "info@kamiseta.com",
+    "owner_email": "owner@kamiseta.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@kamiseta.com",
+      "owner@kamiseta.com"
+    ]
+  },
+  {
+    "buyerId": 43,
+    "company": "Bayo Store & Outlet",
+    "domain": "bayo.com.ph",
+    "bus_email": "info@bayo.com.ph",
+    "owner_email": "owner@bayo.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@bayo.com.ph",
+      "owner@bayo.com.ph"
+    ]
+  },
+  {
+    "buyerId": 44,
+    "company": "Suyen Store & Outlet",
+    "domain": "suyen.com.ph",
+    "bus_email": "info@suyen.com.ph",
+    "owner_email": "owner@suyen.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@suyen.com.ph",
+      "owner@suyen.com.ph"
+    ]
+  },
+  {
+    "buyerId": 45,
+    "company": "7-eleven Store & Outlet",
+    "domain": "7-eleven.com.ph",
+    "bus_email": "info@7-eleven.com.ph",
+    "owner_email": "owner@7-eleven.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@7-eleven.com.ph",
+      "owner@7-eleven.com.ph"
+    ]
+  },
+  {
+    "buyerId": 46,
+    "company": "Ministop Store & Outlet",
+    "domain": "ministop.com.ph",
+    "bus_email": "info@ministop.com.ph",
+    "owner_email": "owner@ministop.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@ministop.com.ph",
+      "owner@ministop.com.ph"
+    ]
+  },
+  {
+    "buyerId": 47,
+    "company": "Lawson Store & Outlet",
+    "domain": "lawson.com.ph",
+    "bus_email": "info@lawson.com.ph",
+    "owner_email": "owner@lawson.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@lawson.com.ph",
+      "owner@lawson.com.ph"
+    ]
+  },
+  {
+    "buyerId": 48,
+    "company": "Alfamart Store & Outlet",
+    "domain": "alfamart.com.ph",
+    "bus_email": "info@alfamart.com.ph",
+    "owner_email": "owner@alfamart.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@alfamart.com.ph",
+      "owner@alfamart.com.ph"
+    ]
+  },
+  {
+    "buyerId": 49,
+    "company": "Allday Store & Outlet",
+    "domain": "allday.com.ph",
+    "bus_email": "info@allday.com.ph",
+    "owner_email": "owner@allday.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@allday.com.ph",
+      "owner@allday.com.ph"
+    ]
+  },
+  {
+    "buyerId": 50,
+    "company": "Familymart Store & Outlet",
+    "domain": "familymart.com.ph",
+    "bus_email": "info@familymart.com.ph",
+    "owner_email": "owner@familymart.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@familymart.com.ph",
+      "owner@familymart.com.ph"
+    ]
+  },
+  {
+    "buyerId": 51,
+    "company": "Circlek Store & Outlet",
+    "domain": "circlek.ph",
+    "bus_email": "info@circlek.ph",
+    "owner_email": "owner@circlek.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@circlek.ph",
+      "owner@circlek.ph"
+    ]
+  },
+  {
+    "buyerId": 52,
+    "company": "Shellselect Store & Outlet",
+    "domain": "shellselect.com.ph",
+    "bus_email": "info@shellselect.com.ph",
+    "owner_email": "owner@shellselect.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@shellselect.com.ph",
+      "owner@shellselect.com.ph"
+    ]
+  },
+  {
+    "buyerId": 53,
+    "company": "Petron Store & Outlet",
+    "domain": "petron.com",
+    "bus_email": "info@petron.com",
+    "owner_email": "owner@petron.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@petron.com",
+      "owner@petron.com"
+    ]
+  },
+  {
+    "buyerId": 54,
+    "company": "Caltex Store & Outlet",
+    "domain": "caltex.com.ph",
+    "bus_email": "info@caltex.com.ph",
+    "owner_email": "owner@caltex.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@caltex.com.ph",
+      "owner@caltex.com.ph"
+    ]
+  },
+  {
+    "buyerId": 55,
+    "company": "Abenson Store & Outlet",
+    "domain": "abenson.com",
+    "bus_email": "info@abenson.com",
+    "owner_email": "owner@abenson.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@abenson.com",
+      "owner@abenson.com"
+    ]
+  },
+  {
+    "buyerId": 56,
+    "company": "Automatic-centre Store & Outlet",
+    "domain": "automatic-centre.com",
+    "bus_email": "info@automatic-centre.com",
+    "owner_email": "owner@automatic-centre.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@automatic-centre.com",
+      "owner@automatic-centre.com"
+    ]
+  },
+  {
+    "buyerId": 57,
+    "company": "Smappliance Store & Outlet",
+    "domain": "smappliance.com",
+    "bus_email": "info@smappliance.com",
+    "owner_email": "owner@smappliance.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@smappliance.com",
+      "owner@smappliance.com"
+    ]
+  },
+  {
+    "buyerId": 58,
+    "company": "Ansons Store & Outlet",
+    "domain": "ansons.ph",
+    "bus_email": "info@ansons.ph",
+    "owner_email": "owner@ansons.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@ansons.ph",
+      "owner@ansons.ph"
+    ]
+  },
+  {
+    "buyerId": 59,
+    "company": "Robinsonsappliances Store & Outlet",
+    "domain": "robinsonsappliances.com.ph",
+    "bus_email": "info@robinsonsappliances.com.ph",
+    "owner_email": "owner@robinsonsappliances.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@robinsonsappliances.com.ph",
+      "owner@robinsonsappliances.com.ph"
+    ]
+  },
+  {
+    "buyerId": 60,
+    "company": "Octagon Store & Outlet",
+    "domain": "octagon.com.ph",
+    "bus_email": "info@octagon.com.ph",
+    "owner_email": "owner@octagon.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@octagon.com.ph",
+      "owner@octagon.com.ph"
+    ]
+  },
+  {
+    "buyerId": 61,
+    "company": "Siliconvalley Store & Outlet",
+    "domain": "siliconvalley.com.ph",
+    "bus_email": "info@siliconvalley.com.ph",
+    "owner_email": "owner@siliconvalley.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@siliconvalley.com.ph",
+      "owner@siliconvalley.com.ph"
+    ]
+  },
+  {
+    "buyerId": 62,
+    "company": "Compasia Store & Outlet",
+    "domain": "compasia.com.ph",
+    "bus_email": "info@compasia.com.ph",
+    "owner_email": "owner@compasia.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@compasia.com.ph",
+      "owner@compasia.com.ph"
+    ]
+  },
+  {
+    "buyerId": 63,
+    "company": "Datacrafts Store & Outlet",
+    "domain": "datacrafts.com.ph",
+    "bus_email": "info@datacrafts.com.ph",
+    "owner_email": "owner@datacrafts.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@datacrafts.com.ph",
+      "owner@datacrafts.com.ph"
+    ]
+  },
+  {
+    "buyerId": 64,
+    "company": "Villman Store & Outlet",
+    "domain": "villman.com.ph",
+    "bus_email": "info@villman.com.ph",
+    "owner_email": "owner@villman.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@villman.com.ph",
+      "owner@villman.com.ph"
+    ]
+  },
+  {
+    "buyerId": 65,
+    "company": "Petexpress Store & Outlet",
+    "domain": "petexpress.com.ph",
+    "bus_email": "info@petexpress.com.ph",
+    "owner_email": "owner@petexpress.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@petexpress.com.ph",
+      "owner@petexpress.com.ph"
+    ]
+  },
+  {
+    "buyerId": 66,
+    "company": "Bowandwow Store & Outlet",
+    "domain": "bowandwow.com.ph",
+    "bus_email": "info@bowandwow.com.ph",
+    "owner_email": "owner@bowandwow.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@bowandwow.com.ph",
+      "owner@bowandwow.com.ph"
+    ]
+  },
+  {
+    "buyerId": 67,
+    "company": "Dogsandcats Store & Outlet",
+    "domain": "dogsandcats.ph",
+    "bus_email": "info@dogsandcats.ph",
+    "owner_email": "owner@dogsandcats.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@dogsandcats.ph",
+      "owner@dogsandcats.ph"
+    ]
+  },
+  {
+    "buyerId": 68,
+    "company": "Petwarehouse Store & Outlet",
+    "domain": "petwarehouse.ph",
+    "bus_email": "info@petwarehouse.ph",
+    "owner_email": "owner@petwarehouse.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@petwarehouse.ph",
+      "owner@petwarehouse.ph"
+    ]
+  },
+  {
+    "buyerId": 69,
+    "company": "Pethouse Store & Outlet",
+    "domain": "pethouse.com.ph",
+    "bus_email": "info@pethouse.com.ph",
+    "owner_email": "owner@pethouse.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@pethouse.com.ph",
+      "owner@pethouse.com.ph"
+    ]
+  },
+  {
+    "buyerId": 70,
+    "company": "Toykingdom Store & Outlet",
+    "domain": "toykingdom.com.ph",
+    "bus_email": "info@toykingdom.com.ph",
+    "owner_email": "owner@toykingdom.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@toykingdom.com.ph",
+      "owner@toykingdom.com.ph"
+    ]
+  },
+  {
+    "buyerId": 71,
+    "company": "Toysrus Store & Outlet",
+    "domain": "toysrus.com.ph",
+    "bus_email": "info@toysrus.com.ph",
+    "owner_email": "owner@toysrus.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@toysrus.com.ph",
+      "owner@toysrus.com.ph"
+    ]
+  },
+  {
+    "buyerId": 72,
+    "company": "Fullybookedonline Store & Outlet",
+    "domain": "fullybookedonline.com",
+    "bus_email": "info@fullybookedonline.com",
+    "owner_email": "owner@fullybookedonline.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@fullybookedonline.com",
+      "owner@fullybookedonline.com"
+    ]
+  },
+  {
+    "buyerId": 73,
+    "company": "Nationalbookstore Store & Outlet",
+    "domain": "nationalbookstore.com",
+    "bus_email": "info@nationalbookstore.com",
+    "owner_email": "owner@nationalbookstore.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@nationalbookstore.com",
+      "owner@nationalbookstore.com"
+    ]
+  },
+  {
+    "buyerId": 74,
+    "company": "Rexestore Store & Outlet",
+    "domain": "rexestore.com",
+    "bus_email": "info@rexestore.com",
+    "owner_email": "owner@rexestore.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@rexestore.com",
+      "owner@rexestore.com"
+    ]
+  },
+  {
+    "buyerId": 75,
+    "company": "Uniqlo Store & Outlet",
+    "domain": "uniqlo.com",
+    "bus_email": "info@uniqlo.com",
+    "owner_email": "owner@uniqlo.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@uniqlo.com",
+      "owner@uniqlo.com"
+    ]
+  },
+  {
+    "buyerId": 76,
+    "company": "Zara Store & Outlet",
+    "domain": "zara.com",
+    "bus_email": "info@zara.com",
+    "owner_email": "owner@zara.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@zara.com",
+      "owner@zara.com"
+    ]
+  },
+  {
+    "buyerId": 77,
+    "company": "Hm Store & Outlet",
+    "domain": "hm.com",
+    "bus_email": "info@hm.com",
+    "owner_email": "owner@hm.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@hm.com",
+      "owner@hm.com"
+    ]
+  },
+  {
+    "buyerId": 78,
+    "company": "Gap Store & Outlet",
+    "domain": "gap.com",
+    "bus_email": "info@gap.com",
+    "owner_email": "owner@gap.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@gap.com",
+      "owner@gap.com"
+    ]
+  },
+  {
+    "buyerId": 79,
+    "company": "Cottonon Store & Outlet",
+    "domain": "cottonon.com",
+    "bus_email": "info@cottonon.com",
+    "owner_email": "owner@cottonon.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@cottonon.com",
+      "owner@cottonon.com"
+    ]
+  },
+  {
+    "buyerId": 80,
+    "company": "Forever21 Store & Outlet",
+    "domain": "forever21.com",
+    "bus_email": "info@forever21.com",
+    "owner_email": "owner@forever21.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@forever21.com",
+      "owner@forever21.com"
+    ]
+  },
+  {
+    "buyerId": 81,
+    "company": "Mango Store & Outlet",
+    "domain": "mango.com",
+    "bus_email": "info@mango.com",
+    "owner_email": "owner@mango.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@mango.com",
+      "owner@mango.com"
+    ]
+  },
+  {
+    "buyerId": 82,
+    "company": "Topshop Store & Outlet",
+    "domain": "topshop.com",
+    "bus_email": "info@topshop.com",
+    "owner_email": "owner@topshop.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@topshop.com",
+      "owner@topshop.com"
+    ]
+  },
+  {
+    "buyerId": 83,
+    "company": "Bershka Store & Outlet",
+    "domain": "bershka.com",
+    "bus_email": "info@bershka.com",
+    "owner_email": "owner@bershka.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@bershka.com",
+      "owner@bershka.com"
+    ]
+  },
+  {
+    "buyerId": 84,
+    "company": "Pullandbear Store & Outlet",
+    "domain": "pullandbear.com",
+    "bus_email": "info@pullandbear.com",
+    "owner_email": "owner@pullandbear.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@pullandbear.com",
+      "owner@pullandbear.com"
+    ]
+  },
+  {
+    "buyerId": 85,
+    "company": "Sephora Store & Outlet",
+    "domain": "sephora.ph",
+    "bus_email": "info@sephora.ph",
+    "owner_email": "owner@sephora.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@sephora.ph",
+      "owner@sephora.ph"
+    ]
+  },
+  {
+    "buyerId": 86,
+    "company": "Beautybar Store & Outlet",
+    "domain": "beautybar.com.ph",
+    "bus_email": "info@beautybar.com.ph",
+    "owner_email": "owner@beautybar.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@beautybar.com.ph",
+      "owner@beautybar.com.ph"
+    ]
+  },
+  {
+    "buyerId": 87,
+    "company": "Watsons Store & Outlet",
+    "domain": "watsons.com",
+    "bus_email": "info@watsons.com",
+    "owner_email": "owner@watsons.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@watsons.com",
+      "owner@watsons.com"
+    ]
+  },
+  {
+    "buyerId": 88,
+    "company": "Naturepublic Store & Outlet",
+    "domain": "naturepublic.com.ph",
+    "bus_email": "info@naturepublic.com.ph",
+    "owner_email": "owner@naturepublic.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@naturepublic.com.ph",
+      "owner@naturepublic.com.ph"
+    ]
+  },
+  {
+    "buyerId": 89,
+    "company": "Innisfree Store & Outlet",
+    "domain": "innisfree.com",
+    "bus_email": "info@innisfree.com",
+    "owner_email": "owner@innisfree.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@innisfree.com",
+      "owner@innisfree.com"
+    ]
+  },
+  {
+    "buyerId": 90,
+    "company": "Laneige Store & Outlet",
+    "domain": "laneige.com",
+    "bus_email": "info@laneige.com",
+    "owner_email": "owner@laneige.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@laneige.com",
+      "owner@laneige.com"
+    ]
+  },
+  {
+    "buyerId": 91,
+    "company": "Etudehouse Store & Outlet",
+    "domain": "etudehouse.ph",
+    "bus_email": "info@etudehouse.ph",
+    "owner_email": "owner@etudehouse.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@etudehouse.ph",
+      "owner@etudehouse.ph"
+    ]
+  },
+  {
+    "buyerId": 92,
+    "company": "Missha Store & Outlet",
+    "domain": "missha.ph",
+    "bus_email": "info@missha.ph",
+    "owner_email": "owner@missha.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@missha.ph",
+      "owner@missha.ph"
+    ]
+  },
+  {
+    "buyerId": 93,
+    "company": "Homedepot Store & Outlet",
+    "domain": "homedepot.com",
+    "bus_email": "info@homedepot.com",
+    "owner_email": "owner@homedepot.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@homedepot.com",
+      "owner@homedepot.com"
+    ]
+  },
+  {
+    "buyerId": 94,
+    "company": "Lowes Store & Outlet",
+    "domain": "lowes.com",
+    "bus_email": "info@lowes.com",
+    "owner_email": "owner@lowes.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@lowes.com",
+      "owner@lowes.com"
+    ]
+  },
+  {
+    "buyerId": 95,
+    "company": "Indexlivingmall Store & Outlet",
+    "domain": "indexlivingmall.com.ph",
+    "bus_email": "info@indexlivingmall.com.ph",
+    "owner_email": "owner@indexlivingmall.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@indexlivingmall.com.ph",
+      "owner@indexlivingmall.com.ph"
+    ]
+  },
+  {
+    "buyerId": 96,
+    "company": "Mandauefoam Store & Outlet",
+    "domain": "mandauefoam.ph",
+    "bus_email": "info@mandauefoam.ph",
+    "owner_email": "owner@mandauefoam.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@mandauefoam.ph",
+      "owner@mandauefoam.ph"
+    ]
+  },
+  {
+    "buyerId": 97,
+    "company": "Ourhome Store & Outlet",
+    "domain": "ourhome.ph",
+    "bus_email": "info@ourhome.ph",
+    "owner_email": "owner@ourhome.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@ourhome.ph",
+      "owner@ourhome.ph"
+    ]
+  },
+  {
+    "buyerId": 98,
+    "company": "Blimsfurniture Store & Outlet",
+    "domain": "blimsfurniture.com.ph",
+    "bus_email": "info@blimsfurniture.com.ph",
+    "owner_email": "owner@blimsfurniture.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@blimsfurniture.com.ph",
+      "owner@blimsfurniture.com.ph"
+    ]
+  },
+  {
+    "buyerId": 99,
+    "company": "San-yang Store & Outlet",
+    "domain": "san-yang.com.ph",
+    "bus_email": "info@san-yang.com.ph",
+    "owner_email": "owner@san-yang.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@san-yang.com.ph",
+      "owner@san-yang.com.ph"
+    ]
+  },
+  {
+    "buyerId": 100,
+    "company": "Sb-furniture Store & Outlet",
+    "domain": "sb-furniture.com.ph",
+    "bus_email": "info@sb-furniture.com.ph",
+    "owner_email": "owner@sb-furniture.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@sb-furniture.com.ph",
+      "owner@sb-furniture.com.ph"
+    ]
+  },
+  {
+    "buyerId": 101,
+    "company": "Habitat Store & Outlet",
+    "domain": "habitat.ph",
+    "bus_email": "info@habitat.ph",
+    "owner_email": "owner@habitat.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@habitat.ph",
+      "owner@habitat.ph"
+    ]
+  },
+  {
+    "buyerId": 102,
+    "company": "Starbucks Store & Outlet",
+    "domain": "starbucks.com",
+    "bus_email": "info@starbucks.com",
+    "owner_email": "owner@starbucks.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@starbucks.com",
+      "owner@starbucks.com"
+    ]
+  },
+  {
+    "buyerId": 103,
+    "company": "Costacoffee Store & Outlet",
+    "domain": "costacoffee.com",
+    "bus_email": "info@costacoffee.com",
+    "owner_email": "owner@costacoffee.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@costacoffee.com",
+      "owner@costacoffee.com"
+    ]
+  },
+  {
+    "buyerId": 104,
+    "company": "Lavazza Store & Outlet",
+    "domain": "lavazza.com",
+    "bus_email": "info@lavazza.com",
+    "owner_email": "owner@lavazza.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@lavazza.com",
+      "owner@lavazza.com"
+    ]
+  },
+  {
+    "buyerId": 105,
+    "company": "Illy Store & Outlet",
+    "domain": "illy.com",
+    "bus_email": "info@illy.com",
+    "owner_email": "owner@illy.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@illy.com",
+      "owner@illy.com"
+    ]
+  },
+  {
+    "buyerId": 106,
+    "company": "Nespresso Store & Outlet",
+    "domain": "nespresso.com",
+    "bus_email": "info@nespresso.com",
+    "owner_email": "owner@nespresso.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@nespresso.com",
+      "owner@nespresso.com"
+    ]
+  },
+  {
+    "buyerId": 107,
+    "company": "Subway Store & Outlet",
+    "domain": "subway.com",
+    "bus_email": "info@subway.com",
+    "owner_email": "owner@subway.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@subway.com",
+      "owner@subway.com"
+    ]
+  },
+  {
+    "buyerId": 108,
+    "company": "Dominos Store & Outlet",
+    "domain": "dominos.com",
+    "bus_email": "info@dominos.com",
+    "owner_email": "owner@dominos.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@dominos.com",
+      "owner@dominos.com"
+    ]
+  },
+  {
+    "buyerId": 109,
+    "company": "Papajohns Store & Outlet",
+    "domain": "papajohns.com",
+    "bus_email": "info@papajohns.com",
+    "owner_email": "owner@papajohns.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@papajohns.com",
+      "owner@papajohns.com"
+    ]
+  },
+  {
+    "buyerId": 110,
+    "company": "Littlecaesars Store & Outlet",
+    "domain": "littlecaesars.com",
+    "bus_email": "info@littlecaesars.com",
+    "owner_email": "owner@littlecaesars.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@littlecaesars.com",
+      "owner@littlecaesars.com"
+    ]
+  },
+  {
+    "buyerId": 111,
+    "company": "Carlsjr Store & Outlet",
+    "domain": "carlsjr.com",
+    "bus_email": "info@carlsjr.com",
+    "owner_email": "owner@carlsjr.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@carlsjr.com",
+      "owner@carlsjr.com"
+    ]
+  },
+  {
+    "buyerId": 112,
+    "company": "Hardees Store & Outlet",
+    "domain": "hardees.com",
+    "bus_email": "info@hardees.com",
+    "owner_email": "owner@hardees.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@hardees.com",
+      "owner@hardees.com"
+    ]
+  },
+  {
+    "buyerId": 113,
+    "company": "Jackinthebox Store & Outlet",
+    "domain": "jackinthebox.com",
+    "bus_email": "info@jackinthebox.com",
+    "owner_email": "owner@jackinthebox.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@jackinthebox.com",
+      "owner@jackinthebox.com"
+    ]
+  },
+  {
+    "buyerId": 114,
+    "company": "Sonicdrivein Store & Outlet",
+    "domain": "sonicdrivein.com",
+    "bus_email": "info@sonicdrivein.com",
+    "owner_email": "owner@sonicdrivein.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@sonicdrivein.com",
+      "owner@sonicdrivein.com"
+    ]
+  },
+  {
+    "buyerId": 115,
+    "company": "Arbys Store & Outlet",
+    "domain": "arbys.com",
+    "bus_email": "info@arbys.com",
+    "owner_email": "owner@arbys.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@arbys.com",
+      "owner@arbys.com"
+    ]
+  },
+  {
+    "buyerId": 116,
+    "company": "Dairyqueen Store & Outlet",
+    "domain": "dairyqueen.com.ph",
+    "bus_email": "info@dairyqueen.com.ph",
+    "owner_email": "owner@dairyqueen.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@dairyqueen.com.ph",
+      "owner@dairyqueen.com.ph"
+    ]
+  },
+  {
+    "buyerId": 117,
+    "company": "Baskinrobbins Store & Outlet",
+    "domain": "baskinrobbins.ph",
+    "bus_email": "info@baskinrobbins.ph",
+    "owner_email": "owner@baskinrobbins.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@baskinrobbins.ph",
+      "owner@baskinrobbins.ph"
+    ]
+  },
+  {
+    "buyerId": 118,
+    "company": "Coldstonecreamery Store & Outlet",
+    "domain": "coldstonecreamery.com.ph",
+    "bus_email": "info@coldstonecreamery.com.ph",
+    "owner_email": "owner@coldstonecreamery.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@coldstonecreamery.com.ph",
+      "owner@coldstonecreamery.com.ph"
+    ]
+  },
+  {
+    "buyerId": 119,
+    "company": "Dairyqueen Store & Outlet",
+    "domain": "dairyqueen.com",
+    "bus_email": "info@dairyqueen.com",
+    "owner_email": "owner@dairyqueen.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@dairyqueen.com",
+      "owner@dairyqueen.com"
+    ]
+  },
+  {
+    "buyerId": 120,
+    "company": "Benandjerrys Store & Outlet",
+    "domain": "benandjerrys.com",
+    "bus_email": "info@benandjerrys.com",
+    "owner_email": "owner@benandjerrys.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@benandjerrys.com",
+      "owner@benandjerrys.com"
+    ]
+  },
+  {
+    "buyerId": 121,
+    "company": "Haagendazs Store & Outlet",
+    "domain": "haagendazs.com",
+    "bus_email": "info@haagendazs.com",
+    "owner_email": "owner@haagendazs.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@haagendazs.com",
+      "owner@haagendazs.com"
+    ]
+  },
+  {
+    "buyerId": 122,
+    "company": "Nike Store & Outlet",
+    "domain": "nike.com.ph",
+    "bus_email": "info@nike.com.ph",
+    "owner_email": "owner@nike.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@nike.com.ph",
+      "owner@nike.com.ph"
+    ]
+  },
+  {
+    "buyerId": 123,
+    "company": "Adidas Store & Outlet",
+    "domain": "adidas.com.ph",
+    "bus_email": "info@adidas.com.ph",
+    "owner_email": "owner@adidas.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@adidas.com.ph",
+      "owner@adidas.com.ph"
+    ]
+  },
+  {
+    "buyerId": 124,
+    "company": "Puma Store & Outlet",
+    "domain": "puma.com.ph",
+    "bus_email": "info@puma.com.ph",
+    "owner_email": "owner@puma.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@puma.com.ph",
+      "owner@puma.com.ph"
+    ]
+  },
+  {
+    "buyerId": 125,
+    "company": "Underarmour Store & Outlet",
+    "domain": "underarmour.com.ph",
+    "bus_email": "info@underarmour.com.ph",
+    "owner_email": "owner@underarmour.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@underarmour.com.ph",
+      "owner@underarmour.com.ph"
+    ]
+  },
+  {
+    "buyerId": 126,
+    "company": "Newbalance Store & Outlet",
+    "domain": "newbalance.com.ph",
+    "bus_email": "info@newbalance.com.ph",
+    "owner_email": "owner@newbalance.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@newbalance.com.ph",
+      "owner@newbalance.com.ph"
+    ]
+  },
+  {
+    "buyerId": 127,
+    "company": "Skechers Store & Outlet",
+    "domain": "skechers.com.ph",
+    "bus_email": "info@skechers.com.ph",
+    "owner_email": "owner@skechers.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@skechers.com.ph",
+      "owner@skechers.com.ph"
+    ]
+  },
+  {
+    "buyerId": 128,
+    "company": "Converse Store & Outlet",
+    "domain": "converse.ph",
+    "bus_email": "info@converse.ph",
+    "owner_email": "owner@converse.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@converse.ph",
+      "owner@converse.ph"
+    ]
+  },
+  {
+    "buyerId": 129,
+    "company": "Crocs Store & Outlet",
+    "domain": "crocs.com.ph",
+    "bus_email": "info@crocs.com.ph",
+    "owner_email": "owner@crocs.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@crocs.com.ph",
+      "owner@crocs.com.ph"
+    ]
+  },
+  {
+    "buyerId": 130,
+    "company": "Aldoshoes Store & Outlet",
+    "domain": "aldoshoes.com.ph",
+    "bus_email": "info@aldoshoes.com.ph",
+    "owner_email": "owner@aldoshoes.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@aldoshoes.com.ph",
+      "owner@aldoshoes.com.ph"
+    ]
+  },
+  {
+    "buyerId": 131,
+    "company": "Charleskeith Store & Outlet",
+    "domain": "charleskeith.com.ph",
+    "bus_email": "info@charleskeith.com.ph",
+    "owner_email": "owner@charleskeith.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@charleskeith.com.ph",
+      "owner@charleskeith.com.ph"
+    ]
+  },
+  {
+    "buyerId": 132,
+    "company": "Nine-west Store & Outlet",
+    "domain": "nine-west.com",
+    "bus_email": "info@nine-west.com",
+    "owner_email": "owner@nine-west.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@nine-west.com",
+      "owner@nine-west.com"
+    ]
+  },
+  {
+    "buyerId": 133,
+    "company": "Stevemadden Store & Outlet",
+    "domain": "stevemadden.com",
+    "bus_email": "info@stevemadden.com",
+    "owner_email": "owner@stevemadden.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@stevemadden.com",
+      "owner@stevemadden.com"
+    ]
+  },
+  {
+    "buyerId": 134,
+    "company": "Fossil Store & Outlet",
+    "domain": "fossil.com",
+    "bus_email": "info@fossil.com",
+    "owner_email": "owner@fossil.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@fossil.com",
+      "owner@fossil.com"
+    ]
+  },
+  {
+    "buyerId": 135,
+    "company": "Swatch Store & Outlet",
+    "domain": "swatch.com",
+    "bus_email": "info@swatch.com",
+    "owner_email": "owner@swatch.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@swatch.com",
+      "owner@swatch.com"
+    ]
+  },
+  {
+    "buyerId": 136,
+    "company": "Casio Store & Outlet",
+    "domain": "casio.com",
+    "bus_email": "info@casio.com",
+    "owner_email": "owner@casio.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@casio.com",
+      "owner@casio.com"
+    ]
+  },
+  {
+    "buyerId": 137,
+    "company": "Timex Store & Outlet",
+    "domain": "timex.com",
+    "bus_email": "info@timex.com",
+    "owner_email": "owner@timex.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@timex.com",
+      "owner@timex.com"
+    ]
+  },
+  {
+    "buyerId": 138,
+    "company": "Ray-ban Store & Outlet",
+    "domain": "ray-ban.com",
+    "bus_email": "info@ray-ban.com",
+    "owner_email": "owner@ray-ban.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@ray-ban.com",
+      "owner@ray-ban.com"
+    ]
+  },
+  {
+    "buyerId": 139,
+    "company": "Sunglasshut Store & Outlet",
+    "domain": "sunglasshut.com",
+    "bus_email": "info@sunglasshut.com",
+    "owner_email": "owner@sunglasshut.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@sunglasshut.com",
+      "owner@sunglasshut.com"
+    ]
+  },
+  {
+    "buyerId": 140,
+    "company": "Samsonite Store & Outlet",
+    "domain": "samsonite.com.ph",
+    "bus_email": "info@samsonite.com.ph",
+    "owner_email": "owner@samsonite.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@samsonite.com.ph",
+      "owner@samsonite.com.ph"
+    ]
+  },
+  {
+    "buyerId": 141,
+    "company": "Herschel Store & Outlet",
+    "domain": "herschel.com.ph",
+    "bus_email": "info@herschel.com.ph",
+    "owner_email": "owner@herschel.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@herschel.com.ph",
+      "owner@herschel.com.ph"
+    ]
+  },
+  {
+    "buyerId": 142,
+    "company": "Jansport Store & Outlet",
+    "domain": "janSport.com.ph",
+    "bus_email": "info@janSport.com.ph",
+    "owner_email": "owner@janSport.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@janSport.com.ph",
+      "owner@janSport.com.ph"
+    ]
+  },
+  {
+    "buyerId": 143,
+    "company": "Baggallini Store & Outlet",
+    "domain": "baggallini.com",
+    "bus_email": "info@baggallini.com",
+    "owner_email": "owner@baggallini.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@baggallini.com",
+      "owner@baggallini.com"
+    ]
+  },
+  {
+    "buyerId": 144,
+    "company": "Tumi Store & Outlet",
+    "domain": "tumi.com",
+    "bus_email": "info@tumi.com",
+    "owner_email": "owner@tumi.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@tumi.com",
+      "owner@tumi.com"
+    ]
+  },
+  {
+    "buyerId": 145,
+    "company": "Decathlon Store & Outlet",
+    "domain": "decathlon.ph",
+    "bus_email": "info@decathlon.ph",
+    "owner_email": "owner@decathlon.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@decathlon.ph",
+      "owner@decathlon.ph"
+    ]
+  },
+  {
+    "buyerId": 146,
+    "company": "Toby Store & Outlet",
+    "domain": "toby.com.ph",
+    "bus_email": "info@toby.com.ph",
+    "owner_email": "owner@toby.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@toby.com.ph",
+      "owner@toby.com.ph"
+    ]
+  },
+  {
+    "buyerId": 147,
+    "company": "Chris-sports Store & Outlet",
+    "domain": "chris-sports.com",
+    "bus_email": "info@chris-sports.com",
+    "owner_email": "owner@chris-sports.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@chris-sports.com",
+      "owner@chris-sports.com"
+    ]
+  },
+  {
+    "buyerId": 148,
+    "company": "Runnr Store & Outlet",
+    "domain": "runnr.com.ph",
+    "bus_email": "info@runnr.com.ph",
+    "owner_email": "owner@runnr.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@runnr.com.ph",
+      "owner@runnr.com.ph"
+    ]
+  },
+  {
+    "buyerId": 149,
+    "company": "Speedo Store & Outlet",
+    "domain": "speedo.com.ph",
+    "bus_email": "info@speedo.com.ph",
+    "owner_email": "owner@speedo.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@speedo.com.ph",
+      "owner@speedo.com.ph"
+    ]
+  },
+  {
+    "buyerId": 150,
+    "company": "Wilson Store & Outlet",
+    "domain": "wilson.com",
+    "bus_email": "info@wilson.com",
+    "owner_email": "owner@wilson.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@wilson.com",
+      "owner@wilson.com"
+    ]
+  },
+  {
+    "buyerId": 151,
+    "company": "Head Store & Outlet",
+    "domain": "head.com",
+    "bus_email": "info@head.com",
+    "owner_email": "owner@head.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@head.com",
+      "owner@head.com"
+    ]
+  },
+  {
+    "buyerId": 152,
+    "company": "Babolat Store & Outlet",
+    "domain": "babolat.com",
+    "bus_email": "info@babolat.com",
+    "owner_email": "owner@babolat.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@babolat.com",
+      "owner@babolat.com"
+    ]
+  },
+  {
+    "buyerId": 153,
+    "company": "Smstore Store & Outlet",
+    "domain": "smstore.com",
+    "bus_email": "info@smstore.com",
+    "owner_email": "owner@smstore.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@smstore.com",
+      "owner@smstore.com"
+    ]
+  },
+  {
+    "buyerId": 154,
+    "company": "Landers Store & Outlet",
+    "domain": "landers.ph",
+    "bus_email": "info@landers.ph",
+    "owner_email": "owner@landers.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@landers.ph",
+      "owner@landers.ph"
+    ]
+  },
+  {
+    "buyerId": 155,
+    "company": "Rustans Store & Outlet",
+    "domain": "rustans.com",
+    "bus_email": "info@rustans.com",
+    "owner_email": "owner@rustans.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@rustans.com",
+      "owner@rustans.com"
+    ]
+  },
+  {
+    "buyerId": 156,
+    "company": "Landmarks Store & Outlet",
+    "domain": "landmarks.com.ph",
+    "bus_email": "info@landmarks.com.ph",
+    "owner_email": "owner@landmarks.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@landmarks.com.ph",
+      "owner@landmarks.com.ph"
+    ]
+  },
+  {
+    "buyerId": 157,
+    "company": "Kcc Store & Outlet",
+    "domain": "kCC.com.ph",
+    "bus_email": "info@kCC.com.ph",
+    "owner_email": "owner@kCC.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@kCC.com.ph",
+      "owner@kCC.com.ph"
+    ]
+  },
+  {
+    "buyerId": 158,
+    "company": "Nccc Store & Outlet",
+    "domain": "nCCC.com.ph",
+    "bus_email": "info@nCCC.com.ph",
+    "owner_email": "owner@nCCC.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@nCCC.com.ph",
+      "owner@nCCC.com.ph"
+    ]
+  },
+  {
+    "buyerId": 159,
+    "company": "Handyman Store & Outlet",
+    "domain": "handyman.ph",
+    "bus_email": "info@handyman.ph",
+    "owner_email": "owner@handyman.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@handyman.ph",
+      "owner@handyman.ph"
+    ]
+  },
+  {
+    "buyerId": 160,
+    "company": "Doitbest Store & Outlet",
+    "domain": "doitbest.com",
+    "bus_email": "info@doitbest.com",
+    "owner_email": "owner@doitbest.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@doitbest.com",
+      "owner@doitbest.com"
+    ]
+  },
+  {
+    "buyerId": 161,
+    "company": "Truevalue Store & Outlet",
+    "domain": "truevalue.com",
+    "bus_email": "info@truevalue.com",
+    "owner_email": "owner@truevalue.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@truevalue.com",
+      "owner@truevalue.com"
+    ]
+  },
+  {
+    "buyerId": 162,
+    "company": "Shopwise Store & Outlet",
+    "domain": "shopwise.com.ph",
+    "bus_email": "info@shopwise.com.ph",
+    "owner_email": "owner@shopwise.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@shopwise.com.ph",
+      "owner@shopwise.com.ph"
+    ]
+  },
+  {
+    "buyerId": 163,
+    "company": "Marketplace Store & Outlet",
+    "domain": "marketplace.ph",
+    "bus_email": "info@marketplace.ph",
+    "owner_email": "owner@marketplace.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@marketplace.ph",
+      "owner@marketplace.ph"
+    ]
+  },
+  {
+    "buyerId": 164,
+    "company": "Allmart Store & Outlet",
+    "domain": "allmart.ph",
+    "bus_email": "info@allmart.ph",
+    "owner_email": "owner@allmart.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@allmart.ph",
+      "owner@allmart.ph"
+    ]
+  },
+  {
+    "buyerId": 165,
+    "company": "Mart Store & Outlet",
+    "domain": "mart.ph",
+    "bus_email": "info@mart.ph",
+    "owner_email": "owner@mart.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@mart.ph",
+      "owner@mart.ph"
+    ]
+  },
+  {
+    "buyerId": 166,
+    "company": "Expressmart Store & Outlet",
+    "domain": "expressmart.com.ph",
+    "bus_email": "info@expressmart.com.ph",
+    "owner_email": "owner@expressmart.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@expressmart.com.ph",
+      "owner@expressmart.com.ph"
+    ]
+  },
+  {
+    "buyerId": 167,
+    "company": "Miniso Store & Outlet",
+    "domain": "miniso.com",
+    "bus_email": "info@miniso.com",
+    "owner_email": "owner@miniso.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@miniso.com",
+      "owner@miniso.com"
+    ]
+  },
+  {
+    "buyerId": 168,
+    "company": "Daiso Store & Outlet",
+    "domain": "daiso.com.ph",
+    "bus_email": "info@daiso.com.ph",
+    "owner_email": "owner@daiso.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@daiso.com.ph",
+      "owner@daiso.com.ph"
+    ]
+  },
+  {
+    "buyerId": 169,
+    "company": "Mumuso Store & Outlet",
+    "domain": "mumuso.ph",
+    "bus_email": "info@mumuso.ph",
+    "owner_email": "owner@mumuso.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@mumuso.ph",
+      "owner@mumuso.ph"
+    ]
+  },
+  {
+    "buyerId": 170,
+    "company": "Japanhome Store & Outlet",
+    "domain": "japanhome.com.ph",
+    "bus_email": "info@japanhome.com.ph",
+    "owner_email": "owner@japanhome.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@japanhome.com.ph",
+      "owner@japanhome.com.ph"
+    ]
+  },
+  {
+    "buyerId": 171,
+    "company": "Mrdiy Store & Outlet",
+    "domain": "mrDIY.com",
+    "bus_email": "info@mrDIY.com",
+    "owner_email": "owner@mrDIY.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@mrDIY.com",
+      "owner@mrDIY.com"
+    ]
+  },
+  {
+    "buyerId": 172,
+    "company": "Mrdiy Store & Outlet",
+    "domain": "mrdiy.com.ph",
+    "bus_email": "info@mrdiy.com.ph",
+    "owner_email": "owner@mrdiy.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@mrdiy.com.ph",
+      "owner@mrdiy.com.ph"
+    ]
+  },
+  {
+    "buyerId": 173,
+    "company": "Acehardware Store & Outlet",
+    "domain": "acehardware.com",
+    "bus_email": "info@acehardware.com",
+    "owner_email": "owner@acehardware.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@acehardware.com",
+      "owner@acehardware.com"
+    ]
+  },
+  {
+    "buyerId": 174,
+    "company": "Harborfreight Store & Outlet",
+    "domain": "harborfreight.com",
+    "bus_email": "info@harborfreight.com",
+    "owner_email": "owner@harborfreight.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@harborfreight.com",
+      "owner@harborfreight.com"
+    ]
+  },
+  {
+    "buyerId": 175,
+    "company": "Fastenal Store & Outlet",
+    "domain": "fastenal.com",
+    "bus_email": "info@fastenal.com",
+    "owner_email": "owner@fastenal.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@fastenal.com",
+      "owner@fastenal.com"
+    ]
+  },
+  {
+    "buyerId": 176,
+    "company": "Grainger Store & Outlet",
+    "domain": "grainger.com",
+    "bus_email": "info@grainger.com",
+    "owner_email": "owner@grainger.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@grainger.com",
+      "owner@grainger.com"
+    ]
+  },
+  {
+    "buyerId": 177,
+    "company": "Autozone Store & Outlet",
+    "domain": "autozone.com",
+    "bus_email": "info@autozone.com",
+    "owner_email": "owner@autozone.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@autozone.com",
+      "owner@autozone.com"
+    ]
+  },
+  {
+    "buyerId": 178,
+    "company": "Advanceautoparts Store & Outlet",
+    "domain": "advanceautoparts.com",
+    "bus_email": "info@advanceautoparts.com",
+    "owner_email": "owner@advanceautoparts.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@advanceautoparts.com",
+      "owner@advanceautoparts.com"
+    ]
+  },
+  {
+    "buyerId": 179,
+    "company": "Oreillyauto Store & Outlet",
+    "domain": "oreillyauto.com",
+    "bus_email": "info@oreillyauto.com",
+    "owner_email": "owner@oreillyauto.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@oreillyauto.com",
+      "owner@oreillyauto.com"
+    ]
+  },
+  {
+    "buyerId": 180,
+    "company": "Pepboys Store & Outlet",
+    "domain": "pepboys.com",
+    "bus_email": "info@pepboys.com",
+    "owner_email": "owner@pepboys.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@pepboys.com",
+      "owner@pepboys.com"
+    ]
+  },
+  {
+    "buyerId": 181,
+    "company": "Carquest Store & Outlet",
+    "domain": "carquest.com",
+    "bus_email": "info@carquest.com",
+    "owner_email": "owner@carquest.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@carquest.com",
+      "owner@carquest.com"
+    ]
+  },
+  {
+    "buyerId": 182,
+    "company": "Gameone Store & Outlet",
+    "domain": "gameone.ph",
+    "bus_email": "info@gameone.ph",
+    "owner_email": "owner@gameone.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@gameone.ph",
+      "owner@gameone.ph"
+    ]
+  },
+  {
+    "buyerId": 183,
+    "company": "Datablitz Store & Outlet",
+    "domain": "datablitz.com.ph",
+    "bus_email": "info@datablitz.com.ph",
+    "owner_email": "owner@datablitz.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@datablitz.com.ph",
+      "owner@datablitz.com.ph"
+    ]
+  },
+  {
+    "buyerId": 184,
+    "company": "Itech Store & Outlet",
+    "domain": "itech.ph",
+    "bus_email": "info@itech.ph",
+    "owner_email": "owner@itech.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@itech.ph",
+      "owner@itech.ph"
+    ]
+  },
+  {
+    "buyerId": 185,
+    "company": "Gamextreme Store & Outlet",
+    "domain": "gameXtreme.ph",
+    "bus_email": "info@gameXtreme.ph",
+    "owner_email": "owner@gameXtreme.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@gameXtreme.ph",
+      "owner@gameXtreme.ph"
+    ]
+  },
+  {
+    "buyerId": 186,
+    "company": "Pchub Store & Outlet",
+    "domain": "pCHub.com.ph",
+    "bus_email": "info@pCHub.com.ph",
+    "owner_email": "owner@pCHub.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@pCHub.com.ph",
+      "owner@pCHub.com.ph"
+    ]
+  },
+  {
+    "buyerId": 187,
+    "company": "Easypc Store & Outlet",
+    "domain": "easyPC.com.ph",
+    "bus_email": "info@easyPC.com.ph",
+    "owner_email": "owner@easyPC.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@easyPC.com.ph",
+      "owner@easyPC.com.ph"
+    ]
+  },
+  {
+    "buyerId": 188,
+    "company": "Bermorzone Store & Outlet",
+    "domain": "bermorzone.com.ph",
+    "bus_email": "info@bermorzone.com.ph",
+    "owner_email": "owner@bermorzone.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@bermorzone.com.ph",
+      "owner@bermorzone.com.ph"
+    ]
+  },
+  {
+    "buyerId": 189,
+    "company": "Dynaquestpc Store & Outlet",
+    "domain": "dynaquestpc.com",
+    "bus_email": "info@dynaquestpc.com",
+    "owner_email": "owner@dynaquestpc.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@dynaquestpc.com",
+      "owner@dynaquestpc.com"
+    ]
+  },
+  {
+    "buyerId": 190,
+    "company": "Itworld Store & Outlet",
+    "domain": "itworld.com.ph",
+    "bus_email": "info@itworld.com.ph",
+    "owner_email": "owner@itworld.com.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@itworld.com.ph",
+      "owner@itworld.com.ph"
+    ]
+  },
+  {
+    "buyerId": 191,
+    "company": "Softboxes Store & Outlet",
+    "domain": "softboxes.ph",
+    "bus_email": "info@softboxes.ph",
+    "owner_email": "owner@softboxes.ph",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@softboxes.ph",
+      "owner@softboxes.ph"
+    ]
+  },
+  {
+    "buyerId": 192,
+    "company": "Target Store & Outlet",
+    "domain": "target.com",
+    "bus_email": "info@target.com",
+    "owner_email": "owner@target.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@target.com",
+      "owner@target.com"
+    ]
+  },
+  {
+    "buyerId": 193,
+    "company": "Walmart Store & Outlet",
+    "domain": "walmart.com",
+    "bus_email": "info@walmart.com",
+    "owner_email": "owner@walmart.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@walmart.com",
+      "owner@walmart.com"
+    ]
+  },
+  {
+    "buyerId": 194,
+    "company": "Costco Store & Outlet",
+    "domain": "costco.com",
+    "bus_email": "info@costco.com",
+    "owner_email": "owner@costco.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@costco.com",
+      "owner@costco.com"
+    ]
+  },
+  {
+    "buyerId": 195,
+    "company": "Bestbuy Store & Outlet",
+    "domain": "bestbuy.com",
+    "bus_email": "info@bestbuy.com",
+    "owner_email": "owner@bestbuy.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@bestbuy.com",
+      "owner@bestbuy.com"
+    ]
+  },
+  {
+    "buyerId": 196,
+    "company": "Macy Store & Outlet",
+    "domain": "macy.com",
+    "bus_email": "info@macy.com",
+    "owner_email": "owner@macy.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@macy.com",
+      "owner@macy.com"
+    ]
+  },
+  {
+    "buyerId": 197,
+    "company": "Nordstrom Store & Outlet",
+    "domain": "nordstrom.com",
+    "bus_email": "info@nordstrom.com",
+    "owner_email": "owner@nordstrom.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@nordstrom.com",
+      "owner@nordstrom.com"
+    ]
+  },
+  {
+    "buyerId": 198,
+    "company": "Bloomingdales Store & Outlet",
+    "domain": "bloomingdales.com",
+    "bus_email": "info@bloomingdales.com",
+    "owner_email": "owner@bloomingdales.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@bloomingdales.com",
+      "owner@bloomingdales.com"
+    ]
+  },
+  {
+    "buyerId": 199,
+    "company": "Saksfifthavenue Store & Outlet",
+    "domain": "saksfifthavenue.com",
+    "bus_email": "info@saksfifthavenue.com",
+    "owner_email": "owner@saksfifthavenue.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@saksfifthavenue.com",
+      "owner@saksfifthavenue.com"
+    ]
+  },
+  {
+    "buyerId": 200,
+    "company": "Kohls Store & Outlet",
+    "domain": "kohls.com",
+    "bus_email": "info@kohls.com",
+    "owner_email": "owner@kohls.com",
+    "status": "2/2 YES (Both Verified)",
+    "action": "DISPATCH BOTH (Business + Owner)",
+    "verified_emails": [
+      "info@kohls.com",
+      "owner@kohls.com"
+    ]
+  }
+]

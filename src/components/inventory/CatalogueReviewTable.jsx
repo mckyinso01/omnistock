@@ -6,10 +6,10 @@ import { Trash2, AlertTriangle, Download, Loader2, Image as ImageIcon } from "lu
 import { useState } from "react";
 
 function confidenceMeta(c) {
-  if (c == null) return { label: "—", color: "text-slate-500 bg-slate-100 border-slate-200" };
-  if (c >= 0.8) return { label: "High", color: "text-emerald-700 bg-emerald-50 border-emerald-200" };
-  if (c >= 0.6) return { label: "Medium", color: "text-amber-700 bg-amber-50 border-amber-200" };
-  return { label: "Low", color: "text-red-700 bg-red-50 border-red-200" };
+  if (c == null) return { label: "—", color: "text-slate-400 bg-slate-900/80 border-slate-700" };
+  if (c >= 0.8) return { label: "High", color: "text-emerald-300 bg-emerald-950/80 border-emerald-500/50" };
+  if (c >= 0.6) return { label: "Medium", color: "text-amber-300 bg-amber-950/80 border-amber-500/50" };
+  return { label: "Low", color: "text-rose-300 bg-rose-950/80 border-rose-500/50" };
 }
 
 const EditCell = ({ value, onChange, type, className }) => (

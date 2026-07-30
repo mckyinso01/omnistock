@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Server, Sparkles, Code, Cloud, ShieldCheck, X, Check, DollarSign } from "lucide-react";
+import { Server, Sparkles, Code, Cloud, ShieldCheck, X, Check, DollarSign, FileText } from "lucide-react";
 
 export default function LicensingDeploymentTierBar() {
   const [activeModal, setActiveModal] = useState(null);
@@ -25,6 +25,16 @@ export default function LicensingDeploymentTierBar() {
           <span className="text-[11px] font-semibold text-slate-300 uppercase tracking-wider">Software Factory</span>
         </div>
 
+        {/* 0. System Specs & Features (specs.md) */}
+        <button
+          onClick={() => setActiveModal("specs")}
+          className="px-3 py-1.5 rounded-xl text-xs font-medium text-cyan-300 hover:text-white bg-cyan-950/40 hover:bg-cyan-900/60 border border-cyan-500/40 transition-all flex items-center gap-1.5 cursor-pointer shadow-[0_0_12px_rgba(0,229,255,0.2)]"
+          title="Inspect Full System Architecture & Specifications (specs.md)"
+        >
+          <FileText className="w-3.5 h-3.5 text-cyan-400" />
+          <span>System Specs</span>
+        </button>
+
         {/* 1. Enterprise Self-Host */}
         <button
           onClick={() => setActiveModal("self-host")}
@@ -38,10 +48,10 @@ export default function LicensingDeploymentTierBar() {
         {/* 2. White-Label Agency */}
         <button
           onClick={() => setActiveModal("white-label")}
-          className="px-3 py-1.5 rounded-xl text-xs font-medium text-slate-300 hover:text-blue-400 hover:bg-blue-950/30 border border-transparent hover:border-blue-500/20 transition-all flex items-center gap-1.5 cursor-pointer"
+          className="px-3 py-1.5 rounded-xl text-xs font-medium text-slate-300 hover:text-cyan-400 hover:bg-cyan-950/30 border border-transparent hover:border-cyan-500/20 transition-all flex items-center gap-1.5 cursor-pointer"
           title="White-Label Agency License ($12,999)"
         >
-          <Sparkles className="w-3.5 h-3.5 text-blue-400" />
+          <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
           <span>White-Label</span>
         </button>
 
@@ -228,6 +238,70 @@ export default function LicensingDeploymentTierBar() {
             <div className="pt-3 border-t border-slate-800 flex items-center justify-end gap-2">
               <button onClick={() => setActiveModal(null)} className="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold">
                 Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 0. System Specs Modal */}
+      {activeModal === "specs" && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-in fade-in select-text">
+          <div className="bg-[#071322] border border-cyan-500/50 rounded-2xl max-w-3xl w-full max-h-[85vh] p-6 space-y-4 text-left shadow-[0_0_30px_rgba(0,229,255,0.25)] relative flex flex-col">
+            <div className="flex items-center justify-between border-b border-slate-800 pb-4 shrink-0">
+              <div className="flex items-center gap-3">
+                <div className="p-2.5 rounded-xl bg-cyan-950/80 border border-cyan-500/50 text-cyan-400">
+                  <FileText className="w-6 h-6" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-white">OmniStock POS: System Architecture & Specifications</h3>
+                  <p className="text-xs text-cyan-300 font-mono">Authoritative Document: omnistock/specs.md (v3.5.0-PROD)</p>
+                </div>
+              </div>
+              <button onClick={() => setActiveModal(null)} className="text-slate-400 hover:text-white p-1">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="overflow-y-auto space-y-4 text-xs text-slate-300 pr-2 font-sans leading-relaxed">
+              <div className="p-3 bg-[#050811] rounded-xl border border-cyan-900/60 font-mono text-[11px] text-cyan-300 space-y-1">
+                <div>⚡ System Architecture: React 18.3+ SPA + Dexie.js 4.0 Offline IndexedDB Engine</div>
+                <div>🎨 UI Theme: Demon Slayer Midnight Electric Blue (#050811 / #0B1C30 / #2563EB / #00E5FF)</div>
+                <div>🌐 Deployment URL: https://omnistock-pos.surge.sh | Showcase: https://gatzdevs.surge.sh</div>
+              </div>
+
+              <div>
+                <h4 className="font-bold text-sm text-cyan-400 mb-2">🤖 5 Autonomous AI & Algorithmic Background Modules:</h4>
+                <ul className="list-disc pl-5 space-y-1.5 text-slate-200">
+                  <li><strong>Module 1: Autonomous Stock Re-Ordering & Auto-PO Generator:</strong> Analyzes 7d/14d/30d sales velocity to calculate exact Re-Order Points (ROP) and auto-draft supplier Purchase Orders.</li>
+                  <li><strong>Module 2: Autonomous Pilferage & Theft Detection AI Guard:</strong> Background scanner comparing theoretical recipe consumption against actual physical inventory to flag unauthorized loss.</li>
+                  <li><strong>Module 3: Autonomous Self-Healing Offline Sync Engine (Dexie.js):</strong> Instant failover to local IndexedDB during network outages with zero-conflict background re-sync on reconnection.</li>
+                  <li><strong>Module 4: Autonomous EOD Cashier Drawer Reconciliation Sentinel:</strong> Auto-computes expected drawer cash, flags overage/shortage, and locks historical shift ledgers.</li>
+                  <li><strong>Module 5: Autonomous Multi-Tenant Provisioning & 3-Step Purge Engine:</strong> 3-Step automated database sanitization wizard for rapid enterprise tenant deployment.</li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="font-bold text-sm text-cyan-400 mb-2">📊 10 Flagship Enterprise Capabilities:</h4>
+                <ul className="list-disc pl-5 space-y-1.5 text-slate-200">
+                  <li><strong>POS Register HUD:</strong> Sub-10ms UI, multi-payment tender (Cash, Card, GCash/Maya), touch grid.</li>
+                  <li><strong>Recipe & Portion Control:</strong> Unit/ingredient level deduction (grams/ml) with per-serving COGS calculation.</li>
+                  <li><strong>Multi-Timeframe Income Engine:</strong> Interactive Daily, 7-Day Weekly, 30-Day Monthly, and YTD Annual P&L rollups.</li>
+                  <li><strong>Real-Time Stock & Expiry Alerts:</strong> Push banners, audio cues, and color-coded stock safety badges.</li>
+                  <li><strong>Barcode Scanner HUD:</strong> Sub-10ms optical GTIN/EAN camera stream processing + USB HID listener.</li>
+                  <li><strong>80mm Thermal Receipt Generator:</strong> Instant print preview with store branding, VAT breakdown, & QR code.</li>
+                  <li><strong>100% Offline Dexie Register:</strong> Uninterrupted sales execution during internet outages.</li>
+                  <li><strong>Multi-Tenant Staff RBAC & Audit Ledger:</strong> Cashier, Manager, Admin roles backed by immutable action logs.</li>
+                  <li><strong>ASC 606 GAAP Revenue Dashboard:</strong> Gross margin reports, revenue recognition, inventory turnover.</li>
+                  <li><strong>4-Tier Commercial Licensing:</strong> Cloud SaaS ($299/mo), Self-Hosted ($4,999), White-Label ($12,999), Source IP ($24,999).</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="pt-3 border-t border-slate-800 flex items-center justify-between shrink-0">
+              <span className="text-[11px] text-slate-400 font-mono">File Path: omnistock/specs.md</span>
+              <button onClick={() => setActiveModal(null)} className="px-4 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-semibold shadow-[0_0_12px_rgba(0,229,255,0.4)]">
+                Close Specifications
               </button>
             </div>
           </div>
