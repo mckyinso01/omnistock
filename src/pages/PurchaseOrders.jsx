@@ -14,7 +14,7 @@ import { base44 } from "@/api/base44Client";
 import { useToast } from "@/components/ui/use-toast";
 
 const STATUS_COLORS = {
-  draft: "bg-slate-100 text-slate-600",
+  draft: "bg-slate-100 text-slate-400",
   sent: "bg-blue-100 text-blue-700",
   partial: "bg-yellow-100 text-yellow-700",
   received: "bg-green-100 text-green-700",
@@ -159,7 +159,7 @@ export default function PurchaseOrders() {
             setSendingReport(false);
           }}
           disabled={sendingReport}
-          className="gap-2 text-blue-600 border-blue-200 hover:bg-blue-50"
+          className="gap-2 text-cyan-400 border-blue-200 hover:bg-blue-50"
         >
           {sendingReport ? <Loader2 className="w-4 h-4 animate-spin" /> : <Mail className="w-4 h-4" />}
           {sendingReport ? "Sending..." : "Email Weekly PO Report"}
@@ -168,7 +168,7 @@ export default function PurchaseOrders() {
           variant="outline"
           onClick={() => handleSyncToCalendar()}
           disabled={calSyncing}
-          className="gap-2 text-violet-600 border-violet-200 hover:bg-violet-50"
+          className="gap-2 text-violet-400 border-violet-200 hover:bg-violet-50"
         >
           {calSyncing ? <Loader2 className="w-4 h-4 animate-spin" /> : <Calendar className="w-4 h-4" />}
           {calSyncing ? "Syncing..." : "Sync to Google Calendar"}
@@ -179,7 +179,7 @@ export default function PurchaseOrders() {
       </div>
 
       {reportResult && (
-        <div className={`rounded-xl p-3 text-sm ${reportResult.sent > 0 ? "bg-blue-50 text-blue-800" : "bg-slate-50 text-slate-600"}`}>
+        <div className={`rounded-xl p-3 text-sm ${reportResult.sent > 0 ? "bg-blue-50 text-blue-800" : "bg-slate-50 text-slate-400"}`}>
           {reportResult.sent > 0
             ? `✅ Sent PO reports to ${reportResult.sent} supplier(s).`
             : `ℹ️ ${reportResult.message || "No emails sent."}`}
@@ -196,7 +196,7 @@ export default function PurchaseOrders() {
         <Card className="border-2 border-emerald-200">
           <CardContent className="pt-5 space-y-4">
             <div className="flex items-center justify-between">
-              <h3 className="font-semibold text-slate-800">New Purchase Order</h3>
+              <h3 className="font-semibold text-slate-200">New Purchase Order</h3>
               <button onClick={() => setShowForm(false)}><X className="w-4 h-4 text-slate-400" /></button>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -223,7 +223,7 @@ export default function PurchaseOrders() {
             <div className="space-y-3">
               <div className="flex items-center justify-between">
                 <Label>Items</Label>
-                <Button size="sm" variant="outline" onClick={addItem} className="gap-1 text-emerald-600">
+                <Button size="sm" variant="outline" onClick={addItem} className="gap-1 text-emerald-400">
                   <Plus className="w-3 h-3" /> Add Item
                 </Button>
               </div>
@@ -248,7 +248,7 @@ export default function PurchaseOrders() {
                   </div>
                   <div className="col-span-2 space-y-1">
                     <p className="text-xs text-slate-500">Subtotal</p>
-                    <p className="text-sm font-semibold text-slate-700 h-8 flex items-center">₱{(item.subtotal || 0).toLocaleString()}</p>
+                    <p className="text-sm font-semibold text-slate-300 h-8 flex items-center">₱{(item.subtotal || 0).toLocaleString()}</p>
                   </div>
                   <div className="col-span-1 flex justify-end">
                     <button onClick={() => removeItem(idx)} className="text-red-400 hover:text-red-600 mt-4">
@@ -260,7 +260,7 @@ export default function PurchaseOrders() {
             </div>
 
             {form.items.length > 0 && (
-              <div className="flex justify-end text-sm font-semibold text-slate-800">
+              <div className="flex justify-end text-sm font-semibold text-slate-200">
                 Total: ₱{form.items.reduce((s, i) => s + (i.subtotal || 0), 0).toLocaleString()}
               </div>
             )}
@@ -291,16 +291,16 @@ export default function PurchaseOrders() {
                 <div className="flex items-center justify-between gap-3">
                   <div className="flex items-center gap-3 flex-1 min-w-0">
                     <div className="w-9 h-9 rounded-xl bg-blue-50 flex items-center justify-center">
-                      <Package className="w-5 h-5 text-blue-500" />
+                      <Package className="w-5 h-5 text-cyan-400" />
                     </div>
                     <div className="min-w-0">
-                      <p className="font-semibold text-slate-800 truncate">{order.po_number}</p>
+                      <p className="font-semibold text-slate-200 truncate">{order.po_number}</p>
                       <p className="text-sm text-slate-500">{order.supplier_name}</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-2 shrink-0">
                     <Badge className={STATUS_COLORS[order.status]}>{order.status}</Badge>
-                    <p className="text-sm font-bold text-slate-700">₱{(order.total_amount || 0).toLocaleString()}</p>
+                    <p className="text-sm font-bold text-slate-300">₱{(order.total_amount || 0).toLocaleString()}</p>
                     {order.status === "draft" && (
                       <Button size="sm" onClick={() => updateStatus(order.id, "sent")} className="text-xs bg-blue-600 hover:bg-blue-700 text-white">Send</Button>
                     )}
@@ -328,7 +328,7 @@ export default function PurchaseOrders() {
                 {expanded === order.id && (
                   <div className="mt-4 border-t border-slate-100 pt-4 space-y-2">
                     {(order.items || []).map((item, i) => (
-                      <div key={i} className="flex justify-between text-sm text-slate-600">
+                      <div key={i} className="flex justify-between text-sm text-slate-400">
                         <span>{item.product_name}</span>
                         <span>{item.quantity_ordered} × ₱{item.unit_cost?.toLocaleString()} = ₱{item.subtotal?.toLocaleString()}</span>
                       </div>

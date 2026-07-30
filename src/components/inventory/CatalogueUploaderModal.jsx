@@ -66,14 +66,14 @@ export default function CatalogueUploaderModal({ onImported, onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-3">
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-3xl max-h-[92vh] flex flex-col">
-        <div className="sticky top-0 bg-white border-b px-5 py-3 flex items-center justify-between rounded-t-2xl">
-          <div className="flex items-center gap-2 text-slate-800 font-bold">
-            <ScanText className="w-5 h-5 text-purple-600" />
+    <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-3">
+      <div className="bg-[#0B1C30] border border-slate-800 rounded-2xl shadow-2xl w-full max-w-3xl max-h-[92vh] flex flex-col text-white">
+        <div className="sticky top-0 bg-[#0B1C30] border-b border-slate-800 px-5 py-3 flex items-center justify-between rounded-t-2xl z-10">
+          <div className="flex items-center gap-2 text-white font-bold">
+            <ScanText className="w-5 h-5 text-purple-400" />
             Catalogue Scanner
           </div>
-          <button onClick={onClose} className="text-slate-400 hover:text-slate-700"><X className="w-5 h-5" /></button>
+          <button onClick={onClose} className="text-slate-400 hover:text-white transition-colors"><X className="w-5 h-5" /></button>
         </div>
 
         <div className="flex-1 overflow-y-auto p-5">
@@ -83,7 +83,7 @@ export default function CatalogueUploaderModal({ onImported, onClose }) {
                 <Sparkles className="w-8 h-8 text-purple-600" />
               </div>
               <div>
-                <h3 className="text-lg font-bold text-slate-800">Snap a Catalogue Page</h3>
+                <h3 className="text-lg font-bold text-slate-200">Snap a Catalogue Page</h3>
                 <p className="text-sm text-slate-500 mt-1 max-w-md mx-auto">
                   Take a clear photo of a handwritten price list or supplier catalogue. AI reads each line — even messy handwriting — and turns it into editable product entries you can review before importing.
                 </p>
@@ -107,7 +107,7 @@ export default function CatalogueUploaderModal({ onImported, onClose }) {
           {stage === "processing" && (
             <div className="text-center py-16 space-y-3">
               <Loader2 className="w-10 h-10 text-purple-600 animate-spin mx-auto" />
-              <p className="text-sm font-medium text-slate-700">Reading your catalogue...</p>
+              <p className="text-sm font-medium text-slate-300">Reading your catalogue...</p>
               <p className="text-xs text-slate-400">Deciphering handwriting · extracting products · auto-categorizing</p>
             </div>
           )}

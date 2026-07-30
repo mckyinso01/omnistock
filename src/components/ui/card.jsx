@@ -1,49 +1,60 @@
 import * as React from "react"
-
 import { cn } from "@/lib/utils"
 
+/**
+ * DEMON SLAYER CARD COMPONENTS (CRD-TIER1, CRD-KPI, CRD-GLASS)
+ * Theme: Tanjiro Midnight Blue (Solid Dark Navy #0B1C30 Interior Surface)
+ */
 const Card = React.forwardRef(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("rounded-xl border bg-card text-card-foreground shadow", className)}
-    {...props} />
+    className={cn(
+      "rounded-2xl border border-slate-800/80 bg-[#0B1C30] text-slate-100 shadow-xl transition-all duration-300",
+      className
+    )}
+    {...props}
+  />
 ))
 Card.displayName = "Card"
 
 const CardHeader = React.forwardRef(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("flex flex-col space-y-1.5 p-6", className)}
-    {...props} />
+    className={cn("flex flex-col space-y-1.5 p-6 pb-3 border-b border-slate-800/60", className)}
+    {...props}
+  />
 ))
 CardHeader.displayName = "CardHeader"
 
 const CardTitle = React.forwardRef(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("font-semibold leading-none tracking-tight", className)}
-    {...props} />
+    className={cn("text-base font-bold leading-none tracking-tight text-white flex items-center gap-2", className)}
+    {...props}
+  />
 ))
 CardTitle.displayName = "CardTitle"
 
 const CardDescription = React.forwardRef(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("text-sm text-muted-foreground", className)}
-    {...props} />
+    className={cn("text-xs font-mono text-slate-400 mt-1", className)}
+    {...props}
+  />
 ))
 CardDescription.displayName = "CardDescription"
 
 const CardContent = React.forwardRef(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn("p-6 pt-0", className)} {...props} />
+  <div ref={ref} className={cn("p-6 pt-4", className)} {...props} />
 ))
 CardContent.displayName = "CardContent"
 
 const CardFooter = React.forwardRef(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("flex items-center p-6 pt-0", className)}
-    {...props} />
+    className={cn("flex items-center p-6 pt-0 border-t border-slate-800/60 mt-4", className)}
+    {...props}
+  />
 ))
 CardFooter.displayName = "CardFooter"
 

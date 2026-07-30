@@ -7,12 +7,13 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Plus, Search, Package, AlertTriangle, Filter, ScanLine, Download, Upload, ScanText } from "lucide-react";
+import { Plus, Search, Package, AlertTriangle, Filter, ScanLine, Download, Upload, ScanText, Loader2 } from "lucide-react";
 import ProductFormModal from "@/components/inventory/ProductFormModal";
 import CatalogueUploaderModal from "@/components/inventory/CatalogueUploaderModal";
 import ProductCard from "@/components/inventory/ProductCard";
 import BarcodeScanner from "@/components/shared/BarcodeScanner";
 import { exportProductsToCsv, downloadCsv, parseProductsCsv, csvRowsToProducts } from "@/lib/csv";
+import DESIGN_TOKENS from "@/lib/designSystem";
 
 export default function Inventory() {
   const [products, setProducts] = useState([]);
@@ -32,15 +33,23 @@ export default function Inventory() {
 
   const loadData = async () => {
     setLoading(true);
-    const [p, c, s] = await Promise.all([
-      entities.Product.list("-created_date", 300),
-      entities.Category.list("name", 100),
-      entities.Supplier.list("name", 100),
-    ]);
-    setProducts(p);
-    setCategories(c);
-    setSuppliers(s);
-    setLoading(false);
+    try {
+      const [p, c, s] = await Promise.all([
+        entities.Product.list("-created_date", 300).catch(() => []),
+        entities.Category.list("name", 100).catch(() => []),
+        entities.Supplier.list("name", 100).catch(() => []),
+      ]);
+      setProducts(p || []);
+      setCategories(c || []);
+      setSuppliers(s || []);
+    } catch (err) {
+      console.error("Inventory loadData Exception:", err);
+      setProducts([]);
+      setCategories([]);
+      setSuppliers([]);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const { pulling, pullDistance, refreshing, threshold } = usePullToRefresh(loadData, scrollRef);
@@ -63,8 +72,12 @@ export default function Inventory() {
 
   const handleDelete = async (id) => {
     if (!confirm("Delete this product?")) return;
-    await entities.Product.delete(id);
-    loadData();
+    try {
+      await entities.Product.delete(id);
+      loadData();
+    } catch (err) {
+      console.error("Product Delete Exception:", err);
+    }
   };
 
   const handleSave = () => {
@@ -74,9 +87,13 @@ export default function Inventory() {
   };
 
   const handleCatalogueImport = async (records) => {
-    await entities.Product.bulkCreate(records);
-    alert(`Imported ${records.length} product(s) from catalogue scan.`);
-    loadData();
+    try {
+      await entities.Product.bulkCreate(records);
+      alert(`Imported ${records.length} product${records.length > 1 ? "s" : ""} from catalogue scan.`);
+      loadData();
+    } catch (err) {
+      console.error("Catalogue Import Exception:", err);
+    }
   };
 
   const handleExportCsv = () => {
@@ -98,7 +115,6 @@ export default function Inventory() {
         alert("No valid product rows found in CSV.");
         return;
       }
-      // Skip rows whose SKU already matches an existing product
       const existingSkus = new Set(products.map(p => p.sku).filter(Boolean));
       const toCreate = records.filter(r => !r.sku || !existingSkus.has(r.sku));
       if (toCreate.length === 0) {
@@ -128,38 +144,41 @@ export default function Inventory() {
   ).length;
 
   return (
-    <div ref={scrollRef} className="min-h-screen overflow-y-auto">
+    <div ref={scrollRef} className="min-h-screen overflow-y-auto bg-[#050811] text-slate-100 font-sans pb-10 app-card-hover">
       <PullToRefreshIndicator pulling={pulling} pullDistance={pullDistance} refreshing={refreshing} threshold={threshold} />
       {/* Header */}
-      <div className="bg-white border-b border-slate-200 px-4 md:px-6 py-4">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+      <div className="bg-[#0B1C30]/90 border-b border-slate-800/80 px-4 md:px-6 py-4 backdrop-blur-md sticky top-0 z-20">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3.5">
           <div>
-            <h2 className="text-sm text-slate-500">
-              {filtered.length} products
+            <h1 className={DESIGN_TOKENS.typography.h1 + " flex items-center gap-2"}>
+              <Package className="w-6 h-6 text-cyan-400" /> Inventory & Stock Registry
+            </h1>
+            <p className={DESIGN_TOKENS.typography.muted + " mt-0.5"}>
+              {filtered.length} total items registered
               {lowStock > 0 && (
-                <span className="ml-2 text-orange-500 font-medium">
-                  · {lowStock} low stock
+                <span className="ml-2 text-amber-400 font-bold font-mono">
+                  · ⚠️ {lowStock} low stock alert{lowStock > 1 ? "s" : ""}
                 </span>
               )}
-            </h2>
+            </p>
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-2 flex-wrap items-center">
             <Button
               variant="outline"
               onClick={handleExportCsv}
-              className="gap-2 text-slate-600"
+              className={DESIGN_TOKENS.buttons.secondary + " gap-1.5 text-xs h-9 cursor-pointer font-semibold"}
               title="Export products to CSV"
             >
-              <Download className="w-4 h-4" />
+              <Download className="w-3.5 h-3.5 text-cyan-400" />
               Export
             </Button>
             <Button
               variant="outline"
               onClick={() => document.getElementById("csv-import-input")?.click()}
-              className="gap-2 text-slate-600"
+              className={DESIGN_TOKENS.buttons.secondary + " gap-1.5 text-xs h-9 cursor-pointer font-semibold"}
               title="Import products from CSV"
             >
-              <Upload className="w-4 h-4" />
+              <Upload className="w-3.5 h-3.5 text-cyan-400" />
               Import
             </Button>
             <input
@@ -172,23 +191,23 @@ export default function Inventory() {
             <Button
               variant="outline"
               onClick={() => setShowScanner(true)}
-              className="gap-2 text-emerald-600 border-emerald-200 hover:bg-emerald-50"
+              className="gap-1.5 text-cyan-300 border-cyan-500/50 bg-[#071322] hover:bg-[#0E1E36] hover:border-cyan-400 text-xs font-semibold shadow-[0_0_15px_rgba(0,229,255,0.25)] cursor-pointer h-9 transition-all"
             >
-              <ScanLine className="w-4 h-4" />
-              Scan
+              <ScanLine className="w-3.5 h-3.5 text-cyan-400" />
+              Barcode Scan
             </Button>
             <Button
               variant="outline"
               onClick={() => setShowCatalogue(true)}
-              className="gap-2 text-purple-600 border-purple-200 hover:bg-purple-50"
+              className="gap-1.5 text-purple-300 border-purple-500/50 bg-[#071322] hover:bg-[#0E1E36] hover:border-purple-400 text-xs font-semibold shadow-[0_0_15px_rgba(192,132,252,0.25)] cursor-pointer h-9 transition-all"
               title="Scan a paper catalogue with AI"
             >
-              <ScanText className="w-4 h-4" />
-              Catalogue
+              <ScanText className="w-3.5 h-3.5 text-purple-400" />
+              AI Catalogue
             </Button>
             <Button
               onClick={() => { setEditingProduct(null); setShowForm(true); }}
-              className="bg-emerald-600 hover:bg-emerald-700 text-white gap-2"
+              className={DESIGN_TOKENS.buttons.glowingAction + " gap-2 text-xs font-bold h-9 cursor-pointer active:scale-[0.98] transition-all"}
             >
               <Plus className="w-4 h-4" />
               Add Product
@@ -197,24 +216,25 @@ export default function Inventory() {
         </div>
       </div>
 
-      <div className="p-4 md:p-6 space-y-4">
+      <div className="p-4 md:p-6 space-y-4 max-w-7xl mx-auto">
         {/* Filters */}
-        <div className="flex flex-col sm:flex-row gap-3">
+        <div className="flex flex-col sm:flex-row gap-3 bg-[#0B1C30]/70 p-3.5 rounded-2xl border border-slate-800/80">
           <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-            <Input
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-cyan-400" />
+            <input
+              type="text"
               placeholder="Search by name, SKU, or barcode..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="pl-9"
+              className="w-full pl-10 pr-4 py-3.5 rounded-xl border border-slate-700/80 bg-[#071322] text-slate-100 placeholder:text-slate-500 focus:border-[#00E5FF] focus:ring-1 focus:ring-[#00E5FF] outline-none text-base sm:text-sm font-medium transition-all"
             />
           </div>
           <Select value={filterCategory} onValueChange={setFilterCategory}>
-            <SelectTrigger className="w-full sm:w-44">
-              <Filter className="w-4 h-4 mr-1 text-slate-400" />
+            <SelectTrigger className="w-full sm:w-48 bg-[#071322] border-slate-700/80 text-slate-200 text-base sm:text-sm focus:border-[#00E5FF]">
+              <Filter className="w-4 h-4 mr-1 text-cyan-400" />
               <SelectValue placeholder="Category" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="bg-[#071322] border-slate-700 text-slate-200">
               <SelectItem value="all">All Categories</SelectItem>
               {categories.map((c) => (
                 <SelectItem key={c.id} value={c.id}>{c.name}</SelectItem>
@@ -222,10 +242,10 @@ export default function Inventory() {
             </SelectContent>
           </Select>
           <Select value={filterStatus} onValueChange={setFilterStatus}>
-            <SelectTrigger className="w-full sm:w-36">
+            <SelectTrigger className="w-full sm:w-40 bg-[#071322] border-slate-700/80 text-slate-200 text-base sm:text-sm focus:border-[#00E5FF]">
               <SelectValue placeholder="Status" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="bg-[#071322] border-slate-700 text-slate-200">
               <SelectItem value="all">All Status</SelectItem>
               <SelectItem value="active">Active</SelectItem>
               <SelectItem value="inactive">Inactive</SelectItem>
@@ -236,15 +256,15 @@ export default function Inventory() {
         {/* Products Grid */}
         {loading ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-            {[1,2,3,4,5,6].map(i => (
-              <div key={i} className="h-52 rounded-2xl bg-slate-200 animate-pulse" />
+            {[1,2,3,4,5,6,7,8].map(i => (
+              <div key={i} className="h-60 rounded-2xl bg-[#0B1C30] border border-slate-800 animate-pulse" />
             ))}
           </div>
         ) : filtered.length === 0 ? (
-          <div className="text-center py-20 text-slate-400">
-            <Package className="w-12 h-12 mx-auto mb-3 opacity-30" />
-            <p className="text-lg font-medium">No products found</p>
-            <p className="text-sm mt-1">Add your first product to get started</p>
+          <div className="text-center py-24 text-slate-400 bg-[#0B1C30]/40 rounded-2xl border border-slate-800/80">
+            <Package className="w-12 h-12 mx-auto mb-3 opacity-30 text-blue-400" />
+            <p className="text-lg font-bold text-white">No products found</p>
+            <p className="text-xs text-slate-400 mt-1">Add your first product or import via CSV to populate inventory</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">

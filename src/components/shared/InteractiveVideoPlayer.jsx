@@ -3,7 +3,7 @@ import { Play, Pause, Volume2, VolumeX, Zap } from "lucide-react";
 
 export const InteractiveVideoPlayer = ({
   videoSrc = "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-  title = "StockMate POS & Barcode Scanner Simulator",
+  title = "OmniStock POS & Barcode Scanner Simulator",
   autoPlay = false
 }) => {
   const [isPlaying, setIsPlaying] = useState(autoPlay);
@@ -13,9 +13,10 @@ export const InteractiveVideoPlayer = ({
 
   const canvasRef = useRef(null);
 
-  // Canvas Simulation Loop for StockMate POS
+  // Canvas Simulation Loop for OmniStock POS
   useEffect(() => {
-    if (!canvasRef.current) return;
+    try {
+      if (!canvasRef.current) return;
 
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
@@ -80,7 +81,7 @@ export const InteractiveVideoPlayer = ({
       ctx.fillStyle = "#38bdf8";
       ctx.font = "bold 13px monospace";
       ctx.textAlign = "left";
-      ctx.fillText("RECEIPT SCANNER #0841 — STOCKMATE POS", 160, 230);
+      ctx.fillText("RECEIPT SCANNER #0841 — OMNISTOCK POS", 160, 230);
 
       ctx.fillStyle = "#94a3b8";
       ctx.font = "12px monospace";
@@ -97,6 +98,9 @@ export const InteractiveVideoPlayer = ({
     render();
 
     return () => cancelAnimationFrame(animId);
+    } catch (err) {
+      console.error("InteractiveVideoPlayer loop exception:", err);
+    }
   }, [isPlaying]);
 
   return (
@@ -104,7 +108,7 @@ export const InteractiveVideoPlayer = ({
       <div className="absolute top-4 left-4 z-30 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-slate-700 text-xs font-semibold text-slate-200">
         <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
         <Zap className="h-3.5 w-3.5 text-sky-400" />
-        <span>StockMate POS Barcode Simulator</span>
+        <span>OmniStock POS Barcode Simulator</span>
       </div>
 
       <div className="relative aspect-video w-full bg-black overflow-hidden flex items-center justify-center">

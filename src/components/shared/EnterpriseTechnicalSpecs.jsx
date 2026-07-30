@@ -67,7 +67,7 @@ export const EnterpriseTechnicalSpecs = () => {
           <div className="text-center space-y-4">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/30 text-sky-400 text-xs font-mono font-semibold uppercase">
               <Server className="h-3.5 w-3.5" />
-              <span>StockMate Technical Specifications</span>
+              <span>OmniStock Technical Specifications</span>
             </div>
             <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-white">
               Built for High-Speed Retail & Multi-Branch Operations
@@ -109,9 +109,9 @@ export const EnterpriseTechnicalSpecs = () => {
             <div className="space-y-2 text-left">
               <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[11px] font-mono font-bold uppercase">
                 <Trash2 className="h-3.5 w-3.5" />
-                <span>On-Premise StockMate Sanitization Package</span>
+                <span>On-Premise OmniStock Sanitization Package</span>
               </div>
-              <h3 className="text-2xl font-black text-white">Deploying StockMate to your Retail Store?</h3>
+              <h3 className="text-2xl font-black text-white">Deploying OmniStock to your Retail Store?</h3>
               <p className="text-xs text-slate-300 max-w-xl">
                 Purge sample inventory products, demo barcodes, and mock cashier accounts to start a 100% fresh store register.
               </p>

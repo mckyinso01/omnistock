@@ -34,10 +34,10 @@ export default function CatalogueReviewTable({ candidates, onChange, sourceImage
     <div className="space-y-3">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <div>
-          <h3 className="text-base font-bold text-slate-800">Review Extracted Products</h3>
+          <h3 className="text-base font-bold text-slate-200">Review Extracted Products</h3>
           <p className="text-xs text-slate-500 mt-0.5">
             {candidates.length} entries detected · {selected.length} selected for import
-            {lowCount > 0 && <span className="text-amber-600"> · {lowCount} need a second look</span>}
+            {lowCount > 0 && <span className="text-amber-400"> · {lowCount} need a second look</span>}
           </p>
         </div>
         {sourceImageUrl && (
@@ -74,11 +74,11 @@ export default function CatalogueReviewTable({ candidates, onChange, sourceImage
               const conf = confidenceMeta(c.confidence);
               const low = (c.confidence ?? 1) < 0.6;
               return (
-                <tr key={c._id} className={`border-t border-slate-100 ${low ? "bg-red-50/40" : "bg-white"}`}>
+                <tr key={c._id} className={`border-t border-slate-800 transition-colors ${low ? "bg-red-950/40" : "bg-[#071322] hover:bg-slate-800/60"}`}>
                   <td className="p-2 text-center"><Checkbox checked={!!c._selected} onCheckedChange={(v) => update(c._id, { _selected: v })} /></td>
                   <td className="p-1 min-w-[150px]">
                     <EditCell value={c.name} onChange={(v) => update(c._id, { name: v })} />
-                    {c.notes && <p className="text-[10px] text-amber-600 mt-0.5 italic leading-tight">{c.notes}</p>}
+                    {c.notes && <p className="text-[10px] text-amber-400 mt-0.5 italic leading-tight">{c.notes}</p>}
                   </td>
                   <td className="p-1"><EditCell value={c.sku} onChange={(v) => update(c._id, { sku: v })} className="min-w-[90px]" /></td>
                   <td className="p-1"><EditCell value={c.price} onChange={(v) => update(c._id, { price: v })} type="number" className="w-20 text-right" /></td>
@@ -88,7 +88,7 @@ export default function CatalogueReviewTable({ candidates, onChange, sourceImage
                   <td className="p-1"><EditCell value={c.unit} onChange={(v) => update(c._id, { unit: v })} className="w-16" /></td>
                   <td className="p-2 text-center"><Badge variant="outline" className={`text-[10px] ${conf.color}`}>{conf.label}</Badge></td>
                   <td className="p-2 text-center">
-                    <button onClick={() => remove(c._id)} className="text-slate-300 hover:text-red-500 transition-colors" title="Remove row">
+                    <button onClick={() => remove(c._id)} className="text-slate-300 hover:text-rose-400 transition-colors" title="Remove row">
                       <Trash2 className="w-4 h-4" />
                     </button>
                   </td>
@@ -108,7 +108,7 @@ export default function CatalogueReviewTable({ candidates, onChange, sourceImage
 
       <div className="flex justify-end gap-2 pt-2">
         <Button onClick={() => onImport(selected)} disabled={importing || selected.length === 0} className="gap-2 bg-emerald-600 hover:bg-emerald-700 text-white">
-          {importing ? (<><Loader2 className="w-4 h-4 animate-spin" /> Importing...</>) : (<><Download className="w-4 h-4" /> Import {selected.length} Product(s)</>)}
+          {importing ? (<><Loader2 className="w-4 h-4 animate-spin" /> Importing...</>) : (<><Download className="w-4 h-4" /> Import {selected.length} Product{selected.length > 1 ? "s" : ""}</>)}
         </Button>
       </div>
     </div>

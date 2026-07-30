@@ -16,13 +16,20 @@ export default function Alerts() {
 
   const loadData = async () => {
     setLoading(true);
-    const [a, p] = await Promise.all([
-      entities.StockAlert.list("-created_date", 200),
-      entities.Product.filter({ status: "active" }),
-    ]);
-    setAlerts(a);
-    setProducts(p);
-    setLoading(false);
+    try {
+      const [a, p] = await Promise.all([
+        entities.StockAlert.list("-created_date", 200).catch(() => []),
+        entities.Product.filter({ status: "active" }).catch(() => []),
+      ]);
+      setAlerts(a || []);
+      setProducts(p || []);
+    } catch (err) {
+      console.error("Alerts loadData Exception:", err);
+      setAlerts([]);
+      setProducts([]);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const generateAlerts = async () => {
@@ -72,24 +79,44 @@ export default function Alerts() {
   };
 
   const alertConfig = {
-    low_stock: { color: "bg-orange-100 text-orange-700 border-orange-200", icon: <AlertTriangle className="w-5 h-5 text-orange-500" />, label: "Low Stock" },
-    out_of_stock: { color: "bg-red-100 text-red-700 border-red-200", icon: <XCircle className="w-5 h-5 text-red-500" />, label: "Out of Stock" },
-    expiring_soon: { color: "bg-yellow-100 text-yellow-700 border-yellow-200", icon: <AlertTriangle className="w-5 h-5 text-yellow-500" />, label: "Expiring Soon" },
-    expired: { color: "bg-red-100 text-red-700 border-red-200", icon: <XCircle className="w-5 h-5 text-red-600" />, label: "Expired" },
+    low_stock: {
+      cardStyle: "bg-[#0B1C30]/80 border-amber-500/40 text-amber-200 shadow-lg shadow-amber-950/20",
+      badgeStyle: "bg-amber-950/60 text-amber-300 border border-amber-500/50 font-mono text-xs",
+      icon: <AlertTriangle className="w-5 h-5 text-amber-400 shrink-0" />,
+      label: "Low Stock"
+    },
+    out_of_stock: {
+      cardStyle: "bg-[#0B1C30]/80 border-rose-500/40 text-rose-200 shadow-lg shadow-rose-950/20",
+      badgeStyle: "bg-rose-950/60 text-rose-300 border border-rose-500/50 font-mono text-xs",
+      icon: <XCircle className="w-5 h-5 text-rose-400 shrink-0" />,
+      label: "Out of Stock"
+    },
+    expiring_soon: {
+      cardStyle: "bg-[#0B1C30]/80 border-yellow-500/40 text-yellow-200 shadow-lg shadow-yellow-950/20",
+      badgeStyle: "bg-yellow-950/60 text-yellow-300 border border-yellow-500/50 font-mono text-xs",
+      icon: <AlertTriangle className="w-5 h-5 text-yellow-400 shrink-0" />,
+      label: "Expiring Soon"
+    },
+    expired: {
+      cardStyle: "bg-[#0B1C30]/80 border-rose-600/60 text-rose-200 shadow-lg shadow-rose-950/20",
+      badgeStyle: "bg-rose-950/60 text-rose-300 border border-rose-600/60 font-mono text-xs",
+      icon: <XCircle className="w-5 h-5 text-rose-500 shrink-0" />,
+      label: "Expired"
+    },
   };
 
   const activeAlerts = alerts.filter(a => a.status === "active");
   const resolvedAlerts = alerts.filter(a => a.status !== "active");
 
-  if (loading) return <div className="p-6 text-slate-400">Loading alerts...</div>;
+  if (loading) return <div className="p-6 text-slate-400 font-mono text-sm">Loading alerts...</div>;
 
   return (
-    <div className="p-4 md:p-6 space-y-6">
+    <div className="p-4 md:p-6 space-y-6 bg-[#050811] min-h-screen text-slate-100">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <p className="text-sm text-slate-500">{activeAlerts.length} active alerts</p>
+          <p className="text-sm text-slate-400 font-mono">{activeAlerts.length} active alerts</p>
         </div>
-        <Button onClick={generateAlerts} disabled={refreshing} variant="outline" className="gap-2">
+        <Button onClick={generateAlerts} disabled={refreshing} variant="outline" className="gap-2 text-cyan-400 border-cyan-500/40 bg-cyan-950/20 hover:bg-cyan-900/40 font-bold shadow-[0_0_15px_rgba(0,229,255,0.25)] cursor-pointer">
           <RefreshCw className={`w-4 h-4 ${refreshing ? "animate-spin" : ""}`} />
           {refreshing ? "Scanning..." : "Scan Inventory"}
         </Button>
@@ -97,28 +124,30 @@ export default function Alerts() {
 
       {/* Active Alerts */}
       {activeAlerts.length === 0 ? (
-        <div className="text-center py-16 text-slate-400">
-          <Bell className="w-12 h-12 mx-auto mb-3 opacity-20" />
-          <p className="text-lg font-medium">All clear!</p>
-          <p className="text-sm">No active alerts. Click "Scan Inventory" to check for issues.</p>
+        <div className="text-center py-16 text-slate-400 bg-[#0B1C30]/40 rounded-2xl border border-slate-800/80">
+          <Bell className="w-12 h-12 mx-auto mb-3 opacity-20 text-cyan-400" />
+          <p className="text-lg font-medium text-white">All clear!</p>
+          <p className="text-sm text-slate-400">No active alerts. Click "Scan Inventory" to check for issues.</p>
         </div>
       ) : (
         <div className="space-y-3">
-          <h3 className="text-sm font-semibold text-slate-700 uppercase tracking-wide">Active Alerts</h3>
+          <h3 className="text-xs font-bold text-slate-300 uppercase tracking-wider font-mono">Active Alerts</h3>
           {activeAlerts.map(alert => {
             const cfg = alertConfig[alert.alert_type] || alertConfig.low_stock;
+            const currentQty = alert.current_quantity ?? alert.quantity ?? alert.stock ?? 0;
+            const thresholdVal = alert.threshold ?? alert.low_stock_threshold ?? 10;
             return (
-              <Card key={alert.id} className={`border ${cfg.color} shadow-sm`}>
+              <Card key={alert.id} className={`water-breathing-card app-card-hover ${cfg.cardStyle}`}>
                 <CardContent className="p-4 flex items-center justify-between gap-4">
                   <div className="flex items-center gap-3 flex-1 min-w-0">
                     {cfg.icon}
                     <div className="min-w-0">
                       <div className="flex items-center gap-2 flex-wrap">
-                        <p className="font-semibold text-slate-800">{alert.product_name}</p>
-                        <Badge className={cfg.color}>{cfg.label}</Badge>
+                        <p className="font-bold text-white text-base tracking-tight">{alert.product_name || "Unmapped Product"}</p>
+                        <Badge className={cfg.badgeStyle}>{cfg.label}</Badge>
                       </div>
-                      <p className="text-sm text-slate-500 mt-0.5">
-                        {alert.alert_type === "low_stock" && `Stock: ${alert.current_quantity} (threshold: ${alert.threshold})`}
+                      <p className="text-xs text-slate-300 font-mono mt-1">
+                        {alert.alert_type === "low_stock" && `Stock: ${currentQty} (threshold: ${thresholdVal})`}
                         {alert.alert_type === "out_of_stock" && "Product is out of stock"}
                         {alert.alert_type === "expiring_soon" && alert.expiry_date && `Expires: ${format(new Date(alert.expiry_date), "MMM d, yyyy")}`}
                         {alert.alert_type === "expired" && alert.expiry_date && `Expired on: ${format(new Date(alert.expiry_date), "MMM d, yyyy")}`}
@@ -126,11 +155,11 @@ export default function Alerts() {
                     </div>
                   </div>
                   <div className="flex gap-2 shrink-0">
-                    <Button size="sm" variant="outline" onClick={() => resolveAlert(alert.id)} className="gap-1 text-emerald-600 border-emerald-300 hover:bg-emerald-50">
+                    <Button size="sm" variant="outline" onClick={() => resolveAlert(alert.id)} className="gap-1 text-emerald-300 border-emerald-500/40 bg-emerald-950/40 hover:bg-emerald-900/60 hover:text-emerald-200 font-bold cursor-pointer">
                       <CheckCircle2 className="w-3.5 h-3.5" />
                       Resolve
                     </Button>
-                    <Button size="sm" variant="ghost" onClick={() => dismissAlert(alert.id)} className="text-slate-400">
+                    <Button size="sm" variant="ghost" onClick={() => dismissAlert(alert.id)} className="text-slate-400 hover:text-slate-200 cursor-pointer">
                       Dismiss
                     </Button>
                   </div>

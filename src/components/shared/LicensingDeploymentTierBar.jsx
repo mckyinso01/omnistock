@@ -4,7 +4,7 @@ import { SelfHostProvisioningModal } from "./SelfHostProvisioningModal";
 import { WhiteLabelCustomizerModal } from "./WhiteLabelCustomizerModal";
 import { SourceCodeLicenseModal } from "./SourceCodeLicenseModal";
 
-export const LicensingDeploymentTierBar = ({ appName = "StockMate POS", onSelectHostedCloud }) => {
+export const LicensingDeploymentTierBar = ({ appName = "OmniStock POS", onSelectHostedCloud }) => {
   const [activeModal, setActiveModal] = useState("none");
 
   const tiers = [
@@ -29,7 +29,7 @@ export const LicensingDeploymentTierBar = ({ appName = "StockMate POS", onSelect
       accent: "text-purple-400",
       border: "hover:border-purple-500/50",
       bg: "bg-purple-500/10",
-      description: "Rebrand StockMate under your company logo, custom color palette, custom domain (CNAME), and merchant portal.",
+      description: "Rebrand OmniStock under your company logo, custom color palette, custom domain (CNAME), and merchant portal.",
       badge: "Custom Domain CNAME",
       actionLabel: "White-Label Setup",
       onAction: () => setActiveModal("whitelabel")

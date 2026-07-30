@@ -15,28 +15,35 @@ export default function LowStockBanner({ products }) {
   const isUrgent = outOfStock.length > 0;
 
   return (
-    <div className={`rounded-2xl p-4 flex items-start gap-3 ${
+    <div className={`rounded-2xl p-4 flex items-start gap-3 relative overflow-hidden ${
       isUrgent
-        ? "bg-red-50 border border-red-200"
-        : "bg-amber-50 border border-amber-200"
+        ? "flame-breathing-card border border-rose-500/60 shadow-[0_0_20px_rgba(225,29,72,0.3)]"
+        : "moving-dotted-border-amber shadow-[0_0_20px_rgba(245,158,11,0.25)]"
     }`}>
       <div className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 ${
-        isUrgent ? "bg-red-100" : "bg-amber-100"
+        isUrgent ? "bg-rose-950/80 border border-rose-700/60" : "bg-amber-950/80 border border-amber-600/60"
       }`}>
         {isUrgent
-          ? <PackageX className="w-5 h-5 text-red-600" />
-          : <AlertTriangle className="w-5 h-5 text-amber-600" />
+          ? <PackageX className="w-5 h-5 text-rose-400" />
+          : <AlertTriangle className="w-5 h-5 text-amber-400 animate-pulse" />
         }
       </div>
 
       <div className="flex-1 min-w-0">
-        <p className={`font-semibold text-sm ${isUrgent ? "text-red-800" : "text-amber-800"}`}>
-          {isUrgent
-            ? `${outOfStock.length} item${outOfStock.length > 1 ? "s" : ""} OUT OF STOCK${lowStock.length > outOfStock.length ? ` + ${lowStock.length - outOfStock.length} low` : ""}`
-            : `${lowStock.length} item${lowStock.length > 1 ? "s" : ""} running low on stock`
-          }
-        </p>
-        <p className={`text-xs mt-0.5 truncate ${isUrgent ? "text-red-600" : "text-amber-600"}`}>
+        <div className="flex items-center gap-2 flex-wrap">
+          <span className="font-bold text-sm text-cyan-300 font-mono tracking-wide">
+            {isUrgent ? "CRITICAL INVENTORY ALERT" : "LOW STOCK WARNING"}
+          </span>
+          <span className={`text-xs font-mono font-bold px-2 py-0.5 rounded-full ${
+            isUrgent ? "bg-rose-900/80 text-rose-200 border border-rose-600/80" : "bg-amber-900/80 text-amber-200 border border-amber-500/80"
+          }`}>
+            {isUrgent
+              ? `${outOfStock.length} OUT OF STOCK`
+              : `${lowStock.length} ITEMS RUNNING LOW`
+            }
+          </span>
+        </div>
+        <p className="text-xs mt-1 truncate text-slate-300 font-medium">
           {lowStock.slice(0, 3).map((p) => p.name).join(", ")}
           {lowStock.length > 3 ? ` +${lowStock.length - 3} more` : ""}
         </p>
@@ -44,10 +51,10 @@ export default function LowStockBanner({ products }) {
 
       <Link
         to="/alerts"
-        className={`shrink-0 flex items-center gap-1 text-xs font-semibold px-3 py-1.5 rounded-lg transition-colors ${
+        className={`shrink-0 flex items-center gap-1 text-xs font-semibold px-3 py-1.5 rounded-lg transition-all ${
           isUrgent
-            ? "bg-red-100 text-red-700 hover:bg-red-200"
-            : "bg-amber-100 text-amber-700 hover:bg-amber-200"
+            ? "bg-rose-600 hover:bg-rose-500 text-white shadow-[0_0_12px_rgba(225,29,72,0.5)]"
+            : "bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold shadow-[0_0_12px_rgba(245,158,11,0.5)]"
         }`}
       >
         View <ArrowRight className="w-3 h-3" />
@@ -55,9 +62,7 @@ export default function LowStockBanner({ products }) {
 
       <button
         onClick={() => setDismissed(true)}
-        className={`shrink-0 p-1 rounded-lg hover:bg-black/5 transition-colors ${
-          isUrgent ? "text-red-400" : "text-amber-400"
-        }`}
+        className="shrink-0 p-1 rounded-lg hover:bg-[#0B1C30]/10 text-slate-400 hover:text-white transition-colors"
       >
         <X className="w-4 h-4" />
       </button>

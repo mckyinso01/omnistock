@@ -91,11 +91,11 @@ export default function ProductFormModal({ product, categories, suppliers, onSav
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/40 flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-        <div className="sticky top-0 bg-white border-b border-slate-200 px-6 py-4 flex items-center justify-between rounded-t-2xl">
-          <h2 className="text-lg font-bold text-slate-900">{product ? "Edit Product" : "Add Product"}</h2>
-          <button onClick={onClose} className="text-slate-400 hover:text-slate-700">
+    <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+      <div className="bg-[#0B1C30] border border-slate-800 rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto text-white">
+        <div className="sticky top-0 bg-[#0B1C30] border-b border-slate-800 px-6 py-4 flex items-center justify-between rounded-t-2xl z-10">
+          <h2 className="text-lg font-bold text-white">{product ? "Edit Product" : "Add Product"}</h2>
+          <button onClick={onClose} className="text-slate-400 hover:text-white transition-colors">
             <X className="w-5 h-5" />
           </button>
         </div>
@@ -195,9 +195,9 @@ export default function ProductFormModal({ product, categories, suppliers, onSav
           </div>
         </div>
 
-        <div className="sticky bottom-0 bg-white border-t border-slate-200 px-6 py-4 flex gap-3 justify-end rounded-b-2xl">
-          <Button variant="outline" onClick={onClose}>Cancel</Button>
-          <Button onClick={handleSave} disabled={saving} className="bg-emerald-600 hover:bg-emerald-700 text-white">
+        <div className="sticky bottom-0 bg-[#0B1C30] border-t border-slate-800 px-6 py-4 flex gap-3 justify-end rounded-b-2xl z-10">
+          <Button variant="outline" onClick={onClose} className="border-slate-700 text-slate-300 hover:bg-slate-800 hover:text-white">Cancel</Button>
+          <Button onClick={handleSave} disabled={saving} className="bg-cyan-600 hover:bg-cyan-500 text-white font-bold shadow-md">
             {saving ? "Saving..." : product ? "Update Product" : "Create Product"}
           </Button>
         </div>

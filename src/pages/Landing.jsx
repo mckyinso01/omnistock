@@ -14,8 +14,6 @@ import { RoiCalculator } from "../components/shared/RoiCalculator";
 import { FaqSection } from "../components/shared/FaqSection";
 import { LicensingDeploymentTierBar } from "../components/shared/LicensingDeploymentTierBar";
 
-
-
 const stats = [
   { value: "8-in-1", label: "Modules in one app" },
   { value: "100%", label: "Works offline" },
@@ -59,94 +57,95 @@ const howItWorks = [
 
 export default function Landing() {
   return (
-    <div className="min-h-screen bg-white text-slate-900 overflow-x-hidden font-sans">
+    <div className="min-h-screen bg-[#050811] text-white overflow-x-hidden font-sans">
       {/* Header */}
-      <header className="sticky top-0 z-30 backdrop-blur-md bg-white/90 border-b border-slate-200">
+      <header className="sticky top-0 z-30 backdrop-blur-md bg-[#050811]/90 border-b border-slate-800">
         <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center shadow-xs">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-md">
               <Boxes className="w-5 h-5 text-white" />
             </div>
-            <span className="font-bold tracking-tight text-slate-900">OmniStock</span>
+            <span className="font-bold tracking-tight text-white">OmniStock</span>
           </Link>
-          <div className="hidden md:flex items-center gap-6 text-sm text-slate-600 font-medium">
-            <a href="#tools" className="hover:text-emerald-600 transition-colors">Tools</a>
-            <a href="#specs" className="hover:text-emerald-600 transition-colors">Specs</a>
-            <a href="#benefits" className="hover:text-emerald-600 transition-colors">Benefits</a>
+          <div className="hidden md:flex items-center gap-6 text-sm text-slate-300 font-medium">
+            <a href="#tools" className="hover:text-cyan-400 transition-colors">Tools</a>
+            <a href="#specs" className="hover:text-cyan-400 transition-colors">Specs</a>
+            <a href="#benefits" className="hover:text-cyan-400 transition-colors">Benefits</a>
           </div>
-          <Button asChild size="sm" className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold shadow-xs">
+          <Button asChild size="sm" className="bg-cyan-600 hover:bg-cyan-500 text-white font-bold shadow-md">
             <Link to="/inventory">Open app <ArrowRight className="w-4 h-4 ml-1" /></Link>
           </Button>
         </div>
       </header>
 
       {/* Hero */}
-      <section className="relative pt-16 pb-20 bg-gradient-to-b from-emerald-50/50 via-white to-white border-b border-slate-100">
+      <section className="relative pt-16 pb-20 bg-gradient-to-b from-[#0B1C30] via-[#050811] to-[#050811] border-b border-slate-800">
         <div className="max-w-4xl mx-auto px-4 text-center relative">
-          <Badge className="bg-emerald-100 text-emerald-800 border-emerald-200 mb-6 hover:bg-emerald-200 font-bold px-3 py-1">
+          <Badge className="bg-emerald-950/80 text-emerald-300 border border-emerald-700/50 mb-6 hover:bg-emerald-900 font-bold px-3 py-1">
             🇵🇭 Built for Filipino retailers
           </Badge>
-          <h1 className="text-4xl sm:text-6xl font-extrabold leading-tight tracking-tight text-slate-900 mb-5">
+          <h1 className="text-4xl sm:text-6xl font-extrabold leading-tight tracking-tight text-white mb-5">
             Inventory, POS, & Analytics<br />
-            running on <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">one quiet engine</span>.
+            running on <span className="bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent">one quiet engine</span>.
           </h1>
-          <p className="text-slate-600 text-lg sm:text-xl mb-8 max-w-2xl mx-auto leading-relaxed">
-            OmniStock replaces the spreadsheets, paper catalogues, and manual stock counts that quietly drain your day — so you can spend it growing sales instead.
+          <p className="text-slate-300 text-lg sm:text-xl mb-8 max-w-2xl mx-auto leading-relaxed">
+            OmniStock replaces spreadsheets, paper catalogues, and manual stock counts — so you can spend your time growing sales instead.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Button asChild size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold gap-2 shadow-sm">
+            <Button asChild size="lg" className="bg-cyan-600 hover:bg-cyan-500 text-white font-bold gap-2 shadow-lg">
               <Link to="/inventory"><ShoppingCart className="w-5 h-5" /> Start selling</Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="bg-white border-slate-300 text-slate-800 hover:bg-slate-50 font-bold">
+            <Button asChild size="lg" variant="outline" className="bg-[#071322] border-slate-700 text-slate-200 hover:bg-slate-800 hover:text-white font-bold">
               <Link to="/">See the dashboard</Link>
             </Button>
           </div>
           <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto">
             {stats.map(s => (
-              <div key={s.label} className="text-center p-4 rounded-xl bg-white border border-emerald-100 shadow-[0_2px_10px_rgba(16,185,129,0.06)]">
-                <p className="text-2xl sm:text-3xl font-black text-emerald-600">{s.value}</p>
-                <p className="text-xs text-slate-600 font-medium mt-1">{s.label}</p>
+              <div key={s.label} className="text-center p-4 rounded-xl bg-[#0B1C30] border border-slate-800 shadow-xl">
+                <p className="text-2xl sm:text-3xl font-black text-cyan-400 font-mono">{s.value}</p>
+                <p className="text-xs text-slate-300 font-medium mt-1">{s.label}</p>
               </div>
             ))}
           </div>
 
-          {/* Interactive POS Barcode & Inventory Simulator Video */}
-          <div className="mt-10 max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-2xl border border-slate-800">
-            <InteractiveVideoPlayer 
-              title="StockMate POS Barcode Scanner & Receipt Simulator" 
-              autoPlay={true}
-            />
+          {/* Interactive POS Barcode & Inventory Simulator Video (Red-to-Yellow Flame Rotating Border) */}
+          <div className="mt-10 max-w-4xl mx-auto moving-border-card bg-[#0B1C30] rounded-2xl overflow-hidden shadow-2xl">
+            <div className="w-full h-full bg-[#0B1C30] rounded-2xl overflow-hidden">
+              <InteractiveVideoPlayer 
+                title="OmniStock POS Barcode Scanner & Receipt Simulator" 
+                autoPlay={true}
+              />
+            </div>
           </div>
         </div>
       </section>
 
       {/* Licensing & Deployment Tier Selector Bar */}
-      <section className="bg-slate-950 border-t border-slate-800">
-        <LicensingDeploymentTierBar appName="StockMate POS" />
+      <section className="bg-[#050811] border-t border-slate-800">
+        <LicensingDeploymentTierBar appName="OmniStock POS" />
       </section>
 
-
       {/* Tools */}
-      <section id="tools" className="py-16 bg-white">
+      <section id="tools" className="py-16 bg-[#050811]">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
-            <Badge variant="outline" className="bg-emerald-50 border-emerald-200 text-emerald-800 mb-3 font-semibold">
-              <Sparkles className="w-3.5 h-3.5 mr-1 text-emerald-600" /> Eight tools, one app
+            <Badge variant="outline" className="bg-cyan-950/80 border-cyan-700/50 text-cyan-300 mb-3 font-semibold">
+              <Sparkles className="w-3.5 h-3.5 mr-1 text-cyan-400" /> Eight tools, one app
             </Badge>
-            <h2 className="text-3xl font-extrabold text-slate-900 mb-2">Everything you need to run the floor</h2>
-            <p className="text-slate-600 max-w-xl mx-auto">From the backroom inventory count to the front-counter sale — and everything in between.</p>
+            <h2 className="text-3xl font-extrabold text-white mb-2">Everything you need to run the floor</h2>
+            <p className="text-slate-300 max-w-xl mx-auto">From backroom inventory counts to front-counter sales.</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {tools.map((t) => {
               const Icon = t.icon;
               return (
-                <Card key={t.title} className="bg-white border-slate-200 hover:border-emerald-400 hover:shadow-md transition-all">
+                <Card key={t.title} className="bg-[#0B1C30] border-slate-800 hover:border-cyan-500/50 hover:shadow-xl transition-all">
                   <CardContent className="p-5 space-y-2 text-left">
-                    <div className="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center mb-2">
-                      <Icon className="w-5 h-5 text-emerald-700" />
+                    <div className="w-10 h-10 rounded-lg bg-[#071322] border border-slate-700 flex items-center justify-center mb-2">
+                      <Icon className="w-5 h-5 text-cyan-400" />
                     </div>
-                    <h3 className="font-bold text-slate-900 text-base">{t.title}</h3>
-                    <p className="text-xs text-slate-600 leading-relaxed">{t.desc}</p>
+                    <h3 className="font-bold text-white text-base">{t.title}</h3>
+                    <p className="text-xs text-slate-300 leading-relaxed">{t.desc}</p>
                   </CardContent>
                 </Card>
               );
@@ -156,19 +155,19 @@ export default function Landing() {
       </section>
 
       {/* How it works */}
-      <section className="py-16 bg-gradient-to-b from-blue-50/30 via-white to-white border-y border-slate-200">
+      <section className="py-16 bg-[#0B1C30]/50 border-y border-slate-800">
         <div className="max-w-4xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-extrabold text-slate-900 mb-2">From paper catalogue to live sale in four steps</h2>
-            <p className="text-slate-600">A workflow designed for the realities of a busy Filipino sari-sari or retail store.</p>
+            <h2 className="text-3xl font-extrabold text-white mb-2">From paper catalogue to live sale in four steps</h2>
+            <p className="text-slate-300">A workflow designed for the realities of a busy retail store.</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {howItWorks.map((step, i) => (
-              <div key={i} className="flex items-start gap-3 p-5 rounded-2xl bg-white border border-slate-200 shadow-xs text-left">
-                <div className="w-8 h-8 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center font-extrabold text-sm shrink-0 border border-emerald-200">
+              <div key={i} className="flex items-start gap-3 p-5 rounded-2xl bg-[#0B1C30] border border-slate-800 shadow-xl text-left">
+                <div className="w-8 h-8 rounded-full bg-cyan-950/80 text-cyan-300 flex items-center justify-center font-extrabold text-sm shrink-0 border border-cyan-700/50 font-mono">
                   {i + 1}
                 </div>
-                <p className="text-sm text-slate-700 font-medium pt-1 leading-relaxed">{step}</p>
+                <p className="text-sm text-slate-200 font-medium pt-1 leading-relaxed">{step}</p>
               </div>
             ))}
           </div>
@@ -176,23 +175,23 @@ export default function Landing() {
       </section>
 
       {/* Specs */}
-      <section id="specs" className="py-16 bg-white">
+      <section id="specs" className="py-16 bg-[#050811]">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-extrabold text-slate-900 mb-2">Engineered for the modern merchant</h2>
-            <p className="text-slate-600">Quiet, dependable plumbing — so you don't notice it working.</p>
+            <h2 className="text-3xl font-extrabold text-white mb-2">Engineered for the modern merchant</h2>
+            <p className="text-slate-300">Quiet, dependable plumbing — working reliably behind the scenes.</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {specs.map((s) => {
               const Icon = s.icon;
               return (
-                <div key={s.title} className="flex items-start gap-3 p-5 rounded-2xl bg-white border border-slate-200 shadow-xs text-left">
-                  <div className="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center shrink-0">
-                    <Icon className="w-5 h-5 text-emerald-700" />
+                <div key={s.title} className="flex items-start gap-3 p-5 rounded-2xl bg-[#0B1C30] border border-slate-800 shadow-xl text-left">
+                  <div className="w-10 h-10 rounded-lg bg-[#071322] border border-slate-700 flex items-center justify-center shrink-0">
+                    <Icon className="w-5 h-5 text-cyan-400" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-slate-900 text-base">{s.title}</h3>
-                    <p className="text-xs text-slate-600 mt-1 leading-relaxed">{s.desc}</p>
+                    <h3 className="font-bold text-white text-base">{s.title}</h3>
+                    <p className="text-xs text-slate-300 mt-1 leading-relaxed">{s.desc}</p>
                   </div>
                 </div>
               );
@@ -202,22 +201,22 @@ export default function Landing() {
       </section>
 
       {/* Benefits */}
-      <section id="benefits" className="py-16 bg-emerald-50/30 border-y border-emerald-100">
+      <section id="benefits" className="py-16 bg-[#0B1C30]/50 border-y border-slate-800">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-extrabold text-slate-900 mb-2">Why store owners switch</h2>
-            <p className="text-slate-600">Not just software — a measurable lift for the things that matter.</p>
+            <h2 className="text-3xl font-extrabold text-white mb-2">Why store owners switch</h2>
+            <p className="text-slate-300">A measurable lift for the things that matter most to your business.</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {benefits.map((b) => {
               const Icon = b.icon;
               return (
-                <div key={b.title} className="text-left p-6 rounded-2xl bg-white border border-emerald-200 shadow-xs">
-                  <div className="w-12 h-12 rounded-xl bg-emerald-100 flex items-center justify-center mb-4">
-                    <Icon className="w-6 h-6 text-emerald-700" />
+                <div key={b.title} className="text-left p-6 rounded-2xl bg-[#0B1C30] border border-slate-800 shadow-xl">
+                  <div className="w-12 h-12 rounded-xl bg-[#071322] border border-slate-700 flex items-center justify-center mb-4">
+                    <Icon className="w-6 h-6 text-emerald-400" />
                   </div>
-                  <h3 className="font-bold text-slate-900 text-base mb-1">{b.title}</h3>
-                  <p className="text-xs text-slate-600 leading-relaxed">{b.desc}</p>
+                  <h3 className="font-bold text-white text-base mb-1">{b.title}</h3>
+                  <p className="text-xs text-slate-300 leading-relaxed">{b.desc}</p>
                 </div>
               );
             })}
@@ -237,27 +236,25 @@ export default function Landing() {
       {/* Interactive FAQ Accordion */}
       <FaqSection />
 
-
       {/* CTA */}
-      <section className="py-20 bg-white">
-
+      <section className="py-20 bg-[#050811]">
         <div className="max-w-3xl mx-auto px-4 text-center">
-          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-6 text-sm text-slate-700 font-semibold">
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-6 text-sm text-slate-300 font-semibold">
             {["No setup fees", "Mobile + desktop", "Offline-ready"].map(t => (
-              <span key={t} className="inline-flex items-center gap-1.5"><CheckCircle2 className="w-4 h-4 text-emerald-600" /> {t}</span>
+              <span key={t} className="inline-flex items-center gap-1.5"><CheckCircle2 className="w-4 h-4 text-cyan-400" /> {t}</span>
             ))}
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4">Ready to reclaim your day?</h2>
-          <p className="text-slate-600 mb-8 text-base">Open OmniStock and ring your first sale in minutes — no spreadsheets required.</p>
-          <Button asChild size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold gap-2 shadow-md">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">Ready to reclaim your day?</h2>
+          <p className="text-slate-300 mb-8 text-base">Open OmniStock and ring your first sale in minutes — no spreadsheets required.</p>
+          <Button asChild size="lg" className="bg-cyan-600 hover:bg-cyan-500 text-white font-bold gap-2 shadow-lg">
             <Link to="/inventory"><ArrowRight className="w-5 h-5" /> Open the app</Link>
           </Button>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-slate-200 py-6 text-center text-xs text-slate-500 bg-slate-50">
-        OmniStock · Inventory & POS for Filipino businesses.
+      <footer className="border-t border-slate-800 py-6 text-center text-xs text-slate-400 bg-[#050811]">
+        OmniStock · Inventory & POS for modern businesses.
       </footer>
     </div>
   );

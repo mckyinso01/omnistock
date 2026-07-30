@@ -1,5 +1,5 @@
 /**
- * StockMate Enterprise Sanitization & Client State Purge Utility
+ * OmniStock Enterprise Sanitization & Client State Purge Utility
  * Wipes IndexedDB (Dexie.js), LocalStorage, and SessionStorage for clean Self-Host deployments.
  */
 export const purgeClientState = async () => {
@@ -16,8 +16,8 @@ export const purgeClientState = async () => {
       }
     }
 
-    console.log("[StockMate Purge] LocalStorage, IndexedDB POS data, and mock caches purged successfully.");
+    console.log("[OmniStock Purge] LocalStorage, IndexedDB POS data, and mock caches purged successfully.");
   } catch (err) {
-    console.error("[StockMate Purge Error] Failed to purge client state:", err);
+    console.error("[OmniStock Purge Error] Failed to purge client state:", err);
   }
 };

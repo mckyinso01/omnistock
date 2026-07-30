@@ -4,11 +4,11 @@ import { Code, Key, Copy, Check, Download, ShieldCheck, X } from "lucide-react";
 export const SourceCodeLicenseModal = ({
   isOpen,
   onClose,
-  appName = "StockMate POS",
-  repoUrl = "git@github.com:enterprise-clients/stockmate-pos-perpetual.git"
+  appName = "OmniStock POS",
+  repoUrl = "git@github.com:enterprise-clients/omnistock-pos-perpetual.git"
 }) => {
   const [copiedKey, setCopiedKey] = useState(false);
-  const sshKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOrX89J21zK9pL3xY7qR4vW6sM0nU2tP5zK1xY7qR4vW stockmate-perpetual-key";
+  const sshKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOrX89J21zK9pL3xY7qR4vW6sM0nU2tP5zK1xY7qR4vW omnistock-perpetual-key";
 
   if (!isOpen) return null;
 
@@ -19,12 +19,12 @@ export const SourceCodeLicenseModal = ({
   };
 
   const handleDownloadDockerCompose = () => {
-    const composeContent = `version: '3.8'\nservices:\n  stockmate:\n    build: .\n    ports:\n      - "5173:5173"\n    environment:\n      - NODE_ENV=production\n`;
+    const composeContent = `version: '3.8'\nservices:\n  omnistock:\n    build: .\n    ports:\n      - "5173:5173"\n    environment:\n      - NODE_ENV=production\n`;
     const blob = new Blob([composeContent], { type: "text/yaml" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = "stockmate-docker-compose.yml";
+    a.download = "omnistock-docker-compose.yml";
     a.click();
     URL.revokeObjectURL(url);
   };

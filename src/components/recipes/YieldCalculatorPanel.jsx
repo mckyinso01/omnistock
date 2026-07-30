@@ -46,59 +46,59 @@ export default function YieldCalculatorPanel({ recipe, products, onClose }) {
   );
 
   return (
-    <Card className="border-2 border-orange-200 bg-orange-50/40">
-      <CardHeader className="pb-3">
+    <Card className="border border-orange-500/40 bg-[#0B1C30] shadow-xl app-card-hover">
+      <CardHeader className="pb-3 border-b border-slate-800">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <FlaskConical className="w-5 h-5 text-orange-500" />
-            <CardTitle className="text-base text-slate-900">Yield Calculator — {recipe.name}</CardTitle>
+            <FlaskConical className="w-5 h-5 text-orange-400" />
+            <CardTitle className="text-base font-semibold text-white">Yield Calculator — {recipe.name}</CardTitle>
           </div>
-          <Button size="sm" variant="ghost" onClick={onClose}>
+          <Button size="sm" variant="ghost" onClick={onClose} className="text-slate-400 hover:text-white">
             <X className="w-4 h-4" />
           </Button>
         </div>
       </CardHeader>
 
-      <CardContent className="space-y-5">
+      <CardContent className="p-5 space-y-5">
         {/* Batch Input */}
-        <div className="flex items-end gap-4">
+        <div className="flex items-end gap-4 flex-wrap">
           <div className="space-y-1.5">
-            <Label className="text-sm font-medium">How many batches?</Label>
+            <Label className="text-sm font-medium text-slate-200">How many batches?</Label>
             <Input
               type="number"
               min="1"
               value={batchCount}
               onChange={e => setBatchCount(Math.max(1, parseInt(e.target.value) || 1))}
-              className="w-28 bg-white"
+              className="w-28 bg-[#071322] border-slate-700 text-cyan-300 font-mono text-center focus:border-orange-500"
             />
           </div>
-          <div className="flex items-center gap-3 pb-1">
-            <div className={`px-4 py-2 rounded-xl font-bold text-sm flex items-center gap-2 ${
-              canMake ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"
+          <div className="flex items-center gap-3 pb-0.5">
+            <div className={`px-4 py-2 rounded-xl font-bold text-sm flex items-center gap-2 border font-mono ${
+              canMake ? "bg-emerald-950/80 text-emerald-300 border-emerald-800/60" : "bg-rose-950/80 text-rose-300 border-rose-800/60"
             }`}>
-              {canMake ? <CheckCircle2 className="w-4 h-4" /> : <AlertTriangle className="w-4 h-4" />}
+              {canMake ? <CheckCircle2 className="w-4 h-4 text-emerald-400" /> : <AlertTriangle className="w-4 h-4 text-rose-400" />}
               {requestedServings} {recipe.yield_unit || "servings"} {canMake ? "possible ✓" : "— not enough stock!"}
             </div>
           </div>
         </div>
 
         {/* Max Possible */}
-        <div className="bg-white rounded-xl border border-slate-200 px-4 py-3 flex items-center justify-between">
+        <div className="bg-[#071322] rounded-xl border border-slate-800 p-4 flex items-center justify-between">
           <div>
-            <p className="text-xs text-slate-500 mb-0.5">Maximum possible from current stock</p>
-            <p className="text-2xl font-bold text-slate-900">
-              {maxPossibleServings} <span className="text-base font-normal text-slate-500">{recipe.yield_unit || "servings"}</span>
+            <p className="text-xs text-slate-400 mb-0.5 font-medium">Maximum possible from current stock</p>
+            <p className="text-2xl font-bold text-white font-mono">
+              {maxPossibleServings} <span className="text-sm font-normal text-slate-400">{recipe.yield_unit || "servings"}</span>
             </p>
-            <p className="text-xs text-slate-400">({maxPossibleBatches} batch{maxPossibleBatches !== 1 ? "es" : ""})</p>
+            <p className="text-xs text-slate-500 font-mono">({maxPossibleBatches} batch{maxPossibleBatches !== 1 ? "es" : ""})</p>
           </div>
           {limitingIngredient && limitingIngredient.maxBatchesPossible !== Infinity && (
             <div className="text-right">
-              <p className="text-xs text-red-500 flex items-center gap-1 justify-end">
+              <p className="text-xs text-rose-400 flex items-center gap-1 justify-end font-semibold">
                 <TrendingDown className="w-3.5 h-3.5" />
                 Bottleneck
               </p>
-              <p className="text-sm font-semibold text-red-600">{limitingIngredient.product_name}</p>
-              <p className="text-xs text-slate-400">{limitingIngredient.currentStock} {limitingIngredient.unit} left</p>
+              <p className="text-sm font-semibold text-rose-300">{limitingIngredient.product_name}</p>
+              <p className="text-xs text-slate-400 font-mono">{limitingIngredient.currentStock} {limitingIngredient.unit} left</p>
             </div>
           )}
         </div>
@@ -110,20 +110,20 @@ export default function YieldCalculatorPanel({ recipe, products, onClose }) {
           const totalRevenueForRequested = costing.sellingPrice * requestedServings;
           const totalProfitForRequested = totalRevenueForRequested - totalCostForRequested;
           return (
-            <div className="bg-white border border-slate-200 rounded-xl p-4 grid grid-cols-3 gap-4 text-xs">
+            <div className="bg-[#071322] border border-slate-800 rounded-xl p-4 grid grid-cols-3 gap-4 text-xs">
               <div>
-                <span className="text-slate-500 block font-medium mb-1">Total Raw Cost</span>
-                <span className="text-base font-bold text-slate-800">₱{totalCostForRequested.toFixed(2)}</span>
+                <span className="text-slate-400 block font-medium mb-1">Total Raw Cost</span>
+                <span className="text-base font-bold text-cyan-300 font-mono">₱{totalCostForRequested.toFixed(2)}</span>
               </div>
               <div>
-                <span className="text-slate-500 block font-medium mb-1">Projected Revenue</span>
-                <span className="text-base font-bold text-slate-800">
+                <span className="text-slate-400 block font-medium mb-1">Projected Revenue</span>
+                <span className="text-base font-bold text-white font-mono">
                   {costing.sellingPrice > 0 ? `₱${totalRevenueForRequested.toFixed(2)}` : "—"}
                 </span>
               </div>
               <div>
-                <span className="text-slate-500 block font-medium mb-1">Projected Profit</span>
-                <span className={`text-base font-bold ${totalProfitForRequested >= 0 ? "text-emerald-600" : "text-red-500"}`}>
+                <span className="text-slate-400 block font-medium mb-1">Projected Profit</span>
+                <span className={`text-base font-bold font-mono ${totalProfitForRequested >= 0 ? "text-emerald-400" : "text-rose-400"}`}>
                   {costing.sellingPrice > 0 ? `₱${totalProfitForRequested.toFixed(2)}` : "—"}
                 </span>
               </div>
@@ -133,37 +133,37 @@ export default function YieldCalculatorPanel({ recipe, products, onClose }) {
 
         {/* Ingredient Table */}
         {ingredientStats.length > 0 && (
-          <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white">
+          <div className="overflow-x-auto rounded-xl border border-slate-800 bg-[#071322]">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-slate-100 bg-slate-50">
-                  <th className="text-left px-4 py-2.5 font-medium text-slate-600">Ingredient</th>
-                  <th className="text-right px-3 py-2.5 font-medium text-slate-600">Stock</th>
-                  <th className="text-right px-3 py-2.5 font-medium text-slate-600">Needed</th>
-                  <th className="text-right px-3 py-2.5 font-medium text-slate-600">After</th>
-                  <th className="text-center px-3 py-2.5 font-medium text-slate-600">Max Batches</th>
+                <tr className="border-b border-slate-800 bg-[#050811]">
+                  <th className="text-left px-4 py-2.5 font-medium text-slate-300">Ingredient</th>
+                  <th className="text-right px-3 py-2.5 font-medium text-slate-300">Stock</th>
+                  <th className="text-right px-3 py-2.5 font-medium text-slate-300">Needed</th>
+                  <th className="text-right px-3 py-2.5 font-medium text-slate-300">After</th>
+                  <th className="text-center px-3 py-2.5 font-medium text-slate-300">Max Batches</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="divide-y divide-slate-800/60">
                 {ingredientStats.map((ing, idx) => (
-                  <tr key={idx} className={`border-b border-slate-50 last:border-0 ${!ing.sufficient ? "bg-red-50" : ""}`}>
-                    <td className="px-4 py-2.5 font-medium text-slate-800">{ing.product_name || "Unknown"}</td>
-                    <td className="px-3 py-2.5 text-right text-slate-600">
+                  <tr key={idx} className={`transition-colors ${!ing.sufficient ? "bg-rose-950/30 text-rose-200" : "hover:bg-slate-800/40 text-slate-200"}`}>
+                    <td className="px-4 py-2.5 font-medium text-white">{ing.product_name || "Unknown"}</td>
+                    <td className="px-3 py-2.5 text-right text-slate-300 font-mono">
                       {ing.currentStock} {ing.unit}
                     </td>
-                    <td className={`px-3 py-2.5 text-right font-medium ${!ing.sufficient ? "text-red-600" : "text-slate-700"}`}>
+                    <td className={`px-3 py-2.5 text-right font-medium font-mono ${!ing.sufficient ? "text-rose-300" : "text-cyan-300"}`}>
                       {ing.needed} {ing.unit}
                     </td>
-                    <td className={`px-3 py-2.5 text-right font-medium ${ing.remaining < 0 ? "text-red-500" : "text-green-600"}`}>
+                    <td className={`px-3 py-2.5 text-right font-medium font-mono ${ing.remaining < 0 ? "text-rose-400" : "text-emerald-400"}`}>
                       {ing.remaining >= 0 ? ing.remaining.toFixed(2) : `${Math.abs(ing.remaining).toFixed(2)} short`} {ing.unit}
                     </td>
                     <td className="px-3 py-2.5 text-center">
-                      <span className={`px-2 py-0.5 rounded-full text-xs font-bold ${
+                      <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold font-mono ${
                         ing.maxBatchesPossible === 0
-                          ? "bg-red-100 text-red-700"
+                          ? "bg-rose-950/80 text-rose-300 border border-rose-800/60"
                           : ing.maxBatchesPossible <= 2
-                          ? "bg-yellow-100 text-yellow-700"
-                          : "bg-green-100 text-green-700"
+                          ? "bg-amber-950/80 text-amber-300 border border-amber-800/60"
+                          : "bg-emerald-950/80 text-emerald-300 border border-emerald-800/60"
                       }`}>
                         {ing.maxBatchesPossible === Infinity ? "∞" : ing.maxBatchesPossible}
                       </span>

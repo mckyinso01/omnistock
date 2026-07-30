@@ -4,11 +4,11 @@ import { Tag, CheckCircle2, Globe, Palette, Shield, X, Sparkles, RefreshCw } fro
 export const WhiteLabelCustomizerModal = ({
   isOpen,
   onClose,
-  appName = "StockMate POS",
+  appName = "OmniStock POS",
   onSaveConfig
 }) => {
   const [brandName, setBrandName] = useState(`${appName} Whitelabel`);
-  const [logoUrl, setLogoUrl] = useState("https://stockmate.antigravity.ai/logo.png");
+  const [logoUrl, setLogoUrl] = useState("https://omnistock.antigravity.ai/logo.png");
   const [primaryColor, setPrimaryColor] = useState("#10b981");
   const [customDomain, setCustomDomain] = useState("pos.yourretail.com");
   const [cnameStatus, setCnameStatus] = useState("idle");
@@ -22,14 +22,14 @@ export const WhiteLabelCustomizerModal = ({
 
   const handleSave = () => {
     if (typeof window !== "undefined") {
-      localStorage.setItem("stockmate_whitelabel_brand", brandName);
-      localStorage.setItem("stockmate_whitelabel_logo", logoUrl);
-      localStorage.setItem("stockmate_whitelabel_domain", customDomain);
+      localStorage.setItem("omnistock_whitelabel_brand", brandName);
+      localStorage.setItem("omnistock_whitelabel_logo", logoUrl);
+      localStorage.setItem("omnistock_whitelabel_domain", customDomain);
     }
     if (onSaveConfig) {
       onSaveConfig({ brandName, logoUrl, primaryColor, customDomain });
     }
-    alert(`StockMate Whitelabel License configured for ${brandName}! CNAME ${customDomain} is now active.`);
+    alert(`OmniStock Whitelabel License configured for ${brandName}! CNAME ${customDomain} is now active.`);
     onClose();
   };
 
@@ -45,7 +45,7 @@ export const WhiteLabelCustomizerModal = ({
               <h3 className="text-base font-bold text-slate-100 uppercase tracking-wider">
                 White-Label Agency License Setup
               </h3>
-              <p className="text-xs text-slate-400">Rebrand StockMate POS & Inventory under your company identity</p>
+              <p className="text-xs text-slate-400">Rebrand OmniStock POS & Inventory under your company identity</p>
             </div>
           </div>
           <button onClick={onClose} className="p-1 text-slate-400 hover:text-white rounded-lg transition">
@@ -133,7 +133,7 @@ export const WhiteLabelCustomizerModal = ({
             Cancel
           </button>
           <button onClick={handleSave} className="px-5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs transition shadow-lg">
-            Save StockMate Whitelabel Config
+            Save OmniStock Whitelabel Config
           </button>
         </div>
       </div>

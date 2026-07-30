@@ -10,12 +10,12 @@ export const FaqSection = () => {
     {
       category: "POS Hardware",
       question: "Which barcode scanners and receipt printers are supported?",
-      answer: "StockMate supports all standard USB and Bluetooth HID barcode scanners plug-and-play. ESC/POS thermal printers (58mm and 80mm) connect directly via native browser printing or Bluetooth."
+      answer: "OmniStock supports all standard USB and Bluetooth HID barcode scanners plug-and-play. ESC/POS thermal printers (58mm and 80mm) connect directly via native browser printing or Bluetooth."
     },
     {
       category: "Offline Mode",
-      question: "Does StockMate work 100% offline when the internet dies?",
-      answer: "Yes! Powered by Dexie.js IndexedDB, StockMate saves every sale, inventory deduction, and customer loyalty point locally on your device. Once reconnected, transactions auto-sync seamlessly."
+      question: "Does OmniStock work 100% offline when the internet dies?",
+      answer: "Yes! Powered by Dexie.js IndexedDB, OmniStock saves every sale, inventory deduction, and customer loyalty point locally on your device. Once reconnected, transactions auto-sync seamlessly."
     },
     {
       category: "Self-Hosting",
@@ -25,7 +25,7 @@ export const FaqSection = () => {
     {
       category: "Integrations",
       question: "Can I sync transactions automatically to Google Sheets?",
-      answer: "Yes, StockMate can log every sale directly to your Google Sheets spreadsheet on a daily, weekly, or real-time schedule."
+      answer: "Yes, OmniStock can log every sale directly to your Google Sheets spreadsheet on a daily, weekly, or real-time schedule."
     }
   ];
 
@@ -46,10 +46,10 @@ export const FaqSection = () => {
         <div className="text-center space-y-4">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/30 text-sky-400 text-xs font-mono font-semibold uppercase">
             <HelpCircle className="h-3.5 w-3.5" />
-            <span>StockMate Help & FAQs</span>
+            <span>OmniStock Help & FAQs</span>
           </div>
           <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-white">
-            Got Questions About StockMate POS?
+            Got Questions About OmniStock POS?
           </h2>
           <p className="text-slate-400 text-sm md:text-base max-w-xl mx-auto">
             Everything you need to know about setting up barcode scanning, offline registers, and self-hosting.

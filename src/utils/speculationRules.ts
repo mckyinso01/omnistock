@@ -1,7 +1,7 @@
 /**
- * Speculation Rules API Helper for 0ms StockMate POS Navigation
+ * Speculation Rules API Helper for 0ms OmniStock POS Navigation
  */
-export function injectStockmateSpeculationRules() {
+export function injectOmnistockSpeculationRules() {
   if (HTMLScriptElement.supports && HTMLScriptElement.supports('speculationrules')) {
     const specScript = document.createElement('script');
     specScript.type = 'speculationrules';

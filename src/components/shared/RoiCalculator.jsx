@@ -20,7 +20,7 @@ export const RoiCalculator = () => {
             <span>Retail Savings & Stock Shrinkage Calculator</span>
           </div>
           <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-white">
-            How Much Time & Profit Will StockMate Save Your Store?
+            How Much Time & Profit Will OmniStock Save Your Store?
           </h2>
           <p className="text-slate-400 max-w-2xl mx-auto text-sm md:text-base">
             Eliminate manual inventory discrepancies, stock-outs, and long checkout lines across your retail branches.
@@ -111,7 +111,7 @@ export const RoiCalculator = () => {
                 href="#pricing"
                 className="inline-flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs uppercase tracking-wider transition cursor-pointer shadow-lg shadow-sky-600/30"
               >
-                <span>Deploy StockMate Register</span>
+                <span>Deploy OmniStock Register</span>
                 <ArrowRight className="h-4 w-4" />
               </a>
             </div>

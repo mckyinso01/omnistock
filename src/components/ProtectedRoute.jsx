@@ -13,8 +13,12 @@ export default function ProtectedRoute({ fallback = <DefaultFallback />, unauthe
   const { isAuthenticated, isLoadingAuth, authChecked, authError, checkUserAuth } = useAuth();
 
   useEffect(() => {
-    if (!authChecked && !isLoadingAuth) {
-      checkUserAuth();
+    try {
+      if (!authChecked && !isLoadingAuth) {
+        checkUserAuth().catch(() => {});
+      }
+    } catch (err) {
+      console.error("ProtectedRoute checkUserAuth exception:", err);
     }
   }, [authChecked, isLoadingAuth, checkUserAuth]);
 

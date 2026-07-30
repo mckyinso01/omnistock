@@ -6,7 +6,7 @@ const PLAN_CONFIG = {
   pro_trial:   { label: "Pro Trial",   icon: Zap,       color: "bg-emerald-100 text-emerald-700", dot: "bg-emerald-500" },
   basic:       { label: "Basic",       icon: Briefcase, color: "bg-blue-100 text-blue-700", dot: "bg-blue-500" },
   pro:         { label: "Pro",         icon: Zap,       color: "bg-emerald-100 text-emerald-700", dot: "bg-emerald-500" },
-  free:        { label: "Free",        icon: Clock,     color: "bg-slate-100 text-slate-600", dot: "bg-slate-400" },
+  free:        { label: "Free",        icon: Clock,     color: "bg-slate-100 text-slate-400", dot: "bg-slate-400" },
 };
 
 export default function TrialStatusBanner({ trialData, daysRemaining }) {
@@ -19,26 +19,26 @@ export default function TrialStatusBanner({ trialData, daysRemaining }) {
   const hasPaused = trialData.paused_plan;
 
   return (
-    <div className={`rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center gap-3 ${
+    <div className={`rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center gap-3 border border-slate-800 shadow-xl ${
       plan === 'pro_trial' || plan === 'pro'
-        ? 'bg-gradient-to-r from-emerald-500 to-teal-500 text-white'
+        ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white'
         : plan === 'basic_trial' || plan === 'basic'
-        ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white'
-        : 'bg-slate-100'
+        ? 'bg-gradient-to-r from-blue-600 to-cyan-700 text-white'
+        : 'bg-[#0B1C30] text-white'
     }`}>
       <div className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 ${
-        plan !== 'free' ? 'bg-white/20' : 'bg-slate-200'
+        plan !== 'free' ? 'bg-[#0B1C30]/20 backdrop-blur-xs' : 'bg-[#071322] border border-slate-700'
       }`}>
-        <Icon className={`w-5 h-5 ${plan !== 'free' ? 'text-white' : 'text-slate-500'}`} />
+        <Icon className={`w-5 h-5 ${plan !== 'free' ? 'text-white' : 'text-cyan-400'}`} />
       </div>
 
       <div className="flex-1">
         <div className="flex items-center gap-2 flex-wrap">
-          <p className={`font-bold text-base ${plan !== 'free' ? 'text-white' : 'text-slate-800'}`}>
+          <p className="font-bold text-base text-white">
             {config.label} {isTrial ? 'Active' : 'Plan'}
           </p>
           {isTrial && daysRemaining > 0 && (
-            <Badge className="bg-white/20 text-white border-0 text-xs">
+            <Badge className="bg-[#0B1C30]/20 text-white border-0 text-xs font-mono">
               {daysRemaining} {daysRemaining === 1 ? 'day' : 'days'} left
             </Badge>
           )}
@@ -46,9 +46,9 @@ export default function TrialStatusBanner({ trialData, daysRemaining }) {
 
         {isTrial && daysRemaining > 0 && (
           <div className="mt-1.5">
-            <div className="w-full bg-white/20 rounded-full h-1.5">
+            <div className="w-full bg-[#0B1C30]/20 rounded-full h-1.5">
               <div
-                className="bg-white rounded-full h-1.5 transition-all"
+                className="bg-[#0B1C30] rounded-full h-1.5 transition-all"
                 style={{ width: `${Math.min(100, (daysRemaining / (plan === 'pro_trial' ? 7 : 7)) * 100)}%` }}
               />
             </div>
@@ -56,13 +56,13 @@ export default function TrialStatusBanner({ trialData, daysRemaining }) {
         )}
 
         {hasPaused && (
-          <p className={`text-xs mt-1 ${plan !== 'free' ? 'text-white/70' : 'text-slate-500'}`}>
-            ⏸ {PLAN_CONFIG[hasPaused]?.label || hasPaused} paused — magre-resume after this trial
+          <p className={`text-xs mt-1 ${plan !== 'free' ? 'text-white/80' : 'text-slate-300'}`}>
+            ⏸ {PLAN_CONFIG[hasPaused]?.label || hasPaused} paused — resumes automatically after this trial
           </p>
         )}
 
         {plan === 'free' && (
-          <p className="text-sm text-slate-500 mt-0.5">Walang active plan. Mag-upgrade para ma-unlock ang lahat ng features.</p>
+          <p className="text-sm text-slate-300 mt-0.5">No active paid plan. Upgrade to unlock full enterprise features.</p>
         )}
       </div>
 

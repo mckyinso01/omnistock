@@ -16,7 +16,7 @@ export default function HelpTip({ children, label, side = "top" }) {
             tabIndex={0}
             role="button"
             aria-label={label || "Help"}
-            className="inline-flex items-center text-slate-400 hover:text-slate-700 transition-colors cursor-help"
+            className="inline-flex items-center text-slate-400 hover:text-slate-300 transition-colors cursor-help"
           >
             <HelpCircle className="w-3.5 h-3.5" />
           </span>

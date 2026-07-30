@@ -1,8 +1,10 @@
-import { Menu, Bell, ChevronLeft } from "lucide-react";
+import { Menu, Bell, ChevronLeft, User, LogOut } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "@/lib/AuthContext";
 
 const pageTitles = {
   "/": "Dashboard",
+  "/dashboard": "Dashboard",
   "/inventory": "Inventory",
   "/pos": "Point of Sale",
   "/analytics": "Analytics",
@@ -22,20 +24,27 @@ const pageTitles = {
 export default function TopBar({ onMenuClick, alertCount = 0 }) {
   const location = useLocation();
   const navigate = useNavigate();
-  const title = pageTitles[location.pathname] || "StockMate";
-  const isRoot = location.pathname === "/";
+  const { logout } = useAuth();
+  const title = pageTitles[location.pathname] || "OmniStock POS";
+  const isRoot = location.pathname === "/" || location.pathname === "/dashboard";
+  const userEmail = sessionStorage.getItem('omnistock_user_email') || 'operator@omnistock.io';
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+  };
 
   return (
     <header
-      className="bg-white border-b border-slate-200 px-4 py-3 flex items-center justify-between sticky top-0 z-10 select-none"
+      className="bg-[#0B1C30]/90 backdrop-blur-md border-b border-blue-900/40 px-5 py-3 flex items-center justify-between sticky top-0 z-10 select-none text-slate-100"
       style={{ paddingTop: "calc(env(safe-area-inset-top) + 12px)" }}
     >
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-3">
         {/* Back button on mobile for non-root routes */}
         {!isRoot && (
           <button
             onClick={() => navigate(-1)}
-            className="lg:hidden p-2 rounded-lg hover:bg-slate-100 text-slate-600 -ml-1"
+            className="lg:hidden p-2 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition-colors -ml-1"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
@@ -44,7 +53,7 @@ export default function TopBar({ onMenuClick, alertCount = 0 }) {
         {isRoot && (
           <button
             onClick={onMenuClick}
-            className="lg:hidden p-2 rounded-lg hover:bg-slate-100 text-slate-600 -ml-1"
+            className="lg:hidden p-2 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition-colors -ml-1"
           >
             <Menu className="w-5 h-5" />
           </button>
@@ -52,21 +61,37 @@ export default function TopBar({ onMenuClick, alertCount = 0 }) {
         {/* Always show hamburger on desktop */}
         <button
           onClick={onMenuClick}
-          className="hidden lg:block p-2 rounded-lg hover:bg-slate-100 text-slate-600 -ml-1"
+          className="hidden lg:block p-2 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition-colors -ml-1"
         >
           <Menu className="w-5 h-5" />
         </button>
-        <h1 className="text-lg font-semibold text-slate-800">{title}</h1>
+        <h1 className="text-lg font-bold text-white tracking-tight">{title}</h1>
       </div>
-      <div className="flex items-center gap-2">
-        <a href="/alerts" className="relative p-2 rounded-lg hover:bg-slate-100 text-slate-600">
-          <Bell className="w-5 h-5" />
+      <div className="flex items-center gap-3">
+        <a href="/alerts" className="relative p-2.5 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition-all app-card-hover">
+          <Bell className="w-5 h-5 text-slate-300" />
           {alertCount > 0 && (
-            <span className="absolute top-1 right-1 w-4 h-4 bg-red-500 text-white text-xs rounded-full flex items-center justify-center">
+            <span className="absolute top-1.5 right-1.5 w-4 h-4 bg-blue-600 text-white text-[10px] font-bold rounded-full flex items-center justify-center border border-[#0B1C30]">
               {alertCount > 9 ? "9+" : alertCount}
             </span>
           )}
         </a>
+
+        {/* User Account Badge */}
+        <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-slate-900/80 border border-blue-900/40 rounded-xl text-xs text-slate-300 font-mono">
+          <User className="w-3.5 h-3.5 text-blue-400" />
+          <span className="max-w-[140px] truncate">{userEmail}</span>
+        </div>
+
+        {/* Explicit Logout Action */}
+        <button
+          onClick={handleLogout}
+          title="Sign Out of Session"
+          className="flex items-center gap-1.5 px-3 py-1.5 bg-rose-950/40 hover:bg-rose-900/60 border border-rose-800/60 text-rose-300 rounded-xl text-xs font-semibold transition-all cursor-pointer app-card-hover"
+        >
+          <LogOut className="w-3.5 h-3.5" />
+          <span className="hidden md:inline">Logout</span>
+        </button>
       </div>
     </header>
   );

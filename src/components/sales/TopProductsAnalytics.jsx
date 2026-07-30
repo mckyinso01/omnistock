@@ -11,10 +11,10 @@ export default function TopProductsAnalytics({ topProducts, totalRevenue, totalO
   const topProduct = topProducts[0];
 
   const kpis = [
-    { icon: Crown, label: "Top Product", value: topProduct?.name ?? "—", sub: topProduct ? fmt(topProduct.revenue) : "No sales", color: "text-amber-600", bg: "bg-amber-50" },
-    { icon: TrendingUp, label: "Total Revenue", value: fmt(totalRevenue), sub: `${totalOrders} orders`, color: "text-emerald-600", bg: "bg-emerald-50" },
-    { icon: Award, label: "Gross Profit", value: fmt(profitSum), sub: "Top 10 only", color: "text-violet-600", bg: "bg-violet-50" },
-    { icon: ShoppingBag, label: "Items Sold", value: itemsSold, sub: `AOV ${fmt(aov)}`, color: "text-blue-600", bg: "bg-blue-50" },
+    { icon: Crown, label: "Top Product", value: topProduct?.name ?? "—", sub: topProduct ? fmt(topProduct.revenue) : "No sales", color: "text-amber-400", bg: "bg-amber-50" },
+    { icon: TrendingUp, label: "Total Revenue", value: fmt(totalRevenue), sub: `${totalOrders} orders`, color: "text-emerald-400", bg: "bg-emerald-50" },
+    { icon: Award, label: "Gross Profit", value: fmt(profitSum), sub: "Top 10 only", color: "text-violet-400", bg: "bg-violet-50" },
+    { icon: ShoppingBag, label: "Items Sold", value: itemsSold, sub: `AOV ${fmt(aov)}`, color: "text-cyan-400", bg: "bg-blue-50" },
   ];
 
   const chartData = topProducts.map(p => ({
@@ -114,11 +114,11 @@ export default function TopProductsAnalytics({ topProducts, totalRevenue, totalO
                         <td className="p-2">
                           <span className={`w-6 h-6 rounded-full inline-flex items-center justify-center text-xs font-bold ${i === 0 ? "bg-amber-100 text-amber-700" : "bg-slate-100 text-slate-500"}`}>{i + 1}</span>
                         </td>
-                        <td className="p-2 font-medium text-slate-800 truncate max-w-[200px]">{p.name}</td>
-                        <td className="p-2 text-right text-slate-600">{p.qty}</td>
-                        <td className="p-2 text-right font-semibold text-emerald-600">{fmt(p.revenue)}</td>
-                        <td className="p-2 text-right font-medium text-violet-600">{fmt(p.profit)}</td>
-                        <td className="p-2 text-right text-slate-600">{margin.toFixed(0)}%</td>
+                        <td className="p-2 font-medium text-slate-200 truncate max-w-[200px]">{p.name}</td>
+                        <td className="p-2 text-right text-slate-400">{p.qty}</td>
+                        <td className="p-2 text-right font-semibold text-emerald-400">{fmt(p.revenue)}</td>
+                        <td className="p-2 text-right font-medium text-violet-400">{fmt(p.profit)}</td>
+                        <td className="p-2 text-right text-slate-400">{margin.toFixed(0)}%</td>
                         <td className="p-2 text-right"><Badge variant="outline" className="text-xs">{share.toFixed(1)}%</Badge></td>
                       </tr>
                     );

@@ -1,6 +1,6 @@
 /**
- * Session Replay Telemetry for StockMate POS
+ * Session Replay Telemetry for OmniStock POS
  */
-export function initStockmateTelemetry() {
-  console.log('[StockMate Telemetry] Session replay active.');
+export function initOmnistockTelemetry() {
+  console.log('[OmniStock Telemetry] Session replay active.');
 }

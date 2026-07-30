@@ -1,7 +1,7 @@
 import Dexie from 'dexie';
 
 // ─── Database Definition ───────────────────────────────────────────────────
-export const db = new Dexie('StockMateDB');
+export const db = new Dexie('OmniStockDB');
 
 db.version(1).stores({
   products:        '++id, name, sku, barcode, category_id, supplier_id, status, created_date, updated_date',
@@ -288,7 +288,7 @@ export async function exportBackup() {
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = `stockmate-backup-${new Date().toISOString().split('T')[0]}.json`;
+  a.download = `omnistock-backup-${new Date().toISOString().split('T')[0]}.json`;
   a.click();
   URL.revokeObjectURL(url);
 }

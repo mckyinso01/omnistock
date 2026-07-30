@@ -10,6 +10,8 @@ import RecipeDetailModal from "@/components/recipes/RecipeDetailModal";
 import YieldCalculatorPanel from "@/components/recipes/YieldCalculatorPanel";
 import { calculateRecipeCostDetails } from "@/utils/costing";
 
+import { DESIGN_TOKENS } from "@/lib/designSystem";
+
 export default function Recipes() {
   const [recipes, setRecipes] = useState([]);
   const [products, setProducts] = useState([]);
@@ -26,17 +28,24 @@ export default function Recipes() {
 
   const loadData = async () => {
     setLoading(true);
-    const [r, p] = await Promise.all([
-      entities.Recipe.list("-created_date", 100),
-      entities.Product.list("-created_date", 200),
-    ]);
-    setRecipes(r);
-    setProducts(p);
-    setLoading(false);
+    try {
+      const [r, p] = await Promise.all([
+        entities.Recipe.list("-created_date", 100).catch(() => []),
+        entities.Product.list("-created_date", 200).catch(() => []),
+      ]);
+      setRecipes(r || []);
+      setProducts(p || []);
+    } catch (err) {
+      console.error("Recipes loadData Exception:", err);
+      setRecipes([]);
+      setProducts([]);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleDelete = async (id) => {
-    if (!confirm("Delete this recipe?")) return;
+    if (!confirm("Are you sure you want to delete this recipe?")) return;
     await entities.Recipe.delete(id);
     loadData();
   };
@@ -53,22 +62,26 @@ export default function Recipes() {
   );
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-[#050811] text-slate-100 font-sans">
       {/* Header */}
-      <div className="bg-white border-b border-slate-200 px-4 md:px-8 py-5">
+      <div className="bg-[#0B1C30]/90 border-b border-slate-800/80 px-4 md:px-8 py-5 backdrop-blur-md sticky top-0 z-20">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-orange-500 flex items-center justify-center">
-              <ChefHat className="w-5 h-5 text-white" />
+          <div className="flex items-center gap-3.5">
+            <div className="w-11 h-11 rounded-xl bg-amber-950/60 border border-amber-500/40 flex items-center justify-center shadow-[0_0_16px_rgba(245,158,11,0.25)] shrink-0">
+              <ChefHat className="w-5 h-5 text-amber-400" />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-slate-900">Recipes</h1>
-              <p className="text-sm text-slate-500">Manage ingredients & compute yield per batch</p>
+              <h1 className={DESIGN_TOKENS.typography.h1 + " flex items-center gap-2"}>
+                Recipes & Costing Engine
+              </h1>
+              <p className={DESIGN_TOKENS.typography.muted + " mt-0.5"}>
+                Manage raw ingredients, calculate batch costs & compute yield
+              </p>
             </div>
           </div>
           <Button
             onClick={() => { setEditingRecipe(null); setShowForm(true); }}
-            className="bg-orange-500 hover:bg-orange-600 text-white gap-2"
+            className={DESIGN_TOKENS.buttons.glowingAction + " gap-2 text-xs font-bold px-5 py-2.5 cursor-pointer active:scale-95 transition-all shrink-0"}
           >
             <Plus className="w-4 h-4" />
             Add Recipe
@@ -81,10 +94,10 @@ export default function Recipes() {
         <div className="relative max-w-md">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
           <Input
-            placeholder="Search recipes..."
+            placeholder="Search recipes by name or product..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="pl-9"
+            className="pl-9 bg-[#071322] border-slate-700 text-white placeholder:text-slate-500 focus:border-orange-500"
           />
         </div>
 
@@ -101,14 +114,14 @@ export default function Recipes() {
         {loading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
             {[1,2,3].map(i => (
-              <div key={i} className="h-48 rounded-xl bg-slate-200 animate-pulse" />
+              <div key={i} className="h-48 rounded-xl bg-slate-800/50 animate-pulse border border-slate-800" />
             ))}
           </div>
         ) : filtered.length === 0 ? (
-          <div className="text-center py-20 text-slate-400">
-            <ChefHat className="w-12 h-12 mx-auto mb-3 opacity-30" />
-            <p className="text-lg font-medium">No recipes yet</p>
-            <p className="text-sm mt-1">Add your first recipe to compute ingredient yield</p>
+          <div className="text-center py-20 text-slate-500">
+            <ChefHat className="w-12 h-12 mx-auto mb-3 opacity-30 text-slate-400" />
+            <p className="text-lg font-medium text-slate-300">No recipes found</p>
+            <p className="text-sm mt-1">Add your first recipe to compute ingredient yield and cost</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
@@ -167,59 +180,59 @@ function RecipeCard({ recipe, products, onEdit, onDelete, onView, onCalculate })
   const maxServings = maxBatches !== null ? maxBatches * (recipe.yield_quantity || 1) : null;
 
   return (
-    <Card className="border border-slate-200 hover:shadow-md transition-shadow">
+    <Card className="border border-slate-800 bg-[#0B1C30] shadow-lg app-card-hover">
       <CardHeader className="pb-3">
         <div className="flex items-start justify-between gap-2">
           <div className="flex-1 min-w-0">
-            <CardTitle className="text-base font-semibold text-slate-900 truncate">{recipe.name}</CardTitle>
+            <CardTitle className="text-base font-semibold text-white truncate">{recipe.name}</CardTitle>
             {recipe.product_name && (
-              <p className="text-xs text-slate-500 mt-0.5">Produces: <span className="font-medium text-slate-700">{recipe.product_name}</span></p>
+              <p className="text-xs text-slate-400 mt-0.5">Produces: <span className="font-medium text-cyan-300">{recipe.product_name}</span></p>
             )}
           </div>
           <Badge
             variant="secondary"
-            className={recipe.status === "active" ? "bg-green-100 text-green-700" : "bg-slate-100 text-slate-500"}
+            className={recipe.status === "active" ? "bg-emerald-950/80 text-emerald-300 border border-emerald-800/60 font-mono" : "bg-slate-800 text-slate-400 border border-slate-700"}
           >
             {recipe.status || "active"}
           </Badge>
         </div>
       </CardHeader>
       <CardContent className="space-y-4">
-        <div className="flex items-center gap-4 text-sm text-slate-600">
+        <div className="flex items-center gap-4 text-sm text-slate-300">
           <div className="flex items-center gap-1.5">
             <FlaskConical className="w-4 h-4 text-orange-400" />
             <span>{ingredientCount} ingredient{ingredientCount !== 1 ? "s" : ""}</span>
           </div>
           {recipe.yield_quantity && (
-            <div className="text-slate-500">
-              Yield: <span className="font-medium text-slate-800">{recipe.yield_quantity} {recipe.yield_unit || "pcs"}/batch</span>
+            <div className="text-slate-400">
+              Yield: <span className="font-medium text-white">{recipe.yield_quantity} {recipe.yield_unit || "pcs"}/batch</span>
             </div>
           )}
         </div>
 
-        <div className="border-t border-slate-100 pt-3 grid grid-cols-2 gap-y-2.5 gap-x-4 text-xs bg-slate-50/50 p-2.5 rounded-lg border">
+        <div className="border border-slate-800 pt-3 grid grid-cols-2 gap-y-2.5 gap-x-4 text-xs bg-[#071322] p-3 rounded-xl">
           <div>
-            <span className="text-slate-500 block font-medium">Batch Cost</span>
-            <span className="text-sm font-bold text-slate-800">₱{costing.totalBatchCost.toFixed(2)}</span>
+            <span className="text-slate-400 block font-medium">Batch Cost</span>
+            <span className="text-sm font-bold text-cyan-300 font-mono">₱{costing.totalBatchCost.toFixed(2)}</span>
           </div>
           <div>
-            <span className="text-slate-500 block font-medium">Cost / Serving</span>
-            <span className="text-sm font-bold text-slate-800">₱{costing.costPerServing.toFixed(2)}</span>
+            <span className="text-slate-400 block font-medium">Cost / Serving</span>
+            <span className="text-sm font-bold text-cyan-300 font-mono">₱{costing.costPerServing.toFixed(2)}</span>
           </div>
           {costing.sellingPrice > 0 && (
             <>
               <div>
-                <span className="text-slate-500 block font-medium">Profit / Serving</span>
-                <span className="text-sm font-bold text-emerald-600">₱{costing.profitPerServing.toFixed(2)}</span>
+                <span className="text-slate-400 block font-medium">Profit / Serving</span>
+                <span className="text-sm font-bold text-emerald-400 font-mono">₱{costing.profitPerServing.toFixed(2)}</span>
               </div>
               <div>
-                <span className="text-slate-500 block font-medium">Profit Margin</span>
-                <span className={`text-sm font-extrabold ${
+                <span className="text-slate-400 block font-medium">Profit Margin</span>
+                <span className={`text-sm font-extrabold font-mono ${
                   costing.profitMargin >= 40 
-                    ? "text-green-600" 
+                    ? "text-emerald-400" 
                     : costing.profitMargin >= 15 
-                    ? "text-yellow-600" 
-                    : "text-red-500"
+                    ? "text-amber-400" 
+                    : "text-rose-400"
                 }`}>{costing.profitMargin.toFixed(1)}%</span>
               </div>
             </>
@@ -227,30 +240,30 @@ function RecipeCard({ recipe, products, onEdit, onDelete, onView, onCalculate })
         </div>
 
         {maxServings !== null && (
-          <div className={`rounded-lg px-3 py-2 text-sm font-medium flex items-center justify-between ${
+          <div className={`rounded-xl px-3 py-2 text-sm font-medium flex items-center justify-between border ${
             maxServings === 0
-              ? "bg-red-50 text-red-700"
+              ? "bg-rose-950/50 text-rose-300 border-rose-800/60"
               : maxServings <= 5
-              ? "bg-yellow-50 text-yellow-700"
-              : "bg-green-50 text-green-700"
+              ? "bg-amber-950/50 text-amber-300 border-amber-800/60"
+              : "bg-emerald-950/50 text-emerald-300 border-emerald-800/60"
           }`}>
             <span>Possible servings from stock:</span>
-            <span className="text-base font-bold">{maxServings}</span>
+            <span className="text-base font-bold font-mono">{maxServings}</span>
           </div>
         )}
 
         <div className="flex gap-2 pt-1">
-          <Button size="sm" variant="outline" className="flex-1 gap-1" onClick={onCalculate}>
-            <FlaskConical className="w-3.5 h-3.5" />
+          <Button size="sm" variant="outline" className="flex-1 gap-1 border-slate-700 bg-[#071322] text-slate-200 hover:text-white hover:bg-slate-800 text-xs font-medium" onClick={onCalculate}>
+            <FlaskConical className="w-3.5 h-3.5 text-orange-400" />
             Yield Calc
           </Button>
-          <Button size="sm" variant="ghost" onClick={onView}>
+          <Button size="sm" variant="ghost" className="text-slate-400 hover:text-white hover:bg-slate-800" onClick={onView}>
             <Eye className="w-4 h-4" />
           </Button>
-          <Button size="sm" variant="ghost" onClick={onEdit}>
+          <Button size="sm" variant="ghost" className="text-slate-400 hover:text-white hover:bg-slate-800" onClick={onEdit}>
             <Pencil className="w-4 h-4" />
           </Button>
-          <Button size="sm" variant="ghost" className="text-red-500 hover:text-red-600" onClick={onDelete}>
+          <Button size="sm" variant="ghost" className="text-rose-400 hover:text-rose-300 hover:bg-rose-950/50" onClick={onDelete}>
             <Trash2 className="w-4 h-4" />
           </Button>
         </div>

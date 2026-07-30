@@ -42,12 +42,12 @@ export function useStockNotifications(intervalMs = 5 * 60 * 1000) {
           if (!notifiedIds.current.has(p.id)) {
             notifiedIds.current.add(p.id);
             if ("Notification" in window && Notification.permission === "granted") {
-              new Notification("⚠️ StockMate — Low Stock Alert", {
+              new Notification("⚠️ OmniStock — Low Stock Alert", {
                 body: isOut
                   ? `${p.name} is OUT OF STOCK!`
                   : `${p.name} is running low — only ${qty} ${p.unit || "pcs"} left (min: ${threshold})`,
                 icon: "/favicon.ico",
-                tag: `stockmate-alert-${p.id}`,
+                tag: `omnistock-alert-${p.id}`,
               });
             }
           }

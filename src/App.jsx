@@ -2,7 +2,7 @@ import React from 'react';
 import { Toaster } from "@/components/ui/toaster"
 import { QueryClientProvider } from '@tanstack/react-query'
 import { queryClientInstance } from '@/lib/query-client'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import PageNotFound from './lib/PageNotFound';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
@@ -30,24 +30,36 @@ import Automations from './pages/Automations';
 import Landing from './pages/Landing';
 import Login from './pages/Login';
 
-const AuthenticatedApp = () => {
-  const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
+const ProtectedLayout = () => {
+  const { isAuthenticated } = useAuth();
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
+  }
+  return <AppLayout />;
+};
 
-  // Save referral code from URL before any auth redirect
+const AuthenticatedApp = () => {
+  const { isAuthenticated, isLoadingAuth, isLoadingPublicSettings, authError } = useAuth();
+
+  // Save referral code from URL before any auth redirect with defensive try-catch guard
   React.useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const ref = params.get('ref');
-    if (ref) {
-      sessionStorage.setItem('pending_referral', ref);
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const ref = params.get('ref');
+      if (ref) {
+        sessionStorage.setItem('pending_referral', ref);
+      }
+    } catch (err) {
+      console.error("App referral code exception:", err);
     }
   }, []);
 
   if (isLoadingPublicSettings || isLoadingAuth) {
     return (
-      <div className="fixed inset-0 flex items-center justify-center bg-slate-50">
+      <div className="fixed inset-0 flex items-center justify-center bg-[#050811] text-slate-100">
         <div className="text-center">
-          <div className="w-10 h-10 border-4 border-emerald-200 border-t-emerald-600 rounded-full animate-spin mx-auto mb-3"></div>
-          <p className="text-sm text-slate-500 font-medium">Loading StockMate...</p>
+          <div className="w-10 h-10 border-4 border-blue-900 border-t-blue-500 rounded-full animate-spin mx-auto mb-3"></div>
+          <p className="text-xs text-blue-400 font-mono tracking-wide">Loading OmniStock Engine...</p>
         </div>
       </div>
     );
@@ -56,16 +68,14 @@ const AuthenticatedApp = () => {
   if (authError) {
     if (authError.type === 'user_not_registered') {
       return <UserNotRegisteredError />;
-    } else if (authError.type === 'auth_required') {
-      navigateToLogin();
-      return null;
     }
   }
 
   return (
     <Routes>
-      <Route path="/" element={<Login />} />
-      <Route element={<AppLayout />}>
+      <Route path="/" element={isAuthenticated ? <Navigate to="/dashboard" replace /> : <Login />} />
+      <Route path="/login" element={isAuthenticated ? <Navigate to="/dashboard" replace /> : <Login />} />
+      <Route element={<ProtectedLayout />}>
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/inventory" element={<Inventory />} />
         <Route path="/pos" element={<POS />} />
@@ -83,7 +93,6 @@ const AuthenticatedApp = () => {
         <Route path="/settings" element={<Settings />} />
         <Route path="/automations" element={<Automations />} />
       </Route>
-      <Route path="/login" element={<Login />} />
       <Route path="/landing" element={<Landing />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>

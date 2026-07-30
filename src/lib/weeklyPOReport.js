@@ -49,7 +49,7 @@ ${items || "    (no items listed)"}`;
 
     const body = `Hi ${supplier.contact_person || supplier.name},
 
-This is your weekly open Purchase Order summary from StockMate.
+This is your weekly open Purchase Order summary from OmniStock.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 OPEN PURCHASE ORDERS — Week of ${format(new Date(), "MMMM d, yyyy")}
@@ -64,12 +64,12 @@ ${orderLines}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Please coordinate with us to fulfill or update the status of these orders.
 
-— StockMate Automated Reports
+— OmniStock Automated Reports
 Generated: ${format(new Date(), "MMMM d, yyyy hh:mm a")}`;
 
     await base44.integrations.Core.SendEmail({
       to: supplier.email,
-      subject: `StockMate — Open Purchase Orders for ${supplier.name} (Week of ${format(new Date(), "MMM d, yyyy")})`,
+      subject: `OmniStock — Open Purchase Orders for ${supplier.name} (Week of ${format(new Date(), "MMM d, yyyy")})`,
       body,
     });
 
