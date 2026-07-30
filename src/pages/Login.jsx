@@ -81,11 +81,14 @@ export default function Login() {
           {/* Credentials Form */}
           <form onSubmit={handleLogin} className="space-y-5">
             <div className="space-y-1.5">
-              <label className={DESIGN_TOKENS.typography.body}>Work Email</label>
+              <label htmlFor="work-email" className={DESIGN_TOKENS.typography.body}>Work Email</label>
               <div className="relative">
                 <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 h-4 w-4" />
                 <input 
+                  id="work-email"
+                  name="email"
                   type="email" 
+                  autoComplete="email"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -96,11 +99,14 @@ export default function Login() {
             </div>
 
             <div className="space-y-1.5">
-              <label className={DESIGN_TOKENS.typography.body}>Password</label>
+              <label htmlFor="work-password" className={DESIGN_TOKENS.typography.body}>Password</label>
               <div className="relative">
                 <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 h-4 w-4" />
                 <input 
+                  id="work-password"
+                  name="password"
                   type={showPassword ? "text" : "password"}
+                  autoComplete="current-password"
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
