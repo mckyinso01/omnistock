@@ -80,13 +80,14 @@ export default function Monetization() {
       {/* Pricing Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-3">
         {PLANS.map((plan) => (
-          <Card key={plan.name} className={`water-breathing-card bg-[#0B1C30]/90 border-2 ${plan.color} shadow-2xl relative text-white rounded-2xl app-card-hover`}>
+          <div key={plan.name} className="relative pt-3.5">
             {plan.badge && (
-              <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-emerald-950/90 text-emerald-300 border border-emerald-500/60 font-mono text-xs font-bold px-3.5 py-1 rounded-full shadow-[0_0_16px_rgba(16,185,129,0.35)] uppercase tracking-wider">
+              <span className="absolute top-0 left-1/2 -translate-x-1/2 z-20 bg-emerald-950/90 text-emerald-300 border border-emerald-500/60 font-mono text-xs font-bold px-3.5 py-1 rounded-full shadow-[0_0_16px_rgba(16,185,129,0.35)] uppercase tracking-wider">
                 {plan.badge}
               </span>
             )}
-            <CardContent className="p-6 space-y-5">
+            <Card className={`water-breathing-card bg-[#0B1C30]/90 border-2 ${plan.color} shadow-2xl relative text-white rounded-2xl app-card-hover h-full`}>
+              <CardContent className="p-6 space-y-5">
               <div className="flex items-center gap-2.5">
                 <div className="p-2 rounded-lg bg-[#071322] border border-slate-800">
                   {plan.icon}
@@ -118,7 +119,8 @@ export default function Monetization() {
               </Button>
             </CardContent>
           </Card>
-        ))}
+        </div>
+      ))}
       </div>
 
       <ReferralCard trialData={trialData} />
