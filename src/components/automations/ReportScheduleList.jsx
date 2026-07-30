@@ -26,7 +26,7 @@ export default function ReportScheduleList() {
   const load = async () => {
     setLoading(true);
     try {
-      const list = await entities.ReportSchedule.list("-created_date", 200);
+      const list = await entities?.ReportSchedule?.list?.("-created_date", 200) ?? [];
       setSchedules(Array.isArray(list) ? list : []);
     } catch (e) {
       console.error("Could not load report schedules", e);

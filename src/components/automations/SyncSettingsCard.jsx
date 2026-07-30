@@ -23,7 +23,7 @@ export default function SyncSettingsCard() {
 
   const load = async () => {
     try {
-      const list = await entities.SyncSetting.list();
+      const list = await entities?.SyncSetting?.list?.() ?? [];
       if (Array.isArray(list) && list.length > 0) {
         setSetting(list[0]);
       } else {

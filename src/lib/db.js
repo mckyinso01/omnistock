@@ -3,7 +3,7 @@ import Dexie from 'dexie';
 // ─── Database Definition ───────────────────────────────────────────────────
 export const db = new Dexie('OmniStockDB');
 
-db.version(1).stores({
+db.version(2).stores({
   products:        '++id, name, sku, barcode, category_id, supplier_id, status, created_date, updated_date',
   categories:      '++id, name, created_date',
   suppliers:       '++id, name, status, created_date',
@@ -14,6 +14,8 @@ db.version(1).stores({
   purchaseOrders:  '++id, supplier_id, status, created_date',
   stockAlerts:     '++id, product_id, alert_type, status, created_date',
   recipes:         '++id, name, product_id, status, created_date',
+  syncSettings:    '++id, spreadsheet_id, created_date',
+  reportSchedules: '++id, frequency, recipient_email, status, created_date',
 });
 
 // ─── Helper: Generate IDs ──────────────────────────────────────────────────
@@ -192,16 +194,22 @@ export async function seedDefaultData() {
 function makeStore(table) {
   return {
     async list(sortBy = 'created_date', limit = 500) {
-      await seedDefaultData();
-      let items = await table.toArray();
-      items.sort((a, b) => {
-        const aVal = a[sortBy.replace('-', '')];
-        const bVal = b[sortBy.replace('-', '')];
-        return sortBy.startsWith('-')
-          ? String(bVal).localeCompare(String(aVal))
-          : String(aVal).localeCompare(String(bVal));
-      });
-      return limit ? items.slice(0, limit) : items;
+      try {
+        await seedDefaultData();
+        if (!table) return [];
+        let items = await table.toArray();
+        items.sort((a, b) => {
+          const aVal = a[sortBy.replace('-', '')];
+          const bVal = b[sortBy.replace('-', '')];
+          return sortBy.startsWith('-')
+            ? String(bVal ?? '').localeCompare(String(aVal ?? ''))
+            : String(aVal ?? '').localeCompare(String(bVal ?? ''));
+        });
+        return limit ? items.slice(0, limit) : items;
+      } catch (err) {
+        console.warn(`Dexie store list exception:`, err);
+        return [];
+      }
     },
 
     async filter(query = {}, sortBy = '-created_date', limit = 500) {
@@ -276,6 +284,8 @@ export const entities = {
   PurchaseOrder:    makeStore(db.purchaseOrders),
   StockAlert:       makeStore(db.stockAlerts),
   Recipe:           makeStore(db.recipes),
+  SyncSetting:      makeStore(db.syncSettings),
+  ReportSchedule:   makeStore(db.reportSchedules),
 };
 
 // ─── Backup & Restore ─────────────────────────────────────────────────────
