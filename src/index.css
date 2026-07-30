@@ -244,6 +244,7 @@ button, a, nav, [role="tab"], [role="button"] {
   /* 1. 🌊 Water Breathing (Mizukami Wave Flow Art) */
   .water-breathing-card {
     position: relative;
+    overflow: hidden !important;
     background: 
       radial-gradient(140% 140% at 50% 0%, rgba(0, 229, 255, 0.18) 0%, rgba(37, 99, 235, 0.08) 45%, rgba(7, 19, 34, 0.90) 100%),
       rgba(11, 28, 48, 0.85) !important;
@@ -278,6 +279,8 @@ button, a, nav, [role="tab"], [role="button"] {
     left: 0;
     right: 0;
     height: 3px;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
     background: linear-gradient(90deg, transparent, #00E5FF, #2563EB, #00E5FF, transparent);
     background-size: 200% 100%;
     animation: wave-flow 3s linear infinite;
@@ -287,6 +290,7 @@ button, a, nav, [role="tab"], [role="button"] {
   /* 2. 🔥 Flame Breathing (Rengoku Homura Ember Art) */
   .flame-breathing-card {
     position: relative;
+    overflow: hidden !important;
     background: 
       radial-gradient(140% 140% at 50% 0%, rgba(245, 158, 11, 0.22) 0%, rgba(225, 29, 72, 0.10) 45%, rgba(20, 10, 15, 0.92) 100%),
       rgba(20, 10, 15, 0.85) !important;
@@ -304,6 +308,8 @@ button, a, nav, [role="tab"], [role="button"] {
     left: 0;
     right: 0;
     height: 3px;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
     background: linear-gradient(90deg, transparent, #F59E0B, #E11D48, #F9E006, #F59E0B, transparent);
     background-size: 200% 100%;
     animation: wave-flow 2.5s linear infinite;
