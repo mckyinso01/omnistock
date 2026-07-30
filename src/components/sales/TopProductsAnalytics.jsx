@@ -11,10 +11,10 @@ export default function TopProductsAnalytics({ topProducts, totalRevenue, totalO
   const topProduct = topProducts[0];
 
   const kpis = [
-    { icon: Crown, label: "Top Product", value: topProduct?.name ?? "—", sub: topProduct ? fmt(topProduct.revenue) : "No sales", color: "text-amber-400", bg: "bg-amber-50" },
-    { icon: TrendingUp, label: "Total Revenue", value: fmt(totalRevenue), sub: `${totalOrders} orders`, color: "text-emerald-400", bg: "bg-emerald-50" },
-    { icon: Award, label: "Gross Profit", value: fmt(profitSum), sub: "Top 10 only", color: "text-violet-400", bg: "bg-violet-50" },
-    { icon: ShoppingBag, label: "Items Sold", value: itemsSold, sub: `AOV ${fmt(aov)}`, color: "text-cyan-400", bg: "bg-blue-50" },
+    { icon: Crown, label: "Top Product", value: topProduct?.name ?? "—", sub: topProduct ? fmt(topProduct.revenue) : "No sales", color: "text-amber-400" },
+    { icon: TrendingUp, label: "Total Revenue", value: fmt(totalRevenue), sub: `${totalOrders} orders`, color: "text-emerald-400" },
+    { icon: Award, label: "Gross Profit", value: fmt(profitSum), sub: "Top 10 only", color: "text-violet-400" },
+    { icon: ShoppingBag, label: "Items Sold", value: itemsSold, sub: `AOV ${fmt(aov)}`, color: "text-cyan-400" },
   ];
 
   const chartData = topProducts.map(p => ({
@@ -30,14 +30,14 @@ export default function TopProductsAnalytics({ topProducts, totalRevenue, totalO
         {kpis.map(k => {
           const Icon = k.icon;
           return (
-            <Card key={k.label} className="border-0 shadow-sm">
+            <Card key={k.label} className="water-breathing-card bg-[#0B1C30]/80 border border-slate-800/80 rounded-2xl p-1 shadow-xl app-card-hover">
               <CardContent className="p-4">
-                <div className={`w-9 h-9 rounded-xl ${k.bg} flex items-center justify-center mb-2`}>
+                <div className="w-9 h-9 rounded-xl bg-[#071322] border border-slate-700/80 flex items-center justify-center mb-2">
                   <Icon className={`w-4 h-4 ${k.color}`} />
                 </div>
-                <p className="text-xs text-slate-500">{k.label}</p>
+                <p className="text-xs text-slate-400 font-mono">{k.label}</p>
                 <p className={`text-lg font-bold ${k.color} truncate`} title={typeof k.value === "string" ? k.value : undefined}>{k.value}</p>
-                {k.sub && <p className="text-xs text-slate-400 mt-0.5">{k.sub}</p>}
+                {k.sub && <p className="text-xs text-slate-400 mt-0.5 font-mono">{k.sub}</p>}
               </CardContent>
             </Card>
           );
@@ -45,33 +45,33 @@ export default function TopProductsAnalytics({ topProducts, totalRevenue, totalO
       </div>
 
       {/* Revenue Bar Chart */}
-      <Card className="border-0 shadow-sm">
+      <Card className="water-breathing-card bg-[#0B1C30]/80 rounded-2xl border border-slate-800/80 p-1 shadow-xl">
         <CardHeader className="pb-3">
-          <CardTitle className="text-base font-semibold flex items-center gap-2">
-            <TrendingUp className="w-4 h-4 text-emerald-500" /> Top 10 Products by Revenue
+          <CardTitle className="text-base font-bold text-white flex items-center gap-2">
+            <TrendingUp className="w-4 h-4 text-emerald-400" /> Top 10 Products by Revenue
           </CardTitle>
         </CardHeader>
         <CardContent>
           {topProducts.length === 0 ? (
             <div className="text-center py-12">
-              <Package className="w-10 h-10 text-slate-200 mx-auto mb-2" />
+              <Package className="w-10 h-10 text-slate-500 mx-auto mb-2" />
               <p className="text-sm text-slate-400">No sales data for this period.</p>
             </div>
           ) : (
             <div className="h-72 -ml-2">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={chartData} margin={{ top: 10, right: 10, left: 0, bottom: 60 }}>
-                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
-                  <XAxis dataKey="name" tick={{ fontSize: 10, fill: "#64748b" }} angle={-35} textAnchor="end" height={70} interval={0} />
-                  <YAxis tick={{ fontSize: 10, fill: "#64748b" }} tickFormatter={(v) => `₱${Math.round(v)}`} />
+                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#1e293b" />
+                  <XAxis dataKey="name" tick={{ fontSize: 10, fill: "#94a3b8" }} angle={-35} textAnchor="end" height={70} interval={0} />
+                  <YAxis tick={{ fontSize: 10, fill: "#94a3b8" }} tickFormatter={(v) => `₱${Math.round(v)}`} />
                   <Tooltip
                     formatter={(v) => fmt(v)}
                     labelFormatter={(l, payload) => payload?.[0]?.payload?.full || l}
-                    contentStyle={{ borderRadius: 8, border: "1px solid #e2e8f0", fontSize: 12 }}
+                    contentStyle={{ backgroundColor: "#071322", borderRadius: 12, border: "1px solid #1e293b", color: "#f8fafc", fontSize: 12 }}
                   />
                   <Bar dataKey="revenue" radius={[4, 4, 0, 0]}>
                     {chartData.map((_, i) => (
-                      <Cell key={i} fill={i === 0 ? "#16a34a" : i === 1 ? "#7c3aed" : "#0ea5e9"} fillOpacity={0.85} />
+                      <Cell key={i} fill={i === 0 ? "#10b981" : i === 1 ? "#8b5cf6" : "#00e5ff"} fillOpacity={0.85} />
                     ))}
                   </Bar>
                 </BarChart>
@@ -82,19 +82,19 @@ export default function TopProductsAnalytics({ topProducts, totalRevenue, totalO
       </Card>
 
       {/* Profitability Ranking Table */}
-      <Card className="border-0 shadow-sm">
+      <Card className="water-breathing-card bg-[#0B1C30]/80 rounded-2xl border border-slate-800/80 p-1 shadow-xl">
         <CardHeader className="pb-3">
-          <CardTitle className="text-base font-semibold flex items-center gap-2">
-            <Award className="w-4 h-4 text-amber-500" /> Profitability Ranking
+          <CardTitle className="text-base font-bold text-white flex items-center gap-2">
+            <Award className="w-4 h-4 text-amber-400" /> Profitability Ranking
           </CardTitle>
         </CardHeader>
         <CardContent>
           {topProducts.length === 0 ? (
             <p className="text-sm text-slate-400 text-center py-6">No data for this period.</p>
           ) : (
-            <div className="overflow-x-auto rounded-lg border border-slate-100">
+            <div className="overflow-x-auto rounded-xl border border-slate-800/80">
               <table className="w-full text-sm">
-                <thead className="bg-slate-50 text-xs text-slate-500 uppercase">
+                <thead className="bg-[#071322] text-xs text-slate-300 font-mono uppercase">
                   <tr>
                     <th className="text-left p-2">#</th>
                     <th className="text-left p-2">Product</th>

@@ -267,86 +267,88 @@ Report generated on ${format(new Date(), "MMMM d, yyyy hh:mm a")}
         </TabsList>
         <TabsContent value="overview" className="space-y-6">
 
-      {/* KPI Summary */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        {[
-          { icon: DollarSign, label: "Revenue", value: `₱${totalRevenue.toLocaleString("en-PH", { minimumFractionDigits: 2 })}`, color: "text-emerald-400", bg: "bg-emerald-50" },
-          { icon: ShoppingBag, label: "Orders", value: totalOrders, color: "text-cyan-400", bg: "bg-blue-50" },
-          { icon: TrendingUp, label: "Gross Profit", value: `₱${grossProfit.toLocaleString("en-PH", { minimumFractionDigits: 2 })}`, color: grossProfit >= 0 ? "text-violet-400" : "text-rose-400", bg: "bg-violet-50" },
-          { icon: Package, label: "Profit Margin", value: `${profitMargin}%`, color: Number(profitMargin) >= 20 ? "text-emerald-400" : "text-orange-500", bg: "bg-orange-50" },
-        ].map(kpi => {
-          const Icon = kpi.icon;
-          return (
-            <Card key={kpi.label} className="border-0 shadow-sm">
-              <CardContent className="p-4 flex items-center gap-3">
-                <div className={`w-10 h-10 rounded-xl ${kpi.bg} flex items-center justify-center shrink-0`}>
-                  <Icon className={`w-5 h-5 ${kpi.color}`} />
-                </div>
-                <div>
-                  <p className="text-xs text-slate-500">{kpi.label}</p>
-                  <p className={`text-lg font-bold ${kpi.color}`}>{kpi.value}</p>
-                </div>
+          {/* KPI Summary Grid */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { icon: DollarSign, label: "Revenue", value: `₱${totalRevenue.toLocaleString("en-PH", { minimumFractionDigits: 2 })}`, color: "text-emerald-400" },
+              { icon: ShoppingBag, label: "Orders", value: totalOrders, color: "text-cyan-400" },
+              { icon: TrendingUp, label: "Gross Profit", value: `₱${grossProfit.toLocaleString("en-PH", { minimumFractionDigits: 2 })}`, color: grossProfit >= 0 ? "text-violet-400" : "text-rose-400" },
+              { icon: Package, label: "Profit Margin", value: `${profitMargin}%`, color: Number(profitMargin) >= 20 ? "text-emerald-400" : "text-amber-400" },
+            ].map(kpi => {
+              const Icon = kpi.icon;
+              return (
+                <Card key={kpi.label} className="water-breathing-card bg-[#0B1C30]/80 border border-slate-800/80 rounded-2xl p-1 shadow-xl app-card-hover">
+                  <CardContent className="p-4 flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-[#071322] border border-slate-700/80 flex items-center justify-center shrink-0">
+                      <Icon className={`w-5 h-5 ${kpi.color}`} />
+                    </div>
+                    <div>
+                      <p className={DESIGN_TOKENS.typography.muted}>{kpi.label}</p>
+                      <p className={`text-lg font-bold ${kpi.color}`}>{kpi.value}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* Top Products Card */}
+            <Card className="water-breathing-card bg-[#0B1C30]/80 rounded-2xl border border-slate-800/80 p-1 shadow-xl">
+              <CardHeader className="pb-3">
+                <CardTitle className={DESIGN_TOKENS.typography.h2 + " flex items-center gap-2"}>
+                  <ShoppingBag className="w-4 h-4 text-cyan-400" />
+                  Top Products Overview
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-2">
+                {topProducts.length === 0 ? (
+                  <p className="text-sm text-slate-400 text-center py-6 font-sans">No sales data recorded for this period</p>
+                ) : topProducts.map((p, i) => (
+                  <div key={p.name} className="flex items-center gap-3 py-2 border-b border-slate-800/60 last:border-0">
+                    <span className="w-6 h-6 rounded-full bg-[#071322] border border-cyan-500/30 text-cyan-400 text-xs font-mono font-bold flex items-center justify-center shrink-0">
+                      {i + 1}
+                    </span>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-semibold text-slate-100 truncate">{p.name}</p>
+                      <p className="text-xs text-slate-400 font-mono">{p.qty} sold</p>
+                    </div>
+                    <p className="text-sm font-bold text-emerald-400 shrink-0 font-mono">₱{p.revenue.toLocaleString()}</p>
+                  </div>
+                ))}
               </CardContent>
             </Card>
-          );
-        })}
-      </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Top Products */}
-        <Card className="border-0 shadow-sm">
-          <CardHeader className="pb-3">
-            <CardTitle className="text-base font-semibold flex items-center gap-2">
-              <ShoppingBag className="w-4 h-4 text-violet-500" />
-              Top Products
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-2">
-            {topProducts.length === 0 ? (
-              <p className="text-sm text-slate-400 text-center py-6">No sales data for this period</p>
-            ) : topProducts.map((p, i) => (
-              <div key={p.name} className="flex items-center gap-3 py-1.5 border-b border-slate-50 last:border-0">
-                <span className="w-6 h-6 rounded-full bg-slate-100 text-xs font-bold text-slate-500 flex items-center justify-center shrink-0">
-                  {i + 1}
-                </span>
-                <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-slate-200 truncate">{p.name}</p>
-                  <p className="text-xs text-slate-400">{p.qty} sold</p>
-                </div>
-                <p className="text-sm font-semibold text-emerald-400 shrink-0">₱{p.revenue.toLocaleString()}</p>
-              </div>
-            ))}
-          </CardContent>
-        </Card>
-
-        {/* Low Stock Summary */}
-        <Card className="border-0 shadow-sm">
-          <CardHeader className="pb-3">
-            <CardTitle className="text-base font-semibold flex items-center gap-2">
-              <Package className="w-4 h-4 text-orange-500" />
-              Low Stock Items
-              {lowStockItems.length > 0 && (
-                <Badge className="bg-red-100 text-red-600 border-0 text-xs">{lowStockItems.length}</Badge>
-              )}
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-2">
-            {lowStockItems.length === 0 ? (
-              <div className="text-center py-6">
-                <CheckCircle2 className="w-8 h-8 text-emerald-400 mx-auto mb-2" />
-                <p className="text-sm text-slate-400">All stocks are sufficient!</p>
-              </div>
-            ) : lowStockItems.slice(0, 8).map(p => (
-              <div key={p.id} className="flex items-center justify-between py-1.5 border-b border-slate-50 last:border-0">
-                <p className="text-sm font-medium text-slate-200 truncate">{p.name}</p>
-                <Badge className={`text-xs border-0 ${(p.quantity || 0) === 0 ? "bg-red-100 text-red-600" : "bg-orange-100 text-orange-600"}`}>
-                  {p.quantity || 0} {p.unit || "pcs"}
-                </Badge>
-              </div>
-            ))}
-          </CardContent>
-        </Card>
-      </div>
+            {/* Low Stock Summary Card */}
+            <Card className="water-breathing-card bg-[#0B1C30]/80 rounded-2xl border border-slate-800/80 p-1 shadow-xl">
+              <CardHeader className="pb-3">
+                <CardTitle className={DESIGN_TOKENS.typography.h2 + " flex items-center gap-2"}>
+                  <Package className="w-4 h-4 text-amber-400" />
+                  Low Stock Inventory Summary
+                  {lowStockItems.length > 0 && (
+                    <Badge className="bg-rose-950/80 text-rose-300 border border-rose-500/50 font-mono text-xs ml-auto">
+                      {lowStockItems.length} {lowStockItems.length > 1 ? "alerts" : "alert"}
+                    </Badge>
+                  )}
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-2">
+                {lowStockItems.length === 0 ? (
+                  <div className="text-center py-6 space-y-2">
+                    <CheckCircle2 className="w-8 h-8 text-emerald-400 mx-auto" />
+                    <p className="text-sm text-slate-300 font-medium">All stocks are in healthy threshold!</p>
+                  </div>
+                ) : lowStockItems.slice(0, 8).map(p => (
+                  <div key={p.id} className="flex items-center justify-between py-2 border-b border-slate-800/60 last:border-0">
+                    <p className="text-sm font-semibold text-slate-200 truncate">{p.name}</p>
+                    <Badge className={`text-xs font-mono ${(p.quantity || 0) === 0 ? "bg-rose-950/80 text-rose-300 border border-rose-500/50" : "bg-amber-950/80 text-amber-300 border border-amber-500/50"}`}>
+                      {p.quantity || 0} {p.unit || "pcs"} left
+                    </Badge>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          </div>
 
       {/* Generate & Send */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
