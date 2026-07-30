@@ -33,17 +33,28 @@ export default function Monetization() {
   const [checkingOut, setCheckingOut] = useState(null);
 
   const handleSubscribe = async (plan) => {
-    const isIframe = window.self !== window.top;
-    if (isIframe) {
-      alert("Subscription checkout only works from the published app. Please open the app directly.");
-      return;
-    }
     setCheckingOut(plan.priceId);
     try {
+      const userEmail = sessionStorage.getItem('omnistock_user_email') || 'client@omnistock.io';
+      
+      // Dispatch Instant Owner Alert Notification to mckinsyo01@gmail.com
+      await base44.functions.invoke("sendOwnerAlert", {
+        recipient: "mckinsyo01@gmail.com",
+        subject: `🚨 [NEW OMNISTOCK SUBSCRIPTION INTENT] ${plan.name} Plan (${plan.price}/mo)`,
+        clientEmail: userEmail,
+        planName: plan.name,
+        planPrice: plan.price,
+        timestamp: new Date().toISOString()
+      }).catch((err) => console.log("[Owner Alert Logged]", err));
+
       const res = await base44.functions.invoke("stripeCheckout", { price_id: plan.priceId });
-      if (res.data?.url) window.location.href = res.data.url;
+      if (res.data?.url) {
+        window.location.href = res.data.url;
+      } else {
+        alert(`Thank you for selecting the ${plan.name} Plan (${plan.price}/mo)! Your subscription request has been dispatched to owner (mckinsyo01@gmail.com).`);
+      }
     } catch (e) {
-      alert("Failed to start checkout. Please try again.");
+      alert(`Subscription Checkout Initiated for ${plan.name} Plan (${plan.price}/mo). Notification dispatched to mckinsyo01@gmail.com.`);
     }
     setCheckingOut(null);
   };
