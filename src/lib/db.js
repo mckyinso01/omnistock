@@ -28,6 +28,11 @@ db.version(3).stores({
   royaltyReports:   '++id, franchisee_branch_id, period, status, created_date',
 });
 
+// Offline sync queue: durable queue for cloud mirroring when offline
+db.version(4).stores({
+  syncQueue:        '++id, status, entityName, operation, created_date, updated_date',
+});
+
 // ─── Helper: Generate IDs ──────────────────────────────────────────────────
 const newId = () => crypto.randomUUID();
 const now = () => new Date().toISOString();

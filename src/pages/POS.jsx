@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { entities } from "@/lib/db";
-import { base44 } from "@/api/base44Client";
 import { convertQuantity } from "@/utils/costing";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -16,6 +15,7 @@ import RefundModal from "@/components/pos/RefundModal";
 import ThermalReceiptModal from "@/components/pos/ThermalReceiptModal";
 import BarcodeScanner from "@/components/shared/BarcodeScanner";
 import { trackPriceChangesFromTransaction } from "@/lib/priceChangeTracker";
+import { enqueueSync, processSyncQueue } from "@/lib/syncQueue";
 import DESIGN_TOKENS from "@/lib/designSystem";
 
 const PAYMENT_METHODS = [
@@ -182,23 +182,24 @@ export default function POS() {
       status: "completed",
     });
 
-    try {
-      await base44.entities.Transaction.create({
-        transaction_number: txn.transaction_number,
-        type: txn.type,
-        items: txn.items,
-        subtotal: txn.subtotal,
-        discount_amount: txn.discount_amount,
-        tax_amount: txn.tax_amount,
-        total_amount: txn.total_amount,
-        amount_tendered: txn.amount_tendered,
-        change_amount: txn.change_amount,
-        payment_method: txn.payment_method,
-        payment_details: txn.payment_details,
-        customer_name: txn.customer_name,
-        status: "completed",
-      });
-    } catch (e) { /* best-effort: ignore cloud mirror failure */ }
+    // Hybrid offline: enqueue cloud mirror — processes immediately if online,
+    // queues in IndexedDB if offline, auto-syncs when connection returns.
+    await enqueueSync("create", "Transaction", {
+      transaction_number: txn.transaction_number,
+      type: txn.type,
+      items: txn.items,
+      subtotal: txn.subtotal,
+      discount_amount: txn.discount_amount,
+      tax_amount: txn.tax_amount,
+      total_amount: txn.total_amount,
+      amount_tendered: txn.amount_tendered,
+      change_amount: txn.change_amount,
+      payment_method: txn.payment_method,
+      payment_details: txn.payment_details,
+      customer_name: txn.customer_name,
+      status: "completed",
+    });
+    if (navigator.onLine) processSyncQueue();
 
     await Promise.all(cart.map(async (item) => {
       const prod = products.find((p) => p.id === item.product_id);
