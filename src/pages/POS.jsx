@@ -8,7 +8,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Label } from "@/components/ui/label";
 import {
   Search, ShoppingCart, Plus, Minus, Trash2, CheckCircle2, Package,
-  RotateCcw, User, CreditCard, Smartphone, Building2, Banknote, SplitSquareHorizontal, Loader2
+  RotateCcw, User, CreditCard, Smartphone, Building2, Banknote, SplitSquareHorizontal, Loader2,
+  Clock, Send
 } from "lucide-react";
 import ReceiptModal from "@/components/pos/ReceiptModal";
 import RefundModal from "@/components/pos/RefundModal";
@@ -369,6 +370,11 @@ export default function POS() {
             <Search className="w-4 h-4" /> Scan
           </Button>
           <VoicePOSButton products={products} onAddToCart={addToCart} />
+          {lastTransaction && (
+            <Button variant="outline" onClick={() => setShowReceiptDelivery(true)} className="gap-2 text-violet-400 border-violet-500/40 bg-violet-950/20 hover:bg-violet-900/40 hover:text-violet-300 font-medium">
+              <Send className="w-4 h-4" /> Send Receipt
+            </Button>
+          )}
           <div className="ml-auto">
             <CustomerDisplayToggle cart={cart} total={total} subtotal={subtotal} discount={discountAmt} />
           </div>
@@ -598,6 +604,30 @@ export default function POS() {
       )}
       {showRefund && (
         <RefundModal onClose={() => { setShowRefund(false); loadData(); }} />
+      )}
+
+      {/* Shift Manager Modal */}
+      {showShiftModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
+          <div className="glass-fantasy-mist rounded-2xl w-full max-w-md p-5 space-y-4 relative">
+            <div className="flex items-center justify-between border-b border-slate-700/50 pb-3">
+              <div className="flex items-center gap-2">
+                <Clock className="w-5 h-5 text-emerald-400" />
+                <h3 className="text-lg font-bold text-white">Staff Shift Manager</h3>
+              </div>
+              <button onClick={() => setShowShiftModal(false)} className="text-slate-400 hover:text-white text-xl">✕</button>
+            </div>
+            <ShiftManager onShiftChange={() => {}} />
+          </div>
+        </div>
+      )}
+
+      {/* Digital Receipt Delivery */}
+      {showReceiptDelivery && lastTransaction && (
+        <ReceiptDeliveryModal
+          transaction={lastTransaction}
+          onClose={() => setShowReceiptDelivery(false)}
+        />
       )}
     </div>
   );
