@@ -13,9 +13,14 @@ import {
 import ReceiptModal from "@/components/pos/ReceiptModal";
 import RefundModal from "@/components/pos/RefundModal";
 import ThermalReceiptModal from "@/components/pos/ThermalReceiptModal";
+import ShiftManager from "@/components/pos/ShiftManager";
+import VoicePOSButton from "@/components/pos/VoicePOSButton";
+import CustomerDisplayToggle from "@/components/pos/CustomerDisplayToggle";
+import ReceiptDeliveryModal from "@/components/pos/ReceiptDeliveryModal";
 import BarcodeScanner from "@/components/shared/BarcodeScanner";
 import { trackPriceChangesFromTransaction } from "@/lib/priceChangeTracker";
 import { enqueueSync, processSyncQueue } from "@/lib/syncQueue";
+import { useCustomerDisplay } from "@/hooks/useCustomerDisplay";
 import DESIGN_TOKENS from "@/lib/designSystem";
 
 const PAYMENT_METHODS = [
@@ -56,8 +61,12 @@ export default function POS() {
   const [activeCategory, setActiveCategory] = useState("all");
   const [categories, setCategories] = useState([]);
   const [showScanner, setShowScanner] = useState(false);
+  const [showShiftModal, setShowShiftModal] = useState(false);
+  const [showReceiptDelivery, setShowReceiptDelivery] = useState(false);
   // Split payment
   const [splitPayments, setSplitPayments] = useState([{ method: "cash", amount: "" }]);
+  // Customer display
+  const { showThankYou: displayThankYou } = useCustomerDisplay();
 
   useEffect(() => { loadData(); }, []);
 
@@ -239,6 +248,8 @@ export default function POS() {
 
     setLastTransaction({ ...txn, items: cart, total, change: Math.max(0, change), paymentMethod, customerName: selectedCustomer?.name });
     setShowThermalModal(true);
+    // Trigger thank-you animation on customer display
+    displayThankYou(total);
     setCart([]); setAmountTendered(""); setPaymentRef(""); setSelectedCustomer(null);
     setCustomerSearch(""); setDiscount(0); setPaymentMethod("cash");
     setSplitPayments([{ method: "cash", amount: "" }]);
@@ -347,13 +358,20 @@ export default function POS() {
         </div>
 
         {/* Action Toolbar */}
-        <div className="p-3.5 border-t border-slate-800/80 bg-[#0B1C30]/90 backdrop-blur-md flex gap-3 flex-wrap">
+        <div className="p-3.5 border-t border-slate-800/80 bg-[#0B1C30]/90 backdrop-blur-md flex gap-3 flex-wrap items-center">
+          <Button variant="outline" onClick={() => setShowShiftModal(true)} className="gap-2 text-emerald-400 border-emerald-500/40 bg-emerald-950/20 hover:bg-emerald-900/40 hover:text-emerald-300 font-medium">
+            <Clock className="w-4 h-4" /> Shift
+          </Button>
           <Button variant="outline" onClick={() => setShowRefund(true)} className="gap-2 text-amber-400 border-amber-500/40 bg-amber-950/20 hover:bg-amber-900/40 hover:text-amber-300 font-medium">
-            <RotateCcw className="w-4 h-4" /> Process Refund
+            <RotateCcw className="w-4 h-4" /> Refund
           </Button>
           <Button variant="outline" onClick={() => setShowScanner(true)} className="gap-2 text-cyan-400 border-cyan-500/40 bg-cyan-950/20 hover:bg-cyan-900/40 hover:text-cyan-300 font-medium shadow-[0_0_20px_rgba(0,229,255,0.3)] cursor-pointer">
-            <Search className="w-4 h-4" /> Camera Scan Barcode
+            <Search className="w-4 h-4" /> Scan
           </Button>
+          <VoicePOSButton products={products} onAddToCart={addToCart} />
+          <div className="ml-auto">
+            <CustomerDisplayToggle cart={cart} total={total} subtotal={subtotal} discount={discountAmt} />
+          </div>
         </div>
       </div>
 

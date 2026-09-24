@@ -30,6 +30,7 @@ import Automations from './pages/Automations';
 import OrganizationSettings from './pages/OrganizationSettings';
 import Landing from './pages/Landing';
 import Login from './pages/Login';
+import CustomerDisplay from './pages/CustomerDisplay';
 
 const ProtectedLayout = () => {
   const { isAuthenticated } = useAuth();
@@ -96,6 +97,7 @@ const AuthenticatedApp = () => {
         <Route path="/organization" element={<OrganizationSettings />} />
       </Route>
       <Route path="/landing" element={<Landing />} />
+      <Route path="/customer-display" element={<CustomerDisplay />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );

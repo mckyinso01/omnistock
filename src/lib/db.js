@@ -33,6 +33,11 @@ db.version(4).stores({
   syncQueue:        '++id, status, entityName, operation, created_date, updated_date',
 });
 
+// Staff shift tracking table
+db.version(5).stores({
+  staffShifts:     '++id, cashier_name, status, shift_start, created_date',
+});
+
 // ─── Helper: Generate IDs ──────────────────────────────────────────────────
 const newId = () => crypto.randomUUID();
 const now = () => new Date().toISOString();
@@ -307,6 +312,7 @@ export const entities = {
   ApprovalRequest:  makeStore(db.approvalRequests),
   Warehouse:        makeStore(db.warehouses),
   RoyaltyReport:    makeStore(db.royaltyReports),
+  StaffShift:       makeStore(db.staffShifts),
 };
 
 // ─── Multi-Branch Migration ────────────────────────────────────────────────

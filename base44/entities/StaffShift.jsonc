@@ -1,0 +1,138 @@
+{
+  "name": "StaffShift",
+  "type": "object",
+  "properties": {
+    "cashier_name": {
+      "type": "string",
+      "description": "Name of the cashier working this shift"
+    },
+    "cashier_id": {
+      "type": "string",
+      "description": "User ID of the cashier"
+    },
+    "branch_id": {
+      "type": "string",
+      "description": "Branch where this shift occurred"
+    },
+    "shift_start": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO timestamp when the shift started"
+    },
+    "shift_end": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO timestamp when the shift ended"
+    },
+    "starting_cash": {
+      "type": "number",
+      "default": 0,
+      "description": "Cash counted at shift start (drawer float)"
+    },
+    "ending_cash": {
+      "type": "number",
+      "default": 0,
+      "description": "Cash counted at shift end"
+    },
+    "expected_cash": {
+      "type": "number",
+      "default": 0,
+      "description": "Calculated expected cash = starting_cash + cash_sales - cash_refunds"
+    },
+    "variance": {
+      "type": "number",
+      "default": 0,
+      "description": "Difference between ending_cash and expected_cash"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "open",
+        "closed"
+      ],
+      "default": "open",
+      "description": "Shift status"
+    },
+    "transaction_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Number of transactions during this shift"
+    },
+    "total_sales": {
+      "type": "number",
+      "default": 0,
+      "description": "Total sales amount during this shift"
+    },
+    "cash_sales": {
+      "type": "number",
+      "default": 0,
+      "description": "Total cash sales during this shift"
+    },
+    "cash_refunds": {
+      "type": "number",
+      "default": 0,
+      "description": "Total cash refunds during this shift"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Shift notes or reconciliation comments"
+    },
+    "tenant_id": {
+      "type": "string",
+      "description": "Tenant isolation ID"
+    }
+  },
+  "required": [
+    "cashier_name",
+    "shift_start"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "data.branch_id": {
+            "$in": "{{user.data.managed_branch_ids}}"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "create": {
+      "$or": [
+        {
+          "data.branch_id": {
+            "$in": "{{user.data.managed_branch_ids}}"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "data.branch_id": {
+            "$in": "{{user.data.managed_branch_ids}}"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}
