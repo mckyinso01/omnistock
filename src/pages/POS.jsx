@@ -563,7 +563,11 @@ export default function POS() {
 
       {showScanner && (
         <BarcodeScanner
-          onDetected={handleBarcodeDetected}
+          onDetected={(code) => {
+            const match = products.find(p => p.barcode === code);
+            if (match) addToCart(match);
+            setShowScanner(false);
+          }}
           onClose={() => setShowScanner(false)}
         />
       )}

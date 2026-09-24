@@ -51,7 +51,10 @@
         "sent",
         "partial",
         "received",
-        "cancelled"
+        "cancelled",
+        "pending_approval",
+        "approved",
+        "rejected"
       ],
       "default": "draft"
     },
@@ -65,9 +68,97 @@
     },
     "notes": {
       "type": "string"
+    },
+    "branch_id": {
+      "type": "string",
+      "description": "Branch this PO belongs to"
+    },
+    "tenant_id": {
+      "type": "string",
+      "description": "Tenant isolation ID"
+    },
+    "approval_request_id": {
+      "type": "string",
+      "description": "Linked ApprovalRequest ID if routed for HQ approval"
+    },
+    "distributed_branches": {
+      "type": "array",
+      "description": "For bulk POs distributed across multiple branches",
+      "items": {
+        "type": "object",
+        "properties": {
+          "branch_id": {
+            "type": "string"
+          },
+          "branch_name": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "number"
+          }
+        }
+      }
     }
   },
   "required": [
     "supplier_id"
-  ]
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "data.branch_id": {
+            "$in": "{{user.data.managed_branch_ids}}"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "create": {
+      "$or": [
+        {
+          "data.branch_id": {
+            "$in": "{{user.data.managed_branch_ids}}"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "data.branch_id": {
+            "$in": "{{user.data.managed_branch_ids}}"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "data.branch_id": {
+            "$in": "{{user.data.managed_branch_ids}}"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    }
+  }
 }

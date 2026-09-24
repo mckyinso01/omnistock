@@ -36,6 +36,8 @@
         "theft",
         "correction",
         "returned",
+        "transfer_in",
+        "transfer_out",
         "other"
       ],
       "default": "restock"
@@ -45,10 +47,76 @@
     },
     "adjusted_by": {
       "type": "string"
+    },
+    "branch_id": {
+      "type": "string",
+      "description": "Branch where the adjustment occurred"
+    },
+    "tenant_id": {
+      "type": "string",
+      "description": "Tenant isolation ID"
     }
   },
   "required": [
     "product_id",
     "adjustment_type"
-  ]
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "data.branch_id": {
+            "$in": "{{user.data.managed_branch_ids}}"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "create": {
+      "$or": [
+        {
+          "data.branch_id": {
+            "$in": "{{user.data.managed_branch_ids}}"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "data.branch_id": {
+            "$in": "{{user.data.managed_branch_ids}}"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "data.branch_id": {
+            "$in": "{{user.data.managed_branch_ids}}"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    }
+  }
 }

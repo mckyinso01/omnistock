@@ -62,9 +62,75 @@
         "inactive"
       ],
       "default": "active"
+    },
+    "branch_id": {
+      "type": "string",
+      "description": "Branch this recipe belongs to"
+    },
+    "tenant_id": {
+      "type": "string",
+      "description": "Tenant isolation ID"
     }
   },
   "required": [
     "name"
-  ]
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "data.branch_id": {
+            "$in": "{{user.data.managed_branch_ids}}"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "create": {
+      "$or": [
+        {
+          "data.branch_id": {
+            "$in": "{{user.data.managed_branch_ids}}"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "data.branch_id": {
+            "$in": "{{user.data.managed_branch_ids}}"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "data.branch_id": {
+            "$in": "{{user.data.managed_branch_ids}}"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    }
+  }
 }

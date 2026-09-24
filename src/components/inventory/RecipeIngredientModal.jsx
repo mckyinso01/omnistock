@@ -7,8 +7,6 @@ import { X, Coffee, ShieldAlert, CheckCircle2, Scale, AlertTriangle, Plus, Trash
 import DESIGN_TOKENS from "@/lib/designSystem";
 
 export default function RecipeIngredientModal({ isOpen, onClose, product }) {
-  if (!isOpen) return null;
-
   const [ingredients, setIngredients] = useState([
     { id: 1, name: "Espresso Beans (Premium Arabica)", portion: "18", unit: "grams", costPerUnit: "0.85", status: "NORMAL" },
     { id: 2, name: "Fresh Whole Milk", portion: "150", unit: "ml", costPerUnit: "0.12", status: "NORMAL" },
@@ -30,6 +28,8 @@ export default function RecipeIngredientModal({ isOpen, onClose, product }) {
   };
 
   const totalCost = ingredients.reduce((sum, item) => sum + (parseFloat(item.portion || 0) * parseFloat(item.costPerUnit || 0)), 0);
+
+  if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-4 animate-in fade-in duration-200">

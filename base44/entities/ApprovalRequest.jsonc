@@ -1,0 +1,125 @@
+{
+  "name": "ApprovalRequest",
+  "type": "object",
+  "properties": {
+    "request_type": {
+      "type": "string",
+      "enum": [
+        "purchase_order",
+        "price_change",
+        "stock_adjustment",
+        "discount",
+        "refund",
+        "stock_transfer"
+      ],
+      "description": "Type of action requiring approval"
+    },
+    "branch_id": {
+      "type": "string",
+      "description": "Branch where the request originated"
+    },
+    "branch_name": {
+      "type": "string"
+    },
+    "requested_by": {
+      "type": "string",
+      "description": "User ID of the requester"
+    },
+    "requested_by_name": {
+      "type": "string"
+    },
+    "payload": {
+      "type": "object",
+      "description": "The original request data (PO details, price change, etc.)"
+    },
+    "threshold_value": {
+      "type": "number",
+      "description": "The configured threshold that was crossed"
+    },
+    "actual_value": {
+      "type": "number",
+      "description": "The actual value of the request"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "approved",
+        "rejected",
+        "escalated",
+        "expired"
+      ],
+      "default": "pending",
+      "description": "Approval status"
+    },
+    "approver_id": {
+      "type": "string",
+      "description": "User ID of the approver"
+    },
+    "approver_name": {
+      "type": "string"
+    },
+    "approval_level": {
+      "type": "string",
+      "enum": [
+        "branch_manager",
+        "regional_manager",
+        "hq_admin"
+      ],
+      "default": "branch_manager",
+      "description": "Which role level must approve"
+    },
+    "approved_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "decision_notes": {
+      "type": "string"
+    },
+    "escalated": {
+      "type": "boolean",
+      "default": false
+    },
+    "escalated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When this request auto-escalates if unresolved"
+    }
+  },
+  "required": [
+    "request_type",
+    "branch_id",
+    "requested_by"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "data.branch_id": {
+            "$in": "{{user.data.managed_branch_ids}}"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "create": {},
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

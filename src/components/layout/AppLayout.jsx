@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import { entities } from "@/lib/db";
+import { BranchProvider } from "@/lib/BranchContext";
 import Sidebar from "./Sidebar";
 import TopBar from "./TopBar";
 import BottomNav from "./BottomNav";
@@ -42,19 +43,21 @@ export default function AppLayout() {
   };
 
   return (
-    <div className="flex h-screen bg-[#050811] text-slate-100 overflow-hidden font-sans">
-      <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-      <div className="flex-1 flex flex-col min-w-0 overflow-hidden bg-[#050811]">
-        <TopBar onMenuClick={() => setSidebarOpen(true)} alertCount={alertCount} />
-        <main
-          className="flex-1 overflow-y-auto bg-[#050811] text-slate-100 p-4 md:p-6"
-          style={{ paddingBottom: "calc(env(safe-area-inset-bottom) + 56px)" }}
-        >
-          <Outlet />
-        </main>
+    <BranchProvider>
+      <div className="flex h-screen bg-[#050811] text-slate-100 overflow-hidden font-sans">
+        <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+        <div className="flex-1 flex flex-col min-w-0 overflow-hidden bg-[#050811]">
+          <TopBar onMenuClick={() => setSidebarOpen(true)} alertCount={alertCount} />
+          <main
+            className="flex-1 overflow-y-auto bg-[#050811] text-slate-100 p-4 md:p-6"
+            style={{ paddingBottom: "calc(env(safe-area-inset-bottom) + 56px)" }}
+          >
+            <Outlet />
+          </main>
+        </div>
+        <BottomNav />
+        <LicensingDeploymentTierBar />
       </div>
-      <BottomNav />
-      <LicensingDeploymentTierBar />
-    </div>
+    </BranchProvider>
   );
 }

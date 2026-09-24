@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import {
   LayoutDashboard, Package, ShoppingCart, BarChart2, Tag, Truck,
   ChefHat, Bell, Users, ClipboardList, Sliders, DollarSign, X,
-  FileText, Crown, Settings, Zap
+  FileText, Crown, Settings, Zap, Building2
 } from "lucide-react";
 
 const navGroups = [
@@ -44,6 +44,12 @@ const navGroups = [
     label: "Automation",
     items: [
       { path: "/automations", label: "Reports & Sync", icon: Zap },
+    ],
+  },
+  {
+    label: "Enterprise",
+    items: [
+      { path: "/organization", label: "Organization", icon: Building2 },
     ],
   },
   {

@@ -1,0 +1,77 @@
+{
+  "name": "RoyaltyReport",
+  "type": "object",
+  "properties": {
+    "franchisee_branch_id": {
+      "type": "string",
+      "description": "Franchisee branch ID"
+    },
+    "franchisee_branch_name": {
+      "type": "string"
+    },
+    "period": {
+      "type": "string",
+      "description": "Reporting period (e.g. 2026-09)"
+    },
+    "sales_total": {
+      "type": "number",
+      "description": "Total sales for the period"
+    },
+    "royalty_percent": {
+      "type": "number",
+      "description": "Royalty percentage applied"
+    },
+    "royalty_amount": {
+      "type": "number",
+      "description": "Calculated royalty owed"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "calculated",
+        "paid",
+        "overdue"
+      ],
+      "default": "calculated",
+      "description": "Royalty payment status"
+    },
+    "paid_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "compliance_score": {
+      "type": "number",
+      "description": "Compliance monitoring score (0-100)"
+    },
+    "compliance_notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "franchisee_branch_id",
+    "period"
+  ],
+  "rls": {
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

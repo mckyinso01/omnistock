@@ -1,0 +1,131 @@
+{
+  "name": "Warehouse",
+  "type": "object",
+  "properties": {
+    "branch_id": {
+      "type": "string",
+      "description": "Linked Branch ID (where is_supply_hub=true)"
+    },
+    "name": {
+      "type": "string",
+      "description": "Warehouse name"
+    },
+    "address": {
+      "type": "string"
+    },
+    "zones": {
+      "type": "array",
+      "description": "Operational zones in the warehouse",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "receiving",
+              "putaway",
+              "picking",
+              "shipping"
+            ]
+          },
+          "capacity": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "auto_replenishment_rules": {
+      "type": "array",
+      "description": "Reorder point rules that auto-generate transfer requests",
+      "items": {
+        "type": "object",
+        "properties": {
+          "product_id": {
+            "type": "string"
+          },
+          "product_name": {
+            "type": "string"
+          },
+          "rop": {
+            "type": "number",
+            "description": "Reorder point"
+          },
+          "replenish_qty": {
+            "type": "number",
+            "description": "Quantity to replenish"
+          },
+          "target_branch_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Branches this rule applies to"
+          }
+        }
+      }
+    },
+    "delivery_routes": {
+      "type": "array",
+      "description": "Optimized delivery schedules across branches",
+      "items": {
+        "type": "object",
+        "properties": {
+          "route_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "branch_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "planned",
+              "in_transit",
+              "completed"
+            ]
+          }
+        }
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "inactive"
+      ],
+      "default": "active"
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "rls": {
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

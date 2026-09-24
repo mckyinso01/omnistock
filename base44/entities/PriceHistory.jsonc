@@ -33,10 +33,80 @@
     "reason": {
       "type": "string",
       "description": "Reason for price change"
+    },
+    "branch_id": {
+      "type": "string",
+      "description": "Branch where the price change occurred"
+    },
+    "tenant_id": {
+      "type": "string",
+      "description": "Tenant isolation ID"
+    },
+    "approval_request_id": {
+      "type": "string",
+      "description": "Linked ApprovalRequest if routed for approval"
     }
   },
   "required": [
     "product_id",
     "new_price"
-  ]
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "data.branch_id": {
+            "$in": "{{user.data.managed_branch_ids}}"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "create": {
+      "$or": [
+        {
+          "data.branch_id": {
+            "$in": "{{user.data.managed_branch_ids}}"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "data.branch_id": {
+            "$in": "{{user.data.managed_branch_ids}}"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "data.branch_id": {
+            "$in": "{{user.data.managed_branch_ids}}"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    }
+  }
 }

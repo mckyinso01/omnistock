@@ -1,0 +1,119 @@
+{
+  "name": "Branch",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Branch name"
+    },
+    "code": {
+      "type": "string",
+      "description": "Short branch code (e.g. BR-01)"
+    },
+    "address": {
+      "type": "string",
+      "description": "Branch address"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Branch phone number"
+    },
+    "manager_id": {
+      "type": "string",
+      "description": "User ID of the branch manager"
+    },
+    "manager_name": {
+      "type": "string",
+      "description": "Branch manager name (for display)"
+    },
+    "timezone": {
+      "type": "string",
+      "default": "Asia/Manila",
+      "description": "Branch timezone"
+    },
+    "currency": {
+      "type": "string",
+      "default": "PHP",
+      "description": "Branch currency code"
+    },
+    "branding": {
+      "type": "object",
+      "description": "Per-branch white-label branding",
+      "properties": {
+        "logo_url": {
+          "type": "string"
+        },
+        "primary_color": {
+          "type": "string"
+        },
+        "receipt_header": {
+          "type": "string"
+        },
+        "receipt_footer": {
+          "type": "string"
+        }
+      }
+    },
+    "is_supply_hub": {
+      "type": "boolean",
+      "default": false,
+      "description": "True if this is a warehouse/distribution hub, not a selling branch"
+    },
+    "is_franchise": {
+      "type": "boolean",
+      "default": false,
+      "description": "True if this branch is a franchisee location"
+    },
+    "franchisee_name": {
+      "type": "string",
+      "description": "Franchisee owner name (if franchise)"
+    },
+    "royalty_percent": {
+      "type": "number",
+      "description": "Royalty percentage if this is a franchise branch"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "inactive"
+      ],
+      "default": "active",
+      "description": "Branch status"
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "data.branch_id": {
+            "$in": "{{user.data.managed_branch_ids}}"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

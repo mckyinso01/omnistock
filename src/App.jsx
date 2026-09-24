@@ -27,6 +27,7 @@ import SalesReport from './pages/SalesReport';
 import Monetization from './pages/Monetization';
 import Settings from './pages/Settings';
 import Automations from './pages/Automations';
+import OrganizationSettings from './pages/OrganizationSettings';
 import Landing from './pages/Landing';
 import Login from './pages/Login';
 
@@ -92,6 +93,7 @@ const AuthenticatedApp = () => {
         <Route path="/monetization" element={<Monetization />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/automations" element={<Automations />} />
+        <Route path="/organization" element={<OrganizationSettings />} />
       </Route>
       <Route path="/landing" element={<Landing />} />
       <Route path="*" element={<PageNotFound />} />

@@ -18,6 +18,16 @@ db.version(2).stores({
   reportSchedules: '++id, frequency, recipient_email, status, created_date',
 });
 
+// Multi-branch extension: new tables for branches, organizations, transfers, approvals, warehouses, royalties
+db.version(3).stores({
+  branches:         '++id, name, code, status, is_supply_hub, is_franchise, created_date',
+  organizations:    '++id, name, deployment_mode, multi_branch_enabled, created_date',
+  stockTransfers:   '++id, from_branch_id, to_branch_id, status, created_date',
+  approvalRequests: '++id, request_type, branch_id, status, approval_level, created_date',
+  warehouses:       '++id, branch_id, name, status, created_date',
+  royaltyReports:   '++id, franchisee_branch_id, period, status, created_date',
+});
+
 // ─── Helper: Generate IDs ──────────────────────────────────────────────────
 const newId = () => crypto.randomUUID();
 const now = () => new Date().toISOString();
@@ -286,7 +296,128 @@ export const entities = {
   Recipe:           makeStore(db.recipes),
   SyncSetting:      makeStore(db.syncSettings),
   ReportSchedule:   makeStore(db.reportSchedules),
+  Branch:           makeStore(db.branches),
+  Organization:     makeStore(db.organizations),
+  StockTransfer:    makeStore(db.stockTransfers),
+  ApprovalRequest:  makeStore(db.approvalRequests),
+  Warehouse:        makeStore(db.warehouses),
+  RoyaltyReport:    makeStore(db.royaltyReports),
 };
+
+// ─── Multi-Branch Migration ────────────────────────────────────────────────
+// On first multi-branch enable: create default 'Main Branch', set it as
+// organization default, and bulk-assign all existing records without a
+// branch_id to the Main Branch. The app remains fully functional throughout.
+export async function migrateToMultiBranch() {
+  try {
+    let branches = await db.branches.toArray();
+    let mainBranch = branches.find(b => b.code === 'MAIN' || b.name === 'Main Branch');
+
+    if (!mainBranch) {
+      mainBranch = {
+        id: newId(),
+        name: 'Main Branch',
+        code: 'MAIN',
+        address: '',
+        phone: '',
+        timezone: 'Asia/Manila',
+        currency: 'PHP',
+        is_supply_hub: false,
+        is_franchise: false,
+        status: 'active',
+        created_date: now(),
+        updated_date: now(),
+      };
+      await db.branches.add(mainBranch);
+    }
+
+    // Create sample branches for multi-branch demo if none beyond Main exist
+    const otherBranches = branches.filter(b => b.id !== mainBranch.id);
+    if (otherBranches.length === 0) {
+      await db.branches.bulkAdd([
+        {
+          id: newId(),
+          name: 'BGC Branch',
+          code: 'BGC-01',
+          address: 'Bonifacio Global City, Taguig',
+          phone: '0917-123-4567',
+          manager_name: 'Carlos Reyes',
+          timezone: 'Asia/Manila',
+          currency: 'PHP',
+          is_supply_hub: false,
+          is_franchise: false,
+          status: 'active',
+          created_date: now(),
+          updated_date: now(),
+        },
+        {
+          id: newId(),
+          name: 'Central Warehouse',
+          code: 'WH-01',
+          address: 'Quezon City Distribution Hub',
+          phone: '0918-456-7890',
+          manager_name: 'Ana Lim',
+          timezone: 'Asia/Manila',
+          currency: 'PHP',
+          is_supply_hub: true,
+          is_franchise: false,
+          status: 'active',
+          created_date: now(),
+          updated_date: now(),
+        },
+      ]);
+    }
+
+    // Ensure an organization record exists
+    let orgs = await db.organizations.toArray();
+    let org = orgs[0];
+    if (!org) {
+      org = {
+        id: newId(),
+        name: 'OmniStock Organization',
+        deployment_mode: 'single_owner',
+        default_branch_id: mainBranch.id,
+        multi_branch_enabled: false,
+        settings: {
+          approval_thresholds: {
+            po_value: 50000,
+            price_change_percent: 15,
+            stock_adjustment_units: 50,
+            discount_percent: 20,
+            refund_value: 5000,
+          },
+          price_controls: { enabled: false, default_floor_percent: -10, default_ceiling_percent: 25 },
+          auto_replenishment: { enabled: false, rop_multiplier: 1.5 },
+          escalation_timeout_hours: 24,
+          franchise_royalty_default: 5,
+        },
+        created_date: now(),
+        updated_date: now(),
+      };
+      await db.organizations.add(org);
+    } else if (!org.default_branch_id) {
+      await db.organizations.update(org.id, { default_branch_id: mainBranch.id, updated_date: now() });
+    }
+
+    // Assign branch_id to all existing records that don't have one
+    const tablesToMigrate = [
+      db.products, db.transactions, db.purchaseOrders, db.stockAdjustments,
+      db.stockAlerts, db.priceHistory, db.recipes,
+    ];
+    for (const table of tablesToMigrate) {
+      const records = await table.toArray();
+      const updates = records
+        .filter(r => !r.branch_id)
+        .map(r => table.update(r.id, { branch_id: mainBranch.id }));
+      await Promise.all(updates);
+    }
+
+    return { mainBranch, org };
+  } catch (err) {
+    console.error('Multi-branch migration error:', err);
+    return null;
+  }
+}
 
 // ─── Backup & Restore ─────────────────────────────────────────────────────
 export async function exportBackup() {

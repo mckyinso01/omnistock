@@ -1,0 +1,157 @@
+{
+  "name": "StockTransfer",
+  "type": "object",
+  "properties": {
+    "transfer_number": {
+      "type": "string",
+      "description": "Transfer reference number"
+    },
+    "from_branch_id": {
+      "type": "string",
+      "description": "Source branch ID"
+    },
+    "from_branch_name": {
+      "type": "string",
+      "description": "Source branch name (for display)"
+    },
+    "to_branch_id": {
+      "type": "string",
+      "description": "Destination branch ID"
+    },
+    "to_branch_name": {
+      "type": "string",
+      "description": "Destination branch name (for display)"
+    },
+    "items": {
+      "type": "array",
+      "description": "List of items being transferred",
+      "items": {
+        "type": "object",
+        "properties": {
+          "product_id": {
+            "type": "string"
+          },
+          "product_name": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "number"
+          },
+          "unit": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "requested",
+        "approved",
+        "shipped",
+        "received",
+        "rejected",
+        "cancelled"
+      ],
+      "default": "requested",
+      "description": "Transfer status"
+    },
+    "requested_by": {
+      "type": "string",
+      "description": "User ID of requester"
+    },
+    "requested_by_name": {
+      "type": "string"
+    },
+    "approved_by": {
+      "type": "string",
+      "description": "User ID of approver"
+    },
+    "approved_by_name": {
+      "type": "string"
+    },
+    "shipped_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "received_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "timeline": {
+      "type": "array",
+      "description": "Audit trail of status changes",
+      "items": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "actor": {
+            "type": "string"
+          },
+          "notes": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "from_branch_id",
+    "to_branch_id",
+    "items"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "data.from_branch_id": {
+            "$in": "{{user.data.managed_branch_ids}}"
+          }
+        },
+        {
+          "data.to_branch_id": {
+            "$in": "{{user.data.managed_branch_ids}}"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "create": {
+      "$or": [
+        {
+          "data.from_branch_id": {
+            "$in": "{{user.data.managed_branch_ids}}"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

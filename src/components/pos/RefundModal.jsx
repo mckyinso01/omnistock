@@ -37,6 +37,14 @@ export default function RefundModal({ onClose }) {
     setRefundItems((txn.items || []).map(item => ({ ...item, refund_qty: 0 })));
   };
 
+  const updateRefundQty = (idx, qty) => {
+    const maxQty = refundItems[idx]?.quantity || 0;
+    const clampedQty = Math.max(0, Math.min(qty, maxQty));
+    setRefundItems(refundItems.map((item, i) => i === idx ? { ...item, refund_qty: clampedQty } : item));
+  };
+
+  const totalRefund = refundItems.reduce((s, i) => s + (i.refund_qty || 0) * (i.unit_price || 0), 0);
+
   const processRefund = async () => {
     const itemsToRefund = refundItems.filter(i => i.refund_qty > 0);
     if (itemsToRefund.length === 0) return alert("Select items to refund.");
@@ -168,8 +176,8 @@ export default function RefundModal({ onClose }) {
               <div className="space-y-1.5">
                 <Label className="text-slate-200">Refund Reason</Label>
                 <select
-                  value={reason}
-                  onChange={e => setReason(e.target.value)}
+                  value={refundReason}
+                  onChange={e => setRefundReason(e.target.value)}
                   className="flex h-9 w-full rounded-md border border-slate-700 bg-[#071322] px-3 py-1.5 text-sm text-white focus:outline-none focus:ring-1 focus:ring-cyan-500"
                 >
                   <option value="returned" className="bg-[#071322] text-white">Customer Returned</option>
@@ -192,10 +200,10 @@ export default function RefundModal({ onClose }) {
             <Button variant="ghost" className={DESIGN_TOKENS.buttons.secondary} onClick={onClose}>Cancel</Button>
             <Button
               onClick={processRefund}
-              disabled={submitting || totalRefund <= 0}
+              disabled={processing || totalRefund <= 0}
               className={DESIGN_TOKENS.buttons.danger + " text-xs font-bold gap-1 cursor-pointer"}
             >
-              {submitting ? "Processing..." : `Refund ₱${totalRefund.toFixed(2)}`}
+              {processing ? "Processing..." : `Refund ₱${totalRefund.toFixed(2)}`}
             </Button>
           </div>
         )}

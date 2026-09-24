@@ -85,9 +85,83 @@
       ],
       "default": "active",
       "description": "Product status"
+    },
+    "branch_id": {
+      "type": "string",
+      "description": "Branch this product belongs to"
+    },
+    "tenant_id": {
+      "type": "string",
+      "description": "Tenant isolation ID"
+    },
+    "price_floor": {
+      "type": "number",
+      "description": "Minimum allowed selling price (HQ-set)"
+    },
+    "price_ceiling": {
+      "type": "number",
+      "description": "Maximum allowed selling price (HQ-set)"
     }
   },
   "required": [
     "name"
-  ]
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "data.branch_id": {
+            "$in": "{{user.data.managed_branch_ids}}"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "create": {
+      "$or": [
+        {
+          "data.branch_id": {
+            "$in": "{{user.data.managed_branch_ids}}"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "data.branch_id": {
+            "$in": "{{user.data.managed_branch_ids}}"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "$or": [
+        {
+          "data.branch_id": {
+            "$in": "{{user.data.managed_branch_ids}}"
+          }
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    }
+  }
 }

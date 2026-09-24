@@ -1,0 +1,124 @@
+{
+  "name": "Organization",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Organization or tenant name"
+    },
+    "deployment_mode": {
+      "type": "string",
+      "enum": [
+        "single_owner",
+        "multi_tenant",
+        "franchise"
+      ],
+      "default": "single_owner",
+      "description": "Deployment model driving feature availability"
+    },
+    "default_branch_id": {
+      "type": "string",
+      "description": "Default branch ID for this organization"
+    },
+    "multi_branch_enabled": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether multi-branch mode is activated"
+    },
+    "settings": {
+      "type": "object",
+      "description": "Organization-level configuration",
+      "properties": {
+        "approval_thresholds": {
+          "type": "object",
+          "description": "Thresholds that route branch actions to HQ for approval",
+          "properties": {
+            "po_value": {
+              "type": "number",
+              "default": 50000
+            },
+            "price_change_percent": {
+              "type": "number",
+              "default": 15
+            },
+            "stock_adjustment_units": {
+              "type": "number",
+              "default": 50
+            },
+            "discount_percent": {
+              "type": "number",
+              "default": 20
+            },
+            "refund_value": {
+              "type": "number",
+              "default": 5000
+            }
+          }
+        },
+        "price_controls": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "default": false
+            },
+            "default_floor_percent": {
+              "type": "number",
+              "default": -10
+            },
+            "default_ceiling_percent": {
+              "type": "number",
+              "default": 25
+            }
+          }
+        },
+        "auto_replenishment": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "default": false
+            },
+            "rop_multiplier": {
+              "type": "number",
+              "default": 1.5
+            }
+          }
+        },
+        "escalation_timeout_hours": {
+          "type": "number",
+          "default": 24
+        },
+        "franchise_royalty_default": {
+          "type": "number",
+          "default": 5
+        }
+      }
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "rls": {
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

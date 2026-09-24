@@ -15,6 +15,8 @@ export default function TrialStatusBanner({ trialData, daysRemaining }) {
   const plan = trialData.plan || 'free';
   const config = PLAN_CONFIG[plan] || PLAN_CONFIG.free;
   const Icon = config.icon;
+  const isTrial = plan.includes('trial');
+  const hasPaused = trialData.paused_plan || null;
 
   return (
     <div className={`rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center gap-3 border border-slate-800 shadow-xl ${
