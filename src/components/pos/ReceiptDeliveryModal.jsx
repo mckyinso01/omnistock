@@ -33,12 +33,10 @@ export default function ReceiptDeliveryModal({ transaction, onClose }) {
     setError(null);
 
     try {
-      const receiptText = formatReceiptText(transaction);
       await base44.functions.invoke("sendReceiptSMS", {
         phone: cleanPhone,
-        message: receiptText,
         channel,
-        transaction_number: transaction.transaction_number,
+        transaction,
       });
       setSent(true);
     } catch (err) {
@@ -46,30 +44,6 @@ export default function ReceiptDeliveryModal({ transaction, onClose }) {
     } finally {
       setSending(false);
     }
-  };
-
-  const formatReceiptText = (txn) => {
-    const lines = [
-      "OmniStock Receipt",
-      `TXN: ${txn.transaction_number}`,
-      `Date: ${new Date().toLocaleString("en-PH")}`,
-      "───────────────",
-    ];
-    if (txn.items?.length) {
-      txn.items.forEach(item => {
-        lines.push(`${item.quantity}x ${item.product_name} — ₱${item.subtotal?.toLocaleString("en-PH", { minimumFractionDigits: 2 })}`);
-      });
-    }
-    lines.push("───────────────");
-    lines.push(`Subtotal: ₱${txn.subtotal?.toLocaleString("en-PH", { minimumFractionDigits: 2 })}`);
-    if (txn.discount_amount > 0) {
-      lines.push(`Discount: -₱${txn.discount_amount?.toLocaleString("en-PH", { minimumFractionDigits: 2 })}`);
-    }
-    lines.push(`TOTAL: ₱${txn.total_amount?.toLocaleString("en-PH", { minimumFractionDigits: 2 })}`);
-    lines.push(`Payment: ${txn.payment_method?.toUpperCase()}`);
-    lines.push("");
-    lines.push("Thank you for shopping with us!");
-    return lines.join("\n");
   };
 
   return (
