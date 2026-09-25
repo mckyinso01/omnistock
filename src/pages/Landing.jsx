@@ -72,7 +72,7 @@ export default function Landing() {
             <a href="#specs" className="hover:text-cyan-400 transition-colors">Specs</a>
             <a href="#benefits" className="hover:text-cyan-400 transition-colors">Benefits</a>
           </div>
-          <Button asChild size="sm" className="bg-cyan-600 hover:bg-cyan-500 text-white font-bold shadow-md">
+          <Button asChild size="sm" className="bg-cyan-600 hover:bg-cyan-500 text-[#fff] font-bold shadow-md">
             <Link to="/inventory">Open app <ArrowRight className="w-4 h-4 ml-1" /></Link>
           </Button>
         </div>
@@ -92,10 +92,10 @@ export default function Landing() {
             OmniStock replaces spreadsheets, paper catalogues, and manual stock counts — so you can spend your time growing sales instead.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Button asChild size="lg" className="bg-cyan-600 hover:bg-cyan-500 text-white font-bold gap-2 shadow-lg">
+            <Button asChild size="lg" className="bg-cyan-600 hover:bg-cyan-500 text-[#fff] font-bold gap-2 shadow-lg">
               <Link to="/inventory"><ShoppingCart className="w-5 h-5" /> Start selling</Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="bg-[#071322] border-slate-700 text-slate-200 hover:bg-slate-800 hover:text-white font-bold">
+            <Button asChild size="lg" variant="outline" className="bg-[#071322] border-slate-700 text-slate-200 hover:bg-slate-800 hover:text-[#fff] font-bold">
               <Link to="/">See the dashboard</Link>
             </Button>
           </div>
@@ -246,7 +246,7 @@ export default function Landing() {
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">Ready to reclaim your day?</h2>
           <p className="text-slate-300 mb-8 text-base">Open OmniStock and ring your first sale in minutes — no spreadsheets required.</p>
-          <Button asChild size="lg" className="bg-cyan-600 hover:bg-cyan-500 text-white font-bold gap-2 shadow-lg">
+          <Button asChild size="lg" className="bg-cyan-600 hover:bg-cyan-500 text-[#fff] font-bold gap-2 shadow-lg">
             <Link to="/inventory"><ArrowRight className="w-5 h-5" /> Open the app</Link>
           </Button>
         </div>

@@ -125,11 +125,11 @@ export default function Login() {
             <button 
               type="submit"
               disabled={loading}
-              className="w-full py-4 rounded-xl bg-[#146f5b] hover:bg-[#105c4b] active:scale-[0.98] text-white font-bold text-sm shadow-[0_4px_11px_rgba(20,111,91,0.2)] transition-all cursor-pointer flex items-center justify-center gap-2 mt-2"
+              className="w-full py-4 rounded-xl bg-[#146f5b] hover:bg-[#105c4b] active:scale-[0.98] text-[#fff] font-bold text-sm shadow-[0_4px_11px_rgba(20,111,91,0.2)] transition-all cursor-pointer flex items-center justify-center gap-2 mt-2"
             >
               {loading ? (
                 <>
-                  <Loader2 className="h-4 w-4 animate-spin text-white" />
+                  <Loader2 className="h-4 w-4 animate-spin text-[#fff]" />
                   <span>Authenticating Session...</span>
                 </>
               ) : (

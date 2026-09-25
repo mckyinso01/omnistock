@@ -82,7 +82,7 @@ export default function TopBar({ onMenuClick, alertCount = 0 }) {
         <a href="/alerts" className="relative p-2.5 rounded-xl hover:bg-[#f4f8f6] text-[#557875] hover:text-[#16785f] transition-all">
           <Bell className="w-5 h-5 text-[#557875]" />
           {alertCount > 0 && (
-            <span className="absolute top-1.5 right-1.5 w-4 h-4 bg-[#146f5b] text-white text-[10px] font-bold rounded-full flex items-center justify-center border border-white">
+            <span className="absolute top-1.5 right-1.5 w-4 h-4 bg-[#146f5b] text-[#fff] text-[10px] font-bold rounded-full flex items-center justify-center border border-[#fff]">
               {alertCount > 9 ? "9+" : alertCount}
             </span>
           )}

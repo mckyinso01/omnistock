@@ -579,7 +579,7 @@ export default function POS() {
           </div>
 
           <Button onClick={processPayment} disabled={cart.length === 0 || processing}
-            className="w-full bg-[#10b981] hover:bg-[#059669] text-white font-bold text-base h-12 gap-2 shadow-[0_8px_18px_rgba(16,185,129,0.2)] rounded-xl transition-all active:scale-[0.99]">
+            className="w-full bg-[#10b981] hover:bg-[#059669] text-[#fff] font-bold text-base h-12 gap-2 shadow-[0_8px_18px_rgba(16,185,129,0.2)] rounded-xl transition-all active:scale-[0.99]">
             <CheckCircle2 className="w-5 h-5" />
             {processing ? "Processing Checkout..." : "CONFIRM SALE & PRINT RECEIPT"}
           </Button>

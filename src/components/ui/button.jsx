@@ -18,23 +18,23 @@ const buttonVariants = cva(
       variant: {
         // BTN-PRI: Standard Primary Action (Add Item, Save, Complete Sale)
         default:
-          "bg-[#2563EB] text-white font-semibold shadow-[0_0_15px_rgba(37,99,235,0.4)] hover:bg-[#1D4ED8] hover:shadow-[0_0_20px_rgba(37,99,235,0.6)]",
+          "bg-[#2563EB] text-[#fff] font-semibold shadow-[0_0_15px_rgba(37,99,235,0.4)] hover:bg-[#1D4ED8] hover:shadow-[0_0_20px_rgba(37,99,235,0.6)]",
         
         // BTN-GLOW: Highest Priority Company/Establishment Action (Launch App, Complete Fast Sale)
         glowing:
-          "moving-border-btn bg-[#2563EB] text-white font-bold tracking-wide shadow-[0_0_20px_rgba(0,229,255,0.4)] hover:shadow-[0_0_30px_rgba(0,229,255,0.7)]",
+          "moving-border-btn bg-[#2563EB] text-[#fff] font-bold tracking-wide shadow-[0_0_20px_rgba(0,229,255,0.4)] hover:shadow-[0_0_30px_rgba(0,229,255,0.7)]",
         
         // BTN-DANGER: Destructive Action (Void Sale, Delete Product, Purge DB)
         destructive:
-          "bg-[#E11D48] text-white font-semibold shadow-[0_0_15px_rgba(225,29,72,0.4)] hover:bg-[#BE123C] hover:shadow-[0_0_20px_rgba(225,29,72,0.6)]",
+          "bg-[#E11D48] text-[#fff] font-semibold shadow-[0_0_15px_rgba(225,29,72,0.4)] hover:bg-[#BE123C] hover:shadow-[0_0_20px_rgba(225,29,72,0.6)]",
         
         // BTN-SEC: Secondary Action (Cancel, Clear, Filter, Export)
         outline:
-          "bg-[#071322] border border-slate-700/80 text-slate-200 hover:border-[#00E5FF]/60 hover:text-white hover:bg-[#0E1E36] hover:shadow-[0_0_15px_rgba(0,229,255,0.2)]",
+          "bg-[#071322] border border-slate-700/80 text-slate-200 hover:border-[#00E5FF]/60 hover:text-[#fff] hover:bg-[#0E1E36] hover:shadow-[0_0_15px_rgba(0,229,255,0.2)]",
         
         // BTN-SEC Alias
         secondary:
-          "bg-[#071322] border border-slate-700/80 text-slate-200 hover:border-[#00E5FF]/60 hover:text-white hover:bg-[#0E1E36]",
+          "bg-[#071322] border border-slate-700/80 text-slate-200 hover:border-[#00E5FF]/60 hover:text-[#fff] hover:bg-[#0E1E36]",
         
         // BTN-GHOST: Micro Inline Actions (Close, More Options, Pagination)
         ghost:
