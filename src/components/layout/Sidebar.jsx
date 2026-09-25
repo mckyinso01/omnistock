@@ -68,27 +68,27 @@ export default function Sidebar({ open, onClose }) {
       {/* Overlay for mobile */}
       {open && (
         <div
-          className="fixed inset-0 z-20 bg-black/60 backdrop-blur-sm lg:hidden"
+          className="fixed inset-0 z-20 bg-black/30 backdrop-blur-sm lg:hidden"
           onClick={onClose}
         />
       )}
 
       <aside
         className={`
-          fixed inset-y-0 left-0 z-30 w-64 bg-[#0B1C30] border-r border-blue-900/40 flex flex-col transition-transform duration-200 text-slate-200
+          fixed inset-y-0 left-0 z-30 w-64 bg-white border-r border-[#d8eae5] flex flex-col transition-transform duration-200 text-[#103e3c]
           ${open ? "translate-x-0" : "-translate-x-full"}
           lg:relative lg:translate-x-0 lg:flex lg:z-auto
         `}
       >
         {/* Logo */}
-        <div className="flex items-center justify-between px-5 py-4 border-b border-slate-800/80">
+        <div className="flex items-center justify-between px-5 py-4 border-b border-[#e2efeb]">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 bg-[#2563EB] rounded-lg flex items-center justify-center shadow-md shadow-blue-950/50">
-              <Package className="w-5 h-5 text-white" />
+            <div className="w-8 h-8 bg-gradient-to-br from-[#e8f5ef] to-[#dcefe7] border border-[#c9eee8] rounded-lg flex items-center justify-center shadow-[inset_0_1px_0_#fff,0_3px_9px_rgba(20,111,91,0.06)]">
+              <Package className="w-5 h-5 text-[#17775e]" />
             </div>
-            <span className="font-bold text-white text-lg tracking-tight">OmniStock</span>
+            <span className="font-bold text-[#123c35] text-lg tracking-tight">OmniStock</span>
           </div>
-          <button onClick={onClose} className="lg:hidden text-slate-400 hover:text-white">
+          <button onClick={onClose} className="lg:hidden text-[#81948c] hover:text-[#123c35]">
             <X className="w-5 h-5" />
           </button>
         </div>
@@ -97,7 +97,7 @@ export default function Sidebar({ open, onClose }) {
         <nav className="flex-1 overflow-y-auto py-4 px-3 space-y-5">
           {navGroups.map((group) => (
             <div key={group.label}>
-              <p className="text-[11px] font-semibold text-[#00E5FF]/80 uppercase tracking-wider px-2 mb-1.5 font-mono">
+              <p className="text-[11px] font-semibold text-[#81948c] uppercase tracking-wider px-2 mb-1.5">
                 {group.label}
               </p>
               <div className="space-y-1">
@@ -108,13 +108,13 @@ export default function Sidebar({ open, onClose }) {
                       key={path}
                       to={path}
                       onClick={onClose}
-                      className={`flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold transition-all duration-200 app-card-hover
+                      className={`flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold transition-all duration-200
                         ${active
-                          ? "bg-[#2563EB]/20 text-[#00E5FF] border border-[#00E5FF]/40 shadow-sm"
-                          : "text-slate-300 hover:bg-slate-800/60 hover:text-white border border-transparent"
+                          ? "bg-[#146f5b]/10 text-[#146f5b] border border-[#a7d4c5]"
+                          : "text-[#557875] hover:bg-[#f4f8f6] hover:text-[#123c35] border border-transparent"
                         }`}
                     >
-                      <Icon className={`w-4 h-4 ${active ? "text-[#00E5FF]" : "text-slate-400"}`} />
+                      <Icon className={`w-4 h-4 ${active ? "text-[#16785f]" : "text-[#81948c]"}`} />
                       {label}
                     </Link>
                   );

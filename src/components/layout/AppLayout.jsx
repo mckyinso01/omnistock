@@ -12,25 +12,7 @@ export default function AppLayout() {
   const [alertCount, setAlertCount] = useState(0);
 
   useEffect(() => {
-    // Ensure dark mode is active by default for Stitch Midnight Logic Variation B
-    document.documentElement.classList.add("dark");
-
     loadAlerts();
-
-    // Mouse Spotlight Cursor Tracking Listener for Tier 2 Trademark
-    const handleMouseMove = (e) => {
-      const cards = document.querySelectorAll(".spotlight-card");
-      cards.forEach((card) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        card.style.setProperty("--mouse-x", `${x}px`);
-        card.style.setProperty("--mouse-y", `${y}px`);
-      });
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
   const loadAlerts = async () => {
@@ -44,12 +26,12 @@ export default function AppLayout() {
 
   return (
     <BranchProvider>
-      <div className="flex h-screen bg-[#050811] text-slate-100 overflow-hidden font-sans">
+      <div className="flex h-screen bg-[#f6fbf9] text-[#103e3c] overflow-hidden font-sans">
         <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-        <div className="flex-1 flex flex-col min-w-0 overflow-hidden bg-[#050811]">
+        <div className="flex-1 flex flex-col min-w-0 overflow-hidden bg-[#f6fbf9]">
           <TopBar onMenuClick={() => setSidebarOpen(true)} alertCount={alertCount} />
           <main
-            className="flex-1 overflow-y-auto bg-[#050811] text-slate-100 p-4 md:p-6"
+            className="flex-1 overflow-y-auto bg-[#f6fbf9] text-[#103e3c] p-4 md:p-6"
             style={{ paddingBottom: "calc(env(safe-area-inset-bottom) + 56px)" }}
           >
             <Outlet />
