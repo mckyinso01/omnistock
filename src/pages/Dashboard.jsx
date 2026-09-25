@@ -6,7 +6,6 @@ import PullToRefreshIndicator from "@/components/shared/PullToRefreshIndicator";
 import LowStockWidget from "@/components/dashboard/LowStockWidget";
 import LowStockBanner from "@/components/dashboard/LowStockBanner";
 import { useStockNotifications } from "@/hooks/useStockNotifications";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
 import {
@@ -99,9 +98,8 @@ export default function Dashboard() {
     return products.filter((p) => p.status === "active").length;
   }, [products]);
 
-  const [timeframe, setTimeframe] = useState("7d"); // "7d" | "30d" | "monthly" | "ytd"
+  const [timeframe, setTimeframe] = useState("7d");
 
-  // Dynamic Sales chart based on selected timeframe
   const salesChart = useMemo(() => {
     let daysCount = 7;
     if (timeframe === "30d") daysCount = 30;
@@ -127,206 +125,222 @@ export default function Dashboard() {
     return transactions.slice(0, 5);
   }, [transactions]);
 
+  const timeframes = [
+    { value: "7d", label: "7-Day" },
+    { value: "30d", label: "30-Day" },
+    { value: "monthly", label: "Monthly" },
+    { value: "ytd", label: "YTD" },
+  ];
+
   return (
-    <div ref={scrollRef} className="p-4 md:p-6 space-y-6 overflow-y-auto h-full">
+    <div ref={scrollRef} className="tm-dashboard p-8 md:p-10 space-y-5 overflow-y-auto h-full">
       <PullToRefreshIndicator pulling={pulling} pullDistance={pullDistance} refreshing={refreshing} threshold={threshold} />
+
       {/* Low Stock Banner */}
       <LowStockBanner products={products} />
 
-      {/* KPI Cards */}
-      <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
+      {/* Income Analytics — Full Width Hero Section */}
+      <section className="tm-panel tm-analytics relative overflow-hidden tm-arrive">
+        {/* Hero Image Banner */}
+        <div className="tm-hero">
+          <img
+            src="https://media.base44.com/images/public/6a01dbe1194ecb62dc80b3b8/ae0f7aae8_generated_be9521cb.jpg"
+            alt=""
+            className="w-full h-full object-cover opacity-90 transition-transform duration-700 ease-out"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#082b2a]/80 via-[#0a3836]/15 to-[#082b2a]/45" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#082b2a]/22 to-transparent" />
+        </div>
+
+        {/* Chart Header */}
+        <div className="relative flex items-center justify-between gap-5 px-7 pt-6 pb-5 border-b border-[#e2efeb]">
+          <h2 className="text-2xl font-bold tracking-tight text-[#123c35] flex items-center gap-2.5">
+            <TrendingUp className="w-5 h-5 text-[#16785f]" />
+            Income Analytics
+          </h2>
+          <div className="flex items-center gap-1.5 p-1 border border-[#dcebe6] rounded-xl bg-[#f4f8f6]">
+            {timeframes.map((tf) => (
+              <button
+                key={tf.value}
+                onClick={() => setTimeframe(tf.value)}
+                className={`px-3.5 py-2 rounded-lg text-sm font-semibold transition-all duration-200 cursor-pointer
+                  ${timeframe === tf.value
+                    ? "bg-[#146f5b] text-white shadow-[0_4px_11px_rgba(20,111,91,0.2)]"
+                    : "text-[#648078] hover:bg-[#e5f3ed] hover:text-[#164d40]"}`}
+              >
+                {tf.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Chart Area */}
+        <div className="px-7 py-6 bg-gradient-to-b from-[#fbfdfc] to-white">
+          {loading ? (
+            <div className="w-full h-[220px] bg-[#f4f8f6] animate-pulse rounded-xl border border-[#e2efeb] flex items-center justify-center text-sm text-[#81948c]">
+              Loading sales trend...
+            </div>
+          ) : (
+            <ResponsiveContainer width="100%" height={220}>
+              <AreaChart data={salesChart}>
+                <defs>
+                  <linearGradient id="tmSalesGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#06b6d4" stopOpacity={0.24} />
+                    <stop offset="95%" stopColor="#06b6d4" stopOpacity={0} />
+                  </linearGradient>
+                </defs>
+                <CartesianGrid strokeDasharray="3 3" stroke="#e6efeb" />
+                <XAxis dataKey="day" tick={{ fontSize: 12, fill: "#81948c" }} axisLine={false} tickLine={false} />
+                <YAxis tick={{ fontSize: 12, fill: "#81948c" }} axisLine={false} tickLine={false} tickFormatter={(v) => `₱${v}`} />
+                <Tooltip
+                  contentStyle={{ background: "#fff", border: "1px solid #d8eae5", borderRadius: 12, fontSize: 13, color: "#143d34", boxShadow: "0 10px 30px rgba(20,67,60,0.1)" }}
+                  formatter={(v) => [`₱${v.toLocaleString()}`, "Sales"]}
+                />
+                <Area
+                  type="monotone"
+                  dataKey="sales"
+                  stroke="#16866c"
+                  strokeWidth={3}
+                  fill="url(#tmSalesGrad)"
+                  dot={{ fill: "#20aa83", r: 4 }}
+                  activeDot={{ fill: "#20aa83", r: 6, style: { filter: "drop-shadow(0 0 5px rgba(32,170,131,0.5))" } }}
+                />
+              </AreaChart>
+            </ResponsiveContainer>
+          )}
+        </div>
+      </section>
+
+      {/* KPI Metrics Grid */}
+      <div className="grid grid-cols-2 lg:grid-cols-5 gap-3.5">
         <KPICard
           title="Today's Sales"
           value={DESIGN_TOKENS.formatCurrency(todaySales)}
-          icon={<PhilippinePeso className="w-5 h-5" />}
-          variant="cyber"
+          icon={<PhilippinePeso className="w-[19px] h-[19px]" />}
           sub={`${todayOrders} orders`}
           loading={loading}
+          index={0}
         />
         <KPICard
           title="Total Products"
           value={totalProducts}
-          icon={<Package className="w-5 h-5" />}
-          variant="cyber"
+          icon={<Package className="w-[19px] h-[19px]" />}
           sub="active items"
           loading={loading}
+          index={1}
         />
         <KPICard
           title="Transactions"
           value={transactions.filter((t) => t.status === "completed").length}
-          icon={<ShoppingCart className="w-5 h-5" />}
-          variant="emerald"
+          icon={<ShoppingCart className="w-[19px] h-[19px]" />}
           sub="all time"
           loading={loading}
+          index={2}
         />
         <KPICard
           title="Stock Alerts"
           value={alerts.length}
-          icon={<AlertTriangle className="w-5 h-5" />}
-          variant="amber"
+          icon={<AlertTriangle className="w-[19px] h-[19px]" />}
           sub={`${lowStockCount} low stock`}
           urgent={alerts.length > 0}
           loading={loading}
+          index={3}
         />
         <KPICard
           title="Customers"
           value={customers.length}
-          icon={<Users className="w-5 h-5" />}
-          variant="cyber"
+          icon={<Users className="w-[19px] h-[19px]" />}
           sub={`${customers.filter(c => (c.loyalty_points || 0) >= 500).length} loyalty members`}
           loading={loading}
+          index={4}
         />
       </div>
 
-      {/* Chart + Recent Transactions */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-        {/* Sales Chart */}
-        <Card className="lg:col-span-2 water-breathing-card rounded-2xl">
-          <CardHeader className="pb-3 border-b border-slate-800/80 flex flex-row items-center justify-between">
-            <CardTitle className={DESIGN_TOKENS.typography.h2 + " flex items-center gap-2"}>
-              <TrendingUp className="w-4 h-4 text-cyan-400" />
-              Income Analytics ({timeframe === '7d' ? 'Daily / 7-Day' : timeframe === '30d' ? '30-Day Monthly' : timeframe === 'monthly' ? 'Monthly Rollup' : 'YTD Annual'})
-            </CardTitle>
-            {/* Timeframe Selector Pills */}
-            <div className="flex items-center gap-1 bg-[#071322] p-1 rounded-xl border border-slate-800">
-              <button
-                onClick={() => setTimeframe('7d')}
-                className={`px-2.5 py-1 text-xs font-semibold rounded-lg transition-all ${timeframe === '7d' ? 'bg-[#2563EB] text-white shadow-lg' : 'text-slate-400 hover:text-white'}`}
-              >
-                7-Day
-              </button>
-              <button
-                onClick={() => setTimeframe('30d')}
-                className={`px-2.5 py-1 text-xs font-semibold rounded-lg transition-all ${timeframe === '30d' ? 'bg-[#2563EB] text-white shadow-lg' : 'text-slate-400 hover:text-white'}`}
-              >
-                30-Day
-              </button>
-              <button
-                onClick={() => setTimeframe('monthly')}
-                className={`px-2.5 py-1 text-xs font-semibold rounded-lg transition-all ${timeframe === 'monthly' ? 'bg-[#2563EB] text-white shadow-lg' : 'text-slate-400 hover:text-white'}`}
-              >
-                Monthly
-              </button>
-              <button
-                onClick={() => setTimeframe('ytd')}
-                className={`px-2.5 py-1 text-xs font-semibold rounded-lg transition-all ${timeframe === 'ytd' ? 'bg-[#2563EB] text-white shadow-lg' : 'text-slate-400 hover:text-white'}`}
-              >
-                YTD
-              </button>
-            </div>
-          </CardHeader>
-          <CardContent className="pt-4">
-            {loading ? (
-              <div className="w-full h-[200px] bg-[#071322] animate-pulse rounded-xl border border-slate-800 flex items-center justify-center text-xs text-slate-400 font-mono">
-                Loading sales trend...
-              </div>
-            ) : (
-              <ResponsiveContainer width="100%" height={200}>
-                <AreaChart data={salesChart}>
-                  <defs>
-                    <linearGradient id="salesGrad" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#2563eb" stopOpacity={0.4} />
-                      <stop offset="95%" stopColor="#2563eb" stopOpacity={0} />
-                    </linearGradient>
-                  </defs>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
-                  <XAxis dataKey="day" tick={{ fontSize: 12, fill: "#94a3b8" }} axisLine={false} tickLine={false} />
-                  <YAxis tick={{ fontSize: 12, fill: "#94a3b8" }} axisLine={false} tickLine={false} tickFormatter={(v) => `₱${v}`} />
-                  <Tooltip contentStyle={DESIGN_TOKENS.charts.tooltipStyle} formatter={(v) => [`₱${v.toLocaleString()}`, "Sales"]} />
-                  <Area
-                    type="monotone"
-                    dataKey="sales"
-                    stroke="#00e5ff"
-                    strokeWidth={2.5}
-                    fill="url(#salesGrad)"
-                  />
-                </AreaChart>
-              </ResponsiveContainer>
-            )}
-          </CardContent>
-        </Card>
-
-        {/* Recent Transactions */}
-        <Card className="water-breathing-card rounded-2xl">
-          <CardHeader className="pb-3 border-b border-slate-800/80 flex flex-row items-center justify-between">
-            <CardTitle className={DESIGN_TOKENS.typography.h2}>Recent Sales</CardTitle>
-            <Link to="/pos" className="text-xs font-semibold text-cyan-400 hover:text-cyan-300 flex items-center gap-1 transition-colors">
-              View all <ArrowRight className="w-3 h-3" />
+      {/* Bottom: Recent Sales + Low Stock Widget */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        {/* Recent Sales */}
+        <section className="tm-panel p-6 tm-arrive" style={{ animationDelay: "0.2s" }}>
+          <div className="flex items-center justify-between gap-4 border-b border-[#e2efeb] pb-4">
+            <h3 className="text-lg font-bold tracking-tight text-[#173e36]">Recent Sales</h3>
+            <Link to="/pos" className="text-sm font-semibold text-[#16785f] hover:text-[#0e5946] flex items-center gap-1.5 transition-colors cursor-pointer">
+              View all <ArrowRight className="w-3.5 h-3.5" />
             </Link>
-          </CardHeader>
-          <CardContent className="space-y-3 pt-4">
+          </div>
+          <div className="pt-4 space-y-2.5">
             {loading ? (
               <div className="space-y-4">
                 {[1, 2, 3, 4, 5].map((i) => (
                   <div key={i} className="flex justify-between items-center">
                     <div className="space-y-1.5 flex-1 mr-4">
-                      <div className="h-4 w-2/3 bg-slate-800 animate-pulse rounded" />
-                      <div className="h-3 w-1/3 bg-slate-900 animate-pulse rounded" />
+                      <div className="h-4 w-2/3 bg-[#e6efeb] animate-pulse rounded" />
+                      <div className="h-3 w-1/3 bg-[#edf6f1] animate-pulse rounded" />
                     </div>
-                    <div className="h-4 w-12 bg-slate-800 animate-pulse rounded" />
+                    <div className="h-4 w-12 bg-[#e6efeb] animate-pulse rounded" />
                   </div>
                 ))}
               </div>
             ) : recentTransactions.length === 0 ? (
-              <p className={DESIGN_TOKENS.typography.muted + " text-center py-6"}>No transactions yet</p>
+              <p className="text-center py-9 text-[#84968e] text-sm">No transactions yet</p>
             ) : (
               recentTransactions.map((t) => (
-                <div key={t.id} className="flex items-center justify-between p-2.5 rounded-xl hover:bg-[#071322] transition-colors border border-transparent hover:border-slate-800/80">
+                <div key={t.id} className="flex items-center justify-between p-2.5 rounded-xl hover:bg-[#f4f8f6] transition-colors border border-transparent hover:border-[#d8eae5]">
                   <div className="min-w-0">
-                    <p className={DESIGN_TOKENS.typography.body + " text-slate-100 truncate"}>
+                    <p className="text-sm text-[#143d34] truncate font-medium">
                       {t.customer_name || `Txn #${t.transaction_number || t.id.slice(-6)}`}
                     </p>
-                    <Badge className="text-[10px] mt-0.5 bg-blue-950/80 text-cyan-300 border border-blue-800/60 font-mono uppercase">
+                    <Badge className="text-[10px] mt-0.5 bg-[#e8f5ef] text-[#17775e] border border-[#c9eee8] font-semibold uppercase">
                       {t.payment_method}
                     </Badge>
                   </div>
-                  <span className="text-sm font-bold text-cyan-300 font-mono shrink-0 ml-2">
+                  <span className="text-sm font-bold text-[#16785f] tabular-nums shrink-0 ml-2">
                     {DESIGN_TOKENS.formatCurrency(t.total_amount)}
                   </span>
                 </div>
               ))
             )}
-          </CardContent>
-        </Card>
-      </div>
+          </div>
+        </section>
 
-      {/* Low Stock Widget */}
-      <LowStockWidget products={products} />
+        {/* Low Stock Widget */}
+        <section className="tm-panel p-6 tm-arrive" style={{ animationDelay: "0.2s" }}>
+          <div className="flex items-center justify-between gap-4 border-b border-[#e2efeb] pb-4">
+            <h3 className="text-lg font-bold tracking-tight text-[#173e36]">Low Stock Widget</h3>
+            <div className="tm-icon">
+              <Package className="w-[19px] h-[19px]" />
+            </div>
+          </div>
+          <div className="pt-4">
+            <LowStockWidget products={products} />
+          </div>
+        </section>
+      </div>
     </div>
   );
 }
 
-function KPICard({ title, value, icon, variant = "cyber", sub, urgent, loading }) {
-  const iconVariants = {
-    cyber: DESIGN_TOKENS.icons.cyberGlass,
-    amber: `${DESIGN_TOKENS.icons.amberGlass} animate-icon-glow-amber`,
-    flame: `${DESIGN_TOKENS.icons.flameGlass} animate-icon-glow-amber`,
-    emerald: DESIGN_TOKENS.icons.emeraldGlass,
-  };
-
-  const iconClass = urgent ? `${DESIGN_TOKENS.icons.amberGlass} animate-icon-glow-amber` : (iconVariants[variant] || DESIGN_TOKENS.icons.cyberGlass);
-
+function KPICard({ title, value, icon, sub, urgent, loading, index }) {
   return (
-    <Card className="water-breathing-card rounded-2xl overflow-hidden">
-      <CardContent className="p-4">
-        <div className="flex items-center justify-between mb-3">
-          <p className={DESIGN_TOKENS.typography.h3}>{title}</p>
-          <div className={iconClass}>
-            {icon}
-          </div>
+    <article
+      className="tm-panel tm-metric p-5 min-h-[148px] flex flex-col justify-center"
+      style={{ animationDelay: `${index * 0.06}s` }}
+    >
+      <div className="flex items-center justify-between gap-2 mb-3">
+        <p className="text-xs font-semibold text-[#668077] leading-snug">{title}</p>
+        <div className={urgent ? "tm-icon-urgent" : "tm-icon"}>
+          {icon}
         </div>
-        {loading ? (
-          <div className="space-y-1.5 py-1">
-            <div className="h-6 w-24 bg-slate-800 animate-pulse rounded" />
-            <div className="h-3 w-16 bg-slate-900 animate-pulse rounded" />
-          </div>
-        ) : (
-          <>
-            <p className="text-2xl font-extrabold text-white tracking-tight font-mono">{value}</p>
-            <p className={DESIGN_TOKENS.typography.muted}>{sub}</p>
-          </>
-        )}
-      </CardContent>
-    </Card>
+      </div>
+      {loading ? (
+        <div className="space-y-1.5 py-1">
+          <div className="h-7 w-24 bg-[#e6efeb] animate-pulse rounded" />
+          <div className="h-3 w-16 bg-[#edf6f1] animate-pulse rounded" />
+        </div>
+      ) : (
+        <>
+          <p className="text-[29px] font-bold text-[#143d34] tracking-tight tabular-nums leading-tight">{value}</p>
+          <p className="text-xs text-[#879990] mt-1">{sub}</p>
+        </>
+      )}
+    </article>
   );
 }
